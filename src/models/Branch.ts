@@ -33,7 +33,7 @@ const BranchSchema = new Schema<IBranch>(
     },
     allocatedBudget: { type: Number, default: 0 },
     currentSpend: { type: Number, default: 0 },
-    adminId: { type: Schema.Types.ObjectId, ref: 'User' },
+    adminId: { type: Schema.Types.Mixed },
     status: {
       type: String,
       enum: ['ACTIVE', 'SUSPENDED'],

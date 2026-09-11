@@ -30,7 +30,7 @@ export interface IFinancialVoucher extends Document {
 const FinancialVoucherSchema = new Schema<IFinancialVoucher>(
   {
     voucherNo: { type: String, required: true, unique: true },
-    branchId: { type: Schema.Types.ObjectId, ref: 'Branch', required: true },
+    branchId: { type: Schema.Types.Mixed, required: true },
     branchName: { type: String, required: true },
     vendorName: { type: String, required: true },
     category: {

@@ -42,7 +42,7 @@ export interface IMaterialIndent extends Document {
 const MaterialIndentSchema = new Schema<IMaterialIndent>(
   {
     indentNo: { type: String, required: true, unique: true },
-    branchId: { type: Schema.Types.ObjectId, ref: 'Branch', required: true },
+    branchId: { type: Schema.Types.Mixed, required: true },
     branchName: { type: String, required: true },
     requestedBy: {
       id: { type: String, required: true },

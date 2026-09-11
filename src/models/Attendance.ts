@@ -35,7 +35,7 @@ const AttendanceSchema = new Schema<IAttendance>(
       default: 'DAILY',
     },
     dailyRate: { type: Number, required: true },
-    branchId: { type: Schema.Types.ObjectId, ref: 'Branch', required: true },
+    branchId: { type: Schema.Types.Mixed, required: true },
     branchName: { type: String },
     date: { type: String, required: true },
     status: {

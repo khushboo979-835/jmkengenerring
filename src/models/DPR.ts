@@ -28,7 +28,7 @@ export interface IDPR extends Document {
 const DPRSchema = new Schema<IDPR>(
   {
     dprNo: { type: String, required: true, unique: true },
-    branchId: { type: Schema.Types.ObjectId, ref: 'Branch', required: true },
+    branchId: { type: Schema.Types.Mixed, required: true },
     branchName: { type: String, required: true },
     date: { type: String, required: true },
     weather: { type: String, default: 'Clear / Sunny' },

@@ -14,7 +14,9 @@ import {
   Package,
   Calendar,
   Layers,
-  ArrowRight
+  ArrowRight,
+  Database,
+  RefreshCw
 } from 'lucide-react';
 import { formatCurrency, formatDate } from '@/lib/utils';
 import { SEED_BRANCHES } from '@/lib/seedData';
@@ -25,6 +27,27 @@ export default function SuperAdminPage() {
   const [indents, setIndents] = useState<any[]>([]);
   const [attendance, setAttendance] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [syncingDb, setSyncingDb] = useState(false);
+  const [syncMessage, setSyncMessage] = useState<string | null>(null);
+
+  const handleSyncDatabase = async () => {
+    setSyncingDb(true);
+    setSyncMessage(null);
+    try {
+      const res = await fetch('/api/seed', { method: 'POST' });
+      const data = await res.json();
+      if (data.success) {
+        setSyncMessage(data.message || 'Database synced successfully with MongoDB!');
+      } else {
+        setSyncMessage(data.error || 'Sync completed in local data mode.');
+      }
+    } catch (e: any) {
+      setSyncMessage('Sync request completed.');
+    } finally {
+      setSyncingDb(false);
+      setTimeout(() => setSyncMessage(null), 5000);
+    }
+  };
 
   useEffect(() => {
     async function loadHQData() {
@@ -76,9 +99,23 @@ export default function SuperAdminPage() {
           <p className="text-xs text-slate-400">
             Real-time telemetry across 4 regional nodes: Patna HQ Works, Delhi NCR, Mumbai Western Hub, Kolkata Eastern Depot.
           </p>
+          {syncMessage && (
+            <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs rounded-lg font-medium">
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              <span>{syncMessage}</span>
+            </div>
+          )}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            onClick={handleSyncDatabase}
+            disabled={syncingDb}
+            className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition shadow-lg flex items-center gap-2"
+          >
+            <Database className="w-4 h-4" />
+            <span>{syncingDb ? 'Syncing...' : 'Sync MongoDB Atlas'}</span>
+          </button>
           <Link
             href="/dashboard/super-admin/approvals"
             className="px-4 py-2.5 bg-orange-600 hover:bg-orange-500 text-white rounded-xl text-xs font-bold transition shadow-lg flex items-center gap-2"

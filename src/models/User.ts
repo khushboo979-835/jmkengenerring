@@ -23,7 +23,7 @@ const UserSchema = new Schema<IUser>(
       default: 'STAFF',
       required: true,
     },
-    branchId: { type: Schema.Types.ObjectId, ref: 'Branch' },
+    branchId: { type: Schema.Types.Mixed },
     phone: { type: String },
     designation: { type: String },
   },
