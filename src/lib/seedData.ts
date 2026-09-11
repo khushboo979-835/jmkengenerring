@@ -4144,6 +4144,43 @@ export interface PhotoGalleryItem {
 }
 
 export const INDIA_MART_GALLERY_PHOTOS: PhotoGalleryItem[] = [
+  // JMK Authentic Factory & Manufacturing Highlights
+  {
+    id: 'gal_mixer',
+    title: 'Heavy Duty Concrete Mixer Machine (10/7 CFT)',
+    category: 'Shuttering & Centering',
+    price: '₹75,000 - ₹1,20,000 / Unit',
+    imageUrl: '/images/about/concrete-mixer-machine.png',
+    moq: '1 Unit',
+    slug: 'concrete-mixer-machine',
+  },
+  {
+    id: 'gal_well_formwork',
+    title: 'Circular Well Steining & Pier Formwork Mould',
+    category: 'Shuttering & Centering',
+    price: '₹75 / Kg',
+    imageUrl: '/images/about/circular-well-formwork.jpg',
+    moq: '1 Set',
+    slug: 'iron-shuttering-plates',
+  },
+  {
+    id: 'gal_staging_truss',
+    title: 'Heavy Girder Staging Truss Blocks & Frame Units',
+    category: 'Scaffolding Systems',
+    price: '₹82 / Kg',
+    imageUrl: '/images/about/yellow-girder-staging-truss.jpg',
+    moq: '10 Sets',
+    slug: 'cuplock-scaffolding-system',
+  },
+  {
+    id: 'gal_box_truss',
+    title: 'Heavy Structural Steel Box Trusses & Girders',
+    category: 'Shuttering & Centering',
+    price: '₹85 / Kg',
+    imageUrl: '/images/about/purple-steel-truss-box.jpg',
+    moq: '5 MT',
+    slug: 'mild-steel-centering-sheets',
+  },
   // 1. Shuttering & Centering
   {
     id: 'gal_1',

@@ -91,12 +91,12 @@ const JMK_FLYER_PRODUCTS = [
     description: 'Industrial yellow traffic barricades, moveable safety gates, and site perimeter safety barriers.',
   },
   {
-    id: 'road-sign-board',
-    name: 'Road Sign Boards (MoRTH)',
-    category: 'Highway Signage',
-    spec: 'Retro-Reflective Type IV / High Intensity',
-    imageUrl: 'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=600&q=80',
-    description: 'Speed limit, caution, stop, and give way regulatory sign boards built to IRC highway norms.',
+    id: 'concrete-mixer-machine',
+    name: 'Heavy Duty Concrete Mixer Machine',
+    category: 'Construction Machinery',
+    spec: '10/7 CFT Drum / Heavy Steel Chassis with Wheels',
+    imageUrl: '/images/about/concrete-mixer-machine.png',
+    description: 'Site-tested heavy duty concrete mixer machine with robust steering tow-bar and high-torque motor for rapid on-site batching.',
   },
   {
     id: 'column-shuttering',
@@ -372,23 +372,23 @@ export default function AboutPage() {
 
             </div>
 
-            {/* ROW 2: 6 Interlocking Hexagons (Nestled tightly in Row 1 notches, with CEO in Center) */}
+            {/* ROW 2: 6 Interlocking Hexagons (Nestled tightly in Row 1 notches) */}
             <div className="flex items-center justify-center gap-1 sm:gap-1.5 lg:gap-2">
               
-              {/* 6. Heavy Industrial Manufacturing Facility */}
+              {/* 6. Heavy Duty Concrete Mixer Machine (User Image 1) */}
               <div className="w-[19%] max-w-[180px] aspect-[1/1.15] group/hex transition-all duration-500 hover:scale-115 hover:z-30 cursor-pointer">
                 <div
-                  className="w-full h-full p-[2.5px] sm:p-[3px] bg-gradient-to-tr from-cyan-500 via-blue-500 to-indigo-600 shadow-lg group-hover/hex:shadow-blue-400/50 group-hover/hex:p-[3.5px] transition-all"
+                  className="w-full h-full p-[2.5px] sm:p-[3px] bg-gradient-to-tr from-orange-500 via-amber-500 to-red-600 shadow-lg group-hover/hex:shadow-orange-400/50 group-hover/hex:p-[3.5px] transition-all"
                   style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
                 >
-                  <div className="relative w-full h-full bg-neutral-900 overflow-hidden" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
+                  <div className="relative w-full h-full bg-white overflow-hidden" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
                     <img
-                      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=85"
-                      alt="Manufacturing Plant"
-                      className="w-full h-full object-cover group-hover/hex:scale-120 filter brightness-105 group-hover/hex:brightness-115 transition-all duration-700"
+                      src="/images/about/concrete-mixer-machine.png"
+                      alt="Concrete Mixer Machine"
+                      className="w-full h-full object-contain p-1 group-hover/hex:scale-115 filter brightness-105 transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/hex:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3">
-                      <span className="text-[10px] sm:text-[11px] font-black text-white uppercase tracking-wider px-1 text-center">Plant Works</span>
+                      <span className="text-[10px] sm:text-[11px] font-black text-white uppercase tracking-wider px-1 text-center">Mixer Machine</span>
                     </div>
                   </div>
                 </div>
@@ -413,7 +413,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* 8 (CENTER FOCAL POINT): Mrs. Pramila Devi (CEO Portrait) with Glowing Golden/Orange Hex Border */}
+              {/* 8 (CENTER FOCAL POINT): Heavy Circular Well / Column Shuttering Formwork (User Image 2) */}
               <div className="w-[19%] max-w-[180px] aspect-[1/1.15] group/hex transition-all duration-500 hover:scale-120 z-30 cursor-pointer">
                 <div
                   className="w-full h-full p-[3.5px] sm:p-[4px] bg-gradient-to-b from-amber-400 via-orange-500 to-red-600 shadow-2xl shadow-orange-500/50 ring-4 ring-orange-400/50 group-hover/hex:ring-orange-500 group-hover/hex:shadow-orange-500/80 transition-all"
@@ -421,13 +421,13 @@ export default function AboutPage() {
                 >
                   <div className="relative w-full h-full bg-neutral-900 overflow-hidden" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
                     <img
-                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=85"
-                      alt="Mrs. Pramila Devi - CEO"
-                      className="w-full h-full object-cover object-top group-hover/hex:scale-115 filter brightness-105 transition-transform duration-500"
+                      src="/images/about/circular-well-formwork.jpg"
+                      alt="Circular Well Formwork - JMK Works"
+                      className="w-full h-full object-cover group-hover/hex:scale-115 filter brightness-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-neutral-950 via-neutral-950/80 to-transparent py-2.5 px-1 text-center flex flex-col items-center">
-                      <span className="text-[9px] sm:text-[10px] font-black text-amber-300 uppercase tracking-tight leading-none drop-shadow">Pramila Devi</span>
-                      <span className="text-[7.5px] sm:text-[8.5px] font-bold text-white/90 uppercase tracking-widest leading-none mt-0.5">CEO</span>
+                      <span className="text-[9px] sm:text-[10px] font-black text-amber-300 uppercase tracking-tight leading-none drop-shadow">Well Formwork</span>
+                      <span className="text-[7.5px] sm:text-[8.5px] font-bold text-white/90 uppercase tracking-widest leading-none mt-0.5">Central Works</span>
                     </div>
                   </div>
                 </div>
@@ -471,20 +471,20 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* 11. Concrete Viaduct Flyover Bridge */}
+              {/* 11. Heavy Industrial Yellow Staging Truss Blocks (User Image 3) */}
               <div className="w-[19%] max-w-[180px] aspect-[1/1.15] group/hex transition-all duration-500 hover:scale-115 hover:z-30 cursor-pointer">
                 <div
-                  className="w-full h-full p-[2.5px] sm:p-[3px] bg-gradient-to-tr from-orange-400 via-amber-500 to-yellow-500 shadow-lg group-hover/hex:shadow-orange-400/50 group-hover/hex:p-[3.5px] transition-all"
+                  className="w-full h-full p-[2.5px] sm:p-[3px] bg-gradient-to-tr from-yellow-400 via-amber-500 to-orange-500 shadow-lg group-hover/hex:shadow-yellow-400/50 group-hover/hex:p-[3.5px] transition-all"
                   style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
                 >
                   <div className="relative w-full h-full bg-neutral-900 overflow-hidden" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
                     <img
-                      src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=600&q=85"
-                      alt="Highway Flyover"
+                      src="/images/about/yellow-girder-staging-truss.jpg"
+                      alt="Yellow Staging Truss Blocks"
                       className="w-full h-full object-cover group-hover/hex:scale-120 filter brightness-105 group-hover/hex:brightness-115 transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/hex:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3">
-                      <span className="text-[10px] sm:text-[11px] font-black text-white uppercase tracking-wider px-1 text-center">Flyover</span>
+                      <span className="text-[10px] sm:text-[11px] font-black text-white uppercase tracking-wider px-1 text-center">Staging Truss</span>
                     </div>
                   </div>
                 </div>
@@ -571,20 +571,20 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* 16. Multi-lane Highway Expressway Infrastructure */}
+              {/* 16. Heavy Duty Purple Steel Box Trusses & Girders (User Image 4) */}
               <div className="w-[19%] max-w-[180px] aspect-[1/1.15] group/hex transition-all duration-500 hover:scale-115 hover:z-30 cursor-pointer">
                 <div
-                  className="w-full h-full p-[2.5px] sm:p-[3px] bg-gradient-to-tr from-amber-400 via-orange-500 to-red-600 shadow-lg group-hover/hex:shadow-orange-400/50 group-hover/hex:p-[3.5px] transition-all"
+                  className="w-full h-full p-[2.5px] sm:p-[3px] bg-gradient-to-tr from-purple-500 via-indigo-500 to-red-600 shadow-lg group-hover/hex:shadow-purple-400/50 group-hover/hex:p-[3.5px] transition-all"
                   style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
                 >
                   <div className="relative w-full h-full bg-neutral-900 overflow-hidden" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
                     <img
-                      src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=600&q=85"
-                      alt="Expressway"
+                      src="/images/about/purple-steel-truss-box.jpg"
+                      alt="Purple Steel Box Trusses"
                       className="w-full h-full object-cover group-hover/hex:scale-120 filter brightness-105 group-hover/hex:brightness-115 transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/hex:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3">
-                      <span className="text-[10px] sm:text-[11px] font-black text-white uppercase tracking-wider px-1 text-center">Expressway</span>
+                      <span className="text-[10px] sm:text-[11px] font-black text-white uppercase tracking-wider px-1 text-center">Box Trusses</span>
                     </div>
                   </div>
                 </div>
@@ -681,11 +681,11 @@ export default function AboutPage() {
                       className="w-full h-full p-[2.5px] bg-gradient-to-b from-amber-400 to-orange-500 shadow-md"
                       style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
                     >
-                      <div className="w-full h-full bg-neutral-900 overflow-hidden" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
+                      <div className="w-full h-full bg-white p-1 overflow-hidden flex items-center justify-center" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
                         <img
-                          src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"
-                          alt="Mrs. Pramila Devi"
-                          className="w-full h-full object-cover object-top filter brightness-105"
+                          src="https://5.imimg.com/data5/SELLER/Logo/2025/1/478932299/PR/TT/IP/146888318/img-20231217-wa0143.jpg"
+                          alt="Mrs. Pramila Devi - JMK Engineering & Developers"
+                          className="w-full h-full object-contain filter contrast-105"
                         />
                       </div>
                     </div>
