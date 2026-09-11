@@ -160,7 +160,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Social Media Channels (Facebook, Instagram, Pinterest) */}
+            {/* Social Media Channels with Original Official Brand Colors */}
             <div className="pt-3 flex items-center gap-3">
               <span className="text-xs font-black text-black uppercase tracking-wider">Follow Us:</span>
               <a
@@ -168,27 +168,27 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="JMK Engineering on Facebook"
-                className="w-9 h-9 rounded-xl bg-neutral-100 hover:bg-[#1877F2] text-neutral-700 hover:text-white border border-neutral-300 hover:border-[#1877F2] flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110"
+                className="w-10 h-10 rounded-2xl bg-[#1877F2] text-white hover:bg-[#0d65d9] flex items-center justify-center transition-all duration-200 shadow-md shadow-[#1877F2]/30 hover:scale-110"
               >
-                <Facebook className="w-4 h-4 fill-current" />
+                <Facebook className="w-5 h-5 fill-current" />
               </a>
               <a
                 href="https://www.instagram.com/jmk_engineering_developer_/"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="JMK Engineering on Instagram"
-                className="w-9 h-9 rounded-xl bg-neutral-100 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-neutral-700 hover:text-white border border-neutral-300 hover:border-transparent flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110"
+                className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white hover:opacity-95 flex items-center justify-center transition-all duration-200 shadow-md shadow-[#dc2743]/30 hover:scale-110"
               >
-                <Instagram className="w-4 h-4" />
+                <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="https://in.pinterest.com/uuujjwalraj9999/"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="JMK Engineering on Pinterest"
-                className="w-9 h-9 rounded-xl bg-neutral-100 hover:bg-[#E60023] text-neutral-700 hover:text-white border border-neutral-300 hover:border-[#E60023] flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110"
+                className="w-10 h-10 rounded-2xl bg-[#E60023] text-white hover:bg-[#cc001f] flex items-center justify-center transition-all duration-200 shadow-md shadow-[#E60023]/30 hover:scale-110"
               >
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.332 1.357-.053.225-.177.271-.407.165-1.515-.705-2.464-2.916-2.464-4.698 0-3.829 2.785-7.348 8.035-7.348 4.218 0 7.496 3.007 7.496 7.021 0 4.191-2.642 7.565-6.31 7.565-1.232 0-2.391-.641-2.788-1.399l-.759 2.894c-.274 1.055-1.018 2.378-1.516 3.195C9.539 23.829 10.748 24 12.017 24c6.627 0 12-5.373 12-12S18.644 0 12.017 0z" />
                 </svg>
               </a>

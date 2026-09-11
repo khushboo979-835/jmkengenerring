@@ -355,14 +355,14 @@ export default function ContactPage() {
                   href="https://www.facebook.com/profile.php?id=61585228837362"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 p-3 rounded-2xl bg-neutral-50 hover:bg-[#1877F2] text-neutral-800 hover:text-white border-2 border-neutral-200 hover:border-[#1877F2] transition group shadow-sm"
+                  className="flex items-center gap-2.5 p-3 rounded-2xl bg-[#1877F2] text-white hover:bg-[#0d65d9] transition group shadow-md shadow-[#1877F2]/20 hover:scale-105"
                 >
-                  <div className="w-8 h-8 rounded-xl bg-white group-hover:bg-white/20 text-[#1877F2] group-hover:text-white flex items-center justify-center shrink-0 border border-neutral-200 group-hover:border-transparent">
+                  <div className="w-8 h-8 rounded-xl bg-white/20 text-white flex items-center justify-center shrink-0">
                     <Facebook className="w-4 h-4 fill-current" />
                   </div>
                   <div>
                     <span className="text-xs font-black block">Facebook</span>
-                    <span className="text-[10px] text-neutral-500 group-hover:text-white/80 block">Official Page</span>
+                    <span className="text-[10px] text-white/80 block">Official Page</span>
                   </div>
                 </a>
 
@@ -370,14 +370,14 @@ export default function ContactPage() {
                   href="https://www.instagram.com/jmk_engineering_developer_/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 p-3 rounded-2xl bg-neutral-50 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-neutral-800 hover:text-white border-2 border-neutral-200 hover:border-transparent transition group shadow-sm"
+                  className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white hover:opacity-95 transition group shadow-md shadow-[#dc2743]/20 hover:scale-105"
                 >
-                  <div className="w-8 h-8 rounded-xl bg-white group-hover:bg-white/20 text-[#E1306C] group-hover:text-white flex items-center justify-center shrink-0 border border-neutral-200 group-hover:border-transparent">
+                  <div className="w-8 h-8 rounded-xl bg-white/20 text-white flex items-center justify-center shrink-0">
                     <Instagram className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-xs font-black block">Instagram</span>
-                    <span className="text-[10px] text-neutral-500 group-hover:text-white/80 block">@jmk_engineering</span>
+                    <span className="text-[10px] text-white/80 block">@jmk_engineering</span>
                   </div>
                 </a>
 
@@ -385,16 +385,16 @@ export default function ContactPage() {
                   href="https://in.pinterest.com/uuujjwalraj9999/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 p-3 rounded-2xl bg-neutral-50 hover:bg-[#E60023] text-neutral-800 hover:text-white border-2 border-neutral-200 hover:border-[#E60023] transition group shadow-sm"
+                  className="flex items-center gap-2.5 p-3 rounded-2xl bg-[#E60023] text-white hover:bg-[#cc001f] transition group shadow-md shadow-[#E60023]/20 hover:scale-105"
                 >
-                  <div className="w-8 h-8 rounded-xl bg-white group-hover:bg-white/20 text-[#E60023] group-hover:text-white flex items-center justify-center shrink-0 border border-neutral-200 group-hover:border-transparent">
+                  <div className="w-8 h-8 rounded-xl bg-white/20 text-white flex items-center justify-center shrink-0">
                     <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                       <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.332 1.357-.053.225-.177.271-.407.165-1.515-.705-2.464-2.916-2.464-4.698 0-3.829 2.785-7.348 8.035-7.348 4.218 0 7.496 3.007 7.496 7.021 0 4.191-2.642 7.565-6.31 7.565-1.232 0-2.391-.641-2.788-1.399l-.759 2.894c-.274 1.055-1.018 2.378-1.516 3.195C9.539 23.829 10.748 24 12.017 24c6.627 0 12-5.373 12-12S18.644 0 12.017 0z" />
                     </svg>
                   </div>
                   <div>
                     <span className="text-xs font-black block">Pinterest</span>
-                    <span className="text-[10px] text-neutral-500 group-hover:text-white/80 block">Product Pins</span>
+                    <span className="text-[10px] text-white/80 block">Product Pins</span>
                   </div>
                 </a>
               </div>
