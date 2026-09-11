@@ -16,7 +16,8 @@ import {
   ExternalLink,
   Truck,
   Facebook,
-  Instagram
+  Instagram,
+  Youtube
 } from 'lucide-react';
 import { SEED_BRANCHES, SEED_PRODUCTS } from '@/lib/seedData';
 
@@ -350,7 +351,7 @@ export default function ContactPage() {
                 Follow our latest project dispatches, on-site civil fabrication videos, and company updates.
               </p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
                 <a
                   href="https://www.facebook.com/profile.php?id=61585228837362"
                   target="_blank"
@@ -395,6 +396,21 @@ export default function ContactPage() {
                   <div>
                     <span className="text-xs font-black block">Pinterest</span>
                     <span className="text-[10px] text-white/80 block">Product Pins</span>
+                  </div>
+                </a>
+
+                <a
+                  href="https://www.youtube.com/@jmkengineeringanddeveloper1626"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 p-3 rounded-2xl bg-[#FF0000] text-white hover:bg-[#cc0000] transition group shadow-md shadow-[#FF0000]/20 hover:scale-105"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-white/20 text-white flex items-center justify-center shrink-0">
+                    <Youtube className="w-4 h-4 fill-current" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-black block">YouTube</span>
+                    <span className="text-[10px] text-white/80 block">Official Channel</span>
                   </div>
                 </a>
               </div>

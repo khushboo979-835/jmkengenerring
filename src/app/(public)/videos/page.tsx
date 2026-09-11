@@ -18,7 +18,8 @@ import {
   CheckCircle2,
   Share2,
   Factory,
-  Truck
+  Truck,
+  Youtube
 } from 'lucide-react';
 import { INDIA_MART_VIDEOS, IndiaMartVideoItem } from '@/lib/seedData';
 import RFQModal from '@/components/public/RFQModal';
@@ -98,6 +99,16 @@ export default function VideosPage() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://www.youtube.com/@jmkengineeringanddeveloper1626"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2.5 bg-[#FF0000] hover:bg-[#cc0000] text-white rounded-xl text-xs font-black transition flex items-center gap-1.5 shadow-md shadow-[#FF0000]/30"
+              >
+                <Youtube className="w-4 h-4 fill-current" />
+                <span>YouTube Channel</span>
+              </a>
+
               <a
                 href="https://www.indiamart.com/jmkengineeringdevelopers/videos.html"
                 target="_blank"
