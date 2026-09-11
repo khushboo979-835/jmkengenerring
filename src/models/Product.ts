@@ -38,7 +38,6 @@ const ProductSchema = new Schema<IProduct>(
     slug: { type: String, required: true, unique: true },
     category: {
       type: String,
-      enum: ['shuttering', 'scaffolding', 'bearings', 'joints', 'drainage'],
       required: true,
     },
     categoryLabel: { type: String, required: true },
