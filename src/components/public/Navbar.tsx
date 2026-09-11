@@ -332,6 +332,13 @@ export default function Navbar() {
             >
               Contact Us
             </Link>
+            <Link
+              href="/admin"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-1.5 text-sm font-bold text-red-600 hover:text-red-700"
+            >
+              🔒 Staff & Admin Portal
+            </Link>
             <div className="pt-2 border-t border-neutral-200">
               <a
                 href="tel:+919431024800"

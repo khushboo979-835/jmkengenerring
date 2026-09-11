@@ -12,6 +12,35 @@ const nextConfig = {
       'via.placeholder.com',
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/admin',
+        destination: '/portal/login',
+        permanent: true,
+      },
+      {
+        source: '/admin/:path*',
+        destination: '/dashboard/:path*',
+        permanent: true,
+      },
+      {
+        source: '/login',
+        destination: '/portal/login',
+        permanent: true,
+      },
+      {
+        source: '/portal',
+        destination: '/portal/login',
+        permanent: true,
+      },
+      {
+        source: '/dashboard',
+        destination: '/dashboard/super-admin',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
