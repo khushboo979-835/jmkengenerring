@@ -232,8 +232,8 @@ async function handleSeed() {
           description: t.description,
           branchId: t.branchId,
           branchName: t.branchName,
-          assignedTo: t.assignedTo,
-          deadline: t.deadline,
+          assignedTo: (t as any).assignedToName || (t as any).assignedTo || 'Fabrication Incharge',
+          deadline: (t as any).dueDate || (t as any).deadline || '2026-10-30',
           priority: t.priority,
           status: t.status,
         },
@@ -246,16 +246,16 @@ async function handleSeed() {
     let snagsCount = 0;
     for (const s of dataStore.getSnags()) {
       await Snag.findOneAndUpdate(
-        { snagNo: s.snagNo },
+        { snagNo: (s as any).snagNumber || (s as any).snagNo },
         {
-          snagNo: s.snagNo,
+          snagNo: (s as any).snagNumber || (s as any).snagNo,
           branchId: s.branchId,
           branchName: s.branchName,
           location: s.location,
-          severity: s.severity,
+          severity: (s as any).priority || (s as any).severity || 'MEDIUM',
           description: s.description,
           status: s.status,
-          reportedBy: s.reportedBy,
+          reportedBy: typeof s.reportedBy === 'string' ? { id: 'usr_staff', name: s.reportedBy } : s.reportedBy,
         },
         { upsert: true, new: true }
       );

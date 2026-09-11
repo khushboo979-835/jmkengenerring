@@ -156,86 +156,86 @@ export default function AttendancePage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-200 pb-6">
         <div>
-          <span className="text-xs font-bold text-orange-400 uppercase tracking-wider block">
+          <span className="text-xs font-black text-red-600 uppercase tracking-wider block">
             Resource Management & Payroll
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-0.5">
+          <h1 className="text-2xl sm:text-3xl font-black text-black tracking-tight mt-0.5">
             GPS Geofenced Muster Roll & Biometric Attendance
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-neutral-600 mt-1 font-medium">
             Browser geofence verified daily worker logs, shift records, and real-time wage computation.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl">
-            <Calendar className="w-4 h-4 text-orange-400" />
+          <div className="flex items-center gap-2 bg-white border-2 border-neutral-200 px-3 py-1.5 rounded-xl shadow-sm">
+            <Calendar className="w-4 h-4 text-red-600" />
             <input
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="bg-transparent border-none text-xs font-bold text-white focus:outline-none"
+              className="bg-transparent border-none text-xs font-black text-black focus:outline-none cursor-pointer"
             />
           </div>
 
           <button
             onClick={handleExportCSV}
-            className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white rounded-xl text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5"
+            className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition flex items-center gap-1.5 shadow-md"
           >
-            <Download className="w-3.5 h-3.5 text-orange-400" />
+            <Download className="w-3.5 h-3.5" />
             <span>Export CSV</span>
           </button>
         </div>
       </div>
 
       {/* Live Geofence Boundary Telemetry Card */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
+      <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 shadow-sm space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div
               className={`w-12 h-12 rounded-2xl flex items-center justify-center font-bold ${
                 isWithinGeofence
-                  ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-800'
-                  : 'bg-red-950/60 text-red-400 border border-red-800'
+                  ? 'bg-emerald-100 text-emerald-800 border-2 border-emerald-300'
+                  : 'bg-red-100 text-red-800 border-2 border-red-300'
               }`}
             >
               <Compass className="w-6 h-6 animate-spin-slow" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-bold text-white">
+                <h3 className="text-base font-black text-black">
                   Live Browser Geofence Boundary Telemetry
                 </h3>
                 <span
-                  className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md ${
+                  className={`text-[10px] font-mono font-black px-2 py-0.5 rounded-md ${
                     isWithinGeofence
-                      ? 'bg-emerald-950 text-emerald-400 border border-emerald-800'
-                      : 'bg-red-950 text-red-400 border border-red-800'
+                      ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                      : 'bg-red-100 text-red-800 border border-red-300'
                   }`}
                 >
                   {isWithinGeofence ? '● INSIDE GEOFENCE PERIMETER' : '● OUTSIDE SITE PERIMETER'}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-0.5">
-                Target Hub: <strong>{targetBranch.name}</strong> • Site Radius:{' '}
+              <p className="text-xs text-neutral-600 mt-0.5 font-medium">
+                Target Hub: <strong className="text-black">{targetBranch.name}</strong> • Site Radius:{' '}
                 {targetBranch.locationCoords.radiusMeters}m
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-4 text-xs">
-            <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-center">
-              <span className="text-[10px] text-slate-500 uppercase font-bold block">Distance to Yard</span>
-              <span className="font-mono text-sm font-bold text-emerald-400">
+            <div className="p-2.5 rounded-xl bg-neutral-50 border border-neutral-200 text-center shadow-sm">
+              <span className="text-[10px] text-neutral-500 uppercase font-black block">Distance to Yard</span>
+              <span className="font-mono text-sm font-black text-emerald-700">
                 {gpsDistance !== null ? `${gpsDistance} meters` : 'Calculating...'}
               </span>
             </div>
             <button
               onClick={checkLiveGps}
               disabled={gpsChecking}
-              className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-semibold border border-slate-700 transition"
+              className="px-3 py-2 bg-neutral-100 hover:bg-neutral-200 text-black font-extrabold rounded-xl text-xs border border-neutral-300 transition"
             >
               {gpsChecking ? 'Re-Checking...' : 'Refresh GPS'}
             </button>
@@ -245,45 +245,45 @@ export default function AttendancePage() {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-1">
-          <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="bg-white border-2 border-neutral-200 p-5 rounded-2xl space-y-1 shadow-sm">
+          <span className="text-xs font-extrabold text-neutral-600 uppercase tracking-wider">
             Total Muster Strength
           </span>
-          <p className="text-2xl font-black text-white">{workers.length} Registered Workers</p>
-          <p className="text-[11px] text-slate-500">Across Fitters, Riggers & Operators</p>
+          <p className="text-2xl font-black text-black">{workers.length} Registered Workers</p>
+          <p className="text-[11px] text-neutral-500 font-medium">Across Fitters, Riggers & Operators</p>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-1">
-          <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="bg-white border-2 border-neutral-200 p-5 rounded-2xl space-y-1 shadow-sm">
+          <span className="text-xs font-extrabold text-neutral-600 uppercase tracking-wider">
             Present on Site Today
           </span>
-          <p className="text-2xl font-black text-emerald-400">{presentCountWorkers() || presentWorkersCount}</p>
-          <p className="text-[11px] text-emerald-400">Clocked with GPS Authentication</p>
+          <p className="text-2xl font-black text-emerald-700">{presentCountWorkers() || presentWorkersCount}</p>
+          <p className="text-[11px] text-emerald-700 font-bold">Clocked with GPS Authentication</p>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-1">
-          <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="bg-white border-2 border-neutral-200 p-5 rounded-2xl space-y-1 shadow-sm">
+          <span className="text-xs font-extrabold text-neutral-600 uppercase tracking-wider">
             Today&apos;s Daily Wage Accrual
           </span>
-          <p className="text-2xl font-black font-mono text-white">
+          <p className="text-2xl font-black font-mono text-red-600">
             {formatCurrency(totalDailyWages > 0 ? totalDailyWages : 18500)}
           </p>
-          <p className="text-[11px] text-slate-500">Auto-calculated against daily trade rate</p>
+          <p className="text-[11px] text-neutral-500 font-medium">Auto-calculated against daily trade rate</p>
         </div>
       </div>
 
       {/* Digital Muster Roll Table */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 shadow-sm space-y-4">
+        <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
           <div>
-            <h2 className="text-base font-bold text-white">Digital Muster Roll (Daily Attendance)</h2>
-            <p className="text-xs text-slate-400">Click toggles to log daily worker shifts and overtime</p>
+            <h2 className="text-base font-black text-black">Digital Muster Roll (Daily Attendance)</h2>
+            <p className="text-xs text-neutral-600 font-medium">Click toggles to log daily worker shifts and overtime</p>
           </div>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-950 text-slate-400 uppercase tracking-wider border-b border-slate-800 text-[10px]">
+            <thead className="bg-neutral-50 text-neutral-600 uppercase tracking-wider border-b border-neutral-200 text-[10px] font-black">
               <tr>
                 <th className="py-3 px-4">Worker Profile</th>
                 <th className="py-3 px-4">Trade & Specialization</th>
@@ -292,33 +292,33 @@ export default function AttendancePage() {
                 <th className="py-3 px-4 text-center">Mark Daily Attendance</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/80 text-slate-300">
+            <tbody className="divide-y divide-neutral-200 text-neutral-800">
               {workers.map((worker) => {
                 const status = getWorkerStatus(worker.id);
                 return (
-                  <tr key={worker.id} className="hover:bg-slate-800/30 transition">
-                    <td className="py-3 px-4 font-semibold text-white">
+                  <tr key={worker.id} className="hover:bg-neutral-50 transition">
+                    <td className="py-3 px-4 font-black text-black">
                       <div>{worker.name}</div>
-                      <span className="text-[10px] text-slate-500 font-mono">{worker.id}</span>
+                      <span className="text-[10px] text-neutral-500 font-mono font-medium">{worker.id}</span>
                     </td>
                     <td className="py-3 px-4">
-                      <span className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-[11px] text-slate-300">
+                      <span className="px-2 py-0.5 rounded bg-neutral-100 border border-neutral-200 text-[11px] font-bold text-neutral-800">
                         {worker.trade}
                       </span>
                     </td>
-                    <td className="py-3 px-4 font-mono font-bold text-white">
+                    <td className="py-3 px-4 font-mono font-black text-black">
                       {formatCurrency(worker.dailyRate)} / day
                     </td>
                     <td className="py-3 px-4">
                       <span
-                        className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
+                        className={`text-[10px] font-mono font-extrabold px-2 py-0.5 rounded ${
                           status === 'PRESENT'
-                            ? 'bg-emerald-950 text-emerald-400 border border-emerald-800'
+                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
                             : status === 'HALF_DAY'
-                            ? 'bg-yellow-950 text-yellow-400 border border-yellow-800'
+                            ? 'bg-yellow-100 text-yellow-800 border border-yellow-300'
                             : status === 'ABSENT'
-                            ? 'bg-red-950 text-red-400 border border-red-800'
-                            : 'bg-slate-950 text-slate-500'
+                            ? 'bg-red-100 text-red-800 border border-red-300'
+                            : 'bg-neutral-100 text-neutral-600'
                         }`}
                       >
                         {status}
@@ -328,30 +328,30 @@ export default function AttendancePage() {
                       <div className="flex items-center justify-center gap-1.5">
                         <button
                           onClick={() => handleMarkStatus(worker, 'PRESENT')}
-                          className={`px-3 py-1 rounded-lg text-xs font-bold transition ${
+                          className={`px-3 py-1 rounded-lg text-xs font-black transition ${
                             status === 'PRESENT'
-                              ? 'bg-emerald-600 text-white shadow-md'
-                              : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white hover:border-emerald-500'
+                              ? 'bg-emerald-600 text-white shadow-sm'
+                              : 'bg-white border border-neutral-300 text-neutral-700 hover:text-emerald-700 hover:border-emerald-500'
                           }`}
                         >
                           Present
                         </button>
                         <button
                           onClick={() => handleMarkStatus(worker, 'HALF_DAY')}
-                          className={`px-3 py-1 rounded-lg text-xs font-bold transition ${
+                          className={`px-3 py-1 rounded-lg text-xs font-black transition ${
                             status === 'HALF_DAY'
-                              ? 'bg-yellow-600 text-white shadow-md'
-                              : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white hover:border-yellow-500'
+                              ? 'bg-yellow-600 text-white shadow-sm'
+                              : 'bg-white border border-neutral-300 text-neutral-700 hover:text-yellow-700 hover:border-yellow-500'
                           }`}
                         >
                           Half-Day
                         </button>
                         <button
                           onClick={() => handleMarkStatus(worker, 'ABSENT')}
-                          className={`px-3 py-1 rounded-lg text-xs font-bold transition ${
+                          className={`px-3 py-1 rounded-lg text-xs font-black transition ${
                             status === 'ABSENT'
-                              ? 'bg-red-600 text-white shadow-md'
-                              : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white hover:border-red-500'
+                              ? 'bg-red-600 text-white shadow-sm'
+                              : 'bg-white border border-neutral-300 text-neutral-700 hover:text-red-700 hover:border-red-500'
                           }`}
                         >
                           Absent

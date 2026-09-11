@@ -96,15 +96,15 @@ export default function PortalSidebar({ user, isOpen, onClose }: PortalSidebarPr
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between transition-transform duration-300 lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-white border-r border-neutral-200 flex flex-col justify-between transition-transform duration-300 shadow-sm lg:translate-x-0 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="space-y-6">
           {/* Header */}
-          <div className="p-4 border-b border-slate-800 flex items-center justify-between">
+          <div className="p-4 border-b border-neutral-200 flex items-center justify-between bg-neutral-50/50">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-white p-1 border-2 border-red-600 flex items-center justify-center shadow-md overflow-hidden shrink-0">
+              <div className="w-11 h-11 rounded-xl bg-white p-1 border-2 border-red-600 flex items-center justify-center shadow-md overflow-hidden shrink-0">
                 <img
                   src="https://5.imimg.com/data5/SELLER/Logo/2025/1/478932299/PR/TT/IP/146888318/img-20231217-wa0143.jpg"
                   alt="JMK Logo"
@@ -112,18 +112,18 @@ export default function PortalSidebar({ user, isOpen, onClose }: PortalSidebarPr
                 />
               </div>
               <div>
-                <h1 className="font-black text-red-500 text-sm tracking-wide">
-                  JMK ENTERPRISE ERP
+                <h1 className="font-black text-red-600 text-sm tracking-tight leading-none">
+                  JMK ENTERPRISE
                 </h1>
-                <p className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">
-                  HQ & Multi-Branch Hub
+                <p className="text-[10px] text-neutral-600 font-extrabold uppercase tracking-wider mt-0.5">
+                  HQ & Multi-Branch ERP
                 </p>
               </div>
             </Link>
 
             <button
               onClick={onClose}
-              className="lg:hidden p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800"
+              className="lg:hidden p-1.5 text-neutral-500 hover:text-black rounded-lg hover:bg-neutral-100"
             >
               <X className="w-5 h-5" />
             </button>
@@ -134,7 +134,7 @@ export default function PortalSidebar({ user, isOpen, onClose }: PortalSidebarPr
             {/* Super Admin Section */}
             {user?.role === 'SUPER_ADMIN' && (
               <div className="space-y-1">
-                <span className="px-3 text-[10px] font-bold text-orange-400 uppercase tracking-wider block mb-2">
+                <span className="px-3 text-[10px] font-black text-red-600 uppercase tracking-wider block mb-2">
                   Master HQ Governance
                 </span>
                 {superAdminLinks.map((link) => {
@@ -145,22 +145,22 @@ export default function PortalSidebar({ user, isOpen, onClose }: PortalSidebarPr
                       key={link.href}
                       href={link.href}
                       onClick={onClose}
-                      className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition ${
+                      className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-extrabold transition ${
                         isActive
-                          ? 'bg-orange-600 text-white shadow-md'
-                          : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                          ? 'bg-red-600 text-white shadow-md shadow-red-600/30'
+                          : 'text-neutral-800 hover:bg-neutral-100 hover:text-black'
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
-                        <Icon className="w-4 h-4" />
+                        <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-neutral-600'}`} />
                         <span>{link.label}</span>
                       </div>
                       {link.badge && (
                         <span
-                          className={`text-[9px] px-1.5 py-0.5 rounded font-mono ${
+                          className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${
                             isActive
-                              ? 'bg-orange-800 text-white'
-                              : 'bg-slate-800 text-orange-400'
+                              ? 'bg-red-800 text-white'
+                              : 'bg-red-50 text-red-700 border border-red-200'
                           }`}
                         >
                           {link.badge}
@@ -175,7 +175,7 @@ export default function PortalSidebar({ user, isOpen, onClose }: PortalSidebarPr
             {/* Branch Operations Section */}
             {(user?.role === 'SUPER_ADMIN' || user?.role === 'BRANCH_ADMIN') && (
               <div className="space-y-1">
-                <span className="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
+                <span className="px-3 text-[10px] font-black text-neutral-900 uppercase tracking-wider block mb-2">
                   Branch Operations (Site)
                 </span>
                 {branchAdminLinks.map((link) => {
@@ -186,22 +186,22 @@ export default function PortalSidebar({ user, isOpen, onClose }: PortalSidebarPr
                       key={link.href}
                       href={link.href}
                       onClick={onClose}
-                      className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition ${
+                      className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-extrabold transition ${
                         isActive
-                          ? 'bg-orange-600 text-white shadow-md'
-                          : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                          ? 'bg-red-600 text-white shadow-md shadow-red-600/30'
+                          : 'text-neutral-800 hover:bg-neutral-100 hover:text-black'
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
-                        <Icon className="w-4 h-4" />
+                        <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-neutral-600'}`} />
                         <span>{link.label}</span>
                       </div>
                       {link.badge && (
                         <span
-                          className={`text-[9px] px-1.5 py-0.5 rounded font-mono ${
+                          className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${
                             isActive
-                              ? 'bg-orange-800 text-white'
-                              : 'bg-slate-800 text-emerald-400'
+                              ? 'bg-red-800 text-white'
+                              : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                           }`}
                         >
                           {link.badge}
@@ -215,7 +215,7 @@ export default function PortalSidebar({ user, isOpen, onClose }: PortalSidebarPr
 
             {/* Staff / Engineer Section */}
             <div className="space-y-1">
-              <span className="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
+              <span className="px-3 text-[10px] font-black text-neutral-900 uppercase tracking-wider block mb-2">
                 Field Staff & Engineering
               </span>
               {staffLinks.map((link) => {
@@ -226,14 +226,14 @@ export default function PortalSidebar({ user, isOpen, onClose }: PortalSidebarPr
                     key={link.href}
                     href={link.href}
                     onClick={onClose}
-                    className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition ${
+                    className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-extrabold transition ${
                       isActive
-                        ? 'bg-orange-600 text-white shadow-md'
-                        : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                        ? 'bg-red-600 text-white shadow-md shadow-red-600/30'
+                        : 'text-neutral-800 hover:bg-neutral-100 hover:text-black'
                     }`}
                   >
                     <div className="flex items-center gap-2.5">
-                      <Icon className="w-4 h-4" />
+                      <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-neutral-600'}`} />
                       <span>{link.label}</span>
                     </div>
                   </Link>
@@ -244,10 +244,10 @@ export default function PortalSidebar({ user, isOpen, onClose }: PortalSidebarPr
         </div>
 
         {/* Footer info */}
-        <div className="p-4 border-t border-slate-800 text-xs space-y-2">
-          <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-[11px] text-slate-400">
-            <p className="font-semibold text-white">Patna Central Server</p>
-            <p className="text-[10px] text-emerald-400 font-mono mt-0.5">● Telemetry Online (100% Sync)</p>
+        <div className="p-4 border-t border-neutral-200 text-xs space-y-2 bg-neutral-50/50">
+          <div className="p-2.5 rounded-xl bg-white border border-neutral-200 shadow-sm text-[11px] text-neutral-700">
+            <p className="font-extrabold text-black">Patna Central Server</p>
+            <p className="text-[10px] text-emerald-600 font-bold mt-0.5">● Telemetry Online (100% Sync)</p>
           </div>
         </div>
       </aside>

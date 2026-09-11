@@ -113,22 +113,22 @@ export default function BranchTasksPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-200 pb-6">
         <div>
-          <span className="text-xs font-bold text-orange-400 uppercase tracking-wider block">
-            Quality Assurance & Daily Milestones
+          <span className="text-xs font-black text-red-600 uppercase tracking-wider block">
+            Quality Assurance & Site Execution
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-0.5">
+          <h1 className="text-2xl sm:text-3xl font-black text-black tracking-tight mt-0.5">
             Site Task Execution & Snag Defect QC Tracker
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-neutral-600 mt-1 font-medium">
             Task percentage tracking, inspection checklists, and snag logging with camera proofs.
           </p>
         </div>
 
         <button
           onClick={() => setIsSnagModalOpen(true)}
-          className="px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white rounded-xl text-xs font-bold transition shadow-lg flex items-center gap-2 self-start sm:self-auto"
+          className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center gap-2 self-start sm:self-auto"
         >
           <Camera className="w-4 h-4" />
           <span>+ Log Quality Snag (Camera)</span>
@@ -138,26 +138,26 @@ export default function BranchTasksPage() {
       {/* 2-Column: Task Checklist Board & Snags Defect Tracker */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Task Board */}
-        <div className="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-6">
-          <div className="border-b border-slate-800 pb-3 flex items-center justify-between">
-            <h2 className="text-base font-bold text-white">Daily Staging & Pour Checklists</h2>
-            <span className="text-xs text-slate-400">{tasks.length} Active Tasks</span>
+        <div className="lg:col-span-7 bg-white border-2 border-neutral-200 rounded-3xl p-6 shadow-sm space-y-6">
+          <div className="border-b border-neutral-200 pb-3 flex items-center justify-between">
+            <h2 className="text-base font-black text-black">Daily Staging & Pour Checklists</h2>
+            <span className="text-xs text-neutral-600 font-bold">{tasks.length} Active Tasks</span>
           </div>
 
           {/* Inline Quick Add Task */}
-          <form onSubmit={handleCreateTask} className="p-3 bg-slate-950 border border-slate-800 rounded-2xl flex flex-wrap gap-2 text-xs">
+          <form onSubmit={handleCreateTask} className="p-3 bg-neutral-50 border border-neutral-200 rounded-2xl flex flex-wrap gap-2 text-xs">
             <input
               type="text"
               required
               placeholder="Enter new site task or milestone..."
               value={newTaskTitle}
               onChange={(e) => setNewTaskTitle(e.target.value)}
-              className="flex-1 min-w-[200px] px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-orange-500"
+              className="flex-1 min-w-[200px] px-3 py-2 bg-white border border-neutral-300 rounded-xl text-black font-medium focus:outline-none focus:border-red-600"
             />
             <select
               value={newTaskCategory}
               onChange={(e) => setNewTaskCategory(e.target.value)}
-              className="px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-white text-xs"
+              className="px-3 py-2 bg-white border border-neutral-300 rounded-xl text-black font-bold text-xs cursor-pointer"
             >
               <option value="CASTING">Casting</option>
               <option value="SHUTTERING">Shuttering</option>
@@ -167,7 +167,7 @@ export default function BranchTasksPage() {
             </select>
             <button
               type="submit"
-              className="px-4 py-2 bg-orange-600 hover:bg-orange-500 text-white rounded-xl font-bold shadow-md"
+              className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl font-black uppercase tracking-wider shadow-sm transition"
             >
               Add Task
             </button>
@@ -178,23 +178,23 @@ export default function BranchTasksPage() {
             {tasks.map((task) => (
               <div
                 key={task.id}
-                className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 text-xs"
+                className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 space-y-3 text-xs hover:border-red-300 transition"
               >
                 <div className="flex items-start justify-between">
                   <div>
-                    <span className="text-[10px] font-bold text-orange-400 uppercase tracking-wider block">
+                    <span className="text-[10px] font-black text-red-600 uppercase tracking-wider block">
                       {task.category}
                     </span>
-                    <h4 className="text-sm font-bold text-white mt-0.5">{task.title}</h4>
+                    <h4 className="text-sm font-black text-black mt-0.5">{task.title}</h4>
                     {task.description && (
-                      <p className="text-xs text-slate-400 mt-1">{task.description}</p>
+                      <p className="text-xs text-neutral-600 mt-1 font-medium">{task.description}</p>
                     )}
                   </div>
                   <span
-                    className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
+                    className={`text-[10px] font-mono font-extrabold px-2 py-0.5 rounded ${
                       task.status === 'COMPLETED'
-                        ? 'bg-emerald-950 text-emerald-400 border border-emerald-800'
-                        : 'bg-orange-950 text-orange-400 border border-orange-800'
+                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                        : 'bg-red-100 text-red-800 border border-red-300'
                     }`}
                   >
                     {task.status}
@@ -203,9 +203,9 @@ export default function BranchTasksPage() {
 
                 {/* Progress Bar & Slider */}
                 <div className="space-y-1.5 pt-1">
-                  <div className="flex justify-between text-[11px] text-slate-400">
-                    <span>Lead: <strong>{task.assignedToName}</strong> (Due {task.dueDate})</span>
-                    <span className="font-mono font-bold text-emerald-400">{task.progressPercent}% Complete</span>
+                  <div className="flex justify-between text-[11px] text-neutral-600 font-medium">
+                    <span>Lead: <strong className="text-black">{task.assignedToName}</strong> (Due {task.dueDate})</span>
+                    <span className="font-mono font-black text-emerald-700">{task.progressPercent}% Complete</span>
                   </div>
 
                   <div className="flex items-center gap-3">
@@ -216,12 +216,12 @@ export default function BranchTasksPage() {
                       step={5}
                       value={task.progressPercent}
                       onChange={(e) => handleUpdateProgress(task.id, parseInt(e.target.value))}
-                      className="w-full accent-orange-500 cursor-pointer"
+                      className="w-full accent-red-600 cursor-pointer"
                     />
                     {task.progressPercent < 100 && (
                       <button
                         onClick={() => handleUpdateProgress(task.id, 100)}
-                        className="px-2 py-1 bg-slate-900 hover:bg-emerald-600 hover:text-white text-slate-400 rounded-lg text-[10px] font-bold border border-slate-800 transition shrink-0"
+                        className="px-2.5 py-1 bg-white hover:bg-emerald-600 hover:text-white text-emerald-800 rounded-lg text-[10px] font-extrabold border border-emerald-300 shadow-sm transition shrink-0"
                       >
                         Complete
                       </button>
@@ -234,15 +234,15 @@ export default function BranchTasksPage() {
         </div>
 
         {/* Snags & Defect QC Tracker */}
-        <div className="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-6">
-          <div className="border-b border-slate-800 pb-3 flex items-center justify-between">
+        <div className="lg:col-span-5 bg-white border-2 border-neutral-200 rounded-3xl p-6 shadow-sm space-y-6">
+          <div className="border-b border-neutral-200 pb-3 flex items-center justify-between">
             <div>
-              <h2 className="text-base font-bold text-white">Quality Snags & Defects</h2>
-              <p className="text-[11px] text-slate-400">Camera-verified site issues</p>
+              <h2 className="text-base font-black text-black">Quality Snags & Defects</h2>
+              <p className="text-[11px] text-neutral-600 font-medium">Camera-verified site issues</p>
             </div>
             <button
               onClick={() => setIsSnagModalOpen(true)}
-              className="text-xs text-red-400 font-bold hover:underline"
+              className="text-xs text-red-600 font-extrabold hover:underline"
             >
               + Log Snag
             </button>
@@ -252,17 +252,17 @@ export default function BranchTasksPage() {
             {snags.map((snag) => (
               <div
                 key={snag.id}
-                className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 text-xs"
+                className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 space-y-3 text-xs hover:border-red-300 transition"
               >
                 <div className="flex items-start justify-between">
-                  <span className="font-mono text-[10px] text-red-400 font-bold bg-red-950/60 px-2 py-0.5 rounded border border-red-800">
+                  <span className="font-mono text-[10px] text-red-700 font-black bg-red-50 px-2 py-0.5 rounded border border-red-200">
                     {snag.snagNumber}
                   </span>
                   <span
-                    className={`text-[9px] font-mono px-2 py-0.5 rounded font-bold ${
+                    className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
                       snag.status === 'RESOLVED'
-                        ? 'bg-emerald-950 text-emerald-400 border border-emerald-800'
-                        : 'bg-red-950 text-red-400 border border-red-800 animate-pulse'
+                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                        : 'bg-red-100 text-red-800 border border-red-300 animate-pulse'
                     }`}
                   >
                     ● {snag.status}
@@ -270,8 +270,8 @@ export default function BranchTasksPage() {
                 </div>
 
                 <div>
-                  <h4 className="font-bold text-white text-sm">{snag.title}</h4>
-                  <p className="text-slate-400 text-xs mt-1">{snag.description}</p>
+                  <h4 className="font-black text-black text-sm">{snag.title}</h4>
+                  <p className="text-neutral-600 text-xs mt-1 font-medium">{snag.description}</p>
                 </div>
 
                 <div className="flex items-center gap-3 pt-1">
@@ -279,11 +279,11 @@ export default function BranchTasksPage() {
                     <img
                       src={snag.photoUrl}
                       alt="Proof"
-                      className="w-14 h-14 rounded-xl object-cover border border-slate-700"
+                      className="w-14 h-14 rounded-xl object-cover border border-neutral-300"
                     />
                   )}
-                  <div className="text-[11px] text-slate-400 space-y-0.5 flex-1">
-                    <p>Location: <strong className="text-slate-200">{snag.location}</strong></p>
+                  <div className="text-[11px] text-neutral-600 space-y-0.5 flex-1 font-medium">
+                    <p>Location: <strong className="text-black">{snag.location}</strong></p>
                     <p>Reported by: {snag.reportedBy?.name}</p>
                   </div>
                 </div>
@@ -291,7 +291,7 @@ export default function BranchTasksPage() {
                 {snag.status === 'OPEN' && (
                   <button
                     onClick={() => handleResolveSnag(snag.id)}
-                    className="w-full py-2 bg-emerald-950 hover:bg-emerald-900 text-emerald-300 rounded-xl text-xs font-bold border border-emerald-800 transition flex items-center justify-center gap-1.5"
+                    className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-black transition flex items-center justify-center gap-1.5 shadow-sm"
                   >
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Sign Off Rectification & Close Snag</span>

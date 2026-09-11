@@ -48,19 +48,19 @@ export default function DashboardLayout({
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">
+      <div className="min-h-screen bg-neutral-50 text-black flex items-center justify-center">
         <div className="space-y-3 text-center">
-          <div className="w-12 h-12 rounded-2xl bg-orange-600 animate-pulse mx-auto flex items-center justify-center font-bold text-xl">
-            J
+          <div className="w-12 h-12 rounded-2xl bg-red-600 animate-pulse mx-auto flex items-center justify-center font-black text-xl text-white shadow-lg">
+            JMK
           </div>
-          <p className="text-xs text-slate-400 font-mono">Initializing Enterprise Telemetry...</p>
+          <p className="text-xs text-neutral-600 font-bold">Initializing JMK Enterprise Telemetry...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex">
+    <div className="min-h-screen bg-neutral-50 text-black flex">
       {/* Sidebar */}
       <PortalSidebar
         user={user}
@@ -76,7 +76,7 @@ export default function DashboardLayout({
           onSelectBranch={setSelectedBranch}
           onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
         />
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto bg-neutral-50 text-black">
           {children}
         </main>
       </div>

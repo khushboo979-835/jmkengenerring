@@ -83,24 +83,24 @@ export default function DPRSubmissionModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col text-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
+      <div className="relative w-full max-w-2xl bg-white border-2 border-neutral-200 rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col text-slate-900">
         {/* Header */}
-        <div className="p-6 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+        <div className="p-6 bg-black text-white border-b-4 border-red-600 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-orange-600/20 border border-orange-500/30 flex items-center justify-center text-orange-500 font-bold">
+            <div className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white font-black shadow-md">
               <HardHat className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-white">Submit Daily Progress Report (DPR)</h3>
-              <p className="text-xs text-slate-400">
+              <h3 className="text-lg font-black text-white">Submit Daily Progress Report (DPR)</h3>
+              <p className="text-xs text-neutral-400 font-medium">
                 Direct Submission to Patna HQ Master Command Center
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800"
+            className="p-2 text-neutral-400 hover:text-white rounded-xl hover:bg-neutral-800 transition"
           >
             <X className="w-5 h-5" />
           </button>
@@ -109,7 +109,7 @@ export default function DPRSubmissionModal({
         {/* Body */}
         <form onSubmit={handleSubmit} className="p-6 overflow-y-auto space-y-4 text-xs">
           {errorMsg && (
-            <div className="p-3 bg-red-950/60 border border-red-800 rounded-xl text-red-300 text-xs flex items-center gap-2">
+            <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs flex items-center gap-2 font-bold">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{errorMsg}</span>
             </div>
@@ -117,67 +117,67 @@ export default function DPRSubmissionModal({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-slate-300 font-semibold mb-1">DPR Date *</label>
+              <label className="block text-slate-900 font-bold mb-1 uppercase tracking-wider text-[11px]">DPR Date *</label>
               <input
                 type="date"
                 required
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white"
+                className="w-full px-3.5 py-2.5 bg-neutral-50 border-2 border-neutral-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-red-600 transition font-medium"
               />
             </div>
             <div>
-              <label className="block text-slate-300 font-semibold mb-1">Site Weather Conditions</label>
+              <label className="block text-slate-900 font-bold mb-1 uppercase tracking-wider text-[11px]">Site Weather Conditions</label>
               <input
                 type="text"
                 value={weather}
                 onChange={(e) => setWeather(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white"
+                className="w-full px-3.5 py-2.5 bg-neutral-50 border-2 border-neutral-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-red-600 transition font-medium"
               />
             </div>
           </div>
 
           {/* Labour Strength */}
-          <div className="p-3.5 bg-slate-950 border border-slate-800 rounded-2xl space-y-2">
-            <span className="text-[11px] font-bold text-orange-400 uppercase tracking-wider block">
+          <div className="p-4 bg-neutral-50 border-2 border-neutral-200 rounded-2xl space-y-2">
+            <span className="text-[11px] font-black text-red-600 uppercase tracking-wider block">
               Daily On-Site Labour Deployment (Total: {skilled + unskilled + supervisors})
             </span>
             <div className="grid grid-cols-3 gap-3">
               <div>
-                <label className="block text-[10px] text-slate-400 mb-1">Skilled Fitters / Riggers</label>
+                <label className="block text-[10px] text-neutral-600 font-bold uppercase mb-1">Skilled Fitters / Riggers</label>
                 <input
                   type="number"
                   min={0}
                   value={skilled}
                   onChange={(e) => setSkilled(parseInt(e.target.value) || 0)}
-                  className="w-full px-2.5 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs font-mono text-white"
+                  className="w-full px-2.5 py-1.5 bg-white border-2 border-neutral-200 rounded-lg text-xs font-mono font-bold text-slate-900 focus:border-red-600 focus:outline-none"
                 />
               </div>
               <div>
-                <label className="block text-[10px] text-slate-400 mb-1">Unskilled Yard Labour</label>
+                <label className="block text-[10px] text-neutral-600 font-bold uppercase mb-1">Unskilled Yard Labour</label>
                 <input
                   type="number"
                   min={0}
                   value={unskilled}
                   onChange={(e) => setUnskilled(parseInt(e.target.value) || 0)}
-                  className="w-full px-2.5 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs font-mono text-white"
+                  className="w-full px-2.5 py-1.5 bg-white border-2 border-neutral-200 rounded-lg text-xs font-mono font-bold text-slate-900 focus:border-red-600 focus:outline-none"
                 />
               </div>
               <div>
-                <label className="block text-[10px] text-slate-400 mb-1">Site Supervisors</label>
+                <label className="block text-[10px] text-neutral-600 font-bold uppercase mb-1">Site Supervisors</label>
                 <input
                   type="number"
                   min={0}
                   value={supervisors}
                   onChange={(e) => setSupervisors(parseInt(e.target.value) || 0)}
-                  className="w-full px-2.5 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs font-mono text-white"
+                  className="w-full px-2.5 py-1.5 bg-white border-2 border-neutral-200 rounded-lg text-xs font-mono font-bold text-slate-900 focus:border-red-600 focus:outline-none"
                 />
               </div>
             </div>
           </div>
 
           <div>
-            <label className="block text-slate-300 font-semibold mb-1">
+            <label className="block text-slate-900 font-bold mb-1 uppercase tracking-wider text-[11px]">
               Key Work Accomplished Today (Fabrication / Dispatch / Staging) *
             </label>
             <textarea
@@ -186,55 +186,55 @@ export default function DPRSubmissionModal({
               placeholder="e.g., Dispatched 400 pcs 20kg shuttering plates to L&T package. Erection of 25 H-frame sets for flyover Pier 4 staging completed."
               value={workAccomplished}
               onChange={(e) => setWorkAccomplished(e.target.value)}
-              className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white"
+              className="w-full px-3.5 py-2.5 bg-neutral-50 border-2 border-neutral-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-red-600 transition font-medium"
             ></textarea>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-slate-300 font-semibold mb-1">Materials Received on Site</label>
+              <label className="block text-slate-900 font-bold mb-1 uppercase tracking-wider text-[11px]">Materials Received on Site</label>
               <input
                 type="text"
                 placeholder="e.g., Trailer BR-01-GB-4819 arrived with 30 Tonnes Centering Sheets"
                 value={materialReceived}
                 onChange={(e) => setMaterialReceived(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white"
+                className="w-full px-3.5 py-2.5 bg-neutral-50 border-2 border-neutral-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-red-600 transition font-medium"
               />
             </div>
             <div>
-              <label className="block text-slate-300 font-semibold mb-1">Machinery & Plant Deployed</label>
+              <label className="block text-slate-900 font-bold mb-1 uppercase tracking-wider text-[11px]">Machinery & Plant Deployed</label>
               <input
                 type="text"
                 value={machineryDeployed}
                 onChange={(e) => setMachineryDeployed(e.target.value)}
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white"
+                className="w-full px-3.5 py-2.5 bg-neutral-50 border-2 border-neutral-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-red-600 transition font-medium"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-slate-300 font-semibold mb-1">Safety & Environmental Observations</label>
+            <label className="block text-slate-900 font-bold mb-1 uppercase tracking-wider text-[11px]">Safety & Environmental Observations</label>
             <input
               type="text"
               value={safetyObservations}
               onChange={(e) => setSafetyObservations(e.target.value)}
-              className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white"
+              className="w-full px-3.5 py-2.5 bg-neutral-50 border-2 border-neutral-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-red-600 transition font-medium"
             />
           </div>
 
           {/* Footer Actions */}
-          <div className="pt-4 border-t border-slate-800 flex justify-end gap-3">
+          <div className="pt-4 border-t-2 border-neutral-100 flex justify-end gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-slate-400 hover:text-white rounded-xl"
+              className="px-5 py-2.5 text-neutral-600 hover:text-black rounded-xl font-bold transition"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-6 py-2.5 bg-orange-600 hover:bg-orange-500 text-white rounded-xl font-bold shadow-md flex items-center gap-1.5 disabled:opacity-50"
+              className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl font-black uppercase tracking-wider text-xs shadow-md shadow-red-600/30 flex items-center gap-1.5 disabled:opacity-50 transition"
             >
               <Send className="w-3.5 h-3.5" />
               <span>{submitting ? 'Transmitting...' : 'Transmit DPR to Patna HQ'}</span>

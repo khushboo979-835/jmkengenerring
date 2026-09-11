@@ -104,22 +104,22 @@ export default function BranchInventoryPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-200 pb-6">
         <div>
-          <span className="text-xs font-bold text-orange-400 uppercase tracking-wider block">
+          <span className="text-xs font-black text-red-600 uppercase tracking-wider block">
             Warehouse & Supply Chain
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-0.5">
+          <h1 className="text-2xl sm:text-3xl font-black text-black tracking-tight mt-0.5">
             Depot Stock & Material Indents Requisition
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-neutral-600 mt-1 font-medium">
             Real-time yard inventory levels, reservation tracking, and direct manufacturing requisitions to Patna HQ.
           </p>
         </div>
 
         <button
           onClick={() => setIsIndentModalOpen(true)}
-          className="px-5 py-2.5 bg-orange-600 hover:bg-orange-500 text-white rounded-xl text-xs font-bold transition shadow-lg flex items-center gap-2 self-start sm:self-auto"
+          className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center gap-2 self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
           <span>Raise Material Indent</span>
@@ -128,43 +128,43 @@ export default function BranchInventoryPage() {
 
       {/* Stock Cards Grid */}
       <div className="space-y-4">
-        <h2 className="text-base font-bold text-white">Live Depot Staging Inventory</h2>
+        <h2 className="text-base font-black text-black">Live Depot Staging Inventory</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {inventoryStock.map((item, idx) => (
             <div
               key={idx}
-              className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-4 shadow-xl hover:border-slate-700 transition"
+              className="bg-white border-2 border-neutral-200 rounded-3xl p-5 space-y-4 shadow-sm hover:border-red-600 transition"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-orange-400 block">
+                  <span className="text-[10px] uppercase font-black text-red-600 block">
                     {item.category}
                   </span>
-                  <h3 className="text-sm font-bold text-white mt-0.5">{item.name}</h3>
+                  <h3 className="text-sm font-black text-black mt-0.5">{item.name}</h3>
                 </div>
                 <span
-                  className={`text-[9px] font-mono px-2 py-0.5 rounded font-bold ${
+                  className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
                     item.status === 'HEALTHY'
-                      ? 'bg-emerald-950 text-emerald-400 border border-emerald-800'
+                      ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
                       : item.status === 'LOW_STOCK'
-                      ? 'bg-yellow-950 text-yellow-400 border border-yellow-800'
-                      : 'bg-red-950 text-red-400 border border-red-800 animate-pulse'
+                      ? 'bg-yellow-100 text-yellow-800 border border-yellow-300'
+                      : 'bg-red-100 text-red-800 border border-red-300 animate-pulse'
                   }`}
                 >
                   {item.status}
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 text-xs bg-slate-950 p-3 rounded-2xl border border-slate-800/80">
+              <div className="grid grid-cols-2 gap-2 text-xs bg-neutral-50 p-3 rounded-2xl border border-neutral-200">
                 <div>
-                  <span className="text-[10px] text-slate-500 block">Available in Yard:</span>
-                  <span className="text-lg font-black font-mono text-white">
+                  <span className="text-[10px] text-neutral-500 font-bold block">Available in Yard:</span>
+                  <span className="text-lg font-black font-mono text-black">
                     {item.inStock} {item.unit}
                   </span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-500 block">Reserved for Site:</span>
-                  <span className="text-lg font-black font-mono text-orange-400">
+                  <span className="text-[10px] text-neutral-500 font-bold block">Reserved for Site:</span>
+                  <span className="text-lg font-black font-mono text-red-600">
                     {item.reserved} {item.unit}
                   </span>
                 </div>
@@ -172,7 +172,7 @@ export default function BranchInventoryPage() {
 
               <button
                 onClick={() => setIsIndentModalOpen(true)}
-                className="w-full py-2 bg-slate-950 hover:bg-orange-600 hover:text-white text-slate-300 rounded-xl text-xs font-semibold border border-slate-800 transition flex items-center justify-center gap-1.5"
+                className="w-full py-2 bg-neutral-100 hover:bg-red-600 hover:text-white text-black rounded-xl text-xs font-bold border border-neutral-300 transition flex items-center justify-center gap-1.5"
               >
                 <span>Request Patna Works Replenishment</span>
                 <ArrowRight className="w-3 h-3" />
@@ -183,11 +183,11 @@ export default function BranchInventoryPage() {
       </div>
 
       {/* Indents Requisition Queue */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 shadow-sm space-y-4">
+        <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
           <div>
-            <h2 className="text-base font-bold text-white">Material Indents Log (Patna HQ Queue)</h2>
-            <p className="text-xs text-slate-400">Status tracking from central manufacturing to site delivery</p>
+            <h2 className="text-base font-black text-black">Material Indents Log (Patna HQ Queue)</h2>
+            <p className="text-xs text-neutral-600 font-medium">Status tracking from central manufacturing to site delivery</p>
           </div>
         </div>
 
@@ -195,35 +195,35 @@ export default function BranchInventoryPage() {
           {indents.map((indent) => (
             <div
               key={indent.id}
-              className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 text-xs"
+              className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 space-y-3 text-xs"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs font-bold text-orange-400 bg-orange-950/60 px-2.5 py-0.5 rounded border border-orange-800">
+                  <span className="font-mono text-xs font-black text-red-700 bg-red-50 px-2.5 py-0.5 rounded border border-red-200">
                     {indent.indentNo}
                   </span>
-                  <span className="text-slate-300 font-semibold">{indent.branchName}</span>
+                  <span className="text-neutral-800 font-bold">{indent.branchName}</span>
                 </div>
                 <span
-                  className={`text-[10px] font-mono px-2.5 py-1 rounded-lg font-bold ${
+                  className={`text-[10px] font-mono px-2.5 py-1 rounded-lg font-extrabold ${
                     indent.status === 'APPROVED'
-                      ? 'bg-emerald-950 text-emerald-400 border border-emerald-800'
+                      ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
                       : indent.status === 'PENDING_APPROVAL'
-                      ? 'bg-orange-950 text-orange-400 border border-orange-800'
-                      : 'bg-blue-950 text-blue-400 border border-blue-800'
+                      ? 'bg-red-100 text-red-800 border border-red-300'
+                      : 'bg-blue-100 text-blue-800 border border-blue-300'
                   }`}
                 >
                   ● {indent.status}
                 </span>
               </div>
 
-              <p className="text-sm font-medium text-white">{indent.purpose}</p>
+              <p className="text-sm font-bold text-black">{indent.purpose}</p>
 
               <div className="flex flex-wrap gap-2 pt-1">
                 {indent.items?.map((it: any, idx: number) => (
                   <span
                     key={idx}
-                    className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300"
+                    className="px-2.5 py-1 rounded-lg bg-white border border-neutral-200 text-[11px] font-bold text-neutral-800"
                   >
                     {it.quantity} {it.unit} • {it.productName} ({it.urgency})
                   </span>
@@ -231,7 +231,7 @@ export default function BranchInventoryPage() {
               </div>
 
               {indent.dispatchDetails && (
-                <div className="p-3 bg-emerald-950/40 border border-emerald-800/60 rounded-xl text-emerald-300 text-[11px]">
+                <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-900 text-[11px] font-medium">
                   <strong>✓ Patna Central Dispatch Assigned: </strong>
                   Vehicle {indent.dispatchDetails.vehicleNo} • Driver: {indent.dispatchDetails.driverName}
                 </div>

@@ -48,22 +48,22 @@ export default function BranchesPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-200 pb-6">
         <div>
-          <span className="text-xs font-bold text-orange-400 uppercase tracking-wider block">
+          <span className="text-xs font-black text-red-600 uppercase tracking-wider block">
             Regional Node Governance
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-0.5">
+          <h1 className="text-2xl sm:text-3xl font-black text-black tracking-tight mt-0.5">
             Branch & Logistics Depot Management
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-neutral-600 mt-1 font-medium">
             Provision new depots, set working capital limits, and enforce GPS geofenced perimeter boundaries.
           </p>
         </div>
 
         <button
           onClick={() => setIsAddModalOpen(true)}
-          className="px-5 py-2.5 bg-orange-600 hover:bg-orange-500 text-white rounded-xl text-xs font-bold transition shadow-lg flex items-center gap-2 self-start sm:self-auto"
+          className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center gap-2 self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
           <span>+ Add New Regional Branch</span>
@@ -71,14 +71,14 @@ export default function BranchesPage() {
       </div>
 
       {/* Search Filter */}
-      <div className="flex items-center gap-3 bg-slate-900 border border-slate-800 p-3 rounded-2xl">
-        <Search className="w-4 h-4 text-slate-500 ml-2" />
+      <div className="flex items-center gap-3 bg-white border-2 border-neutral-200 p-3 rounded-2xl shadow-sm">
+        <Search className="w-4 h-4 text-neutral-400 ml-2" />
         <input
           type="text"
           placeholder="Filter branches by city, depot name, or code..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="bg-transparent border-none text-xs text-white focus:outline-none w-full"
+          className="bg-transparent border-none text-xs text-black font-medium focus:outline-none w-full"
         />
       </div>
 
@@ -92,60 +92,60 @@ export default function BranchesPage() {
           return (
             <div
               key={branch.id}
-              className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-5 shadow-xl hover:border-slate-700 transition"
+              className="bg-white border-2 border-neutral-200 rounded-3xl p-6 space-y-5 shadow-sm hover:border-red-600 transition"
             >
               <div className="flex items-start justify-between">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-orange-400 bg-orange-950/60 px-2.5 py-0.5 rounded-lg border border-orange-800">
+                    <span className="font-mono text-xs font-black text-red-700 bg-red-50 px-2.5 py-0.5 rounded-lg border border-red-200">
                       {branch.code}
                     </span>
-                    <span className="text-[10px] text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800">
+                    <span className="text-[10px] text-emerald-800 font-extrabold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                       ● ACTIVE NODE
                     </span>
                   </div>
-                  <h3 className="text-base font-bold text-white mt-2">{branch.name}</h3>
-                  <p className="text-xs text-slate-400 flex items-center gap-1 mt-1">
-                    <MapPin className="w-3.5 h-3.5 text-orange-500 shrink-0" />
+                  <h3 className="text-base font-black text-black mt-2">{branch.name}</h3>
+                  <p className="text-xs text-neutral-600 flex items-center gap-1 mt-1 font-medium">
+                    <MapPin className="w-3.5 h-3.5 text-red-600 shrink-0" />
                     <span>{branch.address}</span>
                   </p>
                 </div>
               </div>
 
               {/* Working Budget & Spend Bar */}
-              <div className="p-4 bg-slate-950 border border-slate-800/80 rounded-2xl space-y-2 text-xs">
+              <div className="p-4 bg-neutral-50 border border-neutral-200 rounded-2xl space-y-2 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Allocated Working Budget:</span>
-                  <span className="font-mono font-bold text-white">{formatCurrency(branch.allocatedBudget)}</span>
+                  <span className="text-neutral-500 font-bold">Allocated Working Budget:</span>
+                  <span className="font-mono font-black text-black">{formatCurrency(branch.allocatedBudget)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Current Spend to Date:</span>
-                  <span className="font-mono text-emerald-400 font-bold">{formatCurrency(branch.currentSpend)}</span>
+                  <span className="text-neutral-500 font-bold">Current Spend to Date:</span>
+                  <span className="font-mono text-red-600 font-black">{formatCurrency(branch.currentSpend)}</span>
                 </div>
 
-                <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden mt-1.5">
+                <div className="w-full h-2 bg-neutral-200 rounded-full overflow-hidden mt-1.5">
                   <div
-                    className={`h-full rounded-full ${spendPct > 80 ? 'bg-red-500' : 'bg-orange-500'}`}
+                    className={`h-full rounded-full ${spendPct > 80 ? 'bg-red-600' : 'bg-red-500'}`}
                     style={{ width: `${Math.min(spendPct, 100)}%` }}
                   ></div>
                 </div>
-                <div className="text-[10px] text-slate-500 text-right">{spendPct}% Budget Utilized</div>
+                <div className="text-[10px] text-neutral-500 font-extrabold text-right">{spendPct}% Budget Utilized</div>
               </div>
 
               {/* GPS Geofence & Admin details */}
               <div className="grid grid-cols-2 gap-3 text-xs">
-                <div className="p-3 bg-slate-950 border border-slate-800/80 rounded-xl space-y-0.5">
-                  <span className="text-[10px] uppercase font-bold text-slate-500 block">GPS Coordinates</span>
-                  <p className="font-mono text-white text-[11px]">
+                <div className="p-3 bg-neutral-50 border border-neutral-200 rounded-xl space-y-0.5">
+                  <span className="text-[10px] uppercase font-extrabold text-neutral-500 block">GPS Coordinates</span>
+                  <p className="font-mono text-black font-bold text-[11px]">
                     {branch.locationCoords?.lat?.toFixed(4)}, {branch.locationCoords?.lng?.toFixed(4)}
                   </p>
-                  <p className="text-[10px] text-emerald-400">Radius: {branch.locationCoords?.radiusMeters || 500}m</p>
+                  <p className="text-[10px] text-emerald-700 font-bold">Radius: {branch.locationCoords?.radiusMeters || 500}m</p>
                 </div>
 
-                <div className="p-3 bg-slate-950 border border-slate-800/80 rounded-xl space-y-0.5">
-                  <span className="text-[10px] uppercase font-bold text-slate-500 block">Regional Incharge</span>
-                  <p className="text-white text-[11px] font-semibold">{branch.adminName}</p>
-                  <p className="text-[10px] text-slate-400">{branch.contactNumber}</p>
+                <div className="p-3 bg-neutral-50 border border-neutral-200 rounded-xl space-y-0.5">
+                  <span className="text-[10px] uppercase font-extrabold text-neutral-500 block">Regional Incharge</span>
+                  <p className="text-black text-[11px] font-black">{branch.adminName}</p>
+                  <p className="text-[10px] text-neutral-600 font-medium">{branch.contactNumber}</p>
                 </div>
               </div>
             </div>
