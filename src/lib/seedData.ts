@@ -52,7 +52,7 @@ export const SEED_BRANCHES: SeedBranch[] = [
     name: 'Patna HQ & Heavy Fabrication Plant',
     city: 'Patna',
     code: 'PAT-HQ',
-    address: 'Plot No. 14, Industrial Area, Fatuha / Didarganj, Patna, Bihar - 800009',
+    address: 'Mauza Jhali, Circle Kankarbagh 50b, Ward 55 P.No- 2167078, Jakariyapur, Trinity Global School, Road No. 3, Krishna Niketan Road, Patna - 800007, Bihar',
     locationCoords: {
       lat: 25.5941,
       lng: 85.1376,
@@ -62,8 +62,8 @@ export const SEED_BRANCHES: SeedBranch[] = [
     currentSpend: 4250000,
     status: 'ACTIVE',
     activeWorkersCount: 42,
-    contactNumber: '+91 94310 28475',
-    adminName: 'Sanjay Singh',
+    contactNumber: '07942556842 / +91 94310 24800',
+    adminName: 'Ujjwal Kumar (CEO)',
   },
   {
     id: 'br_delhi',

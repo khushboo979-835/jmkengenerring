@@ -144,19 +144,38 @@ export default function Footer() {
               <div className="flex items-start gap-2.5 text-neutral-800 font-medium">
                 <MapPin className="w-4 h-4 text-red-600 shrink-0 mt-0.5 stroke-[2.2]" />
                 <span>
-                  <strong className="text-black font-black">Central Works & HQ:</strong> Plot No. 14, Heavy Industrial Estate, Didarganj / Fatuha Road, Patna, Bihar - 800009
+                  <strong className="text-black font-black">Registered Address & Central Works:</strong> Mauza Jhali, Circle Kankarbagh 50b, Ward 55 P.No- 2167078, Jakariyapur, Trinity Global School, Road No. 3, Krishna Niketan Road, Patna - 800007, Bihar, India
                 </span>
               </div>
               <div className="flex items-center gap-2.5 text-neutral-800 font-medium">
                 <Phone className="w-4 h-4 text-red-600 shrink-0 stroke-[2.2]" />
-                <span>
-                  <strong className="text-black font-black">+91 94310 28475</strong> / <strong className="text-black font-black">+91 98110 39201</strong>
+                <span className="flex items-center gap-2 flex-wrap">
+                  <a href="tel:07942556842" className="text-black font-black hover:text-red-600 transition">
+                    07942556842
+                  </a>
+                  <span className="text-neutral-400">/</span>
+                  <a href="tel:+919431024800" className="text-black font-black hover:text-red-600 transition">
+                    +91 94310 24800
+                  </a>
+                  <span className="text-neutral-400">/</span>
+                  <a href="tel:+919431028475" className="text-black font-black hover:text-red-600 transition">
+                    +91 94310 28475
+                  </a>
+                  <span className="text-[10px] bg-emerald-100 text-emerald-800 font-black px-1.5 py-0.5 rounded">
+                    82% Response Rate
+                  </span>
                 </span>
               </div>
               <div className="flex items-center gap-2.5 text-neutral-800 font-medium">
                 <Mail className="w-4 h-4 text-red-600 shrink-0 stroke-[2.2]" />
-                <span className="font-semibold text-neutral-900">
-                  contact@jmkengineering.com / sales@jmkengineering.com
+                <span className="font-semibold text-neutral-900 flex items-center gap-2 flex-wrap">
+                  <a href="mailto:contact@jmkengineering.in" className="hover:text-red-600 transition underline underline-offset-2">
+                    contact@jmkengineering.in
+                  </a>
+                  <span className="text-neutral-400">/</span>
+                  <a href="mailto:sales@jmkengineering.in" className="hover:text-red-600 transition underline underline-offset-2">
+                    sales@jmkengineering.in
+                  </a>
                 </span>
               </div>
             </div>
@@ -322,7 +341,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
           <p>© 2026 JMK Engineering & Developers. All Rights Reserved.</p>
           <p className="text-[11px] sm:text-xs font-bold text-neutral-800">
-            Proprietorship Firm – Patna, Bihar · GSTIN: <strong className="text-red-600 font-black">10BIEPD2766D2ZX</strong>
+            Proprietorship Firm · CEO: <strong className="text-black font-black">Ujjwal Kumar</strong> · Patna, Bihar · GSTIN: <strong className="text-red-600 font-black">10BIEPD2766D2ZX</strong>
           </p>
         </div>
       </div>
