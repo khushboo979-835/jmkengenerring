@@ -17,7 +17,6 @@ import {
   Layers,
   Star,
   Quote,
-  Briefcase,
   Send,
   PhoneCall,
   Mail,
@@ -152,61 +151,14 @@ const TESTIMONIALS = [
   },
 ];
 
-const JOB_VACANCIES = [
-  {
-    id: 'vac-1',
-    title: 'Lead Structural / Formwork Design Engineer',
-    department: 'Engineering & CAD Division',
-    location: 'Patna Central Works (Jakariyapur / Didarganj)',
-    type: 'Full-time',
-    experience: '4 - 8 Years in AutoCAD, STAAD.Pro & Civil Formwork Detailing',
-    openings: 2,
-    description:
-      'Responsible for analyzing project structural drawings, calculating falsework hydrostatic concrete load pressures, and preparing fabrication drawings for custom box culvert moulds and pier staging.',
-  },
-  {
-    id: 'vac-2',
-    title: 'Senior CNC Press Brake & Shearing Operator',
-    department: 'Plant Machinery & Fabrication',
-    location: 'Patna Heavy Workshop',
-    type: 'Full-time',
-    experience: '3 - 6 Years operating 250 MT Hydraulic Bending & CNC Shearing',
-    openings: 4,
-    description:
-      'Expertise in reading mechanical drawings, plate layout nesting, multi-angle cold bending of IS 2062 plates (2.0mm to 10.0mm), and strict tolerance maintenance.',
-  },
-  {
-    id: 'vac-3',
-    title: 'Quality Control & Welding Inspector (QA/QC)',
-    department: 'Quality Assurance & Testing',
-    location: 'Patna Works & Quality Cell',
-    type: 'Full-time',
-    experience: '3+ Years with NDT Level II / Ultrasonic & Dye Penetrant Certification',
-    openings: 2,
-    description:
-      'Conduct batch inspections, dimensional check of bearing anchor plates, oversee MTC issuance, and verify weld penetration on submerged arc and MIG lines.',
-  },
-];
-
 export default function AboutPage() {
   const [isRfqOpen, setIsRfqOpen] = useState(false);
   const [rfqDefaultProduct, setRfqDefaultProduct] = useState<string | undefined>(undefined);
-  const [appliedJob, setAppliedJob] = useState<string | null>(null);
-  const [applicationSuccess, setApplicationSuccess] = useState<string | null>(null);
   const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
 
   const handleOpenRFQ = (prodName?: string) => {
     setRfqDefaultProduct(prodName);
     setIsRfqOpen(true);
-  };
-
-  const handleApply = (jobTitle: string) => {
-    setAppliedJob(jobTitle);
-    setTimeout(() => {
-      setApplicationSuccess(`Thank you! Your application for "${jobTitle}" has been received. Our HR desk will contact you.`);
-      setAppliedJob(null);
-      setTimeout(() => setApplicationSuccess(null), 5000);
-    }, 1200);
   };
 
   return (
@@ -1054,101 +1006,6 @@ export default function AboutPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </section>
-
-        {/* 6. Careers & Recruitment Section */}
-        <section id="vacancies" className="scroll-mt-24 space-y-6 pt-2">
-          <div className="flex flex-wrap items-end justify-between gap-4 border-b-2 border-neutral-200 pb-4">
-            <div>
-              <div className="flex items-center gap-2 text-xs font-black text-red-600 uppercase tracking-wider">
-                <Briefcase className="w-4 h-4 text-red-600" />
-                <span>Careers & Recruitment</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                Current Job Openings at JMK Engineering
-              </h2>
-            </div>
-
-            <p className="text-xs text-neutral-600 font-bold">
-              Looking to build India's largest infrastructure projects? Join our engineering team.
-            </p>
-          </div>
-
-          {/* Application Success Banner */}
-          {applicationSuccess && (
-            <div className="p-4 bg-emerald-50 border-2 border-emerald-500 text-emerald-800 text-xs sm:text-sm font-bold rounded-2xl animate-fadeIn flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-              <span>{applicationSuccess}</span>
-            </div>
-          )}
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {JOB_VACANCIES.map((job) => (
-              <div
-                key={job.id}
-                className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-6 space-y-4 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <span className="text-xs font-black text-red-600 uppercase tracking-wider block">
-                        {job.department}
-                      </span>
-                      <h3 className="text-base font-black text-slate-900 leading-snug">{job.title}</h3>
-                    </div>
-                    <span className="px-2.5 py-0.5 bg-red-50 border border-red-200 text-red-700 text-xs font-bold rounded-full shrink-0">
-                      {job.openings} Openings
-                    </span>
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-600 font-bold">
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-neutral-400" />
-                      {job.location}
-                    </span>
-                    <span>•</span>
-                    <span className="text-emerald-700 font-black">{job.type}</span>
-                  </div>
-
-                  <p className="text-xs text-neutral-700 leading-relaxed font-medium">
-                    {job.description}
-                  </p>
-
-                  <div className="p-3 bg-neutral-50 rounded-2xl border border-neutral-200 text-xs text-neutral-700">
-                    <strong className="text-black font-black">Requirements:</strong> {job.experience}
-                  </div>
-                </div>
-
-                <div className="pt-3 border-t border-neutral-200 flex items-center justify-between">
-                  <span className="text-xs text-neutral-500 font-mono">Ref: {job.id}</span>
-                  <button
-                    onClick={() => handleApply(job.title)}
-                    disabled={appliedJob === job.title}
-                    className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition shadow flex items-center gap-1.5 disabled:opacity-50"
-                  >
-                    <Send className="w-3.5 h-3.5" />
-                    <span>{appliedJob === job.title ? 'Submitting...' : 'Apply Now'}</span>
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="p-6 rounded-3xl bg-neutral-900 text-white flex flex-wrap items-center justify-between gap-4">
-            <div className="space-y-1">
-              <h3 className="text-base font-black">Don't see a matching vacancy?</h3>
-              <p className="text-xs text-neutral-300 font-medium">
-                Send your updated CV directly to our technical recruitment cell at <strong className="text-red-400">jmkengineering2@gmail.com</strong>
-              </p>
-            </div>
-            <a
-              href="mailto:jmkengineering2@gmail.com"
-              className="px-6 py-2.5 bg-white hover:bg-neutral-100 text-slate-950 rounded-xl text-xs font-bold transition flex items-center gap-2 shadow"
-            >
-              <Mail className="w-4 h-4 text-red-600" />
-              <span>Email Your Resume</span>
-            </a>
           </div>
         </section>
 

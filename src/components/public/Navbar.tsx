@@ -199,12 +199,6 @@ export default function Navbar() {
                 >
                   Testimonial
                 </Link>
-                <Link
-                  href="/about#vacancies"
-                  className="block px-4 py-2 text-xs font-bold text-neutral-700 hover:bg-red-50 hover:text-red-600 transition border-t border-neutral-100"
-                >
-                  Job Vacancies
-                </Link>
               </div>
             </div>
 
@@ -301,13 +295,6 @@ export default function Navbar() {
               className="block py-1 pl-4 text-xs font-semibold text-neutral-600 hover:text-red-600"
             >
               ↳ Testimonials
-            </Link>
-            <Link
-              href="/about#vacancies"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block py-1 pl-4 text-xs font-semibold text-neutral-600 hover:text-red-600"
-            >
-              ↳ Job Vacancies & Careers
             </Link>
             <Link
               href="/videos"
