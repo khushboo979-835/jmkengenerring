@@ -280,29 +280,29 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
         </div>
 
       {/* 5 Distinct Geometric Shaped Product Cards (Exact media_1788858973378.png) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 -mt-16 sm:-mt-20 relative z-30">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 -mt-20 sm:-mt-24 relative z-30">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-4.5">
           {SHAPED_PRODUCT_CARDS.map((card) => {
             const Icon = card.icon;
             return (
               <div
                 key={card.id}
-                className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-4 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group relative cursor-pointer hover:-translate-y-1.5"
+                className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-4 sm:p-4.5 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group relative cursor-pointer hover:-translate-y-2"
               >
                 {/* Full Clickable Card Link */}
                 <Link
                   href={`/products/${card.slug}`}
                   className="block flex-1 focus:outline-none"
                 >
-                  {/* Floating Arched Thumbnail Badge Matching First Box Exactly */}
-                  <div className="flex items-center justify-center -mt-12 sm:-mt-14 mb-2.5">
+                  {/* Large Floating Arched Image Box (Significantly Enlarged for Clear Visibility) */}
+                  <div className="flex items-center justify-center -mt-16 sm:-mt-20 mb-3.5">
                     <div
-                      className="w-24 h-28 sm:w-28 sm:h-32 p-1.5 bg-white border-4 border-white shadow-xl group-hover:scale-105 transition-all duration-300 flex items-center justify-center rounded-t-[36px] rounded-b-2xl overflow-hidden ring-2 ring-neutral-200 group-hover:ring-red-600"
+                      className="w-full max-w-[200px] h-36 sm:h-44 p-1.5 bg-white border-4 border-white shadow-2xl group-hover:scale-105 transition-all duration-300 flex items-center justify-center rounded-t-[38px] rounded-b-2xl overflow-hidden ring-2 ring-neutral-200 group-hover:ring-red-600 bg-neutral-50"
                     >
                       <img
                         src={card.imageUrl}
                         alt={card.title}
-                        className="w-full h-full object-cover object-center rounded-t-[30px] rounded-b-xl"
+                        className="w-full h-full object-cover object-center rounded-t-[32px] rounded-b-xl"
                       />
                     </div>
                   </div>
