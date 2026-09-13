@@ -865,7 +865,7 @@ export default function AboutPage() {
                   Jakariyapur, Mouja Jhali, Krishnaniketan Road / Trinity Global School, Patna - 800007, Bihar, India
                 </p>
                 <p className="text-xs text-neutral-300 font-medium">
-                  Direct Inquiries: <strong className="text-white">07942556842</strong> / <strong className="text-white">+91 94310 24800</strong> / <strong className="text-white">+91 94310 28475</strong>
+                  Direct Inquiries: <strong className="text-white font-mono text-sm">07942556842</strong> (Verified Works Desk)
                 </p>
               </div>
             </div>

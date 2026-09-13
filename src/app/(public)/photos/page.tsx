@@ -360,11 +360,11 @@ export default function PhotosPage() {
                     </Link>
                   )}
                   <a
-                    href="tel:+919431028475"
+                    href="tel:07942556842"
                     className="px-4 py-2.5 bg-neutral-100 hover:bg-neutral-200 text-black font-bold text-xs rounded-xl transition border border-neutral-300 flex items-center gap-1.5"
                   >
                     <PhoneCall className="w-3.5 h-3.5 text-red-600" />
-                    <span>Call Plant</span>
+                    <span>Call Plant (07942556842)</span>
                   </a>
                 </div>
 

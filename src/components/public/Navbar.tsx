@@ -246,11 +246,11 @@ export default function Navbar() {
             </button>
 
             <a
-              href="tel:+919431024800"
+              href="tel:07942556842"
               className="px-4 sm:px-5 py-2.5 border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 rounded-full text-xs sm:text-sm font-black transition-all flex items-center gap-1.5 shadow-sm transform hover:-translate-y-0.5"
             >
               <PhoneCall className="w-4 h-4 text-emerald-600" />
-              <span>Call Now</span>
+              <span>Call: 07942556842</span>
             </a>
           </div>
 
@@ -341,11 +341,11 @@ export default function Navbar() {
             </Link>
             <div className="pt-2 border-t border-neutral-200">
               <a
-                href="tel:+919431024800"
+                href="tel:07942556842"
                 className="flex items-center gap-2 py-1 text-sm font-bold text-emerald-600"
               >
                 <PhoneCall className="w-4 h-4" />
-                <span>Call Now: +91 94310 24800</span>
+                <span>Call Now: 07942556842</span>
               </a>
             </div>
           </div>

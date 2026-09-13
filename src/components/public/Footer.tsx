@@ -150,16 +150,8 @@ export default function Footer() {
               <div className="flex items-center gap-2.5 text-neutral-800 font-medium">
                 <Phone className="w-4 h-4 text-red-600 shrink-0 stroke-[2.2]" />
                 <span className="flex items-center gap-2 flex-wrap">
-                  <a href="tel:07942556842" className="text-black font-black hover:text-red-600 transition">
+                  <a href="tel:07942556842" className="text-black font-black hover:text-red-600 transition text-sm">
                     07942556842
-                  </a>
-                  <span className="text-neutral-400">/</span>
-                  <a href="tel:+919431024800" className="text-black font-black hover:text-red-600 transition">
-                    +91 94310 24800
-                  </a>
-                  <span className="text-neutral-400">/</span>
-                  <a href="tel:+919431028475" className="text-black font-black hover:text-red-600 transition">
-                    +91 94310 28475
                   </a>
                   <span className="text-[10px] bg-emerald-100 text-emerald-800 font-black px-1.5 py-0.5 rounded">
                     82% Response Rate
@@ -168,17 +160,9 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2.5 text-neutral-800 font-medium">
                 <Mail className="w-4 h-4 text-red-600 shrink-0 stroke-[2.2]" />
-                <span className="font-semibold text-neutral-900 flex items-center gap-2 flex-wrap">
-                  <a href="mailto:jmkengineering2@gmail.com" className="hover:text-red-600 transition underline underline-offset-2 font-bold text-slate-900">
+                <span className="font-bold text-neutral-900">
+                  <a href="mailto:jmkengineering2@gmail.com" className="hover:text-red-600 transition underline underline-offset-2 text-slate-900">
                     jmkengineering2@gmail.com
-                  </a>
-                  <span className="text-neutral-400">/</span>
-                  <a href="mailto:contact@jmkengineering.in" className="hover:text-red-600 transition underline underline-offset-2">
-                    contact@jmkengineering.in
-                  </a>
-                  <span className="text-neutral-400">/</span>
-                  <a href="mailto:sales@jmkengineering.in" className="hover:text-red-600 transition underline underline-offset-2">
-                    sales@jmkengineering.in
                   </a>
                 </span>
               </div>

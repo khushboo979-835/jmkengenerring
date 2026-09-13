@@ -188,24 +188,20 @@ export default function ContactPage() {
                 <Phone className="w-6 h-6 stroke-[2.2]" />
               </div>
               <div>
-                <h3 className="text-base font-black text-slate-900">Call Support & Hotline</h3>
+                <h3 className="text-base font-black text-slate-900">Official Call Support</h3>
                 <span className="text-[11px] font-black text-emerald-600 uppercase tracking-wider block mt-0.5">Mon - Sat (8 AM - 8 PM)</span>
               </div>
               <div className="space-y-2 text-xs font-bold text-neutral-800">
                 <div>
-                  <span className="text-[10px] text-neutral-500 uppercase block font-semibold">Toll-Free / IVR Desk:</span>
-                  <a href="tel:07942556842" className="text-sm font-black text-slate-900 hover:text-red-600 block">
+                  <span className="text-[10px] text-neutral-500 uppercase block font-semibold">Toll-Free & Direct Inquiry Desk:</span>
+                  <a href="tel:07942556842" className="text-base font-black text-slate-950 hover:text-red-600 block mt-1">
                     07942556842
                   </a>
                 </div>
-                <div>
-                  <span className="text-[10px] text-neutral-500 uppercase block font-semibold">Direct Sales & Technical:</span>
-                  <a href="tel:+919431024800" className="text-xs font-black text-slate-900 hover:text-red-600 block">
-                    +91 94310 24800
-                  </a>
-                  <a href="tel:+919431028475" className="text-xs font-bold text-neutral-700 hover:text-red-600 block">
-                    +91 94310 28475 / +91 98110 39201
-                  </a>
+                <div className="pt-1">
+                  <span className="text-[10px] bg-emerald-100 text-emerald-800 font-black px-2 py-0.5 rounded-full inline-block">
+                    82% Instant Response Rate
+                  </span>
                 </div>
               </div>
             </div>
@@ -225,25 +221,19 @@ export default function ContactPage() {
                 <Mail className="w-6 h-6 stroke-[2.2]" />
               </div>
               <div>
-                <h3 className="text-base font-black text-slate-900">Email Inquiries</h3>
-                <span className="text-[11px] font-black text-red-600 uppercase tracking-wider block mt-0.5">Commercial & Tenders</span>
+                <h3 className="text-base font-black text-slate-900">Official Email</h3>
+                <span className="text-[11px] font-black text-red-600 uppercase tracking-wider block mt-0.5">Direct Correspondence</span>
               </div>
               <div className="space-y-2 text-xs font-medium text-neutral-800">
                 <div>
-                  <span className="text-[10px] text-neutral-500 uppercase block font-bold">Official Direct Email:</span>
-                  <a href="mailto:jmkengineering2@gmail.com" className="font-black text-slate-950 hover:text-red-600 block text-xs">
+                  <span className="text-[10px] text-neutral-500 uppercase block font-bold">Official Email Address:</span>
+                  <a href="mailto:jmkengineering2@gmail.com" className="font-black text-slate-950 hover:text-red-600 block text-sm mt-1">
                     jmkengineering2@gmail.com
                   </a>
                 </div>
-                <div>
-                  <span className="text-[10px] text-neutral-500 uppercase block font-bold">General & Sales Desk:</span>
-                  <a href="mailto:contact@jmkengineering.in" className="font-bold text-slate-800 hover:text-red-600 block">
-                    contact@jmkengineering.in
-                  </a>
-                  <a href="mailto:sales@jmkengineering.in" className="font-medium text-neutral-600 hover:text-red-600 block">
-                    sales@jmkengineering.in
-                  </a>
-                </div>
+                <p className="text-[11px] text-neutral-500">
+                  Send tender drawings, technical specifications, and purchase orders.
+                </p>
               </div>
             </div>
             <a
@@ -548,7 +538,7 @@ export default function ContactPage() {
                       <div className="flex items-center gap-2.5">
                         <Phone className="w-4 h-4 text-red-600 shrink-0" />
                         <span>
-                          <strong className="text-slate-950">{isPatna ? '07942556842 / +91 94310 24800' : depot.contactNumber}</strong> (Incharge: <strong className="text-slate-950">{depot.adminName}</strong>)
+                          <strong className="text-slate-950">07942556842</strong> (Incharge: <strong className="text-slate-950">{depot.adminName}</strong>)
                         </span>
                       </div>
                       <div className="flex items-center gap-2.5">

@@ -289,7 +289,7 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
                     className="w-full py-3 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 hover:text-black rounded-xl font-black text-xs transition border border-neutral-300 flex items-center justify-center gap-1.5"
                   >
                     <PhoneCall className="w-3.5 h-3.5 text-red-600" />
-                    <span>Or Call Patna Estimation Desk: 07942556842 / +91 94310 24800</span>
+                    <span>Or Call Patna Estimation Desk: 07942556842</span>
                   </a>
                 </div>
               </form>
