@@ -865,18 +865,18 @@ export default function AboutPage() {
                   Jakariyapur, Mouja Jhali, Krishnaniketan Road / Trinity Global School, Patna - 800007, Bihar, India
                 </p>
                 <p className="text-xs text-neutral-300 font-medium">
-                  Direct Inquiries: <strong className="text-white">+91 74939 16194</strong> / <strong className="text-white">+91 86510 10370</strong> / <strong className="text-white">+91 94310 28475</strong>
+                  Direct Inquiries: <strong className="text-white">07942556842</strong> / <strong className="text-white">+91 94310 24800</strong> / <strong className="text-white">+91 94310 28475</strong>
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-3 shrink-0">
               <a
-                href="tel:+917493916194"
+                href="tel:07942556842"
                 className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg flex items-center gap-2"
               >
                 <PhoneCall className="w-4 h-4" />
-                <span>Call Now</span>
+                <span>Call Now (07942556842)</span>
               </a>
             </div>
           </div>
@@ -1022,11 +1022,11 @@ export default function AboutPage() {
             <div className="space-y-1">
               <h3 className="text-base font-black">Don't see a matching vacancy?</h3>
               <p className="text-xs text-neutral-300 font-medium">
-                Send your updated CV directly to our technical recruitment cell at <strong className="text-red-400">careers@jmkengineering.com</strong>
+                Send your updated CV directly to our technical recruitment cell at <strong className="text-red-400">jmkengineering2@gmail.com</strong>
               </p>
             </div>
             <a
-              href="mailto:careers@jmkengineering.com"
+              href="mailto:jmkengineering2@gmail.com"
               className="px-6 py-2.5 bg-white hover:bg-neutral-100 text-slate-950 rounded-xl text-xs font-bold transition flex items-center gap-2 shadow"
             >
               <Mail className="w-4 h-4 text-red-600" />

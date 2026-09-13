@@ -169,6 +169,10 @@ export default function Footer() {
               <div className="flex items-center gap-2.5 text-neutral-800 font-medium">
                 <Mail className="w-4 h-4 text-red-600 shrink-0 stroke-[2.2]" />
                 <span className="font-semibold text-neutral-900 flex items-center gap-2 flex-wrap">
+                  <a href="mailto:jmkengineering2@gmail.com" className="hover:text-red-600 transition underline underline-offset-2 font-bold text-slate-900">
+                    jmkengineering2@gmail.com
+                  </a>
+                  <span className="text-neutral-400">/</span>
                   <a href="mailto:contact@jmkengineering.in" className="hover:text-red-600 transition underline underline-offset-2">
                     contact@jmkengineering.in
                   </a>

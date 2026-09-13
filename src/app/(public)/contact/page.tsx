@@ -230,21 +230,24 @@ export default function ContactPage() {
               </div>
               <div className="space-y-2 text-xs font-medium text-neutral-800">
                 <div>
-                  <span className="text-[10px] text-neutral-500 uppercase block font-bold">General Enquiries:</span>
-                  <a href="mailto:contact@jmkengineering.in" className="font-bold text-slate-900 hover:text-red-600 block">
-                    contact@jmkengineering.in
+                  <span className="text-[10px] text-neutral-500 uppercase block font-bold">Official Direct Email:</span>
+                  <a href="mailto:jmkengineering2@gmail.com" className="font-black text-slate-950 hover:text-red-600 block text-xs">
+                    jmkengineering2@gmail.com
                   </a>
                 </div>
                 <div>
-                  <span className="text-[10px] text-neutral-500 uppercase block font-bold">Tender BOQ & Sales:</span>
-                  <a href="mailto:sales@jmkengineering.in" className="font-bold text-slate-900 hover:text-red-600 block">
+                  <span className="text-[10px] text-neutral-500 uppercase block font-bold">General & Sales Desk:</span>
+                  <a href="mailto:contact@jmkengineering.in" className="font-bold text-slate-800 hover:text-red-600 block">
+                    contact@jmkengineering.in
+                  </a>
+                  <a href="mailto:sales@jmkengineering.in" className="font-medium text-neutral-600 hover:text-red-600 block">
                     sales@jmkengineering.in
                   </a>
                 </div>
               </div>
             </div>
             <a
-              href="mailto:contact@jmkengineering.in"
+              href="mailto:jmkengineering2@gmail.com"
               className="inline-flex items-center gap-1.5 text-xs font-black text-red-600 hover:text-red-700 pt-2 border-t border-neutral-100"
             >
               <span>Compose Email</span>
