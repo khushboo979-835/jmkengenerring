@@ -193,6 +193,7 @@ export default function AboutPage() {
   const [rfqDefaultProduct, setRfqDefaultProduct] = useState<string | undefined>(undefined);
   const [appliedJob, setAppliedJob] = useState<string | null>(null);
   const [applicationSuccess, setApplicationSuccess] = useState<string | null>(null);
+  const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
 
   const handleOpenRFQ = (prodName?: string) => {
     setRfqDefaultProduct(prodName);
@@ -734,6 +735,122 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* 3. Official Division Poster Showcase Section (User Uploaded media_1789285901380.png) */}
+        <section className="space-y-6">
+          <div className="border-b-2 border-neutral-200 pb-4 flex items-center justify-between flex-wrap gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-xs font-black text-red-600 uppercase tracking-wider">
+                <Sparkles className="w-4 h-4 text-red-600" />
+                <span>Official Division Portfolio & Works Poster</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                Expansion Joint & Bridge Bearing Division
+              </h2>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setIsPosterModalOpen(true)}
+                className="px-4 py-2 bg-neutral-900 hover:bg-black text-white rounded-xl text-xs font-black uppercase tracking-wider transition flex items-center gap-1.5 shadow"
+              >
+                <Maximize2 className="w-3.5 h-3.5 text-red-500" />
+                <span>View Full Size Poster</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-neutral-900 via-slate-900 to-black rounded-3xl border-2 border-neutral-800 p-6 sm:p-8 shadow-2xl text-white space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              {/* Left Column: Official Poster High-Resolution Display Card */}
+              <div className="lg:col-span-7 space-y-3">
+                <div
+                  onClick={() => setIsPosterModalOpen(true)}
+                  className="group relative rounded-2xl overflow-hidden border-4 border-neutral-700 hover:border-red-600 transition-all duration-300 shadow-2xl cursor-pointer bg-neutral-950"
+                >
+                  <img
+                    src="/images/about/jmk-official-division-poster.png"
+                    alt="JMK Engineering & Developer Official Division Poster"
+                    className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                    <span className="px-4 py-2 bg-red-600 text-white rounded-xl text-xs font-black uppercase tracking-wider shadow-lg flex items-center gap-1.5">
+                      <Maximize2 className="w-4 h-4" />
+                      <span>Click to Enlarge Poster</span>
+                    </span>
+                  </div>
+                </div>
+                <p className="text-[11px] text-neutral-400 font-medium text-center">
+                  Official Works Division Poster · JMK Engineering & Developer, Patna, Bihar
+                </p>
+              </div>
+
+              {/* Right Column: 9 Key Division Product Lines & Quick Inquiry */}
+              <div className="lg:col-span-5 space-y-4">
+                <div className="space-y-1">
+                  <span className="text-xs font-black text-red-400 uppercase tracking-wider">Division Product Range</span>
+                  <h3 className="text-xl font-black text-white">Heavy Structural & Bridge Solutions</h3>
+                  <p className="text-xs text-neutral-300 font-medium leading-relaxed">
+                    Manufactured at our Patna Central Works in compliance with IRC:83, MoRTH Section 2600, and IS 2062 specifications.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-bold pt-1">
+                  <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-red-500 transition">
+                    <CheckCircle2 className="w-4 h-4 text-red-400 shrink-0" />
+                    <span>PTFE Bridge Bearing</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-red-500 transition">
+                    <CheckCircle2 className="w-4 h-4 text-red-400 shrink-0" />
+                    <span>Strip Seal Expansion Joint</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-red-500 transition">
+                    <CheckCircle2 className="w-4 h-4 text-red-400 shrink-0" />
+                    <span>Bridge Drainage Spouts</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-red-500 transition">
+                    <CheckCircle2 className="w-4 h-4 text-red-400 shrink-0" />
+                    <span>MS Shuttering Plates</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-red-500 transition">
+                    <CheckCircle2 className="w-4 h-4 text-red-400 shrink-0" />
+                    <span>Elastomeric Bearing</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-red-500 transition">
+                    <CheckCircle2 className="w-4 h-4 text-red-400 shrink-0" />
+                    <span>Barrication Board</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-red-500 transition">
+                    <CheckCircle2 className="w-4 h-4 text-red-400 shrink-0" />
+                    <span>Road Sign Board</span>
+                  </div>
+                  <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-red-500 transition">
+                    <CheckCircle2 className="w-4 h-4 text-red-400 shrink-0" />
+                    <span>PEB Factory Sheds</span>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                  <button
+                    onClick={() => handleOpenRFQ('Expansion Joint & Bridge Bearing Division Inquiry')}
+                    className="flex-1 py-3 px-5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-lg shadow-red-600/30 flex items-center justify-center gap-2"
+                  >
+                    <Send className="w-3.5 h-3.5" />
+                    <span>Request Division RFQ</span>
+                  </button>
+                  <a
+                    href="tel:07942556842"
+                    className="py-3 px-5 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold transition border border-white/20 flex items-center justify-center gap-2"
+                  >
+                    <PhoneCall className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Call: 07942556842</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
 
         {/* 4. Complete Factsheet & Official Registered Profile (From Flyer & IndiaMART) */}
         <section className="space-y-6">
@@ -1036,6 +1153,60 @@ export default function AboutPage() {
         </section>
 
       </div>
+
+      {/* Full-Screen Official Poster Modal */}
+      {isPosterModalOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
+          onClick={() => setIsPosterModalOpen(false)}
+        >
+          <div
+            className="relative max-w-5xl w-full bg-neutral-900 border-2 border-neutral-700 rounded-3xl overflow-hidden shadow-2xl p-2 sm:p-4 space-y-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-2 pt-1 border-b border-neutral-800 pb-2 text-white">
+              <span className="text-xs sm:text-sm font-black uppercase text-red-500 tracking-wider">
+                Official Registered Division Poster · JMK Engineering & Developer
+              </span>
+              <button
+                onClick={() => setIsPosterModalOpen(false)}
+                className="p-1.5 rounded-full bg-white/10 hover:bg-red-600 text-white transition"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="max-h-[80vh] overflow-auto rounded-2xl flex items-center justify-center bg-black/60 p-2">
+              <img
+                src="/images/about/jmk-official-division-poster.png"
+                alt="JMK Engineering & Developer Official Division Poster"
+                className="w-full h-auto max-h-[75vh] object-contain rounded-xl shadow-2xl"
+              />
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-2 pt-1 text-xs text-neutral-300">
+              <span>Mauza Jhali, Jakariyapur, Krishna Niketan Road, Patna - 800007</span>
+              <div className="flex items-center gap-2">
+                <a
+                  href="tel:07942556842"
+                  className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold"
+                >
+                  Call: 07942556842
+                </a>
+                <button
+                  onClick={() => {
+                    setIsPosterModalOpen(false);
+                    handleOpenRFQ('Expansion Joint & Bridge Bearing Division');
+                  }}
+                  className="px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold"
+                >
+                  Request RFQ
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Global RFQ Modal */}
       <RFQModal
