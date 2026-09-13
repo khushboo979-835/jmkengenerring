@@ -194,10 +194,16 @@ export default function Navbar() {
                   Company Profile
                 </Link>
                 <Link
+                  href="/about#mission-vision"
+                  className="block px-4 py-2 text-xs font-bold text-neutral-700 hover:bg-red-50 hover:text-red-600 transition border-t border-neutral-100"
+                >
+                  Mission & Vision
+                </Link>
+                <Link
                   href="/about#testimonials"
                   className="block px-4 py-2 text-xs font-bold text-neutral-700 hover:bg-red-50 hover:text-red-600 transition border-t border-neutral-100"
                 >
-                  Testimonial
+                  Testimonials
                 </Link>
               </div>
             </div>
@@ -288,6 +294,13 @@ export default function Navbar() {
               className="block py-1.5 text-sm font-bold text-neutral-800 hover:text-red-600"
             >
               About Us (Company Profile)
+            </Link>
+            <Link
+              href="/about#mission-vision"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-1 pl-4 text-xs font-semibold text-neutral-600 hover:text-red-600"
+            >
+              ↳ Mission & Vision
             </Link>
             <Link
               href="/about#testimonials"

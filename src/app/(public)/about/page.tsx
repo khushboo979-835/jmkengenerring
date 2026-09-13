@@ -34,7 +34,11 @@ import {
   X,
   ExternalLink,
   Compass,
-  Handshake
+  Handshake,
+  Target,
+  Eye,
+  Zap,
+  CheckCheck
 } from 'lucide-react';
 import CredibilitySection from '@/components/public/CredibilitySection';
 import RFQModal from '@/components/public/RFQModal';
@@ -682,6 +686,194 @@ export default function AboutPage() {
                 </p>
               </div>
 
+            </div>
+
+          </div>
+        </section>
+
+        {/* Mission, Vision & Core Values Section */}
+        <section id="mission-vision" className="scroll-mt-24 space-y-6 pt-2">
+          <div className="border-b-2 border-neutral-200 pb-4 flex items-center justify-between flex-wrap gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-xs font-black text-red-600 uppercase tracking-wider">
+                <Target className="w-4 h-4 text-red-600" />
+                <span>Our Purpose & Strategic Direction</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                Our Vision, Mission & Core Values
+              </h2>
+            </div>
+            <p className="text-xs text-neutral-600 font-bold max-w-md text-left sm:text-right">
+              Building lasting civil infrastructure through uncompromising quality, heavy fabrication precision, and customer-first engineering.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            
+            {/* 1. Our Vision Card (Span 6) */}
+            <div className="lg:col-span-6 bg-gradient-to-br from-neutral-900 via-slate-900 to-black text-white rounded-3xl border-2 border-neutral-800 p-6 sm:p-8 space-y-5 shadow-xl relative overflow-hidden flex flex-col justify-between group hover:border-red-600 transition-all duration-300">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/10 rounded-full blur-3xl pointer-events-none group-hover:bg-red-600/20 transition-all"></div>
+
+              <div className="space-y-4 relative z-10">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-red-600 text-white flex items-center justify-center shadow-lg shadow-red-600/30">
+                    <Eye className="w-6 h-6 stroke-[2.2]" />
+                  </div>
+                  <span className="px-3 py-1 bg-white/10 border border-white/20 text-red-400 text-[11px] font-black uppercase tracking-wider rounded-full">
+                    Future Roadmap
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2">
+                    <span>Our Vision</span>
+                    <span className="text-red-500 font-serif italic text-sm sm:text-base font-normal">(हमारा दृष्टिकोण)</span>
+                  </h3>
+                  <p className="text-xs sm:text-sm text-neutral-300 font-medium leading-relaxed">
+                    To be India's premier and most trusted manufacturing hub for heavy civil engineering, bridge expansion systems, POT-PTFE bearings, and modular infrastructure solutions.
+                  </p>
+                </div>
+
+                <ul className="space-y-3 text-xs sm:text-sm text-neutral-300 font-medium pt-2">
+                  <li className="flex items-start gap-2.5">
+                    <div className="w-5 h-5 rounded-full bg-red-600/20 text-red-400 flex items-center justify-center shrink-0 mt-0.5 border border-red-500/30">
+                      <CheckCheck className="w-3.5 h-3.5" />
+                    </div>
+                    <span><strong>National Infrastructure Standard:</strong> Establish our Patna manufacturing plant as the preferred supply node for NHAI, MoRTH, and Metro Rail projects across India.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <div className="w-5 h-5 rounded-full bg-red-600/20 text-red-400 flex items-center justify-center shrink-0 mt-0.5 border border-red-500/30">
+                      <CheckCheck className="w-3.5 h-3.5" />
+                    </div>
+                    <span><strong>Engineering Innovation:</strong> Continuously pioneer high-durability elastomeric compounds and laser-aligned expansion joints that outlast extreme structural load demands.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <div className="w-5 h-5 rounded-full bg-red-600/20 text-red-400 flex items-center justify-center shrink-0 mt-0.5 border border-red-500/30">
+                      <CheckCheck className="w-3.5 h-3.5" />
+                    </div>
+                    <span><strong>Self-Reliant Manufacturing:</strong> Champion &ldquo;Make in India&rdquo; with 100% indigenous fabrication, certified testing, and direct factory-to-site logistical reach.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-4 border-t border-neutral-800 text-[11px] text-neutral-400 font-semibold relative z-10 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-red-400" />
+                <span>Empowering high-speed corridors, flyovers, and elevated viaducts nationwide.</span>
+              </div>
+            </div>
+
+            {/* 2. Our Mission Card (Span 6) */}
+            <div className="lg:col-span-6 bg-white rounded-3xl border-2 border-neutral-300 hover:border-red-600 p-6 sm:p-8 space-y-5 shadow-xl relative overflow-hidden flex flex-col justify-between group transition-all duration-300">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-red-50 rounded-full blur-3xl pointer-events-none group-hover:bg-red-100/50 transition-all"></div>
+
+              <div className="space-y-4 relative z-10">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-neutral-950 text-red-500 flex items-center justify-center shadow-lg">
+                    <Target className="w-6 h-6 stroke-[2.2]" />
+                  </div>
+                  <span className="px-3 py-1 bg-red-50 border border-red-200 text-red-600 text-[11px] font-black uppercase tracking-wider rounded-full">
+                    Core Commitment
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                    <span>Our Mission</span>
+                    <span className="text-neutral-500 font-serif italic text-sm sm:text-base font-normal">(हमारा ध्येय)</span>
+                  </h3>
+                  <p className="text-xs sm:text-sm text-neutral-700 font-medium leading-relaxed">
+                    To deliver precision-machined, certified civil structural products with zero-defect quality, fair ex-factory pricing, and uncompromised on-time delivery.
+                  </p>
+                </div>
+
+                <ul className="space-y-3 text-xs sm:text-sm text-neutral-700 font-medium pt-2">
+                  <li className="flex items-start gap-2.5">
+                    <div className="w-5 h-5 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 mt-0.5 border border-red-200">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                    </div>
+                    <span><strong>Uncompromising Quality:</strong> Maintain stringent IS 2062, IRC:83, and MoRTH compliance through certified raw materials and verified ultrasonic weld inspections.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <div className="w-5 h-5 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 mt-0.5 border border-red-200">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                    </div>
+                    <span><strong>Speed & Schedule Integrity:</strong> Respect critical construction milestones by manufacturing and dispatching within promised project timeframes.</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <div className="w-5 h-5 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 mt-0.5 border border-red-200">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                    </div>
+                    <span><strong>End-to-End Client Support:</strong> Offer custom CAD detailing, technical datasheet verification, and responsive on-site fabrication consultation.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-4 border-t border-neutral-200 text-[11px] text-neutral-600 font-semibold relative z-10 flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>100% Client Satisfaction Guaranteed on every production batch.</span>
+              </div>
+            </div>
+
+            {/* 3. Core Values Grid Banner (Span 12) */}
+            <div className="lg:col-span-12 bg-neutral-50 rounded-3xl border-2 border-neutral-200 p-6 sm:p-8 space-y-6 shadow-sm">
+              <div className="flex items-center justify-between flex-wrap gap-4 border-b border-neutral-200 pb-3">
+                <div className="space-y-0.5">
+                  <span className="text-[11px] font-black text-red-600 uppercase tracking-wider">Foundational Pillars</span>
+                  <h3 className="text-lg sm:text-xl font-black text-slate-900">Our 4 Core Values</h3>
+                </div>
+                <div className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 bg-white border border-neutral-300 px-3 py-1 rounded-xl">
+                  <Award className="w-3.5 h-3.5 text-red-600" />
+                  <span>The JMK Engineering Code</span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                {/* Value 1: Quality First */}
+                <div className="p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm space-y-2 hover:border-red-600 transition">
+                  <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <h4 className="text-sm font-black text-slate-900">Integrity & Quality</h4>
+                  <p className="text-xs text-neutral-600 font-medium leading-relaxed">
+                    Zero compromises on steel grade, plate thickness, or weld penetration. Mill test certificates provided with every order.
+                  </p>
+                </div>
+
+                {/* Value 2: Precision Engineering */}
+                <div className="p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm space-y-2 hover:border-red-600 transition">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center">
+                    <Wrench className="w-5 h-5" />
+                  </div>
+                  <h4 className="text-sm font-black text-slate-900">Engineering Precision</h4>
+                  <p className="text-xs text-neutral-600 font-medium leading-relaxed">
+                    State-of-the-art CNC shearing, hydraulic press bending, and tight machining tolerances for perfect site fitment.
+                  </p>
+                </div>
+
+                {/* Value 3: Customer Commitment */}
+                <div className="p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm space-y-2 hover:border-red-600 transition">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center">
+                    <Handshake className="w-5 h-5" />
+                  </div>
+                  <h4 className="text-sm font-black text-slate-900">Client Trust & Value</h4>
+                  <p className="text-xs text-neutral-600 font-medium leading-relaxed">
+                    Transparent dealings, direct works pricing without middlemen, and dedicated technical desk assistance.
+                  </p>
+                </div>
+
+                {/* Value 4: On-Time Execution */}
+                <div className="p-4 rounded-2xl bg-white border border-neutral-200 shadow-sm space-y-2 hover:border-red-600 transition">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center">
+                    <Zap className="w-5 h-5" />
+                  </div>
+                  <h4 className="text-sm font-black text-slate-900">Pan-India Delivery</h4>
+                  <p className="text-xs text-neutral-600 font-medium leading-relaxed">
+                    Dependable logistics fleet delivering directly to project sites across all states within promised timelines.
+                  </p>
+                </div>
+
+              </div>
             </div>
 
           </div>
