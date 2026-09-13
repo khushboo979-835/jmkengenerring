@@ -50,11 +50,20 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
   const handleDownloadDatasheet = () => {
     setDownloadingPdf(true);
+    
+    // Trigger real download of technical datasheet / catalog PDF
+    const link = document.createElement('a');
+    link.href = '/JMK_Product_Catalog_ERP_Design_Spec.pdf';
+    link.download = `JMK-${product.slug || 'Product'}-Technical-Datasheet.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
     setTimeout(() => {
       setDownloadingPdf(false);
       setDownloadSuccess(true);
       setTimeout(() => setDownloadSuccess(false), 4500);
-    }, 1200);
+    }, 800);
   };
 
   const handleCopyLink = () => {

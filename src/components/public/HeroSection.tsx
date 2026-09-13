@@ -20,13 +20,13 @@ interface HeroSectionProps {
   onOpenRFQ: (productName?: string) => void;
 }
 
-// 5 Authentic High-Clarity Industrial & Manufacturing Photos Uploaded by User + Civil Engineering
+// 6 Authentic High-Clarity Industrial & Manufacturing Photos (100% Real Heavy Civil Engineering)
 const HERO_SLIDER_IMAGES = [
   {
-    id: 'peb-industrial-warehouse',
-    title: 'Pre-Engineered Industrial Steel Sheds & Warehouses',
-    subtitle: 'Heavy Structural Steel Framing, Turnkey Industrial PEB Fabrication & Onsite Erection',
-    url: '/images/hero/peb-industrial-warehouse.png',
+    id: 'yellow-girder-staging-truss',
+    title: 'Heavy Civil Staging Trusses & Tubular Steel Girders',
+    subtitle: 'Heavy Structural Steel Framing, Turnkey Industrial PEB Fabrication & Heavy Erection',
+    url: '/images/about/yellow-girder-staging-truss.jpg',
   },
   {
     id: 'steel-shuttering-box-culvert',
@@ -53,14 +53,14 @@ const HERO_SLIDER_IMAGES = [
     url: '/images/hero/pot-ptfe-bridge-bearing-plates.jpg',
   },
   {
-    id: 'bridge-girder-viaduct',
-    title: 'Precast Elevated Highway Viaduct & Concrete Flyover Pier Construction',
+    id: 'circular-well-formwork',
+    title: 'Circular Well & Heavy Pier Shuttering Systems',
     subtitle: 'Heavy RCC Pier Formwork, Segmental Gantry & Pier Cap Staging',
-    url: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=2600&q=90',
+    url: '/images/about/circular-well-formwork.jpg',
   }
 ];
 
-// 5 Geometric Shaped Product Cards (Exact media_1788858973378.png)
+// 5 Product Cards with Unified Arched Rounded-Top Shape (Matching First Box Exactly)
 const SHAPED_PRODUCT_CARDS = [
   {
     id: 'card-1',
@@ -83,8 +83,8 @@ const SHAPED_PRODUCT_CARDS = [
     slug: 'ms-shuttering-plates',
     icon: Square,
     imageUrl: '/images/hero/steel-shuttering-box-culvert.jpg',
-    shapeWrapper: 'shape-teardrop overflow-hidden',
-    shapeStyle: '',
+    shapeWrapper: 'rounded-t-[28px] rounded-b-lg overflow-hidden',
+    shapeStyle: 'shape-trapezoid',
   },
   {
     id: 'card-3',
@@ -95,8 +95,8 @@ const SHAPED_PRODUCT_CARDS = [
     slug: 'mild-steel-centring-plates',
     icon: LayoutGrid,
     imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476982681/BJ/ZU/VV/146888318/mild-steel-centering-plate-500x500.jpg',
-    shapeWrapper: 'rounded-full overflow-hidden',
-    shapeStyle: '',
+    shapeWrapper: 'rounded-t-[28px] rounded-b-lg overflow-hidden',
+    shapeStyle: 'shape-trapezoid',
   },
   {
     id: 'card-4',
@@ -107,8 +107,8 @@ const SHAPED_PRODUCT_CARDS = [
     slug: 'elastomeric-pot-ptfe-bridge-bearings',
     icon: Cog,
     imageUrl: '/images/hero/pot-ptfe-bridge-bearing-plates.jpg',
-    shapeWrapper: 'shape-leaf overflow-hidden',
-    shapeStyle: '',
+    shapeWrapper: 'rounded-t-[28px] rounded-b-lg overflow-hidden',
+    shapeStyle: 'shape-trapezoid',
   },
   {
     id: 'card-5',
@@ -119,8 +119,8 @@ const SHAPED_PRODUCT_CARDS = [
     slug: 'iron-h-frame-scaffolding-system',
     icon: LayoutGrid,
     imageUrl: '/images/hero/scaffolding-cuplock-staging.jpg',
-    shapeWrapper: 'shape-hexagon overflow-hidden',
-    shapeStyle: '',
+    shapeWrapper: 'rounded-t-[28px] rounded-b-lg overflow-hidden',
+    shapeStyle: 'shape-trapezoid',
   },
 ];
 
@@ -294,15 +294,15 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
                   href={`/products/${card.slug}`}
                   className="block flex-1 focus:outline-none"
                 >
-                  {/* Floating Geometric / Circular Shaped Thumbnail Badge */}
+                  {/* Floating Arched Thumbnail Badge Matching First Box Exactly */}
                   <div className="flex items-center justify-center -mt-12 sm:-mt-14 mb-2.5">
                     <div
-                      className={`w-22 h-22 sm:w-26 sm:h-26 p-1 bg-white border-4 border-white shadow-xl group-hover:scale-105 transition-all duration-300 flex items-center justify-center ${card.shapeWrapper} ring-2 ring-neutral-300 group-hover:ring-red-600`}
+                      className="w-24 h-28 sm:w-28 sm:h-32 p-1.5 bg-white border-4 border-white shadow-xl group-hover:scale-105 transition-all duration-300 flex items-center justify-center rounded-t-[36px] rounded-b-2xl overflow-hidden ring-2 ring-neutral-200 group-hover:ring-red-600"
                     >
                       <img
                         src={card.imageUrl}
                         alt={card.title}
-                        className={`w-full h-full object-cover object-center ${card.shapeStyle}`}
+                        className="w-full h-full object-cover object-center rounded-t-[30px] rounded-b-xl"
                       />
                     </div>
                   </div>
