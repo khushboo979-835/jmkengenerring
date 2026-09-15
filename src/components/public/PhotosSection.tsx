@@ -12,7 +12,8 @@ import {
   CheckCircle2,
   PhoneCall,
   ExternalLink,
-  Sparkles
+  Sparkles,
+  Download
 } from 'lucide-react';
 import { INDIA_MART_GALLERY_PHOTOS, PhotoGalleryItem } from '@/lib/seedData';
 
@@ -33,6 +34,31 @@ const CATEGORIES = [
 export default function PhotosSection({ onOpenRFQ }: PhotosSectionProps) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoGalleryItem | null>(null);
+
+  const handleDownloadImage = async (e: React.MouseEvent, url: string, title: string) => {
+    e.stopPropagation();
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      const cleanTitle = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      link.download = `jmk-engineering-${cleanTitle || 'product'}.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch {
+      const link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.download = `jmk-engineering-${title}.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
 
   const filteredPhotos = INDIA_MART_GALLERY_PHOTOS.filter((photo) => {
     if (activeCategory === 'all') return true;
@@ -105,9 +131,19 @@ export default function PhotosSection({ onOpenRFQ }: PhotosSectionProps) {
                   {photo.category}
                 </span>
                 <p className="text-xs font-bold line-clamp-2">{photo.title}</p>
-                <div className="mt-2 flex items-center gap-1 text-[11px] text-red-300 font-bold">
-                  <ZoomIn className="w-3.5 h-3.5" />
-                  <span>Click to view batch specs</span>
+                <div className="mt-2 flex items-center justify-between text-[11px] text-red-300 font-bold">
+                  <span className="flex items-center gap-1">
+                    <ZoomIn className="w-3.5 h-3.5" />
+                    <span>View & Download</span>
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => handleDownloadImage(e, photo.imageUrl, photo.title)}
+                    className="p-1 bg-white/20 hover:bg-white text-white hover:text-black rounded-full transition"
+                    title="Download Photo"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                  </button>
                 </div>
               </div>
 
@@ -122,7 +158,7 @@ export default function PhotosSection({ onOpenRFQ }: PhotosSectionProps) {
       {/* Lightbox / Zoom Modal in White, Black & Red */}
       {selectedPhoto && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border-2 border-neutral-300 max-w-3xl w-full overflow-hidden shadow-2xl space-y-4">
+          <div className="bg-white rounded-3xl border-2 border-neutral-300 max-w-3xl w-full overflow-hidden shadow-2xl space-y-4">
             <div className="relative aspect-video bg-neutral-100 flex items-center justify-center p-4 border-b border-neutral-200">
               <img
                 src={selectedPhoto.imageUrl}
@@ -131,7 +167,7 @@ export default function PhotosSection({ onOpenRFQ }: PhotosSectionProps) {
               />
               <button
                 onClick={() => setSelectedPhoto(null)}
-                className="absolute top-4 right-4 bg-black text-white hover:bg-red-600 p-2 rounded-full transition"
+                className="absolute top-4 right-4 bg-black text-white hover:bg-red-600 p-2 rounded-full transition shadow-lg"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -149,21 +185,33 @@ export default function PhotosSection({ onOpenRFQ }: PhotosSectionProps) {
               <p className="text-xs text-neutral-600 font-medium leading-relaxed">{selectedPhoto.price ? `Price: ${selectedPhoto.price}` : 'Engineered to IS / MoRTH Standards'}</p>
 
               <div className="pt-2 border-t border-neutral-200 flex flex-wrap items-center justify-between gap-3">
-                <button
-                  onClick={() => {
-                    const title = selectedPhoto.title;
-                    setSelectedPhoto(null);
-                    onOpenRFQ(title);
-                  }}
-                  className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition"
-                >
-                  Request Batch Pricing (RFQ)
-                </button>
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={(e) => handleDownloadImage(e, selectedPhoto.imageUrl, selectedPhoto.title)}
+                    className="px-4 py-2.5 bg-neutral-900 hover:bg-black text-white font-bold text-xs rounded-xl transition border border-neutral-700 flex items-center gap-1.5 shadow-sm"
+                  >
+                    <Download className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Download Image (HD)</span>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      const title = selectedPhoto.title;
+                      setSelectedPhoto(null);
+                      onOpenRFQ(title);
+                    }}
+                    className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition"
+                  >
+                    Request Batch RFQ
+                  </button>
+                </div>
+
                 <button
                   onClick={() => setSelectedPhoto(null)}
-                  className="px-5 py-3 bg-neutral-100 hover:bg-neutral-200 text-black font-bold text-xs rounded-xl transition border border-neutral-300"
+                  className="px-4 py-2.5 bg-neutral-100 hover:bg-neutral-200 text-black font-bold text-xs rounded-xl transition border border-neutral-300"
                 >
-                  Close Photo
+                  Close
                 </button>
               </div>
             </div>

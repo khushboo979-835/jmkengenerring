@@ -19,7 +19,8 @@ import {
   PackageCheck,
   Truck,
   CheckCircle2,
-  Tag
+  Tag,
+  Download
 } from 'lucide-react';
 import { INDIA_MART_GALLERY_PHOTOS, PhotoGalleryItem } from '@/lib/seedData';
 import RFQModal from '@/components/public/RFQModal';
@@ -40,6 +41,37 @@ export default function PhotosPage() {
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoGalleryItem | null>(null);
   const [isRfqOpen, setIsRfqOpen] = useState(false);
   const [activeRfqProduct, setActiveRfqProduct] = useState<string | undefined>();
+  const [downloadingId, setDownloadingId] = useState<string | null>(null);
+
+  const handleDownloadImage = async (e: React.MouseEvent, url: string, title: string, id?: string) => {
+    e.stopPropagation();
+    if (id) setDownloadingId(id);
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      const cleanTitle = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      link.download = `jmk-engineering-${cleanTitle || 'product'}.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch {
+      const link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.download = `jmk-engineering-${title}.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } finally {
+      if (id) {
+        setTimeout(() => setDownloadingId(null), 1200);
+      }
+    }
+  };
 
   const filteredPhotos = INDIA_MART_GALLERY_PHOTOS.filter((photo) => {
     const matchesCategory =
@@ -210,10 +242,18 @@ export default function PhotosPage() {
                 />
 
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white">
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 text-white">
                   <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center shadow-lg transform group-hover:scale-110 transition">
                     <ZoomIn className="w-5 h-5 text-white" />
                   </div>
+                  <button
+                    type="button"
+                    onClick={(e) => handleDownloadImage(e, photo.imageUrl, photo.title, photo.id)}
+                    className="w-10 h-10 rounded-full bg-white text-black hover:bg-neutral-200 flex items-center justify-center shadow-lg transform group-hover:scale-110 transition"
+                    title="Download Image"
+                  >
+                    <Download className="w-4 h-4 text-neutral-900" />
+                  </button>
                 </div>
 
                 {/* Top Category Badge */}
@@ -244,7 +284,7 @@ export default function PhotosPage() {
                 <div className="pt-2 flex items-center justify-between text-[11px] font-black text-red-600 border-t border-neutral-100">
                   <span className="flex items-center gap-1">
                     <ZoomIn className="w-3.5 h-3.5" />
-                    <span>View Details</span>
+                    <span>View & Download</span>
                   </span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -352,13 +392,22 @@ export default function PhotosPage() {
               </div>
 
               <div className="pt-4 border-t border-neutral-200 flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={(e) => handleDownloadImage(e, selectedPhoto.imageUrl, selectedPhoto.title, selectedPhoto.id)}
+                    className="px-4 py-2.5 bg-neutral-900 hover:bg-black text-white font-bold text-xs rounded-xl transition border border-neutral-700 flex items-center gap-1.5 shadow-sm"
+                  >
+                    <Download className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Download Image (HD)</span>
+                  </button>
+
                   {selectedPhoto.slug && (
                     <Link
                       href={`/products/${selectedPhoto.slug}`}
                       className="px-4 py-2.5 bg-neutral-100 hover:bg-neutral-200 text-black font-black text-xs uppercase tracking-wider rounded-xl transition border border-neutral-300"
                     >
-                      View Full Specs
+                      View Specs
                     </Link>
                   )}
                   <a
@@ -366,7 +415,7 @@ export default function PhotosPage() {
                     className="px-4 py-2.5 bg-neutral-100 hover:bg-neutral-200 text-black font-bold text-xs rounded-xl transition border border-neutral-300 flex items-center gap-1.5"
                   >
                     <PhoneCall className="w-3.5 h-3.5 text-red-600" />
-                    <span>Call Plant (07942556842)</span>
+                    <span>Call: 07942556842</span>
                   </a>
                 </div>
 

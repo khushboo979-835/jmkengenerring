@@ -176,12 +176,17 @@ export default function HomeWhatWeOffer({ onOpenRFQ }: { onOpenRFQ: (item?: stri
             return (
               <div
                 key={cat.id}
-                className="group relative bg-white border border-neutral-200/90 hover:border-red-600 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
+                className="group relative bg-white border border-neutral-200/90 hover:border-red-600 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 cursor-pointer"
               >
                 {/* Top Subtle Industrial Accent Stripe */}
                 <div className="h-1 bg-gradient-to-r from-red-600 via-red-500 to-amber-500 w-full"></div>
 
-                <div className="flex-1 flex flex-col">
+                {/* Main Clickable Card Body linking to Product Page */}
+                <Link
+                  href={`/products/${cat.slug}`}
+                  className="flex-1 flex flex-col focus:outline-none"
+                  title={`View specifications for ${cat.title}`}
+                >
                   {/* Image Container with Fixed Height & Fallback Handler */}
                   <div className="relative h-56 w-full bg-gradient-to-b from-neutral-100/90 to-neutral-50/40 p-4 flex items-center justify-center border-b border-neutral-100 overflow-hidden">
                     {/* Background Pattern Grid */}
@@ -238,7 +243,7 @@ export default function HomeWhatWeOffer({ onOpenRFQ }: { onOpenRFQ: (item?: stri
                       </ul>
                     </div>
                   </div>
-                </div>
+                </Link>
 
                 {/* Bottom Card Actions Bar */}
                 <div className="p-4 bg-neutral-50/80 border-t border-neutral-200/80 flex items-center justify-between gap-2 mt-auto">
@@ -251,7 +256,12 @@ export default function HomeWhatWeOffer({ onOpenRFQ }: { onOpenRFQ: (item?: stri
                   </Link>
 
                   <button
-                    onClick={() => onOpenRFQ(cat.title)}
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      onOpenRFQ(cat.title);
+                    }}
                     className="px-4 py-2 bg-red-600 hover:bg-red-700 active:scale-95 text-white rounded-xl text-xs font-black uppercase tracking-wider transition-all shadow-md shadow-red-600/20 hover:shadow-red-600/40"
                   >
                     Quote

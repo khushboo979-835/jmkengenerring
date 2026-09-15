@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '@/components/public/Navbar';
 import Footer from '@/components/public/Footer';
 import SmoothScrollProvider from '@/components/public/SmoothScrollProvider';
+import DelayedRFQPopup from '@/components/public/DelayedRFQPopup';
 
 export default function PublicLayout({
   children,
@@ -14,6 +15,7 @@ export default function PublicLayout({
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
+        <DelayedRFQPopup />
       </div>
     </SmoothScrollProvider>
   );
