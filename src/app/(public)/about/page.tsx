@@ -725,9 +725,8 @@ export default function AboutPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2">
-                    <span>Our Vision</span>
-                    <span className="text-red-500 font-serif italic text-sm sm:text-base font-normal">(हमारा दृष्टिकोण)</span>
+                  <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+                    Our Vision
                   </h3>
                   <p className="text-xs sm:text-sm text-neutral-300 font-medium leading-relaxed">
                     To be India's premier and most trusted manufacturing hub for heavy civil engineering, bridge expansion systems, POT-PTFE bearings, and modular infrastructure solutions.
@@ -777,9 +776,8 @@ export default function AboutPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-                    <span>Our Mission</span>
-                    <span className="text-neutral-500 font-serif italic text-sm sm:text-base font-normal">(हमारा ध्येय)</span>
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                    Our Mission
                   </h3>
                   <p className="text-xs sm:text-sm text-neutral-700 font-medium leading-relaxed">
                     To deliver precision-machined, certified civil structural products with zero-defect quality, fair ex-factory pricing, and uncompromised on-time delivery.
