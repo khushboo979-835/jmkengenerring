@@ -324,13 +324,29 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* 3. Bottom Copyright Bar Matching Exact Screenshot */}
+      {/* 3. Bottom Copyright Bar with Developer Credit */}
       <div className="bg-neutral-100 border-t border-neutral-200 py-4 px-4 sm:px-8 text-xs text-neutral-700 font-bold">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <p>© 2026 JMK Engineering & Developers. All Rights Reserved.</p>
-          <p className="text-[11px] sm:text-xs font-bold text-neutral-800">
-            Proprietorship Firm · CEO: <strong className="text-black font-black">Ujjwal Kumar</strong> · Patna, Bihar · GSTIN: <strong className="text-red-600 font-black">10BIEPD2766D2ZX</strong>
-          </p>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3 text-center md:text-left">
+          <div className="space-y-0.5">
+            <p>© {new Date().getFullYear()} JMK Engineering & Developers. All Rights Reserved.</p>
+            <p className="text-[11px] font-medium text-neutral-600">
+              Proprietorship Firm · CEO: <strong className="text-black font-black">Ujjwal Kumar</strong> · Patna, Bihar · GSTIN: <strong className="text-red-600 font-black">10BIEPD2766D2ZX</strong>
+            </p>
+          </div>
+
+          <div className="flex items-center gap-1.5 text-xs text-neutral-600 font-medium">
+            <span>Designed & Developed by</span>
+            <a
+              href="https://www.digitalinfinityddis.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-600 hover:text-red-700 font-black hover:underline transition-colors inline-flex items-center gap-1 bg-white px-2.5 py-1 rounded-lg border border-neutral-300 shadow-sm"
+              title="Visit Digital Infinity DDIS"
+            >
+              <span>Digital Infinity DDIS</span>
+              <ExternalLink className="w-3 h-3 text-red-600" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
