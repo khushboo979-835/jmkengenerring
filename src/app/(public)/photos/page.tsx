@@ -25,11 +25,13 @@ import { INDIA_MART_GALLERY_PHOTOS, PhotoGalleryItem } from '@/lib/seedData';
 import RFQModal from '@/components/public/RFQModal';
 
 const CATEGORIES = [
-  { id: 'all', label: 'All Photos (38+)' },
-  { id: 'Drainage Infrastructure', label: 'Drainage Infrastructure (20)' },
-  { id: 'Expansion Joints', label: 'Expansion Joints (9)' },
-  { id: 'Shuttering & Centering', label: 'Shuttering & Centering (6)' },
-  { id: 'Scaffolding Systems', label: 'Scaffolding & Jacks (3)' },
+  { id: 'all', label: 'All Photos (60+)' },
+  { id: 'Shuttering & Centering', label: 'Shuttering & Centering' },
+  { id: 'Scaffolding Systems', label: 'Scaffolding & Staging Cribs' },
+  { id: 'Expansion Joints & Bearings', label: 'Bridge Bearings & Joints' },
+  { id: 'Highway & Barriers', label: 'Highway & Crash Barriers' },
+  { id: 'Drainage Infrastructure', label: 'Bridge Drainage' },
+  { id: 'Heavy Infrastructure', label: 'Heavy Infrastructure' },
 ];
 
 export default function PhotosPage() {
@@ -110,7 +112,7 @@ export default function PhotosPage() {
               <Camera className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-lg sm:text-2xl font-black text-white">38+ Original</div>
+              <div className="text-lg sm:text-2xl font-black text-white">60+ Original</div>
               <div className="text-[11px] text-neutral-400 font-medium">Verified Photos</div>
             </div>
           </div>

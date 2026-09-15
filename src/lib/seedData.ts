@@ -264,7 +264,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     "slug": "strip-seal-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
-    "price": "₹ 2,400",
+    "price": "₹ 2,800 - ₹ 3,000 / RMT",
     "minOrderQuantity": "50 Pieces",
     "shortDescription": "Heavy-duty Strip Seal Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
     "fullDescription": "Heavy-duty industrial grade Strip Seal Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
@@ -309,14 +309,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       }
     ],
     "imageUrls": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/2/488290908/AH/HZ/PX/146888318/bitumen-expansion-joint-mastic-pad-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476998753/FW/XI/OZ/146888318/expansionjoints-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476992280/LM/EN/TS/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/5/510967192/FI/GE/PN/146888318/finger-type-expansion-joint-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/5/510967190/YQ/MU/IJ/146888318/finger-type-expansion-joint-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/4/503098873/DD/JT/VS/146888318/bitumen-expansion-joint-mastic-pad-500x500.jpeg"
+      "/images/drive_downloads/folder3_jmk_pic_new/d4164f62-ed93-4c41-b5c4-6415d708a9bc.jfif",
+      "https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/2/488290908/AH/HZ/PX/146888318/bitumen-expansion-joint-mastic-pad-500x500.jpeg",
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/d4164f62-ed93-4c41-b5c4-6415d708a9bc.jfif",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1547,7 +1543,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     "slug": "20-kg-ms-shuttering-plate",
     "category": "shuttering",
     "categoryLabel": "Shuttering Plates & Formwork",
-    "price": "₹ 60",
+    "price": "₹ 68 / Kg",
     "minOrderQuantity": "50 Pieces",
     "shortDescription": "Heavy-duty 20 Kg MS Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
     "fullDescription": "Heavy-duty industrial grade 20 Kg MS Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
@@ -1590,11 +1586,11 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       }
     ],
     "imageUrls": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/5/507525256/PU/PQ/IM/146888318/steel-shuttering-plate-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476992280/LM/EN/TS/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476982681/BJ/ZU/VV/146888318/mild-steel-centering-plate-500x500.jpg"
+      "/images/drive_downloads/folder2_jmk/3.png",
+      "/images/drive_downloads/folder1_old_pic/47099765-3398-4e50-9053-4d0edab0f694.jfif",
+      "/images/drive_downloads/folder2_jmk/19.png"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/5/507525256/PU/PQ/IM/146888318/steel-shuttering-plate-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/3.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1610,7 +1606,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     "slug": "27-kg-iron-shuttering-plate",
     "category": "shuttering",
     "categoryLabel": "Shuttering Plates & Formwork",
-    "price": "₹ 63.50",
+    "price": "₹ 67 / Kg",
     "minOrderQuantity": "27 kg",
     "shortDescription": "Heavy-duty 27 kg Iron Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
     "fullDescription": "Heavy-duty industrial grade 27 kg Iron Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
@@ -1654,12 +1650,12 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       }
     ],
     "imageUrls": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/5/510968117/ZD/NW/TO/146888318/ms-hunch-shuttering-plates-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/5/510968120/XA/OJ/CK/146888318/ms-hunch-shuttering-plates-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/5/510968122/EB/KS/FP/146888318/ms-hunch-shuttering-plates-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/4/503055081/OM/TR/UR/146888318/ms-hunch-shuttering-plates-500x500.jpg"
+      "/images/drive_downloads/folder1_old_pic/902b954b-c3b4-44d9-9bcf-5bf5c546f617.jfif",
+      "/images/drive_downloads/folder2_jmk/10.png",
+      "/images/drive_downloads/folder2_jmk/14.png",
+      "/images/drive_downloads/folder2_jmk/16.png"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/5/510968117/ZD/NW/TO/146888318/ms-hunch-shuttering-plates-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder1_old_pic/902b954b-c3b4-44d9-9bcf-5bf5c546f617.jfif",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1931,7 +1927,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     "slug": "round-ms-shuttering-plate",
     "category": "shuttering",
     "categoryLabel": "Shuttering Plates & Formwork",
-    "price": "₹ 80",
+    "price": "₹ 80 / Kg",
     "minOrderQuantity": "50 Pieces",
     "shortDescription": "Heavy-duty Round MS Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
     "fullDescription": "Heavy-duty industrial grade Round MS Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
@@ -1975,13 +1971,12 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       }
     ],
     "imageUrls": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476991144/AO/SM/KN/146888318/pot-ptfe-bridge-bearings-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476982660/HG/JP/XN/146888318/shuttering-plate-500x500.jpeg"
+      "/images/drive_downloads/folder2_jmk/1.png",
+      "/images/drive_downloads/folder3_jmk_pic_new/4c09960e-6224-448b-b611-b5da04ccec35.jfif",
+      "/images/drive_downloads/folder2_jmk/22.png",
+      "/images/about/circular-well-formwork.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/1.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1997,7 +1992,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     "slug": "scaffolding-adjustable-prop-jack",
     "category": "scaffolding",
     "categoryLabel": "Scaffolding Jacks & Props",
-    "price": "₹ 66",
+    "price": "₹ 67 / Kg",
     "minOrderQuantity": "25 kg",
     "shortDescription": "Heavy-duty Scaffolding Adjustable Prop Jack manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
     "fullDescription": "Heavy-duty industrial grade Scaffolding Adjustable Prop Jack manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
@@ -2038,11 +2033,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       }
     ],
     "imageUrls": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/1/482920899/KK/PC/RQ/146888318/scaffolding-adjustable-props-jack-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/1/482920961/FV/WX/IZ/146888318/scaffolding-adjustable-props-jack-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/1/482921070/EV/BL/YH/146888318/scaffolding-adjustable-props-jack-500x500.jpg"
+      "/images/drive_downloads/folder3_jmk_pic_new/5820fe2d-f907-41e1-9fe8-34d403da6ed5.jfif",
+      "/images/drive_downloads/folder2_jmk/17.png"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/1/482920899/KK/PC/RQ/146888318/scaffolding-adjustable-props-jack-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/5820fe2d-f907-41e1-9fe8-34d403da6ed5.jfif",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -2125,7 +2119,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     "slug": "adjustable-u-head-scaffolding-jack",
     "category": "scaffolding",
     "categoryLabel": "Scaffolding Jacks & Props",
-    "price": "₹ 210",
+    "price": "₹ 250 / Piece",
     "minOrderQuantity": "50 Pieces",
     "shortDescription": "Heavy-duty Adjustable U Head Scaffolding Jack manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
     "fullDescription": "Heavy-duty industrial grade Adjustable U Head Scaffolding Jack manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
@@ -2167,18 +2161,12 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       }
     ],
     "imageUrls": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/5/507517961/BE/AF/QW/146888318/construction-steel-scaffolding-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/5/512284106/YX/SB/TK/146888318/construction-steel-scaffolding-jeck-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/5/512284107/VN/OC/NZ/146888318/construction-steel-scaffolding-jeck-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/5/512284115/LG/KQ/UE/146888318/construction-steel-scaffolding-jeck-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2026/1/577871674/JE/VE/AX/146888318/construction-steel-scaffolding-jeck-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2026/1/577871677/ZU/TD/GY/146888318/construction-steel-scaffolding-jeck-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2026/1/577871681/NO/BQ/FX/146888318/construction-steel-scaffolding-jeck-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2026/1/577871684/EK/RG/GZ/146888318/construction-steel-scaffolding-jeck-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2026/1/577871688/UG/IE/FV/146888318/construction-steel-scaffolding-jeck-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2026/1/577871691/XW/FJ/XK/146888318/construction-steel-scaffolding-jeck-500x500.jpg"
+      "/images/drive_downloads/folder2_jmk/7.png",
+      "/images/drive_downloads/folder1_old_pic/7113aee4-cb95-4941-95dd-720b2416a4cf.jfif",
+      "/images/drive_downloads/folder2_jmk/11.png",
+      "/images/drive_downloads/folder2_jmk/18.png"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/5/507517961/BE/AF/QW/146888318/construction-steel-scaffolding-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/7.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -2194,7 +2182,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     "slug": "iron-challi-frame",
     "category": "scaffolding",
     "categoryLabel": "Scaffolding Jacks & Props",
-    "price": "₹ 55",
+    "price": "₹ 68 / Kg",
     "minOrderQuantity": "50 Pieces",
     "shortDescription": "Heavy-duty Iron challi frame manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
     "fullDescription": "Heavy-duty industrial grade Iron challi frame manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
@@ -2241,10 +2229,9 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       }
     ],
     "imageUrls": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/5/507520993/DO/BA/DF/146888318/scaffolding-vertical-standards-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/5/510952387/UJ/UL/QO/146888318/scaffolding-vertical-standards-500x500.png"
+      "/images/drive_downloads/folder3_jmk_pic_new/a0c55ac9-0a5a-4668-96f7-a5caeb89cc47.jfif"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/5/507520993/DO/BA/DF/146888318/scaffolding-vertical-standards-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/a0c55ac9-0a5a-4668-96f7-a5caeb89cc47.jfif",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -2461,7 +2448,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     "slug": "12mm-ms-drainage-spout",
     "category": "drainage",
     "categoryLabel": "Bridge Drainage Spouts",
-    "price": "₹ 800",
+    "price": "₹ 1,000 / Piece",
     "minOrderQuantity": "50 Pieces",
     "shortDescription": "Heavy-duty 12mm MS Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
     "fullDescription": "Heavy-duty industrial grade 12mm MS Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
@@ -2506,11 +2493,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       }
     ],
     "imageUrls": [
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476989849/XP/AX/HW/146888318/mild-steel-drainage-spout-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476989865/YL/UL/PW/146888318/mild-steel-drainage-spout-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476989876/QE/JO/GO/146888318/mild-steel-drainage-spout-500x500.jpeg"
+      "/images/drive_downloads/folder3_jmk_pic_new/591960f4-6489-4401-bd15-bae27a2ade22.jfif",
+      "https://5.imimg.com/data5/SELLER/Default/2024/12/476989849/XP/AX/HW/146888318/mild-steel-drainage-spout-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476989849/XP/AX/HW/146888318/mild-steel-drainage-spout-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/591960f4-6489-4401-bd15-bae27a2ade22.jfif",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -2856,7 +2842,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     "slug": "elastomeric-bridge-bearing",
     "category": "bearings",
     "categoryLabel": "Bridge & Structural Bearings",
-    "price": "₹ 3,500",
+    "price": "₹ 0.45 / cu.cm",
     "minOrderQuantity": "50 Pieces",
     "shortDescription": "Heavy-duty Elastomeric Bridge Bearing manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
     "fullDescription": "Heavy-duty industrial grade Elastomeric Bridge Bearing manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
@@ -2901,13 +2887,9 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       }
     ],
     "imageUrls": [
-      "https://5.imimg.com/data5/SELLER/Default/2024/7/438217755/YR/BL/XO/146888318/pot-ptfe-bridge-bearings-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/7/438217754/OK/WL/YV/146888318/pot-ptfe-bridge-bearings-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/7/438217756/TY/RK/XR/146888318/pot-ptfe-bridge-bearings-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/7/438217757/JC/VM/OY/146888318/pot-ptfe-bridge-bearings-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/7/438217759/YJ/DF/ZK/146888318/pot-ptfe-bridge-bearings-500x500.jpg"
+      "/images/drive_downloads/folder3_jmk_pic_new/b6c17132-df14-4773-b3bf-1925e540cc88.jfif"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/7/438217755/YR/BL/XO/146888318/pot-ptfe-bridge-bearings-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/b6c17132-df14-4773-b3bf-1925e540cc88.jfif",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -2923,7 +2905,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     "slug": "pot-ptfe-bridge-bearings",
     "category": "bearings",
     "categoryLabel": "Bridge & Structural Bearings",
-    "price": "₹ 100",
+    "price": "₹ 14,500 / Piece",
     "minOrderQuantity": "50 Pieces",
     "shortDescription": "Heavy-duty Pot Ptfe Bridge Bearings manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
     "fullDescription": "Heavy-duty industrial grade Pot Ptfe Bridge Bearings manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
@@ -2966,11 +2948,9 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       }
     ],
     "imageUrls": [
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476991775/EZ/SN/VM/146888318/elastomeric-bridge-rubber-bearing-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476106014/QN/LY/SR/146888318/1000055803-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476991824/CG/HQ/TN/146888318/elastomeric-bridge-rubber-bearing-500x500.jpeg"
+      "/images/drive_downloads/folder3_jmk_pic_new/094872c0-066e-4bad-9547-cd85560830f3.jfif"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476991775/EZ/SN/VM/146888318/elastomeric-bridge-rubber-bearing-500x500.jpeg",
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/094872c0-066e-4bad-9547-cd85560830f3.jfif",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -3758,7 +3738,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     "slug": "w-beam-crash-barrier",
     "category": "barriers",
     "categoryLabel": "Metal Beam Crash Barriers",
-    "price": "₹ 71",
+    "price": "₹ 1,750 / RMT",
     "minOrderQuantity": "50 Pieces",
     "shortDescription": "Heavy-duty W Beam Crash Barrier manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
     "fullDescription": "Heavy-duty industrial grade W Beam Crash Barrier manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
@@ -3801,12 +3781,9 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       }
     ],
     "imageUrls": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/4/507160016/SK/NM/ZD/146888318/bridge-expansion-joint-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/4/506803950/UR/PG/XU/146888318/w-metal-beam-crash-barrier-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/4/506804223/PG/CZ/RT/146888318/w-metal-beam-crash-barrier-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2025/4/506803646/VM/SE/DW/146888318/w-metal-beam-crash-barrier-500x500.jpg"
+      "/images/drive_downloads/folder3_jmk_pic_new/117b9a35-64f3-49fb-87f1-0b9872aa4df7.jfif"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507160016/SK/NM/ZD/146888318/bridge-expansion-joint-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/117b9a35-64f3-49fb-87f1-0b9872aa4df7.jfif",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -4072,7 +4049,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     "slug": "pressed-mild-steel-swivel-coupler",
     "category": "couplers",
     "categoryLabel": "Scaffolding Couplers & Fittings",
-    "price": "₹ 51",
+    "price": "₹ 75 / Piece",
     "minOrderQuantity": "50 Pieces",
     "shortDescription": "Heavy-duty Pressed Mild Steel Swivel Coupler manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
     "fullDescription": "Heavy-duty industrial grade Pressed Mild Steel Swivel Coupler manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
@@ -4114,13 +4091,9 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       }
     ],
     "imageUrls": [
-      "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
-      "https://5.imimg.com/data5/SELLER/Default/2024/12/476991144/AO/SM/KN/146888318/pot-ptfe-bridge-bearings-500x500.jpg"
+      "/images/drive_downloads/folder1_old_pic/b6660900-b132-47f5-b926-30c939b7c8e8.jfif"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder1_old_pic/b6660900-b132-47f5-b926-30c939b7c8e8.jfif",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -4129,9 +4102,506 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "ISO 9001:2015"
     ],
     "isFeatured": false
+  },
+  {
+    "id": "prod_scaffolding-cuplock-system",
+    "name": "Cuplock Scaffolding System (Verticals & Ledgers)",
+    "slug": "scaffolding-cuplock-system",
+    "category": "scaffolding",
+    "categoryLabel": "Scaffolding Systems",
+    "price": "₹ 68 / Kg",
+    "minOrderQuantity": "1 MT",
+    "shortDescription": "Heavy-duty Cuplock Scaffolding System with forged top cups and welded bottom cups for high-load bridge staging, pier formwork, and heavy civil construction.",
+    "fullDescription": "JMK Engineering & Developers manufactures premium grade modular Cuplock Scaffolding Systems in compliance with IS 1161 / IS 1239 and MoRTH bridge staging specifications. Constructed with 48.3mm OD high-yield steel tubes (3.2mm/4.0mm wall thickness), hot-dip galvanized or coated in anti-corrosive industrial red oxide. Standard vertical lengths of 1.0m, 1.5m, 2.0m, 2.5m, and 3.0m with cups welded at 500mm intervals. Ledgers available in lengths of 1.0m, 1.2m, 1.5m, 1.8m, 2.0m, and 2.5m featuring forged steel blade ends that lock securely into captive cups.",
+    "weightVariants": [
+      "1.0m (4.5 Kg)",
+      "1.5m (6.8 Kg)",
+      "2.0m (9.2 Kg)",
+      "2.5m (11.5 Kg)",
+      "3.0m (13.8 Kg)",
+      "Custom MT Batch"
+    ],
+    "dimensions": [
+      "48.3 mm OD Tube",
+      "3.2 mm / 4.0 mm Wall Thickness",
+      "Cups Spaced @ 500 mm"
+    ],
+    "materialGrade": "IS 1161 YST 210 / IS 1239 Medium Class Mild Steel",
+    "finishType": "Industrial Red Oxide Primer / Hot-Dip Galvanized",
+    "applications": [
+      "Bridge & Flyover Deck Staging",
+      "Heavy Pier & Pier Cap Formwork Support",
+      "Metro Rail Elevated Viaduct Construction",
+      "Industrial Shed & High-Rise Building Shuttering",
+      "Heavy Concrete Slab Shoring & Casting"
+    ],
+    "specs": {
+      "Tube Diameter": "48.3 mm Outer Diameter",
+      "Wall Thickness": "3.2 mm / 4.0 mm (Heavy Duty)",
+      "Cup Spacing": "500 mm (0.5m) Centers",
+      "Locking Mechanism": "Forged Top Cup & Welded Bottom Cup",
+      "Load Capacity": "Up to 7.5 Tonnes per Leg (with diagonal bracing)",
+      "Yield Strength": "210 - 310 MPa High Tensile Steel",
+      "Standard Lengths": "1.0m, 1.5m, 2.0m, 2.5m, 3.0m",
+      "Manufacturer": "JMK Engineering & Developers, Patna Works"
+    },
+    "variants": [
+      {
+        "name": "Cuplock Vertical Standard (3.0m)",
+        "weight": "13.8 Kg",
+        "dimensions": "48.3mm OD x 3.2mm x 3000mm",
+        "priceEstimate": "₹ 67 / Kg"
+      },
+      {
+        "name": "Cuplock Vertical Standard (2.0m)",
+        "weight": "9.2 Kg",
+        "dimensions": "48.3mm OD x 3.2mm x 2000mm",
+        "priceEstimate": "₹ 67 / Kg"
+      },
+      {
+        "name": "Cuplock Ledger Horizontal (2.0m)",
+        "weight": "7.8 Kg",
+        "dimensions": "48.3mm OD x 3.2mm x 2000mm",
+        "priceEstimate": "₹ 64 / Kg"
+      },
+      {
+        "name": "Cuplock Ledger Horizontal (1.5m)",
+        "weight": "5.8 Kg",
+        "dimensions": "48.3mm OD x 3.2mm x 1500mm",
+        "priceEstimate": "₹ 64 / Kg"
+      }
+    ],
+    "imageUrls": [
+      "/images/drive_downloads/folder2_jmk/4.png",
+      "/images/drive_downloads/folder2_jmk/154b737f-7b2f-40a4-85ff-b934b4d19736.jfif",
+      "/images/drive_downloads/folder1_old_pic/6e2568c8-02c5-404b-8da8-cf1d1dd72be7.jfif",
+      "/images/drive_downloads/folder2_jmk/4ba08a82-9cb0-45f8-b86e-53873207aee2.jfif"
+    ],
+    "featuredImage": "/images/drive_downloads/folder2_jmk/4.png",
+    "complianceStandards": [
+      "IS 1161",
+      "IS 1239",
+      "MoRTH Section 1500",
+      "ISO 9001:2015",
+      "IRC:87"
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "prod_cc-cribs-staging-tower",
+    "name": "CC Cribs Heavy Duty Staging Tower & C-Cribs",
+    "slug": "cc-cribs-staging-tower",
+    "category": "scaffolding",
+    "categoryLabel": "Scaffolding Systems",
+    "price": "₹ 68 / Kg",
+    "minOrderQuantity": "5 Sets",
+    "shortDescription": "Heavy-duty modular CC Cribs (C-Cribs) staging frames for high-load bridge girder support, pier cap shoring, and heavy structural falsework.",
+    "fullDescription": "JMK Engineering & Developers fabricates heavy-duty CC Cribs (C-Cribs) designed specifically for ultra high-load bridge girder erection, aqueduct shoring, and metro rail falsework. Built with heavy structural angle sections and tubular struts in standard base footprint of 1200mm x 1200mm and modular heights of 1000mm, 1500mm, and 2000mm. Each tower withstands concentrated vertical loads of up to 40 tonnes when stacked and cross-braced, making it the preferred staging solution for mega infrastructure projects.",
+    "weightVariants": [
+      "Base Frame 1200x1200mm (38 Kg)",
+      "Intermediate Frame (42 Kg)",
+      "Top Frame with Jack Spigot (45 Kg)",
+      "Custom Tonnage Batch"
+    ],
+    "dimensions": [
+      "1200 mm x 1200 mm Base",
+      "Heights: 1.0m, 1.5m, 2.0m Modular",
+      "Heavy Channel / Angle Construction"
+    ],
+    "materialGrade": "IS 2062 Grade E250 Mild Steel",
+    "finishType": "Industrial Red Oxide / Anti-Corrosion Coating",
+    "applications": [
+      "Bridge Girder Erection & Falsework",
+      "Heavy Pier Cap & Viaduct Casting Support",
+      "Metro Rail Elevated Track Staging",
+      "Hydroelectric Dam & Aqueduct Shoring",
+      "Industrial Heavy Machinery Foundation Support"
+    ],
+    "specs": {
+      "Frame Dimensions": "1200 mm x 1200 mm Base Footprint",
+      "Modular Heights": "1000 mm, 1500 mm, 2000 mm",
+      "Main Structural Members": "ISMC 75/100 Channel & 50x50x5 Angle",
+      "Safe Working Load": "Up to 40 Tonnes per Stacked Tower",
+      "Connection Method": "Spigot Pin & High-Tensile Grade 8.8 Bolts",
+      "Finish": "Dipped Anti-Rust Primer / Red Oxide",
+      "Manufacturer": "JMK Engineering & Developers, Patna Works"
+    },
+    "variants": [
+      {
+        "name": "CC Crib Frame Unit (1200x1200x1500mm)",
+        "weight": "42 Kg",
+        "dimensions": "1200 x 1200 x 1500 mm",
+        "priceEstimate": "₹ 68 / Kg"
+      },
+      {
+        "name": "CC Crib Base Tower (1200x1200x1000mm)",
+        "weight": "38 Kg",
+        "dimensions": "1200 x 1200 x 1000 mm",
+        "priceEstimate": "₹ 68 / Kg"
+      },
+      {
+        "name": "CC Crib Heavy Deck Unit (1200x1200x2000mm)",
+        "weight": "52 Kg",
+        "dimensions": "1200 x 1200 x 2000 mm",
+        "priceEstimate": "₹ 68 / Kg"
+      }
+    ],
+    "imageUrls": [
+      "/images/drive_downloads/folder2_jmk/2.png",
+      "/images/drive_downloads/folder2_jmk/5.png",
+      "/images/drive_downloads/folder2_jmk/6.png",
+      "/images/drive_downloads/folder2_jmk/8.png",
+      "/images/drive_downloads/folder2_jmk/9.png",
+      "/images/drive_downloads/folder2_jmk/12.png",
+      "/images/drive_downloads/folder2_jmk/29.png",
+      "/images/drive_downloads/folder2_jmk/30.png"
+    ],
+    "featuredImage": "/images/drive_downloads/folder2_jmk/2.png",
+    "complianceStandards": [
+      "IS 2062",
+      "IS 800",
+      "MoRTH Section 1500",
+      "IRC:87",
+      "ISO 9001:2015"
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "prod_acro-span-centering",
+    "name": "Heavy Duty Acro Span Telescopic Centering Span (15ft / 18ft)",
+    "slug": "acro-span-centering",
+    "category": "shuttering",
+    "categoryLabel": "Shuttering & Centering",
+    "price": "₹ 80 / Kg",
+    "minOrderQuantity": "10 Sets",
+    "shortDescription": "Heavy-duty telescopic Acro Spans (centering spans) for self-supporting slab formwork, bridge deck casting, and beam soffits without intermediate propping.",
+    "fullDescription": "JMK Engineering & Developers manufactures precision telescopic Acro Spans (also known as Centering Spans) fabricated from high-yield structural steel. Designed to eliminate dense under-propping during slab casting, bridging spans from 2.4 meters up to 4.5 meters (15ft) and 5.5 meters (18ft). Features outer lattice girder box with inner slide-out telescopic unit locked via high-tensile wedge pins and adjustment bolts for zero mid-span deflection under wet concrete loading.",
+    "weightVariants": [
+      "Standard 2.4m - 4.2m (32 Kg)",
+      "Extended 3.0m - 4.8m (40 Kg)",
+      "Heavy 3.6m - 5.5m (48 Kg)",
+      "Custom MT Batch"
+    ],
+    "dimensions": [
+      "Open Length: 15ft (4.5m) / 18ft (5.5m)",
+      "Closed Length: 8ft (2.4m)",
+      "Camber Angle: Zero-Sag Engineered"
+    ],
+    "materialGrade": "IS 2062 Grade E250 / IS 1161 Steel",
+    "finishType": "Industrial Red Oxide Primer Coating",
+    "applications": [
+      "RCC Slab & Floor Centering without Under-Props",
+      "Bridge Deck & Culvert Soffit Casting",
+      "Commercial High-Rise Slab Formwork",
+      "Long-Span Industrial Roofing Centering",
+      "Precast Yard Staging & Moulding"
+    ],
+    "specs": {
+      "Span Range": "2.40 m to 4.50 m (15 ft) / 5.50 m (18 ft)",
+      "Lattice Members": "Heavy Structural Angles & T-Sections",
+      "Adjustment Type": "Telescopic Slide with Hardened Wedge Pins",
+      "Load Capacity": "Up to 2.8 Tonnes UDL at Maximum Extension",
+      "Deflection Rating": "Exceeds IS 14687 deflection limits (< Span/500)",
+      "Finish": "Dipped Red Oxide Primer",
+      "Manufacturer": "JMK Engineering & Developers, Patna Works"
+    },
+    "variants": [
+      {
+        "name": "Acro Span Regular (2.4m - 4.2m / 15ft)",
+        "weight": "34 Kg",
+        "dimensions": "2400mm Closed, 4200mm Extended",
+        "priceEstimate": "₹ 80 / Kg"
+      },
+      {
+        "name": "Acro Span Extended (3.0m - 5.5m / 18ft)",
+        "weight": "46 Kg",
+        "dimensions": "3000mm Closed, 5500mm Extended",
+        "priceEstimate": "₹ 80 / Kg"
+      }
+    ],
+    "imageUrls": [
+      "/images/drive_downloads/folder3_jmk_pic_new/7236dc6c-a06b-4d87-9e0d-898cd51e96bb.jfif"
+    ],
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/7236dc6c-a06b-4d87-9e0d-898cd51e96bb.jfif",
+    "complianceStandards": [
+      "IS 2062",
+      "IS 14687",
+      "MoRTH Section 1500",
+      "ISO 9001:2015"
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "prod_crash-barrier-mould",
+    "name": "Heavy Bridge Crash Barrier Steel Mould (3m Length)",
+    "slug": "crash-barrier-mould",
+    "category": "barriers",
+    "categoryLabel": "Highway & Barriers",
+    "price": "₹ 80 / Kg",
+    "minOrderQuantity": "1 Set (3m)",
+    "shortDescription": "Heavy-duty IS 2062 steel formwork moulds for in-situ casting of MoRTH/IRC compliant concrete crash barriers and parapet walls on bridges and highways.",
+    "fullDescription": "JMK Engineering & Developers manufactures precision-engineered steel Crash Barrier Moulds designed for in-situ casting of high-containment reinforced concrete crash barriers (parapets) along bridges, flyovers, and expressways. Fabricated with 4mm to 6mm thick IS 2062 skin plates stiffened by heavy vertical and horizontal channel soldiers. Available in 3-meter modular lengths with quick-lock turnbuckles and tie rod brackets, ensuring laser-straight alignment, smooth concrete surface finish, and over 100 repetition cycles.",
+    "weightVariants": [
+      "3.0m Standard Section (280 Kg)",
+      "3.0m Heavy Stiffened Section (340 Kg)",
+      "Custom Project Profiling"
+    ],
+    "dimensions": [
+      "Length: 3000 mm (3.0m)",
+      "Height: 850 mm - 1100 mm MoRTH Profile",
+      "Skin Plate: 4mm - 6mm IS 2062"
+    ],
+    "materialGrade": "IS 2062 Grade E250 Mild Steel",
+    "finishType": "Industrial Red Oxide / Anti-Corrosion Primer",
+    "applications": [
+      "Highway & Expressway Parapet Wall Casting",
+      "Bridge & Flyover Concrete Crash Barrier Construction",
+      "Metro Rail Viaduct Parapet Formwork",
+      "River Bridge Safety Wall Moulding",
+      "Precast Crash Barrier Yard Production"
+    ],
+    "specs": {
+      "Modular Length": "3000 mm (3.0 Meter) per segment",
+      "MoRTH Height Profile": "850 mm / 1000 mm / 1100 mm",
+      "Skin Plate Thickness": "4.0 mm / 5.0 mm / 6.0 mm IS 2062 Plate",
+      "Stiffeners": "ISMC 75 Channel & 50x50x6 Angle Ribs",
+      "Locking System": "Turnbuckle Jack Brackets & Heavy Tie Rod Sleeves",
+      "Repetition Life": "100+ Pouring Cycles",
+      "Manufacturer": "JMK Engineering & Developers, Patna Works"
+    },
+    "variants": [
+      {
+        "name": "Crash Barrier Mould 3m (850mm Height MoRTH Profile)",
+        "weight": "280 Kg",
+        "dimensions": "3000 x 850 mm Profile",
+        "priceEstimate": "₹ 80 / Kg"
+      },
+      {
+        "name": "Crash Barrier Mould 3m (1100mm Heavy High-Containment Profile)",
+        "weight": "340 Kg",
+        "dimensions": "3000 x 1100 mm Profile",
+        "priceEstimate": "₹ 80 / Kg"
+      },
+      {
+        "name": "Bridge Parapet Mould Panel (Custom Radius / Transition)",
+        "weight": "Custom Kg",
+        "dimensions": "Project BOQ Specified",
+        "priceEstimate": "₹ 80 / Kg"
+      }
+    ],
+    "imageUrls": [
+      "/images/drive_downloads/folder3_jmk_pic_new/714babbb-df90-427e-bd1c-fe8adce2c4d7.jfif",
+      "/images/drive_downloads/folder2_jmk/20.png",
+      "/images/drive_downloads/folder2_jmk/21.png",
+      "/images/drive_downloads/folder2_jmk/24.png",
+      "/images/drive_downloads/folder2_jmk/25.png",
+      "/images/drive_downloads/folder2_jmk/26.png",
+      "/images/drive_downloads/folder2_jmk/27.png",
+      "/images/drive_downloads/folder2_jmk/28.png"
+    ],
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/714babbb-df90-427e-bd1c-fe8adce2c4d7.jfif",
+    "complianceStandards": [
+      "IRC:5",
+      "MoRTH Section 800 / 1500",
+      "IS 2062",
+      "ISO 9001:2015"
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "prod_haunch-plate-shuttering",
+    "name": "MS Haunch Plate & Formwork Angle Bracket System",
+    "slug": "haunch-plate-shuttering",
+    "category": "shuttering",
+    "categoryLabel": "Shuttering & Centering",
+    "price": "₹ 68 / Kg",
+    "minOrderQuantity": "25 Pcs",
+    "shortDescription": "Precision fabricated MS Haunch Plates (Hunch Plates) and structural angle brackets for bridge girder soffit transitions, culvert haunches, and beam-column junction formwork.",
+    "fullDescription": "JMK Engineering & Developers fabricates heavy MS Haunch Plates (Hunch Plates) and structural angle brackets for smooth chamfered concrete transitions in bridge box girders, I-girders, culverts, and heavy pier cap haunches. Manufactured from IS 2062 structural grade steel with stiffened gusset plates, ensuring precise angles without grout leakage or deflection under hydraulic concrete pressure.",
+    "weightVariants": [
+      "Standard Haunch 45° (12 Kg)",
+      "Heavy Girder Haunch (18 Kg)",
+      "Custom Angular Gusset (24 Kg)",
+      "Custom MT Batch"
+    ],
+    "dimensions": [
+      "Angle: 45° / 60° Custom Haunch Chamfer",
+      "Thickness: 3.0mm to 6.0mm IS 2062",
+      "Lengths: 600mm, 900mm, 1200mm"
+    ],
+    "materialGrade": "IS 2062 Grade E250 Mild Steel",
+    "finishType": "Industrial Red Oxide Primer Coating",
+    "applications": [
+      "Bridge Box Girder & I-Girder Haunch Transitions",
+      "Culvert Corner Haunches & Pier Cap Fillets",
+      "Retaining Wall & Abutment Beam Junctions",
+      "Heavy Column-to-Beam Soffit Formwork Support",
+      "Industrial Sump & Tank Wall Chamfers"
+    ],
+    "specs": {
+      "Material": "IS 2062 Structural Mild Steel",
+      "Angle Precision": "CNC Sheared & Press-Braked ±0.5°",
+      "Stiffener Ribs": "Welded MS Gusset Plates @ 300mm centers",
+      "Standard Lengths": "600 mm, 900 mm, 1200 mm, 1250 mm",
+      "Manufacturer": "JMK Engineering & Developers, Patna Works"
+    },
+    "variants": [
+      {
+        "name": "MS Haunch Plate 1250mm (45° Chamfer)",
+        "weight": "16 Kg",
+        "dimensions": "1250 x 200 x 200 mm (45°)",
+        "priceEstimate": "₹ 68 / Kg"
+      },
+      {
+        "name": "Formwork Angle Bracket Heavy Stiffened",
+        "weight": "8 Kg",
+        "dimensions": "300 x 300 x 50 mm",
+        "priceEstimate": "₹ 68 / Kg"
+      }
+    ],
+    "imageUrls": [
+      "/images/drive_downloads/folder2_jmk/13.png",
+      "/images/drive_downloads/folder2_jmk/15.png",
+      "/images/drive_downloads/folder2_jmk/23.png"
+    ],
+    "featuredImage": "/images/drive_downloads/folder2_jmk/13.png",
+    "complianceStandards": [
+      "IS 2062",
+      "MoRTH Section 1500",
+      "ISO 9001:2015"
+    ],
+    "isFeatured": false
+  },
+  {
+    "id": "prod_tie-rod-wing-nut",
+    "name": "Formwork Tie Rod & Wing Nut Fastener System (3m)",
+    "slug": "tie-rod-wing-nut",
+    "category": "shuttering",
+    "categoryLabel": "Shuttering & Centering",
+    "price": "Tie Rod ₹120/pc, Wing Nut ₹55/pc",
+    "minOrderQuantity": "100 Sets",
+    "shortDescription": "High-tensile cold-rolled threaded Tie Rods and heavy ductile iron Wing Nuts for securing column formwork, wall shuttering, and bridge pier moulds.",
+    "fullDescription": "JMK Engineering & Developers supplies high-tensile cold-rolled Dywidag-profile Tie Rods (16mm / 20mm Dia) and matching heavy ductile cast iron 2-wing and 3-wing Nuts for heavy concrete formwork clamping. Engineered to withstand high bursting lateral pressures during high-slump concrete pours in bridge piers, shear walls, retaining walls, and heavy foundations. Available in continuous 3-meter lengths or cut-to-size with water stoppers and PVC sleeves.",
+    "weightVariants": [
+      "Tie Rod 16mm x 3m (4.5 Kg)",
+      "Heavy Wing Nut 90mm Plate (0.65 Kg)",
+      "Wing Nut 120mm Heavy (0.95 Kg)"
+    ],
+    "dimensions": [
+      "Tie Rod Dia: 16 mm / 20 mm",
+      "Length: 3000 mm (3.0m)",
+      "Wing Nut Flange: 90mm / 100mm / 120mm"
+    ],
+    "materialGrade": "High Tensile Q235 / 45# Steel Tie Rod + Ductile Iron SG400 Wing Nut",
+    "finishType": "Electro-Galvanized / Self-Color Oiled",
+    "applications": [
+      "Bridge Pier & Abutment Wall Formwork Clamping",
+      "High-Rise Shear Wall & Core Wall Shuttering",
+      "Column Box Formwork Lateral Tension Locking",
+      "Water Tank & Culvert Formwork Fastening",
+      "Heavy Concrete Retaining Wall Casting"
+    ],
+    "specs": {
+      "Tie Rod Diameter": "16 mm Continuous Cold-Rolled Thread (15/17mm)",
+      "Breaking Load": "Exceeds 180 kN (18 Tonnes Tensile Capacity)",
+      "Wing Nut Type": "Heavy Ductile Iron (SG 500/7) with 90mm/100mm Base Flange",
+      "Thread Pitch": "10 mm Dywidag Compatible Rapid Pitch",
+      "Standard Length": "3.0 Meter (3000 mm)",
+      "Manufacturer": "JMK Engineering & Developers, Patna Works"
+    },
+    "variants": [
+      {
+        "name": "High-Tensile 16mm Tie Rod (3.0m Length)",
+        "weight": "4.5 Kg",
+        "dimensions": "16mm Dia x 3000mm Length",
+        "priceEstimate": "₹ 120 / Pc"
+      },
+      {
+        "name": "Ductile Iron Double Wing Nut (90mm Base)",
+        "weight": "0.65 Kg",
+        "dimensions": "90mm Flange Dia, 16mm Thread",
+        "priceEstimate": "₹ 55 / Pc"
+      },
+      {
+        "name": "Complete Shuttering Clamping Set (Tie Rod + 2 Wing Nuts)",
+        "weight": "5.8 Kg",
+        "dimensions": "16mm x 3m + 2 Nuts",
+        "priceEstimate": "₹ 230 / Set"
+      }
+    ],
+    "imageUrls": [
+      "/images/drive_downloads/folder3_jmk_pic_new/a642f288-db66-4186-8ee5-da1acffff2bf.jfif"
+    ],
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/a642f288-db66-4186-8ee5-da1acffff2bf.jfif",
+    "complianceStandards": [
+      "IS 2062",
+      "BS EN 12812",
+      "ISO 9001:2015"
+    ],
+    "isFeatured": false
+  },
+  {
+    "id": "prod_road-sign-board",
+    "name": "Road & Highway Retro-Reflective Sign Board (Type IV / XI)",
+    "slug": "road-sign-board",
+    "category": "barriers",
+    "categoryLabel": "Highway & Barriers",
+    "price": "Market Best Rate",
+    "minOrderQuantity": "5 Boards",
+    "shortDescription": "MoRTH and IRC:67 compliant retro-reflective traffic, regulatory, warning, and overhead gantry direction sign boards for highways and expressways.",
+    "fullDescription": "JMK Engineering & Developers manufactures IRC:67 and MoRTH Section 800 compliant highway retro-reflective signage boards. Fabricated on 3mm/4mm thick aluminum composite panels (ACP) or high-grade galvanized iron (GI) backing with Class B / Type IV High-Intensity Micro-Prismatic (HIP) or Type XI Diamond Grade retro-reflective sheeting. Supported by hot-dip galvanized ISMC channel and pipe posts for complete weather resistance and long service life on national highways and expressways.",
+    "weightVariants": [
+      "Standard Cautionary Sign 900mm (8 Kg)",
+      "Regulatory Circular Sign 600mm (6 Kg)",
+      "Overhead Direction Gantry Board (Custom Tonnage)"
+    ],
+    "dimensions": [
+      "Standard Shapes: Triangular (900mm), Circular (600mm), Octagonal (Stop)",
+      "Direction Boards: 1200x900mm, 2400x1200mm, Overhead Custom"
+    ],
+    "materialGrade": "Aluminum Composite Panel (ACP 3mm/4mm) / Hot Dip Galvanized Sheet + 3M HIP/Diamond Sheeting",
+    "finishType": "Class B / Type IV / Type XI High-Intensity Retro-Reflective Sheeting",
+    "applications": [
+      "National Highways & State Highway Corridors",
+      "Expressway Gantry & Cantilever Signage",
+      "Bridge & Flyover Entry/Exit Warning Signs",
+      "Construction Zone Safety & Diversion Boards",
+      "City Municipal Traffic Regulatory Signs"
+    ],
+    "specs": {
+      "Compliance Standard": "IRC:67-2012 & MoRTH Section 800 Specifications",
+      "Sheeting Grade": "Type IV High-Intensity Micro-Prismatic (HIP) / Type XI Diamond Grade",
+      "Backing Material": "3.0mm / 4.0mm High-Grade ACP or 1.5mm Galvanized Steel Sheet",
+      "Mounting Hardware": "Hot-Dip Galvanized Back Channels, U-Clamps & Fasteners",
+      "Reflectivity Warranty": "7 to 10 Years Outdoor Warranty",
+      "Manufacturer": "JMK Engineering & Developers, Patna Works"
+    },
+    "variants": [
+      {
+        "name": "Mandatory / Cautionary Sign Board (Standard Size)",
+        "weight": "7 Kg",
+        "dimensions": "600mm / 900mm Diameter / Triangle",
+        "priceEstimate": "Market Best Rate"
+      },
+      {
+        "name": "Overhead Highway Direction Sign Board (ACP + HIP Sheeting)",
+        "weight": "Project Custom",
+        "dimensions": "2400 x 1200 mm or Custom BOQ",
+        "priceEstimate": "Market Best Rate"
+      }
+    ],
+    "imageUrls": [
+      "/images/drive_downloads/folder3_jmk_pic_new/931c5c74-2db3-4fee-aa97-93235096c114.jfif"
+    ],
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/931c5c74-2db3-4fee-aa97-93235096c114.jfif",
+    "complianceStandards": [
+      "IRC:67",
+      "MoRTH Section 800",
+      "ISO 9001:2015"
+    ],
+    "isFeatured": false
   }
 ];
-
 
 export interface PhotoGalleryItem {
   id: string;
@@ -4144,418 +4614,598 @@ export interface PhotoGalleryItem {
 }
 
 export const INDIA_MART_GALLERY_PHOTOS: PhotoGalleryItem[] = [
-  // JMK Authentic Factory & Manufacturing Highlights
   {
-    id: 'gal_mixer',
-    title: 'Heavy Duty Concrete Mixer Machine (10/7 CFT)',
-    category: 'Shuttering & Centering',
-    price: '₹75,000 - ₹1,20,000 / Unit',
-    imageUrl: '/images/about/concrete-mixer-machine.png',
-    moq: '1 Unit',
-    slug: 'concrete-mixer-machine',
+    "id": "gal_d1_cuplock_vert",
+    "title": "Cuplock Vertical Scaffolding Member (1m, 2m, 3m)",
+    "category": "Scaffolding Systems",
+    "price": "₹64 / Kg",
+    "imageUrl": "/images/drive_downloads/folder1_old_pic/6e2568c8-02c5-404b-8da8-cf1d1dd72be7.jfif",
+    "moq": "1 MT",
+    "slug": "scaffolding-cuplock-system"
   },
   {
-    id: 'gal_well_formwork',
-    title: 'Circular Well Steining & Pier Formwork Mould',
-    category: 'Shuttering & Centering',
-    price: '₹75 / Kg',
-    imageUrl: '/images/about/circular-well-formwork.jpg',
-    moq: '1 Set',
-    slug: 'iron-shuttering-plates',
+    "id": "gal_d1_shuttering_900",
+    "title": "MS Shuttering Plate (1250 x 900 mm)",
+    "category": "Shuttering & Centering",
+    "price": "₹67 / Kg",
+    "imageUrl": "/images/drive_downloads/folder1_old_pic/902b954b-c3b4-44d9-9bcf-5bf5c546f617.jfif",
+    "moq": "50 Pcs",
+    "slug": "27-kg-iron-shuttering-plate"
   },
   {
-    id: 'gal_staging_truss',
-    title: 'Heavy Girder Staging Truss Blocks & Frame Units',
-    category: 'Scaffolding Systems',
-    price: '₹82 / Kg',
-    imageUrl: '/images/about/yellow-girder-staging-truss.jpg',
-    moq: '10 Sets',
-    slug: 'cuplock-scaffolding-system',
+    "id": "gal_d1_u_jack_300",
+    "title": "U Jack Heavy Duty Support Base (300 mm)",
+    "category": "Scaffolding Systems",
+    "price": "₹250 / Pc",
+    "imageUrl": "/images/drive_downloads/folder1_old_pic/7113aee4-cb95-4941-95dd-720b2416a4cf.jfif",
+    "moq": "100 Pcs",
+    "slug": "adjustable-u-head-scaffolding-jack"
   },
   {
-    id: 'gal_box_truss',
-    title: 'Heavy Structural Steel Box Trusses & Girders',
-    category: 'Shuttering & Centering',
-    price: '₹85 / Kg',
-    imageUrl: '/images/about/purple-steel-truss-box.jpg',
-    moq: '5 MT',
-    slug: 'mild-steel-centering-sheets',
-  },
-  // 1. Shuttering & Centering
-  {
-    id: 'gal_1',
-    title: '13 Kg Mild Steel Centering Sheets',
-    category: 'Shuttering & Centering',
-    price: '₹850 - ₹1,050 / Pc',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476982681/BJ/ZU/VV/146888318/mild-steel-centering-plate-500x500.jpg',
-    moq: '100 Pcs',
-    slug: 'mild-steel-centering-sheets',
+    "id": "gal_d1_shuttering_600",
+    "title": "MS Shuttering Plate (1250 x 600 mm)",
+    "category": "Shuttering & Centering",
+    "price": "₹67 / Kg",
+    "imageUrl": "/images/drive_downloads/folder1_old_pic/47099765-3398-4e50-9053-4d0edab0f694.jfif",
+    "moq": "50 Pcs",
+    "slug": "20-kg-ms-shuttering-plate"
   },
   {
-    id: 'gal_2',
-    title: '20 Kg RCC Slab Shuttering Plates',
-    category: 'Shuttering & Centering',
-    price: '₹1,450 / Pc',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476982660/HG/JP/XN/146888318/shuttering-plate-500x500.jpeg',
-    moq: '50 Pcs',
-    slug: 'iron-shuttering-plates',
+    "id": "gal_d1_coupler_clamp",
+    "title": "Scaffolding Right Angle Clamp & Coupler (40x50, 50x50)",
+    "category": "Scaffolding Systems",
+    "price": "₹75 / Pc",
+    "imageUrl": "/images/drive_downloads/folder1_old_pic/b6660900-b132-47f5-b926-30c939b7c8e8.jfif",
+    "moq": "200 Pcs",
+    "slug": "pressed-mild-steel-swivel-coupler"
   },
   {
-    id: 'gal_3',
-    title: '27 kg Iron Shuttering Plate',
-    category: 'Shuttering & Centering',
-    price: '₹1,950 / Pc',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/5/507525256/PU/PQ/IM/146888318/steel-shuttering-plate-500x500.jpg',
-    moq: '50 Pcs',
-    slug: 'iron-shuttering-plates',
+    "id": "gal_d1_infra_1",
+    "title": "Heavy Girder Launching & Highway Overpass Site",
+    "category": "Heavy Infrastructure",
+    "price": "Plant & Site Execution",
+    "imageUrl": "/images/drive_downloads/folder1_old_pic/Gemini_Generated_Image_l9fowfl9fowfl9fo.png",
+    "moq": "Project Scope",
+    "slug": "scaffolding-cuplock-system"
   },
   {
-    id: 'gal_4',
-    title: 'Mild Steel Column Shuttering Plate',
-    category: 'Shuttering & Centering',
-    price: '₹1,650 / Pc',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg',
-    moq: '50 Pcs',
-    slug: 'iron-shuttering-plates',
+    "id": "gal_d1_infra_2",
+    "title": "Multi-Span Bridge Pier & Staging Assembly",
+    "category": "Heavy Infrastructure",
+    "price": "Plant & Site Execution",
+    "imageUrl": "/images/drive_downloads/folder1_old_pic/Gemini_Generated_Image_pbwilkpbwilkpbwi.png",
+    "moq": "Project Scope",
+    "slug": "cc-cribs-staging-tower"
   },
   {
-    id: 'gal_5',
-    title: 'MS Hunch Shuttering Plates & Soldiers',
-    category: 'Shuttering & Centering',
-    price: '₹3,400 / Pc',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/5/510968117/ZD/NW/TO/146888318/ms-hunch-shuttering-plates-500x500.jpg',
-    moq: '20 Pcs',
-    slug: 'ms-shuttering-soldiers',
+    "id": "gal_d1_infra_3",
+    "title": "Elevated Expressway Deck Formwork Staging",
+    "category": "Heavy Infrastructure",
+    "price": "Plant & Site Execution",
+    "imageUrl": "/images/drive_downloads/folder1_old_pic/Gemini_Generated_Image_q1e79rq1e79rq1e7.png",
+    "moq": "Project Scope",
+    "slug": "acro-span-centering"
   },
   {
-    id: 'gal_6',
-    title: 'Heavy Stacking Shuttering Plates',
-    category: 'Shuttering & Centering',
-    price: '₹1,950 / Pc',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476982647/UB/EB/FC/146888318/shuttering-plate-500x500.jpeg',
-    moq: '50 Pcs',
-    slug: 'iron-shuttering-plates',
-  },
-
-  // 2. Scaffolding & Jacks
-  {
-    id: 'gal_7',
-    title: 'Iron H Frame Scaffolding System',
-    category: 'Scaffolding Systems',
-    price: '₹2,650 / Set',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/4/506847242/EZ/YV/NW/146888318/iron-h-frame-scaffolding-system-500x500.jpg',
-    moq: '50 Sets',
-    slug: 'h-frame-scaffolding-system',
+    "id": "gal_d1_infra_4",
+    "title": "High-Load Steel Girder & Viaduct Engineering",
+    "category": "Heavy Infrastructure",
+    "price": "Plant & Site Execution",
+    "imageUrl": "/images/drive_downloads/folder1_old_pic/Gemini_Generated_Image_se0q2xse0q2xse0q.png",
+    "moq": "Project Scope",
+    "slug": "pot-ptfe-bridge-bearings"
   },
   {
-    id: 'gal_8',
-    title: 'Adjustable Props Scaffolding Jacks',
-    category: 'Scaffolding Systems',
-    price: '₹1,250 / Pc',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476992280/LM/EN/TS/146888318/mild-steel-column-shuttering-plate-500x500.jpeg',
-    moq: '100 Pcs',
-    slug: 'adjustable-steel-props-jacks',
+    "id": "gal_d1_infra_5",
+    "title": "Patna Central Fabrication Plant Logistics Yard",
+    "category": "Heavy Infrastructure",
+    "price": "Plant & Site Execution",
+    "imageUrl": "/images/drive_downloads/folder1_old_pic/Gemini_Generated_Image_u487u1u487u1u487.png",
+    "moq": "Project Scope",
+    "slug": "strip-seal-expansion-joint"
   },
   {
-    id: 'gal_9',
-    title: 'Vertical Scaffolding Base & U-Head Jack',
-    category: 'Scaffolding Systems',
-    price: '₹380 - ₹620 / Pc',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476992291/XQ/XM/AQ/146888318/column-shuttering-plate-500x500.jpeg',
-    moq: '150 Pcs',
-    slug: 'vertical-scaffolding-jacks',
-  },
-
-  // 3. Expansion Joints
-  {
-    id: 'gal_10',
-    title: 'Ss Expansion Joints Waterproofing Systems',
-    category: 'Expansion Joints',
-    price: '₹3,500 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg',
-    moq: '2 Units',
-    slug: 'stainless-steel-expansion-joints',
+    "id": "gal_d2_circ_shuttering_1",
+    "title": "Circular Shuttering Plate & Column Mould",
+    "category": "Shuttering & Centering",
+    "price": "₹80 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/1.png",
+    "moq": "1 Set",
+    "slug": "round-ms-shuttering-plate"
   },
   {
-    id: 'gal_11',
-    title: 'Expansion Joint Treatment & Structural Seal',
-    category: 'Expansion Joints',
-    price: '₹3,500 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/5/510965057/JP/JJ/SO/146888318/expansion-joint-treatment-500x500.jpg',
-    moq: '2 Units',
-    slug: 'stainless-steel-expansion-joints',
+    "id": "gal_d2_cc_cribs_2",
+    "title": "CC Cribs Heavy Duty Staging Frame (1200x1200mm)",
+    "category": "Scaffolding Systems",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/2.png",
+    "moq": "10 Sets",
+    "slug": "cc-cribs-staging-tower"
   },
   {
-    id: 'gal_12',
-    title: 'Floor Aluminum & Stainless Joint Profile',
-    category: 'Expansion Joints',
-    price: '₹3,500 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/4/506813828/IV/OU/DI/146888318/floor-aluminum-joint-500x500.jpg',
-    moq: '2 Units',
-    slug: 'stainless-steel-expansion-joints',
+    "id": "gal_d2_ms_shuttering_3",
+    "title": "MS Shuttering Plate (1250 x 600 mm Heavy Stiffened)",
+    "category": "Shuttering & Centering",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/3.png",
+    "moq": "50 Pcs",
+    "slug": "20-kg-ms-shuttering-plate"
   },
   {
-    id: 'gal_13',
-    title: 'Finger Type Expansion Joint Bridge Assembly',
-    category: 'Expansion Joints',
-    price: '₹3,500 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/4/505863257/GB/DG/GQ/146888318/finger-type-expansion-joint-500x500.jpg',
-    moq: '2 Units',
-    slug: 'stainless-steel-expansion-joints',
+    "id": "gal_d2_cuplock_set_4",
+    "title": "Cuplock Scaffolding System (Complete Verticals & Ledgers)",
+    "category": "Scaffolding Systems",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/4.png",
+    "moq": "2 MT",
+    "slug": "scaffolding-cuplock-system"
   },
   {
-    id: 'gal_14',
-    title: '20inch MS Expansion Joint with Anchor Bars',
-    category: 'Expansion Joints',
-    price: '₹2,500 / Meter',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg',
-    moq: '12 Mtrs',
-    slug: 'strip-seal-ms-expansion-joints',
+    "id": "gal_d2_cuplock_ledger_4ba",
+    "title": "Cuplock Ledger Horizontal Tubes (1m, 1.5m, 2m)",
+    "category": "Scaffolding Systems",
+    "price": "₹64 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/4ba08a82-9cb0-45f8-b86e-53873207aee2.jfif",
+    "moq": "1 MT",
+    "slug": "scaffolding-cuplock-system"
   },
   {
-    id: 'gal_15',
-    title: '20inch Heavy Duty Strip Seal Expansion Joint',
-    category: 'Expansion Joints',
-    price: '₹2,500 / Meter',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212537/OO/SD/EE/146888318/strip-seal-expansion-joint-500x500.jpg',
-    moq: '12 Mtrs',
-    slug: 'strip-seal-ms-expansion-joints',
+    "id": "gal_d2_c_crib_5",
+    "title": "Heavy C-Crib Staging Frame Unit",
+    "category": "Scaffolding Systems",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/5.png",
+    "moq": "10 Sets",
+    "slug": "cc-cribs-staging-tower"
   },
   {
-    id: 'gal_16',
-    title: '20inch Strip Seal Joint Deck Profile',
-    category: 'Expansion Joints',
-    price: '₹2,500 / Meter',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212526/RJ/MS/FS/146888318/strip-seal-expansion-joint-500x500.jpg',
-    moq: '12 Mtrs',
-    slug: 'strip-seal-ms-expansion-joints',
+    "id": "gal_d2_c_crib_6",
+    "title": "C-Crib Modular High-Load Tower Staging",
+    "category": "Scaffolding Systems",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/6.png",
+    "moq": "10 Sets",
+    "slug": "cc-cribs-staging-tower"
   },
   {
-    id: 'gal_17',
-    title: 'Strip Seal Highway Expansion Joint',
-    category: 'Expansion Joints',
-    price: '₹2,400 / Meter',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476482060/WM/KC/MN/146888318/img-20241227-wa0086-500x500.jpg',
-    moq: '12 Mtrs',
-    slug: 'strip-seal-ms-expansion-joints',
+    "id": "gal_d2_u_jack_7",
+    "title": "Adjustable U Jack Head (Forged Nut & Thread)",
+    "category": "Scaffolding Systems",
+    "price": "₹250 / Pc",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/7.png",
+    "moq": "100 Pcs",
+    "slug": "adjustable-u-head-scaffolding-jack"
   },
   {
-    id: 'gal_18',
-    title: '2inch MS Expansion Joint Edge Beam',
-    category: 'Expansion Joints',
-    price: '₹2,400 / Meter',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2026/1/575236545/GE/DM/ZE/146888318/2inch-ms-expansion-joint-500x500.jpeg',
-    moq: '12 Mtrs',
-    slug: 'strip-seal-ms-expansion-joints',
-  },
-
-  // 4. Drainage Infrastructure
-  {
-    id: 'gal_19',
-    title: 'Mild Steel Bridge Drainage Spout (10mm Wall)',
-    category: 'Drainage Infrastructure',
-    price: '₹1,150 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476989849/XP/AX/HW/146888318/mild-steel-drainage-spout-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_c_crib_8",
+    "title": "C-Crib Bridge Pier Staging Unit",
+    "category": "Scaffolding Systems",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/8.png",
+    "moq": "10 Sets",
+    "slug": "cc-cribs-staging-tower"
   },
   {
-    id: 'gal_20',
-    title: 'Mild Steel Drainage Spout 150mm Dia',
-    category: 'Drainage Infrastructure',
-    price: '₹1,650 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476989865/YL/UL/PW/146888318/mild-steel-drainage-spout-500x500.jpeg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_c_crib_9",
+    "title": "C-Crib Heavy Duty Support Tower",
+    "category": "Scaffolding Systems",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/9.png",
+    "moq": "10 Sets",
+    "slug": "cc-cribs-staging-tower"
   },
   {
-    id: 'gal_21',
-    title: 'Heavy MS Drainage Spout with Top Grating',
-    category: 'Drainage Infrastructure',
-    price: '₹1,850 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476989876/QE/JO/GO/146888318/mild-steel-drainage-spout-500x500.jpeg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_shuttering_10",
+    "title": "MS Shuttering Plate Panel (IS 2062 Grade)",
+    "category": "Shuttering & Centering",
+    "price": "₹66 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/10.png",
+    "moq": "50 Pcs",
+    "slug": "27-kg-iron-shuttering-plate"
   },
   {
-    id: 'gal_22',
-    title: 'Mild Steel Water Drainage Spout Assembly',
-    category: 'Drainage Infrastructure',
-    price: '₹1,150 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476990163/OY/GU/FK/146888318/mild-steel-water-drainage-spout-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_u_jack_11",
+    "title": "Solid Thread Adjustable U Head Jack",
+    "category": "Scaffolding Systems",
+    "price": "₹250 / Pc",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/11.png",
+    "moq": "100 Pcs",
+    "slug": "adjustable-u-head-scaffolding-jack"
   },
   {
-    id: 'gal_23',
-    title: 'Galvanized Iron Hot-Dip Drainage Spouts',
-    category: 'Drainage Infrastructure',
-    price: '₹2,100 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476990475/XP/DZ/KU/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_cc_crib_12",
+    "title": "CC Cribs Staging Tower Unit",
+    "category": "Scaffolding Systems",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/12.png",
+    "moq": "10 Sets",
+    "slug": "cc-cribs-staging-tower"
   },
   {
-    id: 'gal_24',
-    title: 'GI Hot Dip Highway Deck Spout',
-    category: 'Drainage Infrastructure',
-    price: '₹2,100 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476990458/ZR/DC/NV/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpeg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_haunch_13",
+    "title": "MS Haunch Plate / Hunch Gusset Formwork",
+    "category": "Shuttering & Centering",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/13.png",
+    "moq": "25 Pcs",
+    "slug": "haunch-plate-shuttering"
   },
   {
-    id: 'gal_25',
-    title: 'Galvanized Drainage Spouts Production Batch',
-    category: 'Drainage Infrastructure',
-    price: '₹2,100 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476990443/JU/HG/PK/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpeg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_shuttering_14",
+    "title": "MS Shuttering Plate (Laser Straight Edges)",
+    "category": "Shuttering & Centering",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/14.png",
+    "moq": "50 Pcs",
+    "slug": "27-kg-iron-shuttering-plate"
   },
   {
-    id: 'gal_26',
-    title: 'GI Anti-Corrosive Flyover Spouts',
-    category: 'Drainage Infrastructure',
-    price: '₹2,100 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476990391/TE/FM/PG/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpeg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_angle_bracket_15",
+    "title": "Structural Angle Bracket for Formwork",
+    "category": "Shuttering & Centering",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/15.png",
+    "moq": "50 Pcs",
+    "slug": "haunch-plate-shuttering"
   },
   {
-    id: 'gal_27',
-    title: 'Hot Dip Galvanized Heavy Spouts Stack',
-    category: 'Drainage Infrastructure',
-    price: '₹2,100 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476990546/WS/DD/IR/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_shuttering_16",
+    "title": "Heavy Duty MS Shuttering Plate Section",
+    "category": "Shuttering & Centering",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/16.png",
+    "moq": "50 Pcs",
+    "slug": "27-kg-iron-shuttering-plate"
   },
   {
-    id: 'gal_28',
-    title: '8mm MS Bridges Drainage Spout',
-    category: 'Drainage Infrastructure',
-    price: '₹950 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2026/1/575240119/PK/PK/DH/146888318/8mm-ms-bridges-drainage-spouts-500x500.jpeg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_prop_ujack_17",
+    "title": "Prop U Jack Adjustable Support System",
+    "category": "Scaffolding Systems",
+    "price": "₹67 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/17.png",
+    "moq": "50 Pcs",
+    "slug": "scaffolding-adjustable-prop-jack"
   },
   {
-    id: 'gal_29',
-    title: '8mm Heavy Duty Bridge Deck Spout',
-    category: 'Drainage Infrastructure',
-    price: '₹950 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2026/1/577874337/FF/VU/ZV/146888318/8mm-ms-bridges-drainage-spouts-500x500.jpeg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_back_jack_18",
+    "title": "Heavy Duty Back Jack / Base Jack (38mm)",
+    "category": "Scaffolding Systems",
+    "price": "₹250 / Pc",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/18.png",
+    "moq": "100 Pcs",
+    "slug": "adjustable-u-head-scaffolding-jack"
   },
   {
-    id: 'gal_30',
-    title: 'Bridge Drainage Funnel & Hopper Fabrication',
-    category: 'Drainage Infrastructure',
-    price: '₹1,450 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476482440/JO/FL/WI/146888318/img-20241227-wa0017-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_shuttering_19",
+    "title": "MS Shuttering Plate (1250 x 600 mm Standard)",
+    "category": "Shuttering & Centering",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/19.png",
+    "moq": "50 Pcs",
+    "slug": "20-kg-ms-shuttering-plate"
   },
   {
-    id: 'gal_31',
-    title: 'Drainage Spout Factory Workshop Staging',
-    category: 'Drainage Infrastructure',
-    price: '₹1,450 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476482445/BE/AY/XW/146888318/img-20241227-wa0019-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_crash_barrier_20",
+    "title": "Crash Barrier Mould (Bridge Steel Formwork)",
+    "category": "Highway & Barriers",
+    "price": "₹80 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/20.png",
+    "moq": "1 Set (3m)",
+    "slug": "crash-barrier-mould"
   },
   {
-    id: 'gal_32',
-    title: 'Finished Bridge Drainage Hoppers Batch',
-    category: 'Drainage Infrastructure',
-    price: '₹1,450 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476482443/YM/IJ/OU/146888318/img-20241227-wa0020-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_crash_barrier_21",
+    "title": "Crash Barrier Steel Mould Section",
+    "category": "Highway & Barriers",
+    "price": "₹80 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/21.png",
+    "moq": "1 Set",
+    "slug": "crash-barrier-mould"
   },
   {
-    id: 'gal_33',
-    title: 'Cast Iron Deck Drainage Grates Batch',
-    category: 'Drainage Infrastructure',
-    price: '₹2,250 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476106334/ON/UB/SF/146888318/1000055781-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_circ_shuttering_22",
+    "title": "Circular Shuttering Plate for Bridge Pier",
+    "category": "Shuttering & Centering",
+    "price": "₹80 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/22.png",
+    "moq": "1 Set",
+    "slug": "round-ms-shuttering-plate"
   },
   {
-    id: 'gal_34',
-    title: 'MoRTH Certified CI Carriageway Spouts',
-    category: 'Drainage Infrastructure',
-    price: '₹2,250 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476106330/NU/QA/DO/146888318/1000055783-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_haunch_23",
+    "title": "Haunch Plate / Girder Gusset Formwork",
+    "category": "Shuttering & Centering",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/23.png",
+    "moq": "25 Pcs",
+    "slug": "haunch-plate-shuttering"
   },
   {
-    id: 'gal_35',
-    title: 'Machined Cast Iron Drainage Gratings',
-    category: 'Drainage Infrastructure',
-    price: '₹2,250 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476105869/IB/BG/OQ/146888318/1000055653-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_crash_barrier_24",
+    "title": "Parapet Crash Barrier Mould Panel",
+    "category": "Highway & Barriers",
+    "price": "₹80 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/24.png",
+    "moq": "1 Set",
+    "slug": "crash-barrier-mould"
   },
   {
-    id: 'gal_36',
-    title: 'Heavy Duty Cast Iron Slotted Grates',
-    category: 'Drainage Infrastructure',
-    price: '₹2,250 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476105866/MY/YC/NO/146888318/1000055753-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_crash_barrier_25",
+    "title": "High-Strength Concrete Crash Barrier Mould",
+    "category": "Highway & Barriers",
+    "price": "₹70 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/25.png",
+    "moq": "1 Set",
+    "slug": "crash-barrier-mould"
   },
   {
-    id: 'gal_37',
-    title: 'Highway Spouts Quality Check Inspection',
-    category: 'Drainage Infrastructure',
-    price: '₹2,250 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476105861/JK/ZV/WM/146888318/1000055759-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_crash_barrier_26",
+    "title": "Bridge Crash Barrier Steel Mould Unit",
+    "category": "Highway & Barriers",
+    "price": "₹70 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/26.png",
+    "moq": "1 Set",
+    "slug": "crash-barrier-mould"
   },
   {
-    id: 'gal_38',
-    title: 'Central Works Patna Drainage Dispatch Ready',
-    category: 'Drainage Infrastructure',
-    price: '₹2,250 / Piece',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476105856/GD/LL/DC/146888318/1000055757-500x500.jpg',
-    moq: '25 Pcs',
-    slug: 'cast-iron-ms-drainage-spouts',
+    "id": "gal_d2_crash_barrier_27",
+    "title": "Custom Crash Barrier Moulding Segment",
+    "category": "Highway & Barriers",
+    "price": "₹80 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/27.png",
+    "moq": "1 Set",
+    "slug": "crash-barrier-mould"
   },
+  {
+    "id": "gal_d2_crash_barrier_28",
+    "title": "Highway Parapet Crash Barrier Mould Panel",
+    "category": "Highway & Barriers",
+    "price": "₹80 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/28.png",
+    "moq": "1 Set",
+    "slug": "crash-barrier-mould"
+  },
+  {
+    "id": "gal_d2_cc_crib_29",
+    "title": "CC Crib Modular Staging Tower Frame",
+    "category": "Scaffolding Systems",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/29.png",
+    "moq": "10 Sets",
+    "slug": "cc-cribs-staging-tower"
+  },
+  {
+    "id": "gal_d2_cc_crib_30",
+    "title": "Heavy Duty CC Crib Staging Unit",
+    "category": "Scaffolding Systems",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/30.png",
+    "moq": "10 Sets",
+    "slug": "cc-cribs-staging-tower"
+  },
+  {
+    "id": "gal_d2_cuplock_prem_154",
+    "title": "Premium Scaffolding Cuplock System (Vertical & Ledger)",
+    "category": "Scaffolding Systems",
+    "price": "Vertical ₹67/Kg, Ledger ₹64/Kg",
+    "imageUrl": "/images/drive_downloads/folder2_jmk/154b737f-7b2f-40a4-85ff-b934b4d19736.jfif",
+    "moq": "2 MT",
+    "slug": "scaffolding-cuplock-system"
+  },
+  {
+    "id": "gal_d3_ptfe_bearing",
+    "title": "POT-PTFE Bridge Bearing (Class 100T to 2000T)",
+    "category": "Expansion Joints & Bearings",
+    "price": "₹14,500 / Piece",
+    "imageUrl": "/images/drive_downloads/folder3_jmk_pic_new/094872c0-066e-4bad-9547-cd85560830f3.jfif",
+    "moq": "2 Pieces",
+    "slug": "pot-ptfe-bridge-bearings"
+  },
+  {
+    "id": "gal_d3_w_beam_barrier",
+    "title": "W-Beam Metal Crash Barrier (MoRTH Certified, 3m)",
+    "category": "Highway & Barriers",
+    "price": "₹1,750 / RMT",
+    "imageUrl": "/images/drive_downloads/folder3_jmk_pic_new/117b9a35-64f3-49fb-87f1-0b9872aa4df7.jfif",
+    "moq": "100 RMT",
+    "slug": "w-beam-crash-barrier"
+  },
+  {
+    "id": "gal_d3_round_shuttering",
+    "title": "Round Shuttering Plate & Pier Column Formwork",
+    "category": "Shuttering & Centering",
+    "price": "₹80 / Kg",
+    "imageUrl": "/images/drive_downloads/folder3_jmk_pic_new/4c09960e-6224-448b-b611-b5da04ccec35.jfif",
+    "moq": "1 Set",
+    "slug": "round-ms-shuttering-plate"
+  },
+  {
+    "id": "gal_d3_prop_jack",
+    "title": "Adjustable Prop Jack (Heavy Duty Telescopic 2x2m, 2x3m)",
+    "category": "Scaffolding Systems",
+    "price": "₹67 / Kg",
+    "imageUrl": "/images/drive_downloads/folder3_jmk_pic_new/5820fe2d-f907-41e1-9fe8-34d403da6ed5.jfif",
+    "moq": "100 Pcs",
+    "slug": "scaffolding-adjustable-prop-jack"
+  },
+  {
+    "id": "gal_d3_drainage_spout",
+    "title": "Heavy Bridge Drainage Spout (100mm-150mm Dia, 2m)",
+    "category": "Drainage Infrastructure",
+    "price": "₹1,000 / Piece",
+    "imageUrl": "/images/drive_downloads/folder3_jmk_pic_new/591960f4-6489-4401-bd15-bae27a2ade22.jfif",
+    "moq": "25 Pcs",
+    "slug": "12mm-ms-drainage-spout"
+  },
+  {
+    "id": "gal_d3_crash_mould_3m",
+    "title": "Heavy Bridge Crash Barrier Mould (3m Length)",
+    "category": "Highway & Barriers",
+    "price": "₹80 / Kg",
+    "imageUrl": "/images/drive_downloads/folder3_jmk_pic_new/714babbb-df90-427e-bd1c-fe8adce2c4d7.jfif",
+    "moq": "1 Set",
+    "slug": "crash-barrier-mould"
+  },
+  {
+    "id": "gal_d3_acro_span",
+    "title": "Heavy Duty Acro Span / Telescopic Centering Span (15ft)",
+    "category": "Shuttering & Centering",
+    "price": "₹80 / Kg",
+    "imageUrl": "/images/drive_downloads/folder3_jmk_pic_new/7236dc6c-a06b-4d87-9e0d-898cd51e96bb.jfif",
+    "moq": "25 Sets",
+    "slug": "acro-span-centering"
+  },
+  {
+    "id": "gal_d3_sign_board",
+    "title": "Road & Highway Sign Board (Retro-Reflective Type IV/XI)",
+    "category": "Highway & Barriers",
+    "price": "Market Best Rate",
+    "imageUrl": "/images/drive_downloads/folder3_jmk_pic_new/931c5c74-2db3-4fee-aa97-93235096c114.jfif",
+    "moq": "5 Boards",
+    "slug": "road-sign-board"
+  },
+  {
+    "id": "gal_d3_ms_chali",
+    "title": "MS Chali Steel Component / Scaffolding Walkway Platform (2m)",
+    "category": "Scaffolding Systems",
+    "price": "₹68 / Kg",
+    "imageUrl": "/images/drive_downloads/folder3_jmk_pic_new/a0c55ac9-0a5a-4668-96f7-a5caeb89cc47.jfif",
+    "moq": "50 Pcs",
+    "slug": "iron-challi-frame"
+  },
+  {
+    "id": "gal_d3_tie_rod_wing_nut",
+    "title": "Formwork Tie Rod (₹120/pc) & Wing Nut (₹55/pc) System (3m)",
+    "category": "Shuttering & Centering",
+    "price": "Tie Rod ₹120/pc, Wing Nut ₹55/pc",
+    "imageUrl": "/images/drive_downloads/folder3_jmk_pic_new/a642f288-db66-4186-8ee5-da1acffff2bf.jfif",
+    "moq": "200 Sets",
+    "slug": "tie-rod-wing-nut"
+  },
+  {
+    "id": "gal_d3_elastomeric_pad",
+    "title": "Elastomeric Bearing Pad (IRC:83 Part II Certified)",
+    "category": "Expansion Joints & Bearings",
+    "price": "₹0.45 / cu.cm",
+    "imageUrl": "/images/drive_downloads/folder3_jmk_pic_new/b6c17132-df14-4773-b3bf-1925e540cc88.jfif",
+    "moq": "4 Pieces",
+    "slug": "elastomeric-bridge-bearing"
+  },
+  {
+    "id": "gal_d3_expansion_joint",
+    "title": "Strip Seal Bridge Expansion Joint (3m Profile)",
+    "category": "Expansion Joints & Bearings",
+    "price": "₹2,800 - ₹3,000 / RMT",
+    "imageUrl": "/images/drive_downloads/folder3_jmk_pic_new/d4164f62-ed93-4c41-b5c4-6415d708a9bc.jfif",
+    "moq": "12 RMT",
+    "slug": "strip-seal-expansion-joint"
+  },
+  {
+    "id": "gal_mixer",
+    "title": "Heavy Duty Concrete Mixer Machine (10/7 CFT)",
+    "category": "Shuttering & Centering",
+    "price": "₹75,000 - ₹1,20,000 / Unit",
+    "imageUrl": "/images/about/concrete-mixer-machine.png",
+    "moq": "1 Unit",
+    "slug": "27-kg-iron-shuttering-plate"
+  },
+  {
+    "id": "gal_well_formwork",
+    "title": "Circular Well Steining & Pier Formwork Mould",
+    "category": "Shuttering & Centering",
+    "price": "₹75 / Kg",
+    "imageUrl": "/images/about/circular-well-formwork.jpg",
+    "moq": "1 Set",
+    "slug": "round-ms-shuttering-plate"
+  },
+  {
+    "id": "gal_staging_truss",
+    "title": "Heavy Girder Staging Truss Blocks & Frame Units",
+    "category": "Scaffolding Systems",
+    "price": "₹82 / Kg",
+    "imageUrl": "/images/about/yellow-girder-staging-truss.jpg",
+    "moq": "10 Sets",
+    "slug": "scaffolding-cuplock-system"
+  },
+  {
+    "id": "gal_box_truss",
+    "title": "Heavy Structural Steel Box Trusses & Girders",
+    "category": "Shuttering & Centering",
+    "price": "₹85 / Kg",
+    "imageUrl": "/images/about/purple-steel-truss-box.jpg",
+    "moq": "5 MT",
+    "slug": "27-kg-iron-shuttering-plate"
+  },
+  {
+    "id": "gal_exp_14",
+    "title": "20inch Heavy Duty Strip Seal Expansion Joint",
+    "category": "Expansion Joints & Bearings",
+    "price": "₹2,500 / Meter",
+    "imageUrl": "https://5.imimg.com/data5/SELLER/Default/2024/7/438212537/OO/SD/EE/146888318/strip-seal-expansion-joint-500x500.jpg",
+    "moq": "12 Mtrs",
+    "slug": "strip-seal-expansion-joint"
+  },
+  {
+    "id": "gal_gi_spouts_23",
+    "title": "Galvanized Iron Hot-Dip Drainage Spouts",
+    "category": "Drainage Infrastructure",
+    "price": "₹2,100 / Piece",
+    "imageUrl": "https://5.imimg.com/data5/SELLER/Default/2024/12/476990475/XP/DZ/KU/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpg",
+    "moq": "25 Pcs",
+    "slug": "12mm-ms-drainage-spout"
+  },
+  {
+    "id": "gal_ci_spouts_33",
+    "title": "Cast Iron Deck Drainage Grates Batch",
+    "category": "Drainage Infrastructure",
+    "price": "₹2,250 / Piece",
+    "imageUrl": "https://5.imimg.com/data5/SELLER/Default/2024/12/476106334/ON/UB/SF/146888318/1000055781-500x500.jpg",
+    "moq": "25 Pcs",
+    "slug": "12mm-ms-drainage-spout"
+  }
 ];
 
 export const PRODUCT_SLUG_ALIASES: Record<string, string> = {
-  'ms-shuttering-plates': '27-kg-iron-shuttering-plate',
-  'shuttering-plates': '27-kg-iron-shuttering-plate',
-  'shuttering-plate': '27-kg-iron-shuttering-plate',
-  'steel-shuttering-plate': '27-kg-iron-shuttering-plate',
-  'shuttering-soldier': '35-kg-ms-shuttering-plates',
-  'ms-shuttering-soldiers': '35-kg-ms-shuttering-plates',
-  '13-kg-20-kg-mild-steel-centering-sheets': '13-kg-mild-steel-centering-sheet',
-  '13-kg-20-kg-ms-centering-sheets': '13-kg-mild-steel-centering-sheet',
-  'centering-plates': 'mild-steel-centring-plates',
-  'mild-steel-centering-sheets': '13-kg-mild-steel-centering-sheet',
-  'props-jack': 'scaffolding-adjustable-prop-jack',
-  'prop-jack': 'scaffolding-adjustable-prop-jack',
-  'scaffolding-prop-jack': 'scaffolding-adjustable-prop-jack',
-  'h-frame-scaffolding': 'iron-h-frame-scaffolding-system',
-  'strips-expansion-joint': 'strip-seal-expansion-joint',
-  'bitumen-expansion-joint': '7inch-bitumen-expansion-joint',
-  'expansion-joints-with-cover-plate': 'ss-expansion-joints',
-  'expansion-joint-with-cover-plate': 'ss-expansion-joints',
-  'ptfe-bridge-bearings': 'pot-ptfe-bridge-bearings',
-  'pot-bearing': 'pot-ptfe-bridge-bearings',
-  'bridge-bearings-with-cover-plate': 'elastomeric-pot-ptfe-bridge-bearings',
-  'mild-steel-ms-drainage-spout': '12mm-ms-drainage-spout',
-  'ms-drainage-spout': '12mm-ms-drainage-spout',
+  "ms-shuttering-plates": "27-kg-iron-shuttering-plate",
+  "shuttering-plates": "27-kg-iron-shuttering-plate",
+  "shuttering-plate": "27-kg-iron-shuttering-plate",
+  "steel-shuttering-plate": "27-kg-iron-shuttering-plate",
+  "shuttering-soldier": "35-kg-ms-shuttering-plates",
+  "ms-shuttering-soldiers": "35-kg-ms-shuttering-plates",
+  "13-kg-20-kg-mild-steel-centering-sheets": "13-kg-mild-steel-centering-sheet",
+  "13-kg-20-kg-ms-centering-sheets": "13-kg-mild-steel-centering-sheet",
+  "centering-plates": "mild-steel-centring-plates",
+  "mild-steel-centering-sheets": "13-kg-mild-steel-centering-sheet",
+  "props-jack": "scaffolding-adjustable-prop-jack",
+  "prop-jack": "scaffolding-adjustable-prop-jack",
+  "scaffolding-prop-jack": "scaffolding-adjustable-prop-jack",
+  "h-frame-scaffolding": "iron-h-frame-scaffolding-system",
+  "strips-expansion-joint": "strip-seal-expansion-joint",
+  "bitumen-expansion-joint": "7inch-bitumen-expansion-joint",
+  "expansion-joints-with-cover-plate": "ss-expansion-joints",
+  "expansion-joint-with-cover-plate": "ss-expansion-joints",
+  "ptfe-bridge-bearings": "pot-ptfe-bridge-bearings",
+  "pot-bearing": "pot-ptfe-bridge-bearings",
+  "bridge-bearings-with-cover-plate": "elastomeric-pot-ptfe-bridge-bearings",
+  "mild-steel-ms-drainage-spout": "12mm-ms-drainage-spout",
+  "ms-drainage-spout": "12mm-ms-drainage-spout",
+  "cuplock-scaffolding": "scaffolding-cuplock-system",
+  "cuplock-vertical": "scaffolding-cuplock-system",
+  "cuplock-ledger": "scaffolding-cuplock-system",
+  "cc-cribs": "cc-cribs-staging-tower",
+  "c-cribs": "cc-cribs-staging-tower",
+  "acro-span": "acro-span-centering",
+  "acro-spans": "acro-span-centering",
+  "centering-span": "acro-span-centering",
+  "crash-barrier-moulds": "crash-barrier-mould",
+  "crash-barrier-shuttering": "crash-barrier-mould",
+  "haunch-plate": "haunch-plate-shuttering",
+  "haunch-plates": "haunch-plate-shuttering",
+  "tie-rod": "tie-rod-wing-nut",
+  "wing-nut": "tie-rod-wing-nut",
+  "road-signs": "road-sign-board",
+  "sign-board": "road-sign-board",
+  "traffic-sign-board": "road-sign-board"
 };
 
 export function findProductBySlug(slug: string): SeedProduct | undefined {

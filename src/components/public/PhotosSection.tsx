@@ -21,11 +21,13 @@ interface PhotosSectionProps {
 }
 
 const CATEGORIES = [
-  { id: 'all', label: 'All Factory Photos (38+)' },
-  { id: 'Drainage Infrastructure', label: 'Drainage Spouts (20)' },
-  { id: 'Expansion Joints', label: 'Expansion Joints (9)' },
-  { id: 'Shuttering & Centering', label: 'Shuttering & Centering (6)' },
-  { id: 'Scaffolding Systems', label: 'Scaffolding & Jacks (3)' },
+  { id: 'all', label: 'All Factory Photos' },
+  { id: 'Shuttering & Centering', label: 'Shuttering & Centering' },
+  { id: 'Scaffolding Systems', label: 'Scaffolding & Staging' },
+  { id: 'Expansion Joints & Bearings', label: 'Bearings & Joints' },
+  { id: 'Highway & Barriers', label: 'Highway & Crash Barriers' },
+  { id: 'Drainage Infrastructure', label: 'Bridge Drainage' },
+  { id: 'Heavy Infrastructure', label: 'Heavy Infrastructure' },
 ];
 
 export default function PhotosSection({ onOpenRFQ }: PhotosSectionProps) {
