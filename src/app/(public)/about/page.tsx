@@ -1156,7 +1156,7 @@ export default function AboutPage() {
 
             <div className="flex items-center gap-1.5 text-sm font-bold text-amber-600 bg-amber-50 border border-amber-300 px-3.5 py-1.5 rounded-full">
               <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
-              <span>IndiaMART TrustSEAL Rating: 3.9 / 5.0 (20+ Reviews)</span>
+              <span>IndiaMART TrustSEAL Rating: 4.3 / 5.0 (40+ Reviews)</span>
             </div>
           </div>
 

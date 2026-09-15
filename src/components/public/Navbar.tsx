@@ -79,7 +79,7 @@ export default function Navbar() {
               <span className="text-neutral-600">•</span>
               <span className="inline-flex items-center gap-1 text-amber-400 font-bold">
                 <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                <span>3.9 (20 Rating)</span>
+                <span>4.3 (40 Ratings)</span>
               </span>
               <span className="text-neutral-600">•</span>
               <span className="text-neutral-300 font-mono">Sync Status: Live 1m ago</span>
@@ -125,7 +125,7 @@ export default function Navbar() {
               <span className="text-neutral-600">•</span>
               <span className="inline-flex items-center gap-1 text-amber-400 font-bold">
                 <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                <span>3.9 (20 Rating)</span>
+                <span>4.3 (40 Ratings)</span>
               </span>
               <span className="text-neutral-600">•</span>
               <span className="text-neutral-300 font-mono">Sync Status: Live 1m ago</span>

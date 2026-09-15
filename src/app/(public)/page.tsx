@@ -28,7 +28,7 @@ export default function HomePage() {
       {/* 3. What We Offer / Products & Services Grid + HSN Deals + View Complete Range */}
       <HomeWhatWeOffer onOpenRFQ={handleOpenRFQ} />
 
-      {/* 4. IndiaMART Verified Ratings & Customer Reviews Section (3.9/5, Most Relevant Reviews) */}
+      {/* 4. IndiaMART Verified Ratings & Customer Reviews Section (4.3/5, 40 Verified Ratings) */}
       <HomeReviewsSection />
 
       {/* 5. Get a Free Quote / Instant Interactive BOQ Estimator & RFQ Form (GSAP-Powered) */}

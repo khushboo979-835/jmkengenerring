@@ -95,16 +95,21 @@ export default function HomeReviewsSection() {
             <div className="lg:col-span-6 flex flex-col sm:flex-row items-center justify-center gap-6 text-center sm:text-left border-b lg:border-b-0 lg:border-r border-neutral-200 pb-6 lg:pb-0 lg:pr-8">
               <div className="space-y-1 text-center">
                 <div className="text-4xl sm:text-5xl font-black text-black">
-                  3.9<span className="text-xl text-neutral-400">/5</span>
+                  4.3<span className="text-xl text-neutral-400">/5</span>
                 </div>
                 <div className="flex items-center justify-center gap-1 text-amber-400">
                   <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                   <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                   <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                   <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  <Star className="w-4 h-4 text-neutral-300" />
+                  <div className="relative w-4 h-4">
+                    <Star className="w-4 h-4 text-neutral-300 absolute inset-0" />
+                    <div className="overflow-hidden w-[35%] absolute inset-0">
+                      <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    </div>
+                  </div>
                 </div>
-                <div className="text-xs text-neutral-500 font-bold">20 Verified Ratings</div>
+                <div className="text-xs text-neutral-500 font-bold">40 Verified Ratings</div>
               </div>
 
               {/* Progress bars */}
@@ -112,37 +117,37 @@ export default function HomeReviewsSection() {
                 <div className="flex items-center gap-2">
                   <span className="w-6">5 ★</span>
                   <div className="flex-1 bg-neutral-200 h-2 rounded-full overflow-hidden">
-                    <div className="bg-emerald-500 h-full w-[60%]"></div>
+                    <div className="bg-emerald-500 h-full w-[65%]"></div>
                   </div>
-                  <span className="w-8 text-neutral-500">60%</span>
+                  <span className="w-8 text-neutral-500">65%</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-6">4 ★</span>
                   <div className="flex-1 bg-neutral-200 h-2 rounded-full overflow-hidden">
-                    <div className="bg-emerald-400 h-full w-[5%]"></div>
+                    <div className="bg-emerald-400 h-full w-[15%]"></div>
                   </div>
-                  <span className="w-8 text-neutral-500">5%</span>
+                  <span className="w-8 text-neutral-500">15%</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-6">3 ★</span>
                   <div className="flex-1 bg-neutral-200 h-2 rounded-full overflow-hidden">
-                    <div className="bg-amber-400 h-full w-[5%]"></div>
+                    <div className="bg-amber-400 h-full w-[10%]"></div>
                   </div>
-                  <span className="w-8 text-neutral-500">5%</span>
+                  <span className="w-8 text-neutral-500">10%</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-6">2 ★</span>
                   <div className="flex-1 bg-neutral-200 h-2 rounded-full overflow-hidden">
-                    <div className="bg-neutral-300 h-full w-[0%]"></div>
+                    <div className="bg-neutral-300 h-full w-[5%]"></div>
                   </div>
-                  <span className="w-8 text-neutral-500">0%</span>
+                  <span className="w-8 text-neutral-500">5%</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-6">1 ★</span>
                   <div className="flex-1 bg-neutral-200 h-2 rounded-full overflow-hidden">
-                    <div className="bg-emerald-600 h-full w-[30%]"></div>
+                    <div className="bg-rose-400 h-full w-[5%]"></div>
                   </div>
-                  <span className="w-8 text-neutral-500">30%</span>
+                  <span className="w-8 text-neutral-500">5%</span>
                 </div>
               </div>
             </div>
