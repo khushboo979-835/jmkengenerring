@@ -26,11 +26,18 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { customerName, companyName, email, phone, city, state, selectedProducts, projectDetails } = body;
+    const customerName = body.customerName || body.name || 'Valued Client';
+    const companyName = body.companyName || 'Not Specified';
+    const email = body.email || 'inquiry@jmkengineering.in';
+    const phone = body.phone || body.phoneNumber || '';
+    const city = body.city || body.location || body.destinationCity || 'Patna HQ Queue';
+    const state = body.state || 'Bihar';
+    const projectDetails = body.projectDetails || body.message || (body.product ? `Requirement: ${body.product}` : 'Standard RFQ Inquiry');
+    const selectedProducts = body.selectedProducts || (body.product ? [{ name: body.product, category: 'Product Inquiry', quantity: body.quantity || 'Standard Lot' }] : []);
 
-    if (!customerName || !email || !phone || !projectDetails) {
+    if (!phone && !customerName) {
       return NextResponse.json(
-        { error: 'Name, email, phone, and project details are required.' },
+        { error: 'Contact phone number or customer name is required.' },
         { status: 400 }
       );
     }
@@ -43,12 +50,12 @@ export async function POST(req: NextRequest) {
       try {
         savedRFQ = await RFQprovider.create({
           customerName,
-          companyName: companyName || 'Not Specified',
+          companyName,
           email,
-          phone,
-          city: city || 'Patna HQ Queue',
-          state: state || 'Bihar',
-          selectedProducts: selectedProducts || [],
+          phone: phone || '07942556842',
+          city,
+          state,
+          selectedProducts,
           projectDetails,
           status: 'NEW',
         });
@@ -60,12 +67,12 @@ export async function POST(req: NextRequest) {
     // Also store in dataStore memory/cache
     const localRFQ = dataStore.addRFQ({
       customerName,
-      companyName: companyName || 'Not Specified',
+      companyName,
       email,
-      phone,
-      city: city || 'Patna HQ Queue',
-      state: state || 'Bihar',
-      selectedProducts: selectedProducts || [],
+      phone: phone || '07942556842',
+      city,
+      state,
+      selectedProducts,
       projectDetails,
     });
 

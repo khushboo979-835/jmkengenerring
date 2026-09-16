@@ -44,13 +44,16 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
   const [destinationCity, setDestinationCity] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // GSAP entrance animation
   useEffect(() => {
     if (!containerRef.current) return;
+    const items = containerRef.current.querySelectorAll('.gsap-quote-item');
+    if (!items || items.length === 0) return;
     const ctx = gsap.context(() => {
-      gsap.from('.gsap-quote-item', {
+      gsap.from(items, {
         opacity: 0,
         y: 20,
         stagger: 0.1,
@@ -64,10 +67,29 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
   const totalEstimatedWeightMt = ((selectedProduct.weightPerUnitKg * quantity) / 1000).toFixed(2);
   const estimatedCostInr = selectedProduct.basePrice * quantity;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!phoneNumber) return;
-    setSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      await fetch('/api/rfq', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customerName: contractorName || 'Valued Contractor',
+          phone: phoneNumber,
+          city: destinationCity || 'Not Specified',
+          projectDetails: `BOQ Estimate Request: ${quantity} ${selectedProduct.unit} of ${selectedProduct.name} (~${totalEstimatedWeightMt} MT, Est: ₹${estimatedCostInr.toLocaleString('en-IN')})`,
+          selectedProducts: [selectedProduct.name],
+          source: 'Home Calculator'
+        })
+      });
+    } catch (err) {
+      console.error('Failed to submit quote request:', err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -81,7 +103,7 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
 
       <div className="max-w-7xl mx-auto space-y-12 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3">
+        <div className="text-center max-w-3xl mx-auto space-y-3 gsap-quote-item">
           <div className="inline-flex items-center gap-2 text-xs font-black text-red-600 uppercase tracking-widest bg-red-100/80 border border-red-200 px-3.5 py-1.5 rounded-full shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-red-600" />
             <span>Instant BOQ & Tonnage Estimator</span>
@@ -98,7 +120,7 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
         {/* 2-Column Interactive Estimator & RFQ Form */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column: Live Interactive Calculator */}
-          <div className="lg:col-span-7 bg-white rounded-3xl border-2 border-neutral-200 p-6 sm:p-8 space-y-6 shadow-xl flex flex-col justify-between">
+          <div className="lg:col-span-7 bg-white rounded-3xl border-2 border-neutral-200 p-6 sm:p-8 space-y-6 shadow-xl flex flex-col justify-between gsap-quote-item">
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
                 <div className="flex items-center gap-2">
@@ -195,7 +217,7 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
           </div>
 
           {/* Right Column: Direct Instant Quotation Form */}
-          <div className="lg:col-span-5 bg-white rounded-3xl border-2 border-neutral-200 p-6 sm:p-8 space-y-6 shadow-xl flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-white rounded-3xl border-2 border-neutral-200 p-6 sm:p-8 space-y-6 shadow-xl flex flex-col justify-between gsap-quote-item">
             {submitted ? (
               <div className="text-center py-12 space-y-4 my-auto animate-in fade-in zoom-in">
                 <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto border-2 border-emerald-300 shadow-md">
