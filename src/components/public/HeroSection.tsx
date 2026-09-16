@@ -214,18 +214,23 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
           {/* Main Headline & Action Buttons with Classy JMK Engineering & Developers Sentence */}
           <div className="relative z-20 max-w-4xl mx-auto text-center space-y-4 my-auto py-4">
             
-            {/* Vishwakarma Puja Festive Glowing Advantage Pill */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-600/90 via-amber-700/90 to-red-600/90 border border-amber-400/60 shadow-lg shadow-amber-500/25 backdrop-blur-md">
-              <div className="w-5 h-5 rounded-full border border-amber-200 overflow-hidden shrink-0 shadow-sm">
+            {/* Vishwakarma Puja Festive Glowing Advantage Pill (Enlarged Divine Portrait & Glowing Animation) */}
+            <div className="inline-flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-2 rounded-full bg-gradient-to-r from-amber-600/95 via-red-600/95 to-amber-700/95 border-2 border-yellow-300 shadow-[0_0_20px_rgba(251,191,36,0.45)] backdrop-blur-md transform hover:scale-105 transition-transform duration-300">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-yellow-200 overflow-hidden shrink-0 shadow-lg ring-2 ring-amber-400/80 bg-amber-950">
                 <img
                   src="/images/vishwakarma-puja.jpg"
                   alt="Lord Vishwakarma"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="text-[11px] sm:text-xs font-black text-amber-100 tracking-wide">
-                ✨ Vishwakarma Puja Festive Advantage • Flat 10% Off on Commercial RFQs
-              </span>
+              <div className="text-left leading-tight">
+                <span className="text-[11px] sm:text-xs font-black text-yellow-200 tracking-wide block">
+                  ✨ Shubh Vishwakarma Puja Special Advantage
+                </span>
+                <span className="text-[10px] sm:text-[11px] font-bold text-white block">
+                  Flat <strong className="text-yellow-300 font-black">10% Off</strong> on Commercial RFQs & Fabrication
+                </span>
+              </div>
             </div>
 
             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] drop-shadow-2xl">
