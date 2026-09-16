@@ -216,6 +216,13 @@ export default function HomeWhatWeOffer({ onOpenRFQ }: { onOpenRFQ: (item?: stri
                       </span>
                     </div>
 
+                    {/* Festive 10% OFF Badge - Top Right */}
+                    <div className="absolute top-3 right-3 z-10">
+                      <span className="inline-flex items-center gap-0.5 bg-gradient-to-r from-amber-500 via-amber-600 to-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-md border border-amber-300">
+                        🎉 10% OFF
+                      </span>
+                    </div>
+
                     {/* Quality Standard Tag - Bottom Right */}
                     <div className="absolute bottom-2 right-2 z-10">
                       <span className="inline-flex items-center gap-1 bg-black/80 backdrop-blur-sm text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shadow">
@@ -241,6 +248,14 @@ export default function HomeWhatWeOffer({ onOpenRFQ }: { onOpenRFQ: (item?: stri
                           </li>
                         ))}
                       </ul>
+
+                      {/* Festive Discount Tag */}
+                      <div className="pt-2 border-t border-neutral-100 flex items-center">
+                        <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">
+                          <Sparkles className="w-3 h-3 text-emerald-600 shrink-0" />
+                          <span>Eligible for 10% Festive Discount</span>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </Link>

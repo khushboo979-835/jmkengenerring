@@ -213,6 +213,21 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
 
           {/* Main Headline & Action Buttons with Classy JMK Engineering & Developers Sentence */}
           <div className="relative z-20 max-w-4xl mx-auto text-center space-y-4 my-auto py-4">
+            
+            {/* Vishwakarma Puja Festive Glowing Advantage Pill */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-600/90 via-amber-700/90 to-red-600/90 border border-amber-400/60 shadow-lg shadow-amber-500/25 backdrop-blur-md">
+              <div className="w-5 h-5 rounded-full border border-amber-200 overflow-hidden shrink-0 shadow-sm">
+                <img
+                  src="/images/vishwakarma-puja.jpg"
+                  alt="Lord Vishwakarma"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <span className="text-[11px] sm:text-xs font-black text-amber-100 tracking-wide">
+                ✨ Vishwakarma Puja Festive Advantage • Flat 10% Off on Commercial RFQs
+              </span>
+            </div>
+
             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] drop-shadow-2xl">
               JMK <span className="text-red-500">Engineering & Developers</span>
               <span className="block text-base sm:text-2xl lg:text-3xl font-extrabold text-neutral-100 mt-2 tracking-normal">
@@ -220,7 +235,7 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
               </span>
             </h1>
 
-            {/* Two Action Buttons (Exact media_1788858973378.png) */}
+            {/* Two Action Buttons */}
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-1">
               <Link
                 href="/products"
@@ -232,12 +247,17 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
 
               <button
                 onClick={() => onOpenRFQ(HERO_SLIDER_IMAGES[currentSlide].title)}
-                className="px-6 sm:px-7 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full text-xs sm:text-sm font-bold transition-all duration-200 shadow-xl shadow-red-600/40 flex items-center gap-2 hover:scale-105"
+                className="px-6 sm:px-7 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full text-xs sm:text-sm font-black transition-all duration-200 shadow-xl shadow-red-600/40 ring-2 ring-amber-400 hover:ring-amber-300 animate-pulse flex items-center gap-2 hover:scale-105"
               >
-                <Edit3 className="w-4 h-4" />
+                <Edit3 className="w-4 h-4 text-amber-200" />
                 <span>Request Instant Quote / RFQ</span>
               </button>
             </div>
+
+            {/* Micro-tag directly below the hero buttons */}
+            <p className="text-[11px] sm:text-xs font-bold text-amber-300 drop-shadow flex items-center justify-center gap-1.5 pt-0.5">
+              <span>⚡ 10% Billing Rebate applied automatically to all quotes submitted this week.</span>
+            </p>
           </div>
 
           {/* Minimalist Manual Navigation Arrows (Left & Right) */}
@@ -289,6 +309,13 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
                 key={card.id}
                 className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-4 sm:p-4.5 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group relative cursor-pointer hover:-translate-y-2"
               >
+                {/* 10% OFF Festive Ribbon Badge */}
+                <div className="absolute top-2.5 right-2.5 z-20">
+                  <span className="inline-flex items-center gap-0.5 bg-gradient-to-r from-amber-500 to-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full shadow-md border border-amber-300">
+                    🎉 10% OFF
+                  </span>
+                </div>
+
                 {/* Full Clickable Card Link */}
                 <Link
                   href={`/products/${card.slug}`}

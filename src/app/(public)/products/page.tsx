@@ -312,6 +312,13 @@ function ProductsContent() {
                         </span>
                       </div>
 
+                      {/* 10% OFF Festive Ribbon */}
+                      <div className="absolute top-3 right-3">
+                        <span className="inline-flex items-center gap-0.5 bg-gradient-to-r from-amber-500 to-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-md border border-amber-300">
+                          🎉 10% OFF
+                        </span>
+                      </div>
+
                       <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs">
                         <span className="font-mono text-xs bg-red-100 text-red-700 px-2.5 py-1 rounded-md font-black border border-red-200">
                           {product.price || product.variants[0]?.priceEstimate || '₹ Request Quote'}

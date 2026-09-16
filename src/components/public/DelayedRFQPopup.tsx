@@ -141,7 +141,22 @@ export default function DelayedRFQPopup() {
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-3.5">
+            <form onSubmit={handleSubmit} className="space-y-3">
+              {/* Festive 10% Discount Callout */}
+              <div className="p-2.5 rounded-xl bg-gradient-to-r from-amber-500/15 via-red-500/10 to-amber-500/15 border border-amber-400/50 flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full border border-amber-300 overflow-hidden shrink-0 shadow-sm">
+                  <img
+                    src="/images/vishwakarma-puja.jpg"
+                    alt="Lord Vishwakarma"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="text-[11px] leading-snug">
+                  <strong className="text-amber-800 font-bold block">✨ Shubh Vishwakarma Puja Offer:</strong>
+                  <span className="text-neutral-800">Celebrating Vishwakarma Puja: Flat 10% savings on your initial fabrication order. (Code: <strong className="text-red-700 font-mono">JMKVISHWA10</strong>)</span>
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="space-y-1">
                   <label className="text-[11px] font-black text-neutral-800 uppercase tracking-wider">

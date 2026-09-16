@@ -13,6 +13,7 @@ import {
   X
 } from 'lucide-react';
 import RFQModal from './RFQModal';
+import FestiveOfferBar from './FestiveOfferBar';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -34,6 +35,9 @@ export default function Navbar() {
 
   return (
     <>
+      {/* 1. Shubh Vishwakarma Puja Sticky Announcement Banner */}
+      <FestiveOfferBar />
+
       {/* Top Status Bar with Modern Smooth Moving Marquee Ticker */}
       <div className="bg-[#0b1320] text-neutral-300 text-[11px] py-1.5 px-0 border-b border-neutral-800 overflow-hidden relative z-50">
         <div className="flex items-center whitespace-nowrap overflow-hidden">
