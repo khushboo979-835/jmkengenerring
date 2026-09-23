@@ -1,0 +1,15 @@
+﻿# JMK Engineering - SEO & Googlebot Configuration
+Options +FollowSymLinks
+RewriteEngine On
+
+# 1. 301 Permanent Redirect for /index.php to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php [NC]
+RewriteRule ^index\.php$ https://www.jmkengineering.in/ [R=301,L]
+
+# 2. 301 Permanent Redirect for /index.html to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html [NC]
+RewriteRule ^index\.html$ https://www.jmkengineering.in/ [R=301,L]
+
+# 3. Ensure HTTPS & Non-WWW or WWW Consistency
+RewriteCond %{HTTP_HOST} ^jmkengineering\.in [NC]
+RewriteRule ^(.*)$ https://www.jmkengineering.in/ [L,R=301]

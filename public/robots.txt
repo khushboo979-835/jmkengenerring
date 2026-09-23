@@ -1,0 +1,15 @@
+﻿User-agent: Googlebot
+Allow: /
+Disallow: /dashboard/
+Disallow: /portal/
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /portal/
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://www.jmkengineering.in/sitemap.xml

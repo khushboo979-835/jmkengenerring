@@ -15,6 +15,21 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/index.php',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/index.html',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+      },
+      {
         source: '/admin',
         destination: '/portal/login',
         permanent: true,

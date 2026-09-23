@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     'Heavy Civil Formwork India',
   ],
   metadataBase: new URL('https://www.jmkengineering.in'),
+  alternates: {
+    canonical: 'https://www.jmkengineering.in/',
+  },
   verification: {
     google: '6DP_-JVCMGzjeXRc9POYlpBPCWtURcAQK9sHhFR6QjA',
   },
@@ -40,6 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-white text-black">
       <head>
+        <link rel="canonical" href="https://www.jmkengineering.in/" />
         <meta name="google-site-verification" content="6DP_-JVCMGzjeXRc9POYlpBPCWtURcAQK9sHhFR6QjA" />
       </head>
       <body className="bg-white text-black antialiased min-h-screen selection:bg-red-600 selection:text-white">
