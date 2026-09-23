@@ -150,8 +150,12 @@ export default function Footer() {
               <div className="flex items-center gap-2.5 text-neutral-800 font-medium">
                 <Phone className="w-4 h-4 text-red-600 shrink-0 stroke-[2.2]" />
                 <span className="flex items-center gap-2 flex-wrap">
-                  <a href="tel:07942556842" className="text-black font-black hover:text-red-600 transition text-sm">
-                    07942556842
+                  <a href="tel:+917493916194" className="text-black font-black hover:text-red-600 transition text-sm">
+                    +91 7493916194
+                  </a>
+                  <span className="text-neutral-400">/</span>
+                  <a href="tel:+918651010370" className="text-black font-black hover:text-red-600 transition text-sm">
+                    +91 8651010370
                   </a>
                   <span className="text-[10px] bg-emerald-100 text-emerald-800 font-black px-1.5 py-0.5 rounded">
                     82% Response Rate

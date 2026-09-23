@@ -250,11 +250,11 @@ export default function Navbar() {
             </button>
 
             <a
-              href="tel:07942556842"
+              href="tel:+917493916194"
               className="px-4 sm:px-5 py-2.5 border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 rounded-full text-xs sm:text-sm font-black transition-all flex items-center gap-1.5 shadow-sm transform hover:-translate-y-0.5"
             >
               <PhoneCall className="w-4 h-4 text-emerald-600" />
-              <span>Call: 07942556842</span>
+              <span>Call: +91 7493916194</span>
             </a>
           </div>
 
@@ -343,13 +343,20 @@ export default function Navbar() {
             >
               🔒 Staff & Admin Portal
             </Link>
-            <div className="pt-2 border-t border-neutral-200">
+            <div className="pt-2 border-t border-neutral-200 space-y-1">
               <a
-                href="tel:07942556842"
+                href="tel:+917493916194"
                 className="flex items-center gap-2 py-1 text-sm font-bold text-emerald-600"
               >
                 <PhoneCall className="w-4 h-4" />
-                <span>Call Now: 07942556842</span>
+                <span>Call: +91 7493916194</span>
+              </a>
+              <a
+                href="tel:+918651010370"
+                className="flex items-center gap-2 py-1 text-sm font-bold text-neutral-700 hover:text-red-600"
+              >
+                <PhoneCall className="w-4 h-4 text-red-600" />
+                <span>Alt: +91 8651010370</span>
               </a>
             </div>
           </div>

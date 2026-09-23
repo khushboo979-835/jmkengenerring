@@ -316,11 +316,11 @@ export default function VideosPage() {
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
               <a
-                href="tel:07942556842"
+                href="tel:+917493916194"
                 className="px-5 py-3.5 bg-neutral-800 hover:bg-neutral-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition border border-neutral-700 flex items-center justify-center gap-2"
               >
                 <PhoneCall className="w-4 h-4 text-red-400" />
-                <span>Call Plant: 07942556842</span>
+                <span>Call Plant: +91 7493916194</span>
               </a>
 
               <button

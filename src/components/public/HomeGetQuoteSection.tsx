@@ -328,11 +328,11 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
                   </button>
 
                   <a
-                    href="tel:07942556842"
+                    href="tel:+917493916194"
                     className="w-full py-3 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 hover:text-black rounded-xl font-black text-xs transition border border-neutral-300 flex items-center justify-center gap-1.5"
                   >
                     <PhoneCall className="w-3.5 h-3.5 text-red-600" />
-                    <span>Or Call Patna Estimation Desk: 07942556842</span>
+                    <span>Or Call Patna Estimation Desk: +91 7493916194 / +91 8651010370</span>
                   </a>
                 </div>
               </form>

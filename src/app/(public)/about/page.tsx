@@ -981,11 +981,11 @@ export default function AboutPage() {
                     <span>Request Division RFQ</span>
                   </button>
                   <a
-                    href="tel:07942556842"
+                    href="tel:+917493916194"
                     className="py-3 px-5 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold transition border border-white/20 flex items-center justify-center gap-2"
                   >
                     <PhoneCall className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Call: 07942556842</span>
+                    <span>Call: +91 7493916194</span>
                   </a>
                 </div>
               </div>
@@ -1124,18 +1124,18 @@ export default function AboutPage() {
                   Jakariyapur, Mouja Jhali, Krishnaniketan Road / Trinity Global School, Patna - 800007, Bihar, India
                 </p>
                 <p className="text-xs text-neutral-300 font-medium">
-                  Direct Inquiries: <strong className="text-white font-mono text-sm">07942556842</strong> (Verified Works Desk)
+                  Direct Inquiries: <strong className="text-white font-mono text-sm">+91 7493916194 / +91 8651010370</strong> (Verified Works Desk)
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-3 shrink-0">
               <a
-                href="tel:07942556842"
+                href="tel:+917493916194"
                 className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-black text-xs uppercase tracking-wider rounded-xl transition shadow-lg flex items-center gap-2"
               >
                 <PhoneCall className="w-4 h-4" />
-                <span>Call Now (07942556842)</span>
+                <span>Call Now (+91 7493916194)</span>
               </a>
             </div>
           </div>
@@ -1235,10 +1235,10 @@ export default function AboutPage() {
               <span>Mauza Jhali, Jakariyapur, Krishna Niketan Road, Patna - 800007</span>
               <div className="flex items-center gap-2">
                 <a
-                  href="tel:07942556842"
+                  href="tel:+917493916194"
                   className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold"
                 >
-                  Call: 07942556842
+                  Call: +91 7493916194
                 </a>
                 <button
                   onClick={() => {

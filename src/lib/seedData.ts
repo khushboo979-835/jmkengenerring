@@ -62,7 +62,7 @@ export const SEED_BRANCHES: SeedBranch[] = [
     currentSpend: 4250000,
     status: 'ACTIVE',
     activeWorkersCount: 42,
-    contactNumber: '07942556842',
+    contactNumber: '+91 7493916194',
     adminName: 'Ujjwal Kumar (CEO)',
   },
   {
@@ -80,7 +80,7 @@ export const SEED_BRANCHES: SeedBranch[] = [
     currentSpend: 2180000,
     status: 'ACTIVE',
     activeWorkersCount: 28,
-    contactNumber: '07942556842',
+    contactNumber: '+91 7493916194',
     adminName: 'Amitabh Verma',
   },
   {
@@ -98,7 +98,7 @@ export const SEED_BRANCHES: SeedBranch[] = [
     currentSpend: 3420000,
     status: 'ACTIVE',
     activeWorkersCount: 34,
-    contactNumber: '07942556842',
+    contactNumber: '+91 7493916194',
     adminName: 'Vikram Patil',
   },
   {
@@ -116,7 +116,7 @@ export const SEED_BRANCHES: SeedBranch[] = [
     currentSpend: 1640000,
     status: 'ACTIVE',
     activeWorkersCount: 22,
-    contactNumber: '07942556842',
+    contactNumber: '+91 7493916194',
     adminName: 'Debashis Mukherjee',
   },
 ];

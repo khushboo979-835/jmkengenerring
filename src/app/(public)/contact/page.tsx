@@ -132,14 +132,14 @@ export default function ContactPage() {
 
               <div className="pt-2 flex items-center gap-3">
                 <a
-                  href="tel:07942556842"
+                  href="tel:+917493916194"
                   className="flex-1 py-2.5 px-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black text-center transition flex items-center justify-center gap-1.5 shadow-md shadow-red-600/30"
                 >
                   <PhoneCall className="w-3.5 h-3.5" />
-                  <span>Call 07942556842</span>
+                  <span>Call +91 7493916194</span>
                 </a>
                 <a
-                  href="https://wa.me/919431024800?text=Hello%20JMK%20Engineering,%20I%20would%20like%20to%20inquire%20about%20your%20products."
+                  href="https://wa.me/917493916194?text=Hello%20JMK%20Engineering,%20I%20would%20like%20to%20inquire%20about%20your%20products."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 py-2.5 px-3 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-xl text-xs font-black text-center transition flex items-center justify-center gap-1.5 shadow-md shadow-[#25D366]/30"
@@ -192,10 +192,13 @@ export default function ContactPage() {
                 <span className="text-[11px] font-black text-emerald-600 uppercase tracking-wider block mt-0.5">Mon - Sat (8 AM - 8 PM)</span>
               </div>
               <div className="space-y-2 text-xs font-bold text-neutral-800">
-                <div>
-                  <span className="text-[10px] text-neutral-500 uppercase block font-semibold">Toll-Free & Direct Inquiry Desk:</span>
-                  <a href="tel:07942556842" className="text-base font-black text-slate-950 hover:text-red-600 block mt-1">
-                    07942556842
+                <div className="space-y-1">
+                  <span className="text-[10px] text-neutral-500 uppercase block font-semibold">Direct Inquiry & Order Desk:</span>
+                  <a href="tel:+917493916194" className="text-base font-black text-slate-950 hover:text-red-600 block">
+                    +91 7493916194
+                  </a>
+                  <a href="tel:+918651010370" className="text-base font-black text-slate-950 hover:text-red-600 block">
+                    +91 8651010370
                   </a>
                 </div>
                 <div className="pt-1">
@@ -206,7 +209,7 @@ export default function ContactPage() {
               </div>
             </div>
             <a
-              href="tel:07942556842"
+              href="tel:+917493916194"
               className="inline-flex items-center gap-1.5 text-xs font-black text-red-600 hover:text-red-700 pt-2 border-t border-neutral-100"
             >
               <span>Instant Call Connect</span>
@@ -538,7 +541,7 @@ export default function ContactPage() {
                       <div className="flex items-center gap-2.5">
                         <Phone className="w-4 h-4 text-red-600 shrink-0" />
                         <span>
-                          <strong className="text-slate-950">07942556842</strong> (Incharge: <strong className="text-slate-950">{depot.adminName}</strong>)
+                          <strong className="text-slate-950">+91 7493916194 / +91 8651010370</strong> (Incharge: <strong className="text-slate-950">{depot.adminName}</strong>)
                         </span>
                       </div>
                       <div className="flex items-center gap-2.5">

@@ -132,11 +132,11 @@ export default function DelayedRFQPopup() {
               </div>
               <div className="pt-2">
                 <a
-                  href="tel:07942556842"
+                  href="tel:+917493916194"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white rounded-xl text-xs font-black uppercase tracking-wider shadow-md hover:bg-red-700 transition"
                 >
                   <PhoneCall className="w-4 h-4" />
-                  <span>Call Now: 07942556842</span>
+                  <span>Call Now: +91 7493916194</span>
                 </a>
               </div>
             </div>
@@ -256,11 +256,11 @@ export default function DelayedRFQPopup() {
                 </button>
 
                 <a
-                  href="tel:07942556842"
+                  href="tel:+917493916194"
                   className="w-full sm:w-auto py-3 px-4 bg-neutral-200 hover:bg-neutral-300 text-slate-900 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5"
                 >
                   <PhoneCall className="w-3.5 h-3.5 text-red-600" />
-                  <span>07942556842</span>
+                  <span>+91 7493916194</span>
                 </a>
               </div>
             </form>

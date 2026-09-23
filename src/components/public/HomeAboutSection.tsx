@@ -229,10 +229,10 @@ export default function HomeAboutSection() {
               <span>Mauza Jhali, Jakariyapur, Krishna Niketan Road, Patna - 800007</span>
               <div className="flex items-center gap-2">
                 <a
-                  href="tel:07942556842"
+                  href="tel:+917493916194"
                   className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold"
                 >
-                  Call: 07942556842
+                  Call: +91 7493916194
                 </a>
                 <Link
                   href="/contact"
