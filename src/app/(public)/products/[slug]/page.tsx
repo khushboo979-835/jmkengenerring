@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'website',
     },
     alternates: {
-      canonical: `https://jmkengineering.com/products/${params.slug}`,
+      canonical: `https://www.jmkengineering.in/products/${params.slug}`,
     },
   };
 }
@@ -91,7 +91,7 @@ export default function ProductDetailPage({ params }: PageProps) {
     },
     offers: {
       '@type': 'Offer',
-      url: `https://jmkengineering.com/products/${product.slug}`,
+      url: `https://www.jmkengineering.in/products/${product.slug}`,
       priceCurrency: 'INR',
       price: product.price ? product.price.replace(/[^0-9]/g, '') || '2500' : '2500',
       availability: 'https://schema.org/InStock',
