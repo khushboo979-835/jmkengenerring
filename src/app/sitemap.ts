@@ -50,6 +50,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const categoryRoutes: MetadataRoute.Sitemap = [
+    'shuttering',
+    'scaffolding',
+    'joints',
+    'bearings',
+    'drainage',
+    'centering',
+    'h-frame',
+    'planks',
+    'channels',
+    'barriers',
+  ].map((cat) => ({
+    url: `${baseUrl}/products?category=${cat}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+
   const productRoutes: MetadataRoute.Sitemap = SEED_PRODUCTS.map((product) => ({
     url: `${baseUrl}/products/${product.slug}`,
     lastModified: currentDate,
@@ -57,5 +75,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticRoutes, ...productRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...productRoutes];
 }

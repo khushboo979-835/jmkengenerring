@@ -42,10 +42,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-white text-black">
-      <head>
-        <link rel="canonical" href="https://www.jmkengineering.in/" />
-        <meta name="google-site-verification" content="6DP_-JVCMGzjeXRc9POYlpBPCWtURcAQK9sHhFR6QjA" />
-      </head>
       <body className="bg-white text-black antialiased min-h-screen selection:bg-red-600 selection:text-white">
         {children}
       </body>
