@@ -1,0 +1,20 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'All Industrial Products & Master Catalog | JMK Engineering & Developers',
+  description:
+    'Complete catalog of 60+ heavy civil engineering products: MS Shuttering Plates, Centering Sheets, H-Frame Scaffolding, POT-PTFE Bearings, Expansion Joints, and Drainage Spouts.',
+  alternates: {
+    canonical: 'https://www.jmkengineering.in/products',
+  },
+  openGraph: {
+    title: 'All Industrial Products Catalog | JMK Engineering & Developers',
+    description: 'Explore full catalog of heavy civil infrastructure fabrication and formwork systems.',
+    url: 'https://www.jmkengineering.in/products',
+    type: 'website',
+  },
+};
+
+export default function ProductsLayout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
+}
