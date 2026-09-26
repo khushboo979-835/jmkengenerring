@@ -48,9 +48,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       ...product.applications,
     ],
     openGraph: {
-      title,
-      description,
+      title: `${product.name} Manufacturer | JMK Engineering`,
+      description: `${product.name} manufacturer and supplier for bridge construction and infrastructure projects. JMK Engineering, Patna, Bihar. Call: +91 7493916194.`,
       url: `https://www.jmkengineering.in/products/${params.slug}`,
+      siteName: 'JMK Engineering & Developers',
+      locale: 'en_IN',
+      type: 'website',
       images: [
         {
           url: product.featuredImage,
@@ -59,7 +62,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           alt: `${product.name} - JMK Engineering`,
         },
       ],
-      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@jmkengineering',
+      creator: '@jmkengineering',
+      title: `${product.name} Manufacturer | JMK Engineering`,
+      description: `${product.name} manufacturer and supplier for bridge construction projects. JMK Engineering, Patna, Bihar.`,
+      images: [product.featuredImage],
     },
     alternates: {
       canonical: `https://www.jmkengineering.in/products/${params.slug}`,

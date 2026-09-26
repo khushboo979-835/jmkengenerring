@@ -26,13 +26,25 @@ export const metadata: Metadata = {
       'Manufacturer of bridge bearings, expansion joints, shuttering plates and scaffolding systems in Patna, Bihar. Quality fabrication for infrastructure projects.',
     url: 'https://www.jmkengineering.in/',
     siteName: 'JMK Engineering & Developers',
+    locale: 'en_IN',
     type: 'website',
+    images: [
+      {
+        url: 'https://www.jmkengineering.in/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'JMK Engineering & Developers - Bridge Products Manufacturer Bihar',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@jmkengineering',
+    creator: '@jmkengineering',
     title: 'JMK Engineering | Bridge Products Manufacturer Bihar',
     description:
       'Manufacturer of bridge bearings, expansion joints, shuttering plates and scaffolding systems in Patna, Bihar. Quality fabrication for infrastructure projects.',
+    images: ['https://www.jmkengineering.in/og-image.jpg'],
   },
   verification: {
     google: '6DP_-JVCMGzjeXRc9POYlpBPCWtURcAQK9sHhFR6QjA',
