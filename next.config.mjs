@@ -30,6 +30,46 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/contact-us',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/about-us',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/gallery',
+        destination: '/photos',
+        permanent: true,
+      },
+      {
+        source: '/photo',
+        destination: '/photos',
+        permanent: true,
+      },
+      {
+        source: '/video',
+        destination: '/videos',
+        permanent: true,
+      },
+      {
+        source: '/product',
+        destination: '/products',
+        permanent: true,
+      },
+      {
+        source: '/services',
+        destination: '/products',
+        permanent: true,
+      },
+      {
+        source: '/service',
+        destination: '/products',
+        permanent: true,
+      },
+      {
         source: '/admin',
         destination: '/portal/login',
         permanent: true,
