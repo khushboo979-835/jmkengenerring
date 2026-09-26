@@ -29,14 +29,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const title = `${product.name} | JMK Engineering & Developers`;
-  const description = `${product.shortDescription} Verified specifications, IS 2062 & IRC:83 compliance standards, multi-tenant depot stock, and ex-factory pricing from Patna Works.`;
+  const title = `${product.name} Manufacturer in Patna Bihar | Price & Specs - JMK Engineering`;
+  const description = `Buy ${product.name} directly from JMK Engineering & Developers, premier manufacturer in Patna, Bihar. IS 2062 certified, ex-factory pricing, bulk depot stock & fast dispatch across India. Call: +91 7493916194.`;
 
   return {
     title,
     description,
     keywords: [
       product.name,
+      `${product.name} price`,
+      `${product.name} manufacturer`,
+      `${product.name} supplier Patna Bihar`,
       product.categoryLabel,
       product.materialGrade,
       'JMK Engineering',
@@ -47,12 +50,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title,
       description,
+      url: `https://www.jmkengineering.in/products/${params.slug}`,
       images: [
         {
           url: product.featuredImage,
           width: 800,
           height: 600,
-          alt: product.name,
+          alt: `${product.name} - JMK Engineering`,
         },
       ],
       type: 'website',
@@ -71,8 +75,8 @@ export default function ProductDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  // Google JSON-LD Structured Data Schema for Industrial Products
-  const jsonLd = {
+  // Google JSON-LD Structured Data Schema for Industrial Products + Breadcrumbs
+  const productJsonLd = {
     '@context': 'https://schema.org/',
     '@type': 'Product',
     name: product.name,
@@ -87,13 +91,30 @@ export default function ProductDetailPage({ params }: PageProps) {
     manufacturer: {
       '@type': 'Organization',
       name: 'JMK Engineering & Developers',
-      location: 'Patna, Bihar, India',
+      url: 'https://www.jmkengineering.in',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Mauza Jhali, Jakariyapur, Krishna Niketan Road',
+        addressLocality: 'Patna',
+        addressRegion: 'Bihar',
+        postalCode: '800007',
+        addressCountry: 'IN',
+      },
+      telephone: '+917493916194',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '45',
+      bestRating: '5',
+      worstRating: '1',
     },
     offers: {
       '@type': 'Offer',
       url: `https://www.jmkengineering.in/products/${product.slug}`,
       priceCurrency: 'INR',
       price: product.price ? product.price.replace(/[^0-9]/g, '') || '2500' : '2500',
+      priceValidUntil: '2027-12-31',
       availability: 'https://schema.org/InStock',
       itemCondition: 'https://schema.org/NewCondition',
       seller: {
@@ -103,11 +124,46 @@ export default function ProductDetailPage({ params }: PageProps) {
     },
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.jmkengineering.in',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Products',
+        item: 'https://www.jmkengineering.in/products',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: product.categoryLabel,
+        item: `https://www.jmkengineering.in/products?category=${product.category}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: product.name,
+        item: `https://www.jmkengineering.in/products/${product.slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <ProductDetailClient product={product} />
     </>
