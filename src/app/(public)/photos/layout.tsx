@@ -6,6 +6,22 @@ export const metadata: Metadata = {
     'Browse verified high-resolution manufacturing photos of Shuttering Plates, Centering Sheets, Scaffolding, and Bridge Bearings from JMK Engineering Patna plant.',
   alternates: {
     canonical: 'https://www.jmkengineering.in/photos',
+    languages: {
+      'en-IN': 'https://www.jmkengineering.in/photos',
+      'en-US': 'https://www.jmkengineering.in/photos',
+      'x-default': 'https://www.jmkengineering.in/photos',
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     title: 'Manufacturing Photo Gallery | JMK Engineering & Developers',

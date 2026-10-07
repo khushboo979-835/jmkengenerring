@@ -19,6 +19,22 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.jmkengineering.in'),
   alternates: {
     canonical: 'https://www.jmkengineering.in/',
+    languages: {
+      'en-IN': 'https://www.jmkengineering.in/',
+      'en-US': 'https://www.jmkengineering.in/',
+      'x-default': 'https://www.jmkengineering.in/',
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     title: 'JMK Engineering | Bridge Products Manufacturer Bihar',

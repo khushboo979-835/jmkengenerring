@@ -6,6 +6,22 @@ export const metadata: Metadata = {
     'Complete catalog of 60+ heavy civil engineering products: MS Shuttering Plates, Centering Sheets, H-Frame Scaffolding, POT-PTFE Bearings, Expansion Joints, and Drainage Spouts.',
   alternates: {
     canonical: 'https://www.jmkengineering.in/products',
+    languages: {
+      'en-IN': 'https://www.jmkengineering.in/products',
+      'en-US': 'https://www.jmkengineering.in/products',
+      'x-default': 'https://www.jmkengineering.in/products',
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     title: 'All Industrial Products Catalog | JMK Engineering & Developers',

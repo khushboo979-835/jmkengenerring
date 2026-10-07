@@ -6,6 +6,22 @@ export const metadata: Metadata = {
     'Watch factory manufacturing videos, robotic welding tests, and live QA inspections for heavy civil formwork and expansion joints at JMK Engineering Patna plant.',
   alternates: {
     canonical: 'https://www.jmkengineering.in/videos',
+    languages: {
+      'en-IN': 'https://www.jmkengineering.in/videos',
+      'en-US': 'https://www.jmkengineering.in/videos',
+      'x-default': 'https://www.jmkengineering.in/videos',
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     title: 'Plant Inspection Video Gallery | JMK Engineering & Developers',

@@ -73,6 +73,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     alternates: {
       canonical: `https://www.jmkengineering.in/products/${params.slug}`,
+      languages: {
+        'en-IN': `https://www.jmkengineering.in/products/${params.slug}`,
+        'en-US': `https://www.jmkengineering.in/products/${params.slug}`,
+        'x-default': `https://www.jmkengineering.in/products/${params.slug}`,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
   };
 }

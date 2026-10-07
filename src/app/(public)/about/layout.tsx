@@ -6,6 +6,22 @@ export const metadata: Metadata = {
     'JMK Engineering & Developers is an ISO 9001:2015 & IndiaMART TrustSEAL verified manufacturer of Heavy Infrastructure Formwork, Shuttering, Bridge Bearings & Scaffolding in Patna, Bihar.',
   alternates: {
     canonical: 'https://www.jmkengineering.in/about',
+    languages: {
+      'en-IN': 'https://www.jmkengineering.in/about',
+      'en-US': 'https://www.jmkengineering.in/about',
+      'x-default': 'https://www.jmkengineering.in/about',
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     title: 'About Us | JMK Engineering & Developers',

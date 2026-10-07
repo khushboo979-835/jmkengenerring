@@ -6,6 +6,22 @@ export const metadata: Metadata = {
     'Contact JMK Engineering & Developers Patna Works, Delhi NCR, Mumbai Western, and Kolkata Eastern logistics depots for bulk RFQ, technical specs, and instant manufacturing estimates.',
   alternates: {
     canonical: 'https://www.jmkengineering.in/contact',
+    languages: {
+      'en-IN': 'https://www.jmkengineering.in/contact',
+      'en-US': 'https://www.jmkengineering.in/contact',
+      'x-default': 'https://www.jmkengineering.in/contact',
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     title: 'Contact Us & Depots | JMK Engineering & Developers',
