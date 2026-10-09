@@ -158,8 +158,8 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Clean Desktop Navigation Menu with Increased Font Size & Perfect Spacing */}
-          <nav className="hidden lg:flex items-center gap-7 xl:gap-9 text-[15px] font-extrabold text-neutral-800">
+          {/* Clean Desktop Navigation Menu with Perfect Spacing */}
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-[14px] xl:text-[15px] font-extrabold text-neutral-800">
             <Link
               href="/"
               className={`hover:text-red-600 transition ${
@@ -232,11 +232,12 @@ export default function Navbar() {
 
             <Link
               href="/blog"
-              className={`hover:text-red-600 transition ${
+              className={`inline-flex items-center gap-1.5 hover:text-red-600 transition ${
                 pathname.startsWith('/blog') ? 'text-red-600 font-black' : ''
               }`}
             >
-              Blog
+              <span>Blog</span>
+              <span className="text-[10px] bg-red-100 text-red-600 font-bold px-1.5 py-0.2 rounded-full border border-red-200">New</span>
             </Link>
 
             <Link
