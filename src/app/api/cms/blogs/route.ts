@@ -5,36 +5,46 @@ import { SEED_BLOGS, BlogPost } from '@/lib/blogData';
 import fs from 'fs';
 import path from 'path';
 
-const DATA_FILE = path.join(process.cwd(), 'src/data/cms_blogs.json');
+// Primary & Temporary writable paths for Vercel/Serverless
+const PRIMARY_DATA_FILE = path.join(process.cwd(), 'src/data/cms_blogs.json');
+const TMP_DATA_FILE = '/tmp/cms_blogs.json';
 
-// Helper to read local file
-function readLocalBlogs(): BlogPost[] | null {
+function readStoredBlogs(): BlogPost[] | null {
   try {
-    if (fs.existsSync(DATA_FILE)) {
-      const data = fs.readFileSync(DATA_FILE, 'utf8');
+    if (fs.existsSync(TMP_DATA_FILE)) {
+      const data = fs.readFileSync(TMP_DATA_FILE, 'utf8');
+      return JSON.parse(data);
+    }
+    if (fs.existsSync(PRIMARY_DATA_FILE)) {
+      const data = fs.readFileSync(PRIMARY_DATA_FILE, 'utf8');
       return JSON.parse(data);
     }
   } catch (e) {
-    console.error('Error reading local blogs file:', e);
+    console.error('Error reading stored blogs:', e);
   }
   return null;
 }
 
-// Helper to write local file
-function writeLocalBlogs(blogs: BlogPost[]) {
+function writeStoredBlogs(blogs: BlogPost[]) {
   try {
-    const dir = path.dirname(DATA_FILE);
+    const dir = path.dirname(PRIMARY_DATA_FILE);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    fs.writeFileSync(DATA_FILE, JSON.stringify(blogs, null, 2), 'utf8');
+    fs.writeFileSync(PRIMARY_DATA_FILE, JSON.stringify(blogs, null, 2), 'utf8');
+  } catch {
+    // Primary might be read-only in serverless
+  }
+
+  try {
+    fs.writeFileSync(TMP_DATA_FILE, JSON.stringify(blogs, null, 2), 'utf8');
   } catch (e) {
-    console.error('Error writing local blogs file:', e);
+    console.error('Error writing tmp blogs file:', e);
   }
 }
 
-// In-memory runtime cache initialized once
-let memoryBlogs: BlogPost[] = readLocalBlogs() ?? [...SEED_BLOGS];
+// Global runtime memory
+let memoryBlogs: BlogPost[] = readStoredBlogs() ?? [...SEED_BLOGS];
 
 export async function GET(req: NextRequest) {
   try {
@@ -44,37 +54,22 @@ export async function GET(req: NextRequest) {
 
     const db = await connectToDatabase();
     if (db) {
-      // MongoDB connected
       if (slug) {
         const blogDoc = await Blog.findOne({ slug });
-        if (!blogDoc) {
-          return NextResponse.json({ error: 'Article not found' }, { status: 404 });
+        if (blogDoc) return NextResponse.json({ success: true, blog: blogDoc });
+      } else {
+        let query: any = {};
+        if (category && category !== 'all' && category !== 'All') {
+          query.category = { $regex: new RegExp(`^${category}$`, 'i') };
         }
-        return NextResponse.json({ success: true, blog: blogDoc });
+        const blogs = await Blog.find(query).sort({ publishedAt: -1 });
+        return NextResponse.json({ success: true, blogs });
       }
-
-      const count = await Blog.countDocuments();
-      // Only seed once if database has never been initialized
-      if (count === 0 && !fs.existsSync(DATA_FILE)) {
-        await Blog.insertMany(SEED_BLOGS.map(b => ({
-          ...b,
-          publishedAt: new Date(b.publishedAt),
-        })));
-      }
-
-      let query: any = {};
-      if (category && category !== 'all' && category !== 'All') {
-        query.category = { $regex: new RegExp(`^${category}$`, 'i') };
-      }
-
-      const blogs = await Blog.find(query).sort({ publishedAt: -1 });
-      return NextResponse.json({ success: true, blogs });
     }
 
-    // Fallback: Local file / memory store
-    const local = readLocalBlogs();
-    if (local !== null) {
-      memoryBlogs = local;
+    const stored = readStoredBlogs();
+    if (stored !== null) {
+      memoryBlogs = stored;
     }
 
     if (slug) {
@@ -100,6 +95,30 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+
+    // Check if this is a full sync from client CMS
+    if (body.syncAll && Array.isArray(body.blogs)) {
+      memoryBlogs = body.blogs;
+      writeStoredBlogs(body.blogs);
+
+      const db = await connectToDatabase();
+      if (db) {
+        try {
+          await Blog.deleteMany({});
+          if (body.blogs.length > 0) {
+            await Blog.insertMany(body.blogs.map((b: any) => ({
+              ...b,
+              publishedAt: new Date(b.publishedAt || Date.now()),
+            })));
+          }
+        } catch (err) {
+          console.error('MongoDB sync error:', err);
+        }
+      }
+
+      return NextResponse.json({ success: true, message: 'Synced successfully', count: memoryBlogs.length });
+    }
+
     const {
       title,
       slug,
@@ -144,6 +163,11 @@ export async function POST(req: NextRequest) {
       metaDescription: excerpt || `${title} technical guide from JMK Engineering Patna.`,
     };
 
+    const currentList = readStoredBlogs() ?? memoryBlogs;
+    const updated = [newBlog, ...currentList.filter(b => b.slug !== generatedSlug)];
+    memoryBlogs = updated;
+    writeStoredBlogs(updated);
+
     const db = await connectToDatabase();
     if (db) {
       try {
@@ -151,16 +175,10 @@ export async function POST(req: NextRequest) {
           ...newBlog,
           publishedAt: new Date(newBlog.publishedAt),
         });
-      } catch (err: any) {
+      } catch (err) {
         console.error('MongoDB Blog.create error:', err);
       }
     }
-
-    // Update memory & local JSON file
-    const local = readLocalBlogs() ?? memoryBlogs;
-    const updated = [newBlog, ...local.filter(b => b.slug !== generatedSlug)];
-    memoryBlogs = updated;
-    writeLocalBlogs(updated);
 
     return NextResponse.json({ success: true, blog: newBlog }, { status: 201 });
   } catch (error: any) {
@@ -187,6 +205,34 @@ export async function PUT(req: NextRequest) {
       isFeatured,
     } = body;
 
+    const currentList = readStoredBlogs() ?? memoryBlogs;
+    const updated = currentList.map((b) => {
+      if (b.id === id || b.slug === slug) {
+        return {
+          ...b,
+          title: title || b.title,
+          slug: slug || b.slug,
+          excerpt: excerpt || b.excerpt,
+          content: content || b.content,
+          category: category || b.category,
+          readTime: readTime || b.readTime,
+          featuredImage: featuredImage || b.featuredImage,
+          isFeatured: isFeatured !== undefined ? Boolean(isFeatured) : b.isFeatured,
+          tags: Array.isArray(tags) ? tags : (tags ? tags.split(',').map((t: string) => t.trim()) : b.tags),
+          updatedAt: new Date().toISOString(),
+          author: {
+            ...b.author,
+            name: authorName || b.author.name,
+            role: authorRole || b.author.role,
+          },
+        };
+      }
+      return b;
+    });
+
+    memoryBlogs = updated;
+    writeStoredBlogs(updated);
+
     const db = await connectToDatabase();
     if (db) {
       try {
@@ -212,34 +258,6 @@ export async function PUT(req: NextRequest) {
       }
     }
 
-    const local = readLocalBlogs() ?? memoryBlogs;
-    const updated = local.map((b) => {
-      if (b.id === id || b.slug === slug) {
-        return {
-          ...b,
-          title: title || b.title,
-          slug: slug || b.slug,
-          excerpt: excerpt || b.excerpt,
-          content: content || b.content,
-          category: category || b.category,
-          readTime: readTime || b.readTime,
-          featuredImage: featuredImage || b.featuredImage,
-          isFeatured: isFeatured !== undefined ? Boolean(isFeatured) : b.isFeatured,
-          tags: Array.isArray(tags) ? tags : (tags ? tags.split(',').map((t: string) => t.trim()) : b.tags),
-          updatedAt: new Date().toISOString(),
-          author: {
-            ...b.author,
-            name: authorName || b.author.name,
-            role: authorRole || b.author.role,
-          },
-        };
-      }
-      return b;
-    });
-
-    memoryBlogs = updated;
-    writeLocalBlogs(updated);
-
     return NextResponse.json({ success: true, blogs: updated });
   } catch (error: any) {
     console.error('PUT /api/cms/blogs error:', error);
@@ -257,6 +275,11 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: 'id or slug is required' }, { status: 400 });
     }
 
+    const currentList = readStoredBlogs() ?? memoryBlogs;
+    const updated = currentList.filter((b) => b.id !== id && b.slug !== slug && b.slug !== id);
+    memoryBlogs = updated;
+    writeStoredBlogs(updated);
+
     const db = await connectToDatabase();
     if (db) {
       try {
@@ -266,11 +289,6 @@ export async function DELETE(req: NextRequest) {
         console.error('MongoDB Blog delete error:', err);
       }
     }
-
-    const local = readLocalBlogs() ?? memoryBlogs;
-    const updated = local.filter((b) => b.id !== id && b.slug !== slug && b.slug !== id);
-    memoryBlogs = updated;
-    writeLocalBlogs(updated);
 
     return NextResponse.json({ success: true, message: 'Article deleted permanently', remaining: updated.length });
   } catch (error: any) {

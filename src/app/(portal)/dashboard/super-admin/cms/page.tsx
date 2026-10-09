@@ -129,12 +129,32 @@ export default function MasterCMSPage() {
     setTimeout(() => setNotification(null), 4000);
   };
 
-  // Hydrate from Database API and localStorage on client
+  // Hydrate from localStorage and sync with server API
   useEffect(() => {
     try {
+      const isInitialized = localStorage.getItem('jmk_cms_blogs_initialized') === 'true';
       const savedBlogs = localStorage.getItem('jmk_cms_blogs');
-      if (savedBlogs !== null) {
-        setBlogs(JSON.parse(savedBlogs));
+
+      if (isInitialized && savedBlogs !== null) {
+        const parsed = JSON.parse(savedBlogs);
+        setBlogs(parsed);
+        // Sync client's authoritative state with server
+        fetch('/api/cms/blogs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ syncAll: true, blogs: parsed }),
+        }).catch(() => {});
+      } else {
+        // First time load: fetch from API
+        fetch('/api/cms/blogs')
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success && Array.isArray(data.blogs)) {
+              setBlogs(data.blogs);
+              localStorage.setItem('jmk_cms_blogs', JSON.stringify(data.blogs));
+            }
+          })
+          .catch((err) => console.error('Failed to fetch blogs from database:', err));
       }
 
       const savedProducts = localStorage.getItem('jmk_cms_products');
@@ -151,17 +171,6 @@ export default function MasterCMSPage() {
     } catch (e) {
       console.error(e);
     }
-
-    // Fetch live blogs from Database API
-    fetch('/api/cms/blogs')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success && Array.isArray(data.blogs)) {
-          setBlogs(data.blogs);
-          localStorage.setItem('jmk_cms_blogs', JSON.stringify(data.blogs));
-        }
-      })
-      .catch((err) => console.error('Failed to fetch blogs from database:', err));
   }, []);
 
   // Blog Handlers
@@ -276,15 +285,12 @@ export default function MasterCMSPage() {
 
     setBlogs(updatedList);
     try {
+      localStorage.setItem('jmk_cms_blogs_initialized', 'true');
       localStorage.setItem('jmk_cms_blogs', JSON.stringify(updatedList));
       await fetch('/api/cms/blogs', {
-        method: editingBlog ? 'PUT' : 'POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          id: editingBlog ? editingBlog.id : undefined,
-          ...blogForm,
-          tags: tagArray,
-        }),
+        body: JSON.stringify({ syncAll: true, blogs: updatedList }),
       });
     } catch (e) {
       console.error(e);
@@ -298,8 +304,13 @@ export default function MasterCMSPage() {
       const remaining = blogs.filter((b) => b.id !== id);
       setBlogs(remaining);
       try {
+        localStorage.setItem('jmk_cms_blogs_initialized', 'true');
         localStorage.setItem('jmk_cms_blogs', JSON.stringify(remaining));
-        await fetch(`/api/cms/blogs?id=${id}`, { method: 'DELETE' });
+        await fetch('/api/cms/blogs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ syncAll: true, blogs: remaining }),
+        });
       } catch (e) {
         console.error(e);
       }

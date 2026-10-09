@@ -38,14 +38,16 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isRfqOpen, setIsRfqOpen] = useState(false);
 
-  // Synchronize dynamic CMS posts from database API and localStorage
+  // Synchronize dynamic CMS posts from authoritative localStorage & API
   React.useEffect(() => {
     try {
+      const isInitialized = localStorage.getItem('jmk_cms_blogs_initialized') === 'true';
       const saved = localStorage.getItem('jmk_cms_blogs');
-      if (saved !== null) {
+      if (isInitialized && saved !== null) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed)) {
           setPosts(parsed);
+          return;
         }
       }
     } catch (e) {
@@ -77,13 +79,6 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
       return matchesCategory && matchesSearch;
     });
   }, [posts, selectedCategory, searchQuery]);
-
-  // If there are more than 2 articles, we can feature the first one; otherwise show clean grid
-  const showFeaturedHero = selectedCategory === 'All' && !searchQuery && filteredPosts.length >= 3;
-  const featuredPost = showFeaturedHero ? filteredPosts.find((p) => p.isFeatured) || filteredPosts[0] : null;
-  const gridPosts = showFeaturedHero && featuredPost
-    ? filteredPosts.filter((p) => p.id !== featuredPost.id)
-    : filteredPosts;
 
   return (
     <div className="bg-[#fcfcfd] text-slate-900 min-h-screen">
@@ -144,72 +139,6 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
       {/* Main Content Area */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10">
         
-        {/* Compact Featured Post Card (Only shown if 3+ articles exist) */}
-        {featuredPost && (
-          <div className="group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-              <div className="lg:col-span-6 h-52 sm:h-60 lg:h-auto min-h-[220px] relative bg-slate-900 overflow-hidden">
-                <img
-                  src={featuredPost.featuredImage}
-                  alt={featuredPost.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-0.5 rounded-full bg-slate-900/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 shadow">
-                    <Sparkles className="w-3 h-3 text-amber-400" />
-                    <span>Featured Article</span>
-                  </span>
-                </div>
-              </div>
-
-              <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-4">
-                <div className="space-y-2.5">
-                  <div className="flex items-center gap-2 text-xs text-slate-500 font-semibold">
-                    <span className="px-2.5 py-0.5 rounded-full bg-red-50 text-red-700 font-bold text-[11px]">
-                      {featuredPost.category}
-                    </span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1 text-[11px]">
-                      <Clock className="w-3 h-3 text-slate-400" />
-                      <span>{featuredPost.readTime}</span>
-                    </span>
-                  </div>
-
-                  <Link href={`/blog/${featuredPost.slug}`}>
-                    <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 group-hover:text-red-600 transition-colors leading-snug">
-                      {featuredPost.title}
-                    </h2>
-                  </Link>
-
-                  <p className="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
-                    {featuredPost.excerpt}
-                  </p>
-                </div>
-
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-[11px] shadow-sm">
-                      JMK
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-slate-900">{featuredPost.author.name}</p>
-                      <p className="text-[10px] text-slate-500">{featuredPost.author.role}</p>
-                    </div>
-                  </div>
-
-                  <Link
-                    href={`/blog/${featuredPost.slug}`}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-red-600 hover:text-red-700 group-hover:translate-x-0.5 transition-all"
-                  >
-                    <span>Read Article</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Article Grid - Compact, Clean, Proportional */}
         <section className="space-y-5">
           <div className="flex items-center justify-between">
@@ -236,14 +165,14 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-              {gridPosts.map((post) => (
+              {filteredPosts.map((post) => (
                 <article
                   key={post.id}
                   className="group bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
-                    {/* Compact Image Container (Height constrained) */}
-                    <div className="h-40 sm:h-44 bg-slate-100 overflow-hidden relative">
+                    {/* Compact Image Container (Height strictly constrained to h-36/h-40) */}
+                    <div className="h-36 sm:h-40 bg-slate-100 overflow-hidden relative">
                       <img
                         src={post.featuredImage}
                         alt={post.title}
@@ -257,7 +186,7 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
                     </div>
 
                     {/* Article Content */}
-                    <div className="p-5 space-y-2.5">
+                    <div className="p-4 sm:p-5 space-y-2">
                       <div className="flex items-center gap-2 text-[11px] font-semibold text-slate-400">
                         <span>{new Date(post.publishedAt).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                         <span>•</span>
@@ -280,7 +209,7 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
                   </div>
 
                   {/* Card Footer */}
-                  <div className="px-5 pb-4 pt-2 flex items-center justify-between border-t border-slate-100 mt-1">
+                  <div className="px-4 sm:px-5 pb-4 pt-2 flex items-center justify-between border-t border-slate-100 mt-1">
                     <div className="flex items-center gap-1.5">
                       <div className="w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center font-bold text-[9px] border border-slate-200">
                         JMK
