@@ -4,11 +4,11 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   content: string;
-  category: 'Bridge Bearings' | 'Expansion Joints' | 'Formwork & Shuttering' | 'Scaffolding Systems' | 'Highway Infrastructure';
+  category: 'Bridge Bearings' | 'Expansion Joints' | 'Formwork & Shuttering' | 'Scaffolding Systems' | 'Highway Infrastructure' | 'PEB Structures';
   author: {
     name: string;
     role: string;
-    avatar: string;
+    avatar?: string;
   };
   publishedAt: string;
   updatedAt: string;
@@ -29,16 +29,15 @@ export const SEED_BLOGS: BlogPost[] = [
     excerpt: 'Explore the key technical differences, load capacities, rotation limits, and IRC:83 compliance standards between POT-PTFE and Elastomeric bridge bearings in civil infrastructure.',
     category: 'Bridge Bearings',
     author: {
-      name: 'Ujjwal Kumar',
+      name: 'Er. Ujjwal Kumar',
       role: 'Chief Technical Director, JMK Engineering',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
     },
     publishedAt: '2026-09-15T10:00:00Z',
     updatedAt: '2026-10-01T14:30:00Z',
     readTime: '6 min read',
-    featuredImage: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg',
+    featuredImage: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212537/OO/SD/EE/146888318/strip-seal-expansion-joint-500x500.jpg',
     isFeatured: true,
-    tags: ['Bridge Bearings', 'POT PTFE', 'IRC:83', 'Civil Infrastructure', 'Patna Fabrication'],
+    tags: ['Bridge Bearings', 'POT PTFE', 'IRC:83', 'Infrastructure', 'Patna Fabrication'],
     relatedProductSlug: 'pot-ptfe-bridge-bearings',
     metaTitle: 'POT-PTFE vs Elastomeric Bridge Bearings Guide | JMK Engineering',
     metaDescription: 'Comprehensive technical comparison between POT-PTFE and Elastomeric bridge bearings adhering to IRC:83 Part II and III standards from JMK Engineering Patna.',
@@ -55,7 +54,7 @@ In bridge engineering across India—specifically for major river crossings, fly
 
 POT-PTFE bearings consist of an elastomeric disc confined within a precision-machined steel cylinder (the "pot"). Under high hydrostatic pressures, the confined elastomer behaves like an incompressible fluid, allowing multi-directional rotation with virtually zero lateral deformation.
 
-A stainless steel sliding plate (mirror polished to Ra ≤ 0.1 µm) slides against a virgin PTFE (Polytetrafluoroethylene) sheet, providing an ultra-low coefficient of friction (typically $\mu \leq 0.03$).
+A stainless steel sliding plate (mirror polished to Ra ≤ 0.1 µm) slides against a virgin PTFE (Polytetrafluoroethylene) sheet, providing an ultra-low coefficient of friction (typically $\\mu \\leq 0.03$).
 
 ### Key Features of POT-PTFE Bearings:
 - **Ultra-High Load Capacities:** Capable of handling vertical loads exceeding **10,000 kN (1,000+ Tonnes)** per bearing.
@@ -84,7 +83,7 @@ Elastomeric bearings comprise vulcanized layers of high-grade natural rubber or 
 | Parameter | Elastomeric Bearings (IRC:83 Part II) | POT-PTFE Bearings (IRC:83 Part III) |
 | :--- | :--- | :--- |
 | **Max Vertical Load** | Up to 4,000 kN (400T) | 5,000 kN to 25,000+ kN (2500T+) |
-| **Translation Capacity** | Up to $\pm 50\text{ mm}$ (shear deformation) | $\pm 100\text{ mm}$ to $\pm 350\text{ mm}$ (PTFE slide) |
+| **Translation Capacity** | Up to $\\pm 50\\text{ mm}$ (shear deformation) | $\\pm 100\\text{ mm}$ to $\\pm 350\\text{ mm}$ (PTFE slide) |
 | **Rotational Capacity** | Up to 0.01 radians | Up to 0.035 radians |
 | **Design Life** | 20 - 30 Years | 40 - 50 Years (with periodic seal inspection) |
 | **Common Applications** | Flyover approaches, RCC Box Girders (15-30m) | Major River Bridges, Cable Stayed Bridges, Steel Trusses |
@@ -94,9 +93,9 @@ Elastomeric bearings comprise vulcanized layers of high-grade natural rubber or 
 
 ## 4. Manufacturing Quality Assurance at JMK Engineering Patna
 
-At JMK Engineering & Developers (Patna Works), every bearing assembly undergoes rigorous QA testing:
+At JMK Engineering & Developers (Patna Central Works), every bearing assembly undergoes rigorous QA testing:
 1. **Raw Material Certification:** IS 2062 Grade E250 / E350 steel plates and virgin PTFE conforming to ASTM D4894.
-2. **Dimension Verification:** CNC milling and boring ensures tolerance within $\pm 0.1\text{ mm}$.
+2. **Dimension Verification:** CNC milling and boring ensures tolerance within $\\pm 0.1\\text{ mm}$.
 3. **Proof Load Testing:** 100% test loading up to 1.5x design load on in-house multi-axis hydraulic test rigs.
 4. **Surface Coating:** 3-coat polyurethane epoxy paint or hot-dip galvanization for 25+ years corrosion protection.
 
@@ -114,15 +113,14 @@ When designing heavy civil infrastructure in Eastern India, choosing the right b
     excerpt: 'Detailed engineering guide on selecting 13kg, 20kg, 27kg, and 35kg MS shuttering plates for column, beam, slab, and culvert casting. Learn IS 2062 standards.',
     category: 'Formwork & Shuttering',
     author: {
-      name: 'Amitabh Verma',
-      role: 'Senior Formwork Design Engineer',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
+      name: 'JMK Engineering Quality Desk',
+      role: 'Formwork & Fabrication Division',
     },
     publishedAt: '2026-09-20T09:30:00Z',
     updatedAt: '2026-10-02T11:00:00Z',
     readTime: '5 min read',
     featuredImage: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476982681/BJ/ZU/VV/146888318/mild-steel-centering-plate-500x500.jpg',
-    isFeatured: true,
+    isFeatured: false,
     tags: ['Shuttering Plates', 'Centering Sheets', 'IS 2062', 'Formwork Engineering', 'Concrete Casting'],
     relatedProductSlug: '20-kg-ms-shuttering-plate',
     metaTitle: 'MS Shuttering Plates & Centering Specifications | JMK Engineering',
@@ -140,10 +138,10 @@ JMK Engineering & Developers manufactures a comprehensive range of standard and 
 
 | Plate Dimension (Feet / Inches) | Sheet Thickness | Perimeter Angle Support | Nominal Weight | Recommended Application |
 | :--- | :--- | :--- | :--- | :--- |
-| **3 ft x 2 ft (900 x 600 mm)** | 2.0 mm (14 Gauge) | $25 \times 25 \times 3\text{ mm}$ | **13 - 15 kg** | Residential Slab Centering, Lightweight Beams |
-| **3 ft x 2 ft (900 x 600 mm)** | 2.5 mm (12 Gauge) | $35 \times 35 \times 5\text{ mm}$ | **19 - 21 kg** | Commercial Columns, High-Rise Retaining Walls |
-| **4 ft x 2 ft (1200 x 600 mm)** | 3.0 mm (10 Gauge) | $40 \times 40 \times 5\text{ mm}$ | **27 - 28 kg** | Bridge Abutments, Box Culverts, Heavy RCC Walls |
-| **5 ft x 3 ft (1500 x 900 mm)** | 4.0 mm (8 Gauge) | $50 \times 50 \times 6\text{ mm}$ | **35 - 40 kg** | Pier Caps, Deep Girders, Heavy Infrastructure |
+| **3 ft x 2 ft (900 x 600 mm)** | 2.0 mm (14 Gauge) | $25 \\times 25 \\times 3\\text{ mm}$ | **13 - 15 kg** | Residential Slab Centering, Lightweight Beams |
+| **3 ft x 2 ft (900 x 600 mm)** | 2.5 mm (12 Gauge) | $35 \\times 35 \\times 5\\text{ mm}$ | **19 - 21 kg** | Commercial Columns, High-Rise Retaining Walls |
+| **4 ft x 2 ft (1200 x 600 mm)** | 3.0 mm (10 Gauge) | $40 \\times 40 \\times 5\\text{ mm}$ | **27 - 28 kg** | Bridge Abutments, Box Culverts, Heavy RCC Walls |
+| **5 ft x 3 ft (1500 x 900 mm)** | 4.0 mm (8 Gauge) | $50 \\times 50 \\times 6\\text{ mm}$ | **35 - 40 kg** | Pier Caps, Deep Girders, Heavy Infrastructure |
 
 ---
 
@@ -157,15 +155,6 @@ Precision CNC-punched elliptical slots along all 4 perimeter flanges allow rapid
 
 ### C. Red Oxide Anti-Rust Primer
 Immediately following fabrication and degreasing, all plates receive an industrial high-adhesion anti-corrosive primer coating ensuring multi-year rust protection on exposed construction sites.
-
----
-
-## 3. Deflection Calculations and Safety Recommendations
-
-To avoid unsightly concrete honeycombing or dimensional tolerances exceeding $\pm 2\text{ mm}$, always verify the allowable bending stress:
-$$\sigma_{\text{allowable}} \leq 0.66 \times f_y \quad (f_y = 250\text{ MPa for IS 2062 E250})$$
-
-For deep pour walls ($H > 3\text{ m}$), install JMK heavy tie rods (16mm / 20mm with forged wing nuts) spaced at maximum $600\text{ mm}$ grid intervals.
     `,
   },
   {
@@ -175,9 +164,8 @@ For deep pour walls ($H > 3\text{ m}$), install JMK heavy tie rods (16mm / 20mm 
     excerpt: 'An in-depth analysis of single-gap strip seal expansion joints vs multi-element modular joints for flyovers, viaducts, and river bridges under IRC:83 & MoRTH guidelines.',
     category: 'Expansion Joints',
     author: {
-      name: 'Ujjwal Kumar',
+      name: 'Er. Ujjwal Kumar',
       role: 'Chief Technical Director, JMK Engineering',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
     },
     publishedAt: '2026-09-28T11:15:00Z',
     updatedAt: '2026-10-04T16:00:00Z',
@@ -209,23 +197,7 @@ The **Strip Seal Expansion Joint** is the most widely specified expansion joint 
 ### Advantages:
 - **100% Watertight Integrity:** Continuous extrusion leaves zero path for water penetration.
 - **Easy Maintenance:** The rubber insert can be replaced in under 2 hours without breaking the deck concrete.
-- **Cost Effective:** Highly economical for movements up to $80\text{ mm}$ ($\pm 40\text{ mm}$).
-
----
-
-## 2. Multi-Element Modular Expansion Joints (Movement > 80 mm to 600+ mm)
-
-For long-span cable-stayed bridges, river crossings, and multi-span viaducts where thermal movements exceed 80mm, **Modular Expansion Joints** are required.
-
-Modular joints use multiple intermediate center beams separated by elastomeric seals and supported by sliding control springs and joist beams.
-
----
-
-## 3. Maintenance Best Practices for Highway Engineers
-
-1. **Debris Cleaning:** Periodically flush sand, stones, and road gravel from the joint recess to prevent rubber tearing under compression.
-2. **Seal Inspection:** Inspect the rubber profile annually before the monsoon season for cracks or displacement.
-3. **Anchor Concrete Check:** Verify that the transition mortar shows no micro-cracking or debonding from the asphalt wearing coat.
+- **Cost Effective:** Highly economical for movements up to $80\\text{ mm}$ ($\\pm 40\\text{ mm}$).
     `,
   },
   {
@@ -235,14 +207,13 @@ Modular joints use multiple intermediate center beams separated by elastomeric s
     excerpt: 'Compare modular Cuplock scaffolding systems with traditional H-frame staging towers. Discover which system delivers higher productivity and safety for multi-story casting.',
     category: 'Scaffolding Systems',
     author: {
-      name: 'Debashis Mukherjee',
-      role: 'Lead QC & Safety Auditor',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80',
+      name: 'JMK Engineering Quality Desk',
+      role: 'Scaffolding & Heavy Staging Division',
     },
     publishedAt: '2026-10-02T08:00:00Z',
     updatedAt: '2026-10-05T10:00:00Z',
     readTime: '5 min read',
-    featuredImage: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg',
+    featuredImage: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg',
     isFeatured: false,
     tags: ['Scaffolding Systems', 'Cuplock Scaffolding', 'H-Frame Staging', 'Site Safety', 'Formwork Staging'],
     relatedProductSlug: 'scaffolding-cuplock-system',
@@ -259,34 +230,12 @@ In modern Indian construction, two primary modular systems dominate: **Cuplock M
 
 ## 1. The Cuplock System: Features & Strengths
 
-The Cuplock node point consists of a fixed bottom cup and a sliding, locking top cup welded onto vertical standards at regular $500\text{ mm}$ intervals. Up to **4 horizontal ledgers or diagonal braces** can be locked securely with a single hammer blow.
+The Cuplock node point consists of a fixed bottom cup and a sliding, locking top cup welded onto vertical standards at regular $500\\text{ mm}$ intervals. Up to **4 horizontal ledgers or diagonal braces** can be locked securely with a single hammer blow.
 
 ### Key Benefits:
 - **No Loose Fittings:** Eliminates nuts, bolts, and loose couplers that get lost or stolen on job sites.
 - **Versatility:** Accommodates curved structures, circular storage tanks, and irregular bridge geometries.
-- **High Load Capacity:** Vertical standards manufactured from $48.3\text{ mm OD} \times 3.2\text{ mm}$ high-tensile steel tubes support up to **25 kN per leg** with proper cross-bracing.
-
----
-
-## 2. The H-Frame System: Strengths & Limitations
-
-H-Frame scaffolding uses prefabricated welded "H" shaped frames connected by scissor cross braces.
-
-### Best Used For:
-- Simple rectangular facades and plastering access.
-- Low-rise residential slab staging.
-- Quick 2-man erection on flat ground.
-
----
-
-## 3. Direct System Comparison
-
-| Feature | Cuplock System | H-Frame System |
-| :--- | :--- | :--- |
-| **Leg Load Capacity** | Up to 25 - 30 kN | Up to 15 - 18 kN |
-| **Geometry Flexibility** | Multi-directional ($360^\circ$) | Rigid rectangular grids ($90^\circ$ only) |
-| **Loose Components** | Zero (Captive Cups) | Scissor pins, lock clips |
-| **Heavy Staging Suitability** | High (Heavy Bridge Decks) | Moderate (Light Slabs) |
+- **High Load Capacity:** Vertical standards manufactured from $48.3\\text{ mm OD} \\times 3.2\\text{ mm}$ high-tensile steel tubes support up to **25 kN per leg** with proper cross-bracing.
     `,
   },
   {
@@ -296,17 +245,16 @@ H-Frame scaffolding uses prefabricated welded "H" shaped frames connected by sci
     excerpt: 'Comprehensive guide to MoRTH Section 2700 compliant MS Drainage Spouts. Learn about 10mm, 12mm, and 14mm fabrication, grating designs, and galvanization standards.',
     category: 'Highway Infrastructure',
     author: {
-      name: 'Ujjwal Kumar',
+      name: 'Er. Ujjwal Kumar',
       role: 'Chief Technical Director, JMK Engineering',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
     },
     publishedAt: '2026-10-04T12:00:00Z',
     updatedAt: '2026-10-06T09:00:00Z',
     readTime: '4 min read',
-    featuredImage: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg',
+    featuredImage: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476990475/XP/DZ/KU/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpg',
     isFeatured: false,
     tags: ['Drainage Spouts', 'MoRTH Standards', 'Bridge Drainage', 'Corrosion Prevention', 'Patna Works'],
-    relatedProductSlug: 'iron-drainage-spouts',
+    relatedProductSlug: '12mm-ms-drainage-spout',
     metaTitle: 'MoRTH Approved Bridge Drainage Spouts | JMK Engineering',
     metaDescription: 'Learn MoRTH Section 2700 technical requirements for Mild Steel & Ductile Iron Bridge Deck Drainage Spouts. Heavy fabrication from JMK Engineering.',
     content: `
@@ -320,16 +268,44 @@ Under **MoRTH Specifications for Road and Bridge Works (5th Revision, Section 27
 
 ## 1. Anatomy of a MoRTH Compliant Drainage Spout
 
-1. **Top Inverted Funnel / Grating Frame:** Fabricated from $10\text{ mm}$ or $12\text{ mm}$ IS 2062 MS plate with welded anti-clogging debris grating.
-2. **Vertical Downspout Pipe:** Seamless or ERW pipe ($100\text{ mm}$ or $150\text{ mm}$ NB) extending at least $500\text{ mm}$ below the soffit of the bridge girder to prevent water from blowing back onto the concrete structure.
+1. **Top Inverted Funnel / Grating Frame:** Fabricated from $10\\text{ mm}$ or $12\\text{ mm}$ IS 2062 MS plate with welded anti-clogging debris grating.
+2. **Vertical Downspout Pipe:** Seamless or ERW pipe ($100\\text{ mm}$ or $150\\text{ mm}$ NB) extending at least $500\\text{ mm}$ below the soffit of the bridge girder.
 3. **Flange Anchors:** Continuous welded anchor perimeter for monolithic bonding into the wearing coat and deck slab.
-4. **Protective Coating:** Hot-Dip Galvanized to IS 4759 with a minimum coating thickness of $85\text{ microns}$ ($610\text{ g/m}^2$) or 3-coat heavy epoxy.
+4. **Protective Coating:** Hot-Dip Galvanized to IS 4759 with a minimum coating thickness of $85\\text{ microns}$ ($610\\text{ g/m}^2$) or 3-coat heavy epoxy.
+    `,
+  },
+  {
+    id: 'blog-6',
+    slug: 'peb-industrial-structures-warehouse-shed-fabrication-patna',
+    title: 'Pre-Engineered Buildings (PEB) & Industrial Steel Sheds: IS 800:2007 Design Standards',
+    excerpt: 'Engineering guide on designing and erecting PEB industrial sheds, clear-span factory warehouses, and heavy steel trusses in Bihar with high wind load resistance.',
+    category: 'PEB Structures',
+    author: {
+      name: 'Er. Ujjwal Kumar',
+      role: 'Chief Technical Director, JMK Engineering',
+    },
+    publishedAt: '2026-10-07T10:00:00Z',
+    updatedAt: '2026-10-08T15:00:00Z',
+    readTime: '5 min read',
+    featuredImage: '/images/about/yellow-girder-staging-truss.jpg',
+    isFeatured: false,
+    tags: ['PEB Structures', 'Industrial Sheds', 'Steel Truss', 'IS 800', 'Patna Fabrication'],
+    metaTitle: 'PEB Industrial Structures & Warehouse Shed Fabrication | JMK Engineering',
+    metaDescription: 'Expert guide to PEB structural design, clear-span industrial sheds, and heavy steel fabrication in Patna adhering to IS 800:2007 and IS 875 wind standards.',
+    content: `
+## Why Pre-Engineered Steel Structures Dominate Modern Industrial Construction
+
+In contrast to conventional RCC or on-site welded truss framing, Pre-Engineered Buildings (PEB) utilize factory-fabricated built-up tapered steel sections with high-strength bolted connections. This delivers up to **40% faster project completion** and provides clear unobstructed column-free internal floor spans.
+
+JMK Engineering & Developers provides end-to-end PEB design, fabrication, and site erection across Bihar and Eastern India.
 
 ---
 
-## 2. Order Custom Drainage Spouts from JMK Engineering
-
-JMK Engineering manufactures 10mm, 12mm, 14mm, and custom flared drainage spouts tailored to specific highway consultants and NHAI / MoRTH tenders. Call our works desk at **+91 7493916194** for bulk dispatch.
+## 1. Structural Design Codes & Wind Load Parameters
+All JMK PEB structures are modeled and designed adhering to:
+- **IS 800:2007:** General Construction in Steel — Code of Practice.
+- **IS 875 (Part 3):** Wind Loads on Buildings and Structures (designed for basic wind speeds up to $47 - 50\\text{ m/s}$ in Bihar zones).
+- **IS 1893 (Part 1):** Criteria for Earthquake Resistant Design of Structures (Seismic Zone IV/V compliance).
     `,
   },
 ];
@@ -347,6 +323,6 @@ export function getFeaturedBlogs(): BlogPost[] {
 }
 
 export function getBlogsByCategory(category: string): BlogPost[] {
-  if (category === 'all') return SEED_BLOGS;
+  if (category === 'all' || category === 'All') return SEED_BLOGS;
   return SEED_BLOGS.filter((b) => b.category.toLowerCase() === category.toLowerCase());
 }
