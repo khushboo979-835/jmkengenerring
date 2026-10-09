@@ -42,9 +42,9 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
   React.useEffect(() => {
     try {
       const saved = localStorage.getItem('jmk_cms_blogs');
-      if (saved) {
+      if (saved !== null) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (Array.isArray(parsed)) {
           setPosts(parsed);
         }
       }
@@ -55,7 +55,7 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
     fetch('/api/cms/blogs')
       .then((res) => res.json())
       .then((data) => {
-        if (data.success && Array.isArray(data.blogs) && data.blogs.length > 0) {
+        if (data.success && Array.isArray(data.blogs)) {
           setPosts(data.blogs);
         }
       })

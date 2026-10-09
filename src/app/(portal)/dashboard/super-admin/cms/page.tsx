@@ -129,26 +129,39 @@ export default function MasterCMSPage() {
     setTimeout(() => setNotification(null), 4000);
   };
 
-  // Hydrate from localStorage on client
+  // Hydrate from Database API and localStorage on client
   useEffect(() => {
     try {
       const savedBlogs = localStorage.getItem('jmk_cms_blogs');
-      if (savedBlogs) setBlogs(JSON.parse(savedBlogs));
+      if (savedBlogs !== null) {
+        setBlogs(JSON.parse(savedBlogs));
+      }
 
       const savedProducts = localStorage.getItem('jmk_cms_products');
-      if (savedProducts) setProducts(JSON.parse(savedProducts));
+      if (savedProducts !== null) setProducts(JSON.parse(savedProducts));
 
       const savedPhotos = localStorage.getItem('jmk_cms_photos');
-      if (savedPhotos) setPhotos(JSON.parse(savedPhotos));
+      if (savedPhotos !== null) setPhotos(JSON.parse(savedPhotos));
 
       const savedVideos = localStorage.getItem('jmk_cms_videos');
-      if (savedVideos) setVideos(JSON.parse(savedVideos));
+      if (savedVideos !== null) setVideos(JSON.parse(savedVideos));
 
       const savedSettings = localStorage.getItem('jmk_cms_settings');
-      if (savedSettings) setSettings(JSON.parse(savedSettings));
+      if (savedSettings !== null) setSettings(JSON.parse(savedSettings));
     } catch (e) {
       console.error(e);
     }
+
+    // Fetch live blogs from Database API
+    fetch('/api/cms/blogs')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.blogs)) {
+          setBlogs(data.blogs);
+          localStorage.setItem('jmk_cms_blogs', JSON.stringify(data.blogs));
+        }
+      })
+      .catch((err) => console.error('Failed to fetch blogs from database:', err));
   }, []);
 
   // Blog Handlers
