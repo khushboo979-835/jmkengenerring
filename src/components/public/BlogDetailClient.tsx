@@ -146,8 +146,8 @@ export default function BlogDetailClient({ post }: BlogDetailClientProps) {
           </div>
         </header>
 
-        {/* Featured Image */}
-        <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm h-72 sm:h-96 relative bg-slate-900">
+        {/* Featured Image - Compact & Proportionate */}
+        <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm h-60 sm:h-72 max-w-3xl mx-auto relative bg-slate-900">
           <img
             src={activePost.featuredImage}
             alt={activePost.title}
