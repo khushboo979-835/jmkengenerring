@@ -7,6 +7,7 @@ export interface IBlog extends Document {
   excerpt: string;
   content: string;
   category: string;
+  status: 'published' | 'draft';
   author: {
     name: string;
     role: string;
@@ -30,6 +31,7 @@ const BlogSchema = new Schema<IBlog>(
     excerpt: { type: String, required: true },
     content: { type: String, required: true },
     category: { type: String, required: true },
+    status: { type: String, enum: ['published', 'draft'], default: 'published' },
     author: {
       name: { type: String, required: true },
       role: { type: String, required: true },

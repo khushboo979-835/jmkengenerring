@@ -16,6 +16,7 @@ export interface BlogPost {
   featuredImage: string;
   isFeatured?: boolean;
   tags: string[];
+  status?: 'published' | 'draft';
   relatedProductSlug?: string;
   metaTitle: string;
   metaDescription: string;

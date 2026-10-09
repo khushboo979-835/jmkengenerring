@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import {
   FileText,
@@ -30,7 +30,13 @@ import {
   List,
   Heading,
   CheckSquare,
-  EyeOff
+  Upload,
+  Bold,
+  Italic,
+  Quote,
+  ListOrdered,
+  FileCheck,
+  RotateCcw
 } from 'lucide-react';
 import { BlogPost, SEED_BLOGS } from '@/lib/blogData';
 import { SeedProduct, SEED_PRODUCTS, INDIA_MART_GALLERY_PHOTOS, PhotoGalleryItem } from '@/lib/seedData';
@@ -43,10 +49,13 @@ export default function MasterCMSPage() {
   const [isBlogModalOpen, setIsBlogModalOpen] = useState(false);
   const [editingBlog, setEditingBlog] = useState<BlogPost | null>(null);
   const [previewMode, setPreviewMode] = useState<'editor' | 'preview'>('editor');
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const [blogForm, setBlogForm] = useState({
     title: '',
     slug: '',
     category: 'Bridge Bearings' as BlogPost['category'],
+    status: 'published' as 'published' | 'draft',
     excerpt: '',
     content: '',
     authorName: 'Er. Ujjwal Kumar',
@@ -173,6 +182,40 @@ export default function MasterCMSPage() {
     }
   }, []);
 
+  // Word count & read-time auto calculate
+  const wordCount = useMemo(() => {
+    return blogForm.content.trim().split(/\s+/).filter(Boolean).length;
+  }, [blogForm.content]);
+
+  const calculatedReadTime = useMemo(() => {
+    const mins = Math.max(1, Math.ceil(wordCount / 200));
+    return `${mins} min read`;
+  }, [wordCount]);
+
+  // Image File Upload Handler (Base64)
+  const handleImageFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Check size limit (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Image file size exceeds 5MB limit. Please upload a smaller image.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (typeof reader.result === 'string') {
+        setBlogForm((prev) => ({
+          ...prev,
+          featuredImage: reader.result as string,
+        }));
+        showNotification('Image loaded successfully from device!');
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
   // Blog Handlers
   const handleOpenNewBlog = () => {
     setEditingBlog(null);
@@ -181,8 +224,9 @@ export default function MasterCMSPage() {
       title: '',
       slug: '',
       category: 'Bridge Bearings',
+      status: 'published',
       excerpt: '',
-      content: `## 1. Introduction & Engineering Overview\n\nExplain the industrial challenge and project context.\n\n## 2. Technical Specifications Matrix\n\n| Parameter | Standard Value | Compliance |\n| :--- | :--- | :--- |\n| **Steel Grade** | IS 2062 Grade E250 | Certified |\n| **Yield Strength** | ≥ 250 MPa | Tested |\n| **Corrosion Protection** | Red Oxide Primer | 2 Coats |\n\n## 3. Site Safety & Quality Recommendations\n\n- Adhere strictly to MoRTH Section 2000 specifications.\n- Verify load testing on hydraulic press before installation.\n\n## Conclusion & Technical Consultation\n\nContact JMK Engineering Patna works desk at +91 7493916194 for custom fabrication CAD drawings.`,
+      content: `## 1. Introduction & Engineering Overview\n\nExplain the industrial challenge, construction application, and project context.\n\n## 2. Technical Specifications Matrix\n\n| Parameter | Standard Value | Compliance |\n| :--- | :--- | :--- |\n| **Steel Grade** | IS 2062 Grade E250 | Certified |\n| **Yield Strength** | ≥ 250 MPa | 100% Tested |\n| **Corrosion Protection** | Red Oxide Primer | 2 Coats Epoxy |\n\n## 3. Site Safety & Quality Recommendations\n\n- Adhere strictly to MoRTH Section 2000 specifications.\n- Verify proof load testing on hydraulic press before installation.\n- Ensure proper alignment and grout compaction.\n\n## Conclusion & Technical Consultation\n\nContact JMK Engineering Patna works desk at +91 7493916194 for custom fabrication CAD drawings.`,
       authorName: 'Er. Ujjwal Kumar',
       authorRole: 'Chief Technical Director, JMK Engineering',
       readTime: '6 min read',
@@ -200,6 +244,7 @@ export default function MasterCMSPage() {
       title: post.title,
       slug: post.slug,
       category: post.category,
+      status: post.status || 'published',
       excerpt: post.excerpt,
       content: post.content,
       authorName: post.author.name,
@@ -219,8 +264,7 @@ export default function MasterCMSPage() {
     }));
   };
 
-  const handleSaveBlog = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSaveBlogWithStatus = async (targetStatus: 'published' | 'draft') => {
     if (!blogForm.title || !blogForm.content) {
       alert('Please provide title and content for the article.');
       return;
@@ -240,9 +284,10 @@ export default function MasterCMSPage() {
             title: blogForm.title,
             slug,
             category: blogForm.category,
+            status: targetStatus,
             excerpt: blogForm.excerpt,
             content: blogForm.content,
-            readTime: blogForm.readTime,
+            readTime: calculatedReadTime || blogForm.readTime,
             featuredImage: blogForm.featuredImage,
             isFeatured: blogForm.isFeatured,
             tags: tagArray,
@@ -256,7 +301,7 @@ export default function MasterCMSPage() {
         }
         return b;
       });
-      showNotification(`Article "${blogForm.title}" updated and synced live!`);
+      showNotification(`Article "${blogForm.title}" saved as ${targetStatus.toUpperCase()}!`);
     } else {
       // Create new
       const newPost: BlogPost = {
@@ -266,13 +311,14 @@ export default function MasterCMSPage() {
         excerpt: blogForm.excerpt || blogForm.title,
         content: blogForm.content,
         category: blogForm.category,
+        status: targetStatus,
         author: {
           name: blogForm.authorName,
           role: blogForm.authorRole,
         },
         publishedAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
-        readTime: blogForm.readTime,
+        readTime: calculatedReadTime || blogForm.readTime,
         featuredImage: blogForm.featuredImage,
         isFeatured: blogForm.isFeatured,
         tags: tagArray,
@@ -280,7 +326,7 @@ export default function MasterCMSPage() {
         metaDescription: blogForm.excerpt,
       };
       updatedList = [newPost, ...blogs];
-      showNotification(`New Article "${blogForm.title}" published live to front website!`);
+      showNotification(`New Article "${blogForm.title}" saved as ${targetStatus.toUpperCase()}!`);
     }
 
     setBlogs(updatedList);
@@ -421,7 +467,7 @@ export default function MasterCMSPage() {
   };
 
   return (
-    <div className="space-y-8 font-sans">
+    <div className="space-y-6 sm:space-y-8 font-sans">
       
       {/* Toast Notification */}
       {notification && (
@@ -591,9 +637,15 @@ export default function MasterCMSPage() {
                       </td>
                       <td className="p-4 font-bold text-slate-700">{post.readTime}</td>
                       <td className="p-4">
-                        <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-black text-[10px] uppercase">
-                          Live on Web
-                        </span>
+                        {post.status === 'draft' ? (
+                          <span className="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-bold text-[10px] uppercase">
+                            Draft (Hidden)
+                          </span>
+                        ) : (
+                          <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-black text-[10px] uppercase">
+                            Live on Web
+                          </span>
+                        )}
                       </td>
                       <td className="p-4 text-right">
                         <div className="inline-flex items-center gap-2">
@@ -868,16 +920,25 @@ export default function MasterCMSPage() {
         </form>
       )}
 
-      {/* CREATE / EDIT BLOG MODAL WITH VISUAL PREVIEW */}
+      {/* FULL-FEATURED PROFESSIONAL BLOG EDITOR MODAL */}
       {isBlogModalOpen && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 sm:p-8 max-w-4xl w-full shadow-2xl space-y-6 my-8">
-            <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
-              <div className="flex items-center gap-2">
-                <FileText className="w-5 h-5 text-red-600" />
-                <h3 className="text-lg font-black text-slate-950">
-                  {editingBlog ? 'Edit Technical Article' : 'Write & Publish New Engineering Article'}
-                </h3>
+        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-white border-2 border-neutral-200 rounded-3xl p-5 sm:p-7 max-w-5xl w-full shadow-2xl space-y-5 my-6">
+            
+            {/* Modal Header */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-neutral-200 pb-3 gap-3">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 rounded-xl bg-red-50 text-red-600 border border-red-200">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-black text-slate-950">
+                    {editingBlog ? 'Edit Engineering Publication' : 'Write & Publish Technical Engineering Article'}
+                  </h3>
+                  <p className="text-[11px] text-slate-500 font-medium">
+                    Word count: <strong>{wordCount} words</strong> • Est. reading time: <strong>{calculatedReadTime}</strong>
+                  </p>
+                </div>
               </div>
 
               <div className="flex items-center gap-2">
@@ -886,22 +947,22 @@ export default function MasterCMSPage() {
                   <button
                     type="button"
                     onClick={() => setPreviewMode('editor')}
-                    className={`px-3 py-1 rounded-lg transition ${previewMode === 'editor' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}
+                    className={`px-3 py-1.5 rounded-lg transition ${previewMode === 'editor' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}
                   >
-                    Editor
+                    ✏️ Editor Mode
                   </button>
                   <button
                     type="button"
                     onClick={() => setPreviewMode('preview')}
-                    className={`px-3 py-1 rounded-lg transition ${previewMode === 'preview' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}
+                    className={`px-3 py-1.5 rounded-lg transition ${previewMode === 'preview' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}
                   >
-                    Live Preview
+                    👁️ Live Website Preview
                   </button>
                 </div>
 
                 <button
                   onClick={() => setIsBlogModalOpen(false)}
-                  className="p-1.5 rounded-lg hover:bg-neutral-100 text-slate-500"
+                  className="p-1.5 rounded-xl hover:bg-neutral-100 text-slate-400 hover:text-slate-700"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -910,19 +971,19 @@ export default function MasterCMSPage() {
 
             {previewMode === 'preview' ? (
               /* Live Preview of formatted article */
-              <div className="space-y-6 max-h-[70vh] overflow-y-auto p-4 bg-slate-50 rounded-2xl border border-slate-200">
+              <div className="space-y-5 max-h-[68vh] overflow-y-auto p-5 bg-slate-50 rounded-2xl border border-slate-200">
                 <div className="space-y-2">
                   <span className="px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold">
                     {blogForm.category}
                   </span>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                  <h1 className="text-xl sm:text-3xl font-extrabold text-slate-900">
                     {blogForm.title || 'Untitled Engineering Guide'}
                   </h1>
-                  <p className="text-sm text-slate-600">{blogForm.excerpt}</p>
+                  <p className="text-sm text-slate-600 font-normal">{blogForm.excerpt}</p>
                 </div>
 
                 {blogForm.featuredImage && (
-                  <div className="h-60 rounded-xl overflow-hidden bg-slate-200">
+                  <div className="h-48 sm:h-56 rounded-xl overflow-hidden bg-slate-200 border">
                     <img src={blogForm.featuredImage} alt="Preview" className="w-full h-full object-cover" />
                   </div>
                 )}
@@ -938,12 +999,12 @@ export default function MasterCMSPage() {
                     if (paragraph.startsWith('|')) {
                       const rows = paragraph.trim().split('\n').filter((r) => !r.includes('---'));
                       return (
-                        <div key={idx} className="overflow-x-auto border rounded-xl">
+                        <div key={idx} className="overflow-x-auto border rounded-xl bg-white">
                           <table className="w-full text-left text-xs">
                             <thead className="bg-slate-100 font-bold border-b">
                               <tr>
                                 {rows[0].split('|').filter(Boolean).map((h, i) => (
-                                  <th key={i} className="p-2">{h.trim()}</th>
+                                  <th key={i} className="p-2.5">{h.trim()}</th>
                                 ))}
                               </tr>
                             </thead>
@@ -951,7 +1012,7 @@ export default function MasterCMSPage() {
                               {rows.slice(1).map((r, ri) => (
                                 <tr key={ri} className="border-b">
                                   {r.split('|').filter(Boolean).map((c, ci) => (
-                                    <td key={ci} className="p-2">{c.trim()}</td>
+                                    <td key={ci} className="p-2.5">{c.trim()}</td>
                                   ))}
                                 </tr>
                               ))}
@@ -965,26 +1026,28 @@ export default function MasterCMSPage() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSaveBlog} className="space-y-4">
+              <div className="space-y-4 max-h-[72vh] overflow-y-auto pr-1">
+                {/* Title */}
                 <div className="space-y-1">
                   <label className="text-xs font-black text-slate-900">Article Title *</label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Complete Guide to POT-PTFE Bridge Bearings in Bihar"
+                    placeholder="e.g. Complete Technical Guide to POT-PTFE Bridge Bearings (IRC:83 Standards)"
                     value={blogForm.title}
                     onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })}
-                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-red-600"
+                    className="w-full p-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-red-600 focus:bg-white"
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {/* Metadata Row */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="space-y-1">
                     <label className="text-xs font-black text-slate-900">Category *</label>
                     <select
                       value={blogForm.category}
                       onChange={(e) => setBlogForm({ ...blogForm, category: e.target.value as any })}
-                      className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                      className="w-full p-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
                     >
                       <option value="Bridge Bearings">Bridge Bearings</option>
                       <option value="Expansion Joints">Expansion Joints</option>
@@ -1001,65 +1064,67 @@ export default function MasterCMSPage() {
                       type="text"
                       value={blogForm.authorName}
                       onChange={(e) => setBlogForm({ ...blogForm, authorName: e.target.value })}
-                      className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                      className="w-full p-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-xs font-black text-slate-900">Read Time</label>
-                    <input
-                      type="text"
-                      placeholder="e.g. 6 min read"
-                      value={blogForm.readTime}
-                      onChange={(e) => setBlogForm({ ...blogForm, readTime: e.target.value })}
-                      className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
-                    />
+                    <label className="text-xs font-black text-slate-900">Status</label>
+                    <select
+                      value={blogForm.status}
+                      onChange={(e) => setBlogForm({ ...blogForm, status: e.target.value as any })}
+                      className="w-full p-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                    >
+                      <option value="published">🟢 Published (Live on Website)</option>
+                      <option value="draft">🟡 Draft (Hidden / Work in Progress)</option>
+                    </select>
                   </div>
                 </div>
 
+                {/* Excerpt */}
                 <div className="space-y-1">
                   <label className="text-xs font-black text-slate-900">Short Excerpt (Search Snippet) *</label>
                   <textarea
                     rows={2}
                     required
-                    placeholder="Brief summary for Google Search snippet..."
+                    placeholder="Brief 2-line summary for Google Search snippet..."
                     value={blogForm.excerpt}
                     onChange={(e) => setBlogForm({ ...blogForm, excerpt: e.target.value })}
-                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-medium text-slate-900"
+                    className="w-full p-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-medium text-slate-900"
                   />
                 </div>
 
-                {/* Quick Format Helpers Toolbar */}
-                <div className="space-y-1">
-                  <div className="flex items-center justify-between">
+                {/* Rich Formatting Toolbar */}
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between flex-wrap gap-2">
                     <label className="text-xs font-black text-slate-900">Article Content *</label>
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className="text-[10px] text-slate-500 font-bold">Quick Format:</span>
+                    <div className="flex items-center gap-1 flex-wrap">
+                      <span className="text-[10px] text-slate-400 font-bold mr-1">Insert:</span>
                       <button
                         type="button"
-                        onClick={() => insertHelper('## Section Heading\n\nEnter text content here...')}
-                        className="px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
+                        onClick={() => insertHelper('## Section Title\n\nWrite content here...')}
+                        className="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
                       >
                         + H2 Heading
                       </button>
                       <button
                         type="button"
                         onClick={() => insertHelper('### Subheading\n\nDetails...')}
-                        className="px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
+                        className="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
                       >
                         + H3 Sub
                       </button>
                       <button
                         type="button"
-                        onClick={() => insertHelper('- Point 1\n- Point 2\n- Point 3')}
-                        className="px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
+                        onClick={() => insertHelper('- Key specification point 1\n- Key specification point 2\n- Key specification point 3')}
+                        className="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
                       >
                         + Bullet List
                       </button>
                       <button
                         type="button"
-                        onClick={() => insertHelper('| Parameter | Specification | Compliance |\n| :--- | :--- | :--- |\n| **Material** | IS 2062 Grade E250 | Certified |\n| **Thickness** | 12mm / 14mm | Checked |')}
-                        className="px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
+                        onClick={() => insertHelper('| Parameter | Value / Code | Verification |\n| :--- | :--- | :--- |\n| **Steel Grade** | IS 2062 Grade E250 | In-house Tested |\n| **Yield Strength** | ≥ 250 MPa | Verified |\n| **Corrosion Primer** | Red Oxide 2-Coat | MoRTH 2700 |')}
+                        className="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
                       >
                         + Spec Table
                       </button>
@@ -1067,67 +1132,117 @@ export default function MasterCMSPage() {
                   </div>
 
                   <textarea
-                    rows={9}
+                    rows={8}
                     required
-                    placeholder="Write complete technical guide..."
+                    placeholder="Write your article content using markdown..."
                     value={blogForm.content}
                     onChange={(e) => setBlogForm({ ...blogForm, content: e.target.value })}
-                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-900"
+                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-900 leading-relaxed focus:bg-white"
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <label className="text-xs font-black text-slate-900">Featured Image URL</label>
+                {/* Image Upload & URL Row */}
+                <div className="bg-slate-50 border border-neutral-200 rounded-2xl p-3.5 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-black text-slate-900 flex items-center gap-1.5">
+                      <ImageIcon className="w-4 h-4 text-red-600" />
+                      <span>Featured Image (Upload from Computer / URL)</span>
+                    </label>
+
+                    {/* Hidden file input */}
                     <input
-                      type="text"
-                      value={blogForm.featuredImage}
-                      onChange={(e) => setBlogForm({ ...blogForm, featuredImage: e.target.value })}
-                      className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-900"
+                      type="file"
+                      ref={fileInputRef}
+                      accept="image/*"
+                      onChange={handleImageFileUpload}
+                      className="hidden"
                     />
+
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="px-3 py-1.5 bg-slate-900 hover:bg-black text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
+                    >
+                      <Upload className="w-3.5 h-3.5" />
+                      <span>Upload Image File</span>
+                    </button>
                   </div>
 
+                  <div className="flex items-center gap-3">
+                    <div className="w-16 h-14 rounded-xl overflow-hidden bg-slate-200 border shrink-0 flex items-center justify-center">
+                      {blogForm.featuredImage ? (
+                        <img src={blogForm.featuredImage} alt="Preview" className="w-full h-full object-cover" />
+                      ) : (
+                        <ImageIcon className="w-6 h-6 text-slate-400" />
+                      )}
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Or paste image URL (https://...)"
+                      value={blogForm.featuredImage}
+                      onChange={(e) => setBlogForm({ ...blogForm, featuredImage: e.target.value })}
+                      className="w-full p-2 bg-white border border-neutral-300 rounded-xl text-xs font-mono text-slate-800"
+                    />
+                  </div>
+                </div>
+
+                {/* Tags & Featured Checkbox */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                   <div className="space-y-1">
                     <label className="text-xs font-black text-slate-900">Tags (comma separated)</label>
                     <input
                       type="text"
                       value={blogForm.tags}
                       onChange={(e) => setBlogForm({ ...blogForm, tags: e.target.value })}
-                      className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                      className="w-full p-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
                     />
+                  </div>
+
+                  <div className="flex items-center gap-2 pt-5">
+                    <input
+                      type="checkbox"
+                      id="isFeatured"
+                      checked={blogForm.isFeatured}
+                      onChange={(e) => setBlogForm({ ...blogForm, isFeatured: e.target.checked })}
+                      className="w-4 h-4 text-red-600 rounded"
+                    />
+                    <label htmlFor="isFeatured" className="text-xs font-black text-slate-900">
+                      Feature this article on top
+                    </label>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 pt-2">
-                  <input
-                    type="checkbox"
-                    id="isFeatured"
-                    checked={blogForm.isFeatured}
-                    onChange={(e) => setBlogForm({ ...blogForm, isFeatured: e.target.checked })}
-                    className="w-4 h-4 text-red-600 rounded"
-                  />
-                  <label htmlFor="isFeatured" className="text-xs font-black text-slate-900">
-                    Feature this article on top of the Blog home page
-                  </label>
-                </div>
-
-                <div className="pt-4 border-t border-neutral-200 flex items-center justify-end gap-3">
+                {/* Action Buttons */}
+                <div className="pt-4 border-t border-neutral-200 flex flex-wrap items-center justify-between gap-3">
                   <button
                     type="button"
                     onClick={() => setIsBlogModalOpen(false)}
-                    className="px-5 py-2.5 rounded-xl border border-neutral-300 text-xs font-bold text-slate-700 hover:bg-neutral-100"
+                    className="px-4 py-2.5 rounded-xl border border-neutral-300 text-xs font-bold text-slate-700 hover:bg-neutral-100"
                   >
                     Cancel
                   </button>
-                  <button
-                    type="submit"
-                    className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center gap-2"
-                  >
-                    <Save className="w-4 h-4" />
-                    <span>{editingBlog ? 'Update Article' : 'Publish Article Live'}</span>
-                  </button>
+
+                  <div className="flex items-center gap-2.5">
+                    <button
+                      type="button"
+                      onClick={() => handleSaveBlogWithStatus('draft')}
+                      className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 rounded-xl text-xs font-bold transition flex items-center gap-1.5"
+                    >
+                      <Save className="w-3.5 h-3.5 text-slate-600" />
+                      <span>Save as Draft</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleSaveBlogWithStatus('published')}
+                      className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center gap-2"
+                    >
+                      <FileCheck className="w-4 h-4" />
+                      <span>{editingBlog ? 'Update & Publish Live' : 'Publish to Live Website'}</span>
+                    </button>
+                  </div>
                 </div>
-              </form>
+              </div>
             )}
           </div>
         </div>
