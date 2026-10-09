@@ -27,14 +27,31 @@ interface BlogDetailClientProps {
 }
 
 export default function BlogDetailClient({ post }: BlogDetailClientProps) {
+  const [activePost, setActivePost] = useState<BlogPost>(post);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [copiedLink, setCopiedLink] = useState(false);
   const [isRfqOpen, setIsRfqOpen] = useState(false);
 
-  const relatedProduct = post.relatedProductSlug ? findProductBySlug(post.relatedProductSlug) : null;
+  // Sync latest post version from localStorage or API if updated
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('jmk_cms_blogs');
+      if (saved) {
+        const parsed: BlogPost[] = JSON.parse(saved);
+        const match = parsed.find((b) => b.slug === post.slug || b.id === post.id);
+        if (match) {
+          setActivePost(match);
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [post]);
+
+  const relatedProduct = activePost.relatedProductSlug ? findProductBySlug(activePost.relatedProductSlug) : null;
   const allBlogs = getAllBlogs();
   const relatedArticles = allBlogs
-    .filter((b) => b.slug !== post.slug && (b.category === post.category || b.tags.some(t => post.tags.includes(t))))
+    .filter((b) => b.slug !== activePost.slug && (b.category === activePost.category || b.tags.some(t => activePost.tags.includes(t))))
     .slice(0, 3);
 
   // Scroll Progress calculation
@@ -95,11 +112,11 @@ export default function BlogDetailClient({ post }: BlogDetailClientProps) {
         {/* Article Header */}
         <header className="space-y-6">
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            {post.title}
+            {activePost.title}
           </h1>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-            {post.excerpt}
+            {activePost.excerpt}
           </p>
 
           <div className="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
@@ -109,8 +126,8 @@ export default function BlogDetailClient({ post }: BlogDetailClientProps) {
                 JMK
               </div>
               <div>
-                <p className="text-sm font-bold text-slate-900">{post.author.name}</p>
-                <p className="text-xs text-slate-500">{post.author.role}</p>
+                <p className="text-sm font-bold text-slate-900">{activePost.author.name}</p>
+                <p className="text-xs text-slate-500">{activePost.author.role}</p>
               </div>
             </div>
 
@@ -118,12 +135,12 @@ export default function BlogDetailClient({ post }: BlogDetailClientProps) {
             <div className="flex items-center gap-4 text-xs font-semibold text-slate-500">
               <span className="flex items-center gap-1.5">
                 <Calendar className="w-4 h-4 text-slate-400" />
-                <span>{new Date(post.publishedAt).toLocaleDateString('en-IN', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                <span>{new Date(activePost.publishedAt).toLocaleDateString('en-IN', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
               </span>
               <span>•</span>
               <span className="flex items-center gap-1.5">
                 <Clock className="w-4 h-4 text-slate-400" />
-                <span>{post.readTime}</span>
+                <span>{activePost.readTime}</span>
               </span>
             </div>
           </div>
@@ -132,8 +149,8 @@ export default function BlogDetailClient({ post }: BlogDetailClientProps) {
         {/* Featured Image */}
         <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm h-72 sm:h-96 relative bg-slate-900">
           <img
-            src={post.featuredImage}
-            alt={post.title}
+            src={activePost.featuredImage}
+            alt={activePost.title}
             className="w-full h-full object-cover"
           />
         </div>
@@ -153,7 +170,7 @@ export default function BlogDetailClient({ post }: BlogDetailClientProps) {
 
         {/* Article Body Content */}
         <article className="prose prose-slate max-w-none space-y-6 text-sm sm:text-base text-slate-800 leading-relaxed font-normal">
-          {post.content.split('\n\n').map((paragraph, idx) => {
+          {activePost.content.split('\n\n').map((paragraph, idx) => {
             if (paragraph.startsWith('## ')) {
               return (
                 <h2 key={idx} className="text-xl sm:text-2xl font-bold text-slate-900 pt-6 border-t border-slate-100">
@@ -234,7 +251,7 @@ export default function BlogDetailClient({ post }: BlogDetailClientProps) {
 
           {/* Tags */}
           <div className="flex flex-wrap items-center gap-1.5">
-            {post.tags.map((t) => (
+            {activePost.tags.map((t) => (
               <span
                 key={t}
                 className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-medium"

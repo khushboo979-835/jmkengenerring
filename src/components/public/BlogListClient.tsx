@@ -33,12 +33,37 @@ const CATEGORIES = [
 ];
 
 export default function BlogListClient({ initialPosts }: BlogListClientProps) {
+  const [posts, setPosts] = useState<BlogPost[]>(initialPosts);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [isRfqOpen, setIsRfqOpen] = useState(false);
 
+  // Synchronize dynamic CMS posts from localStorage and API
+  React.useEffect(() => {
+    try {
+      const saved = localStorage.getItem('jmk_cms_blogs');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setPosts(parsed);
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+
+    fetch('/api/cms/blogs')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.blogs) && data.blogs.length > 0) {
+          setPosts(data.blogs);
+        }
+      })
+      .catch(() => {});
+  }, [initialPosts]);
+
   const filteredPosts = useMemo(() => {
-    return initialPosts.filter((post) => {
+    return posts.filter((post) => {
       const matchesCategory =
         selectedCategory === 'All' ||
         post.category.toLowerCase() === selectedCategory.toLowerCase();
@@ -51,11 +76,11 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
 
       return matchesCategory && matchesSearch;
     });
-  }, [initialPosts, selectedCategory, searchQuery]);
+  }, [posts, selectedCategory, searchQuery]);
 
   const featuredPost = useMemo(() => {
-    return initialPosts.find((p) => p.isFeatured) || initialPosts[0];
-  }, [initialPosts]);
+    return posts.find((p) => p.isFeatured) || posts[0];
+  }, [posts]);
 
   return (
     <div className="bg-[#fcfcfd] text-slate-900 min-h-screen">

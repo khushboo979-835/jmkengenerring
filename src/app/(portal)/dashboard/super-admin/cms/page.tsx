@@ -25,10 +25,15 @@ import {
   X,
   Building2,
   RefreshCw,
-  PhoneCall
+  PhoneCall,
+  Table,
+  List,
+  Heading,
+  CheckSquare,
+  EyeOff
 } from 'lucide-react';
 import { BlogPost, SEED_BLOGS } from '@/lib/blogData';
-import { SeedProduct, SEED_PRODUCTS } from '@/lib/seedData';
+import { SeedProduct, SEED_PRODUCTS, INDIA_MART_GALLERY_PHOTOS, PhotoGalleryItem } from '@/lib/seedData';
 
 export default function MasterCMSPage() {
   const [activeTab, setActiveTab] = useState<'blogs' | 'products' | 'photos' | 'videos' | 'settings'>('blogs');
@@ -37,16 +42,17 @@ export default function MasterCMSPage() {
   const [blogs, setBlogs] = useState<BlogPost[]>(SEED_BLOGS);
   const [isBlogModalOpen, setIsBlogModalOpen] = useState(false);
   const [editingBlog, setEditingBlog] = useState<BlogPost | null>(null);
+  const [previewMode, setPreviewMode] = useState<'editor' | 'preview'>('editor');
   const [blogForm, setBlogForm] = useState({
     title: '',
     slug: '',
     category: 'Bridge Bearings' as BlogPost['category'],
     excerpt: '',
     content: '',
-    authorName: 'Ujjwal Kumar',
+    authorName: 'Er. Ujjwal Kumar',
     authorRole: 'Chief Technical Director, JMK Engineering',
-    readTime: '5 min read',
-    featuredImage: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg',
+    readTime: '6 min read',
+    featuredImage: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212537/OO/SD/EE/146888318/strip-seal-expansion-joint-500x500.jpg',
     tags: 'Bridge Bearings, IRC:83, Infrastructure',
     isFeatured: false,
   });
@@ -66,7 +72,56 @@ export default function MasterCMSPage() {
     featuredImage: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg',
   });
 
-  // Success Notification
+  // Photo CMS State
+  const [photos, setPhotos] = useState<PhotoGalleryItem[]>(INDIA_MART_GALLERY_PHOTOS);
+  const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
+  const [photoForm, setPhotoForm] = useState({
+    title: '',
+    category: 'Shuttering & Centering',
+    price: '₹67 / Kg',
+    moq: '50 Pcs',
+    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476982681/BJ/ZU/VV/146888318/mild-steel-centering-plate-500x500.jpg',
+    slug: '27-kg-iron-shuttering-plate',
+  });
+
+  // Video CMS State
+  const [videos, setVideos] = useState([
+    {
+      id: 'vid_1',
+      title: 'Heavy MS Shuttering Plates Load Test & Drop Compaction #Shorts #JMKEngineering',
+      category: 'Shuttering & Centering',
+      youtubeId: 'b_fLp787q_E',
+      duration: '0:45',
+      views: '124 views',
+    },
+    {
+      id: 'vid_2',
+      title: 'Precision CNC Cutting of POT-PTFE Bridge Bearings & Base Plates Patna Works',
+      category: 'Bridge Bearings',
+      youtubeId: 'pXz9aF4qB8c',
+      duration: '1:15',
+      views: '98 views',
+    },
+  ]);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [videoForm, setVideoForm] = useState({
+    title: '',
+    category: 'Steel Fabrication',
+    youtubeId: '',
+    duration: '1:00',
+  });
+
+  // Settings State
+  const [settings, setSettings] = useState({
+    primaryPhone: '+91 7493916194',
+    secondaryPhone: '+91 8651010370',
+    email: 'info@jmkengineering.in',
+    patnaAddress: 'Mauza Jhali, Circle Kankarbagh 50b, Ward 55, Patna - 800007, Bihar',
+    gstin: '10BIEPD2766D2ZX',
+    googleVerificationKey: '6DP_-JVCMGzjeXRc9POYlpBPCWtURcAQK9sHhFR6QjA',
+  });
+
+  // Notification
   const [notification, setNotification] = useState<string | null>(null);
 
   const showNotification = (msg: string) => {
@@ -74,19 +129,42 @@ export default function MasterCMSPage() {
     setTimeout(() => setNotification(null), 4000);
   };
 
+  // Hydrate from localStorage on client
+  useEffect(() => {
+    try {
+      const savedBlogs = localStorage.getItem('jmk_cms_blogs');
+      if (savedBlogs) setBlogs(JSON.parse(savedBlogs));
+
+      const savedProducts = localStorage.getItem('jmk_cms_products');
+      if (savedProducts) setProducts(JSON.parse(savedProducts));
+
+      const savedPhotos = localStorage.getItem('jmk_cms_photos');
+      if (savedPhotos) setPhotos(JSON.parse(savedPhotos));
+
+      const savedVideos = localStorage.getItem('jmk_cms_videos');
+      if (savedVideos) setVideos(JSON.parse(savedVideos));
+
+      const savedSettings = localStorage.getItem('jmk_cms_settings');
+      if (savedSettings) setSettings(JSON.parse(savedSettings));
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
   // Blog Handlers
   const handleOpenNewBlog = () => {
     setEditingBlog(null);
+    setPreviewMode('editor');
     setBlogForm({
       title: '',
       slug: '',
       category: 'Bridge Bearings',
       excerpt: '',
-      content: '',
-      authorName: 'Ujjwal Kumar',
+      content: `## 1. Introduction & Engineering Overview\n\nExplain the industrial challenge and project context.\n\n## 2. Technical Specifications Matrix\n\n| Parameter | Standard Value | Compliance |\n| :--- | :--- | :--- |\n| **Steel Grade** | IS 2062 Grade E250 | Certified |\n| **Yield Strength** | ≥ 250 MPa | Tested |\n| **Corrosion Protection** | Red Oxide Primer | 2 Coats |\n\n## 3. Site Safety & Quality Recommendations\n\n- Adhere strictly to MoRTH Section 2000 specifications.\n- Verify load testing on hydraulic press before installation.\n\n## Conclusion & Technical Consultation\n\nContact JMK Engineering Patna works desk at +91 7493916194 for custom fabrication CAD drawings.`,
+      authorName: 'Er. Ujjwal Kumar',
       authorRole: 'Chief Technical Director, JMK Engineering',
-      readTime: '5 min read',
-      featuredImage: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg',
+      readTime: '6 min read',
+      featuredImage: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212537/OO/SD/EE/146888318/strip-seal-expansion-joint-500x500.jpg',
       tags: 'Bridge Bearings, IRC:83, Infrastructure',
       isFeatured: false,
     });
@@ -95,6 +173,7 @@ export default function MasterCMSPage() {
 
   const handleEditBlog = (post: BlogPost) => {
     setEditingBlog(post);
+    setPreviewMode('editor');
     setBlogForm({
       title: post.title,
       slug: post.slug,
@@ -111,6 +190,13 @@ export default function MasterCMSPage() {
     setIsBlogModalOpen(true);
   };
 
+  const insertHelper = (snippet: string) => {
+    setBlogForm((prev) => ({
+      ...prev,
+      content: prev.content + '\n\n' + snippet,
+    }));
+  };
+
   const handleSaveBlog = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!blogForm.title || !blogForm.content) {
@@ -121,9 +207,11 @@ export default function MasterCMSPage() {
     const slug = blogForm.slug || blogForm.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     const tagArray = blogForm.tags.split(',').map((t) => t.trim()).filter(Boolean);
 
+    let updatedList: BlogPost[] = [];
+
     if (editingBlog) {
       // Update
-      const updated = blogs.map((b) => {
+      updatedList = blogs.map((b) => {
         if (b.id === editingBlog.id) {
           return {
             ...b,
@@ -146,8 +234,7 @@ export default function MasterCMSPage() {
         }
         return b;
       });
-      setBlogs(updated);
-      showNotification(`Article "${blogForm.title}" updated successfully!`);
+      showNotification(`Article "${blogForm.title}" updated and synced live!`);
     } else {
       // Create new
       const newPost: BlogPost = {
@@ -160,7 +247,6 @@ export default function MasterCMSPage() {
         author: {
           name: blogForm.authorName,
           role: blogForm.authorRole,
-          avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
         },
         publishedAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
@@ -171,16 +257,39 @@ export default function MasterCMSPage() {
         metaTitle: `${blogForm.title} | JMK Engineering`,
         metaDescription: blogForm.excerpt,
       };
-      setBlogs([newPost, ...blogs]);
-      showNotification(`New Article "${blogForm.title}" published to live website!`);
+      updatedList = [newPost, ...blogs];
+      showNotification(`New Article "${blogForm.title}" published live to front website!`);
+    }
+
+    setBlogs(updatedList);
+    try {
+      localStorage.setItem('jmk_cms_blogs', JSON.stringify(updatedList));
+      await fetch('/api/cms/blogs', {
+        method: editingBlog ? 'PUT' : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: editingBlog ? editingBlog.id : undefined,
+          ...blogForm,
+          tags: tagArray,
+        }),
+      });
+    } catch (e) {
+      console.error(e);
     }
 
     setIsBlogModalOpen(false);
   };
 
-  const handleDeleteBlog = (id: string, title: string) => {
+  const handleDeleteBlog = async (id: string, title: string) => {
     if (confirm(`Are you sure you want to delete the article: "${title}"?`)) {
-      setBlogs(blogs.filter((b) => b.id !== id));
+      const remaining = blogs.filter((b) => b.id !== id);
+      setBlogs(remaining);
+      try {
+        localStorage.setItem('jmk_cms_blogs', JSON.stringify(remaining));
+        await fetch(`/api/cms/blogs?id=${id}`, { method: 'DELETE' });
+      } catch (e) {
+        console.error(e);
+      }
       showNotification(`Article deleted successfully.`);
     }
   };
@@ -220,9 +329,71 @@ export default function MasterCMSPage() {
       isFeatured: false,
       minOrderQuantity: '1 Unit',
     };
-    setProducts([newProd, ...products]);
+    const updated = [newProd, ...products];
+    setProducts(updated);
+    try {
+      localStorage.setItem('jmk_cms_products', JSON.stringify(updated));
+    } catch (e) {
+      console.error(e);
+    }
     setIsProductModalOpen(false);
     showNotification(`Product "${productForm.name}" added to master catalog!`);
+  };
+
+  // Photo Handlers
+  const handleSavePhoto = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newPhoto: PhotoGalleryItem = {
+      id: `photo_${Date.now()}`,
+      title: photoForm.title,
+      category: photoForm.category,
+      price: photoForm.price,
+      moq: photoForm.moq,
+      imageUrl: photoForm.imageUrl,
+      slug: photoForm.slug,
+    };
+    const updated = [newPhoto, ...photos];
+    setPhotos(updated);
+    try {
+      localStorage.setItem('jmk_cms_photos', JSON.stringify(updated));
+    } catch (e) {
+      console.error(e);
+    }
+    setIsPhotoModalOpen(false);
+    showNotification(`Photo "${photoForm.title}" added to gallery!`);
+  };
+
+  // Video Handlers
+  const handleSaveVideo = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newVid = {
+      id: `vid_${Date.now()}`,
+      title: videoForm.title,
+      category: videoForm.category,
+      youtubeId: videoForm.youtubeId.replace('https://youtu.be/', '').replace('https://www.youtube.com/watch?v=', '').split('&')[0],
+      duration: videoForm.duration,
+      views: '1 view',
+    };
+    const updated = [newVid, ...videos];
+    setVideos(updated);
+    try {
+      localStorage.setItem('jmk_cms_videos', JSON.stringify(updated));
+    } catch (e) {
+      console.error(e);
+    }
+    setIsVideoModalOpen(false);
+    showNotification(`Video "${videoForm.title}" added to video desk!`);
+  };
+
+  // Settings Save
+  const handleSaveSettings = (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      localStorage.setItem('jmk_cms_settings', JSON.stringify(settings));
+    } catch (e) {
+      console.error(e);
+    }
+    showNotification(`Website Hotlines & SEO settings saved!`);
   };
 
   return (
@@ -241,30 +412,38 @@ export default function MasterCMSPage() {
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-black border border-red-200">
             <Globe className="w-3.5 h-3.5 text-red-600" />
-            <span>Master Public Website CMS</span>
+            <span>Master Public Website CMS Console</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-slate-950">
             Website Content & Marketing CMS Console
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 font-medium">
-            Publish and manage Technical Blogs, Product Catalog, Photo & Video Galleries, and SEO settings.
+            Manage live Technical Blogs, Product Catalog, Photo & Video Galleries, and SEO settings.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
           <Link
+            href="/blog"
+            target="_blank"
+            className="px-4 py-2.5 bg-neutral-100 hover:bg-neutral-200 text-slate-900 border border-neutral-300 rounded-xl text-xs font-bold transition flex items-center gap-1.5"
+          >
+            <Eye className="w-3.5 h-3.5" />
+            <span>View Live Blog</span>
+          </Link>
+          <Link
             href="/"
             target="_blank"
-            className="px-4 py-2.5 bg-neutral-100 hover:bg-neutral-200 text-slate-900 rounded-xl text-xs font-black transition flex items-center gap-2 border border-neutral-300"
+            className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center gap-1.5"
           >
-            <span>Preview Live Website</span>
+            <span>Visit Live Website</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </Link>
         </div>
       </div>
 
       {/* CMS Navigation Tabs */}
-      <div className="flex items-center gap-2 border-b-2 border-neutral-200 pb-2 overflow-x-auto scrollbar-none">
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-neutral-200">
         <button
           onClick={() => setActiveTab('blogs')}
           className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-black transition whitespace-nowrap ${
@@ -298,7 +477,7 @@ export default function MasterCMSPage() {
           }`}
         >
           <ImageIcon className="w-4 h-4" />
-          <span>Photo Gallery</span>
+          <span>Photo Gallery ({photos.length})</span>
         </button>
 
         <button
@@ -310,7 +489,7 @@ export default function MasterCMSPage() {
           }`}
         >
           <Video className="w-4 h-4" />
-          <span>Video Desk</span>
+          <span>Video Desk ({videos.length})</span>
         </button>
 
         <button
@@ -495,11 +674,6 @@ export default function MasterCMSPage() {
               </div>
             ))}
           </div>
-          {filteredProducts.length > 15 && (
-            <p className="text-center text-xs font-bold text-slate-500">
-              Showing 15 of {filteredProducts.length} total active products.
-            </p>
-          )}
         </div>
       )}
 
@@ -509,24 +683,40 @@ export default function MasterCMSPage() {
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-xl font-black text-slate-950">Factory Floor & Product Photo Gallery</h2>
-              <p className="text-xs text-slate-500 font-medium">Manage verified factory images shown on /photos.</p>
+              <p className="text-xs text-slate-500 font-medium">Add and manage verified factory photos shown on /photos.</p>
             </div>
-            <Link
-              href="/photos"
-              target="_blank"
-              className="px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold flex items-center gap-1.5"
-            >
-              <span>View Public Photos Page</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </Link>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setIsPhotoModalOpen(true)}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider flex items-center gap-1.5 shadow-md"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Add New Photo</span>
+              </button>
+              <Link
+                href="/photos"
+                target="_blank"
+                className="px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold flex items-center gap-1.5"
+              >
+                <span>View Public Photos</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
 
-          <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 shadow-sm text-center space-y-4">
-            <ImageIcon className="w-12 h-12 text-red-600 mx-auto" />
-            <h3 className="text-lg font-black text-slate-900">Photo Gallery Connected (100% Synced)</h3>
-            <p className="text-xs text-slate-600 max-w-lg mx-auto font-medium">
-              Photos uploaded to <code className="bg-neutral-100 px-2 py-1 rounded">public/images/drive_downloads/</code> and Cloudinary are dynamically indexed on the public photo gallery.
-            </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {photos.slice(0, 12).map((photo) => (
+              <div key={photo.id} className="bg-white border border-neutral-200 rounded-2xl p-3 space-y-2 shadow-sm">
+                <div className="h-36 rounded-xl overflow-hidden bg-slate-100">
+                  <img src={photo.imageUrl} alt={photo.title} className="w-full h-full object-cover" />
+                </div>
+                <h4 className="text-xs font-bold text-slate-900 line-clamp-1">{photo.title}</h4>
+                <div className="flex items-center justify-between text-[11px] text-slate-500">
+                  <span>{photo.category}</span>
+                  <span className="font-mono text-emerald-700 font-bold">{photo.price}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
@@ -537,34 +727,55 @@ export default function MasterCMSPage() {
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-xl font-black text-slate-950">Plant Inspection Video Desk</h2>
-              <p className="text-xs text-slate-500 font-medium">Manage video demonstrations and QA inspections shown on /videos.</p>
+              <p className="text-xs text-slate-500 font-medium">Manage video demonstrations and YouTube links shown on /videos.</p>
             </div>
-            <Link
-              href="/videos"
-              target="_blank"
-              className="px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold flex items-center gap-1.5"
-            >
-              <span>View Public Videos Page</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </Link>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setIsVideoModalOpen(true)}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider flex items-center gap-1.5 shadow-md"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Add New Video</span>
+              </button>
+              <Link
+                href="/videos"
+                target="_blank"
+                className="px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold flex items-center gap-1.5"
+              >
+                <span>View Public Videos</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
 
-          <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 shadow-sm text-center space-y-4">
-            <Video className="w-12 h-12 text-red-600 mx-auto" />
-            <h3 className="text-lg font-black text-slate-900">Live Video Desk & YouTube Telemetry Connected</h3>
-            <p className="text-xs text-slate-600 max-w-lg mx-auto font-medium">
-              Direct integration with YouTube channel <strong>@jmkengineeringanddeveloper1626</strong> and live WhatsApp inspection requests.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {videos.map((vid) => (
+              <div key={vid.id} className="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm space-y-3">
+                <div className="aspect-video rounded-xl bg-slate-900 overflow-hidden relative flex items-center justify-center">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${vid.youtubeId}`}
+                    title={vid.title}
+                    className="w-full h-full"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <h4 className="text-sm font-bold text-slate-900">{vid.title}</h4>
+                <div className="flex items-center justify-between text-xs text-slate-500">
+                  <span className="px-2 py-0.5 bg-slate-100 rounded font-bold">{vid.category}</span>
+                  <span>Duration: {vid.duration}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
 
       {/* TAB 5: SEO & TELEPHONY SETTINGS */}
       {activeTab === 'settings' && (
-        <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+        <form onSubmit={handleSaveSettings} className="bg-white border-2 border-neutral-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
           <div className="space-y-1">
             <h2 className="text-xl font-black text-slate-950">Global SEO & Telephony Configuration</h2>
-            <p className="text-xs text-slate-500 font-medium">Configure primary contact numbers, corporate titles, and Google verification.</p>
+            <p className="text-xs text-slate-500 font-medium">Configure primary contact numbers, corporate address, and Google verification.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
@@ -572,9 +783,9 @@ export default function MasterCMSPage() {
               <label className="text-xs font-black text-slate-900">Primary Header Hotline</label>
               <input
                 type="text"
-                disabled
-                value="+91 7493916194"
-                className="w-full p-3 bg-neutral-100 border border-neutral-300 rounded-xl text-xs font-mono font-bold text-slate-900"
+                value={settings.primaryPhone}
+                onChange={(e) => setSettings({ ...settings, primaryPhone: e.target.value })}
+                className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono font-bold text-slate-900"
               />
               <p className="text-[10px] text-emerald-600 font-bold">● Active on Header, Mobile Menu & WhatsApp CTAs</p>
             </div>
@@ -583,42 +794,60 @@ export default function MasterCMSPage() {
               <label className="text-xs font-black text-slate-900">Secondary / Estimation Hotline</label>
               <input
                 type="text"
-                disabled
-                value="+91 8651010370"
-                className="w-full p-3 bg-neutral-100 border border-neutral-300 rounded-xl text-xs font-mono font-bold text-slate-900"
+                value={settings.secondaryPhone}
+                onChange={(e) => setSettings({ ...settings, secondaryPhone: e.target.value })}
+                className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono font-bold text-slate-900"
               />
               <p className="text-[10px] text-emerald-600 font-bold">● Active on Contact Cards & Footer Desks</p>
             </div>
 
             <div className="space-y-2">
-              <label className="text-xs font-black text-slate-900">Google Search Console Verification Key</label>
+              <label className="text-xs font-black text-slate-900">Official Contact Email</label>
               <input
-                type="text"
-                disabled
-                value="6DP_-JVCMGzjeXRc9POYlpBPCWtURcAQK9sHhFR6QjA"
-                className="w-full p-3 bg-neutral-100 border border-neutral-300 rounded-xl text-xs font-mono font-bold text-slate-900"
+                type="email"
+                value={settings.email}
+                onChange={(e) => setSettings({ ...settings, email: e.target.value })}
+                className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
               />
-              <p className="text-[10px] text-emerald-600 font-bold">● HTML Tag & DNS Verified</p>
             </div>
 
             <div className="space-y-2">
-              <label className="text-xs font-black text-slate-900">XML Sitemap Health Status</label>
+              <label className="text-xs font-black text-slate-900">Official GSTIN</label>
               <input
                 type="text"
-                disabled
-                value="https://www.jmkengineering.in/sitemap.xml (86 Active URLs)"
-                className="w-full p-3 bg-neutral-100 border border-neutral-300 rounded-xl text-xs font-mono font-bold text-slate-900"
+                value={settings.gstin}
+                onChange={(e) => setSettings({ ...settings, gstin: e.target.value })}
+                className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono font-bold text-slate-900"
               />
-              <p className="text-[10px] text-emerald-600 font-bold">● 100% Crawlable by Googlebot</p>
+            </div>
+
+            <div className="md:col-span-2 space-y-2">
+              <label className="text-xs font-black text-slate-900">Patna Central Works Plant Address</label>
+              <input
+                type="text"
+                value={settings.patnaAddress}
+                onChange={(e) => setSettings({ ...settings, patnaAddress: e.target.value })}
+                className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+              />
             </div>
           </div>
-        </div>
+
+          <div className="pt-4 border-t border-neutral-200 flex justify-end">
+            <button
+              type="submit"
+              className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider shadow-md flex items-center gap-2"
+            >
+              <Save className="w-4 h-4" />
+              <span>Save Configuration</span>
+            </button>
+          </div>
+        </form>
       )}
 
-      {/* CREATE / EDIT BLOG MODAL */}
+      {/* CREATE / EDIT BLOG MODAL WITH VISUAL PREVIEW */}
       {isBlogModalOpen && (
         <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 sm:p-8 max-w-3xl w-full shadow-2xl space-y-6 my-8">
+          <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 sm:p-8 max-w-4xl w-full shadow-2xl space-y-6 my-8">
             <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
               <div className="flex items-center gap-2">
                 <FileText className="w-5 h-5 text-red-600" />
@@ -626,131 +855,256 @@ export default function MasterCMSPage() {
                   {editingBlog ? 'Edit Technical Article' : 'Write & Publish New Engineering Article'}
                 </h3>
               </div>
-              <button
-                onClick={() => setIsBlogModalOpen(false)}
-                className="p-1.5 rounded-lg hover:bg-neutral-100 text-slate-500"
-              >
-                <X className="w-5 h-5" />
-              </button>
+
+              <div className="flex items-center gap-2">
+                {/* Mode Switcher */}
+                <div className="bg-slate-100 p-1 rounded-xl flex items-center text-xs font-bold">
+                  <button
+                    type="button"
+                    onClick={() => setPreviewMode('editor')}
+                    className={`px-3 py-1 rounded-lg transition ${previewMode === 'editor' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}
+                  >
+                    Editor
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPreviewMode('preview')}
+                    className={`px-3 py-1 rounded-lg transition ${previewMode === 'preview' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}
+                  >
+                    Live Preview
+                  </button>
+                </div>
+
+                <button
+                  onClick={() => setIsBlogModalOpen(false)}
+                  className="p-1.5 rounded-lg hover:bg-neutral-100 text-slate-500"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
 
-            <form onSubmit={handleSaveBlog} className="space-y-4">
-              <div className="space-y-1">
-                <label className="text-xs font-black text-slate-900">Article Title *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Complete Guide to POT-PTFE Bridge Bearings in Bihar"
-                  value={blogForm.title}
-                  onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })}
-                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-red-600"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-xs font-black text-slate-900">Category *</label>
-                  <select
-                    value={blogForm.category}
-                    onChange={(e) => setBlogForm({ ...blogForm, category: e.target.value as any })}
-                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
-                  >
-                    <option value="Bridge Bearings">Bridge Bearings</option>
-                    <option value="Expansion Joints">Expansion Joints</option>
-                    <option value="Formwork & Shuttering">Formwork & Shuttering</option>
-                    <option value="Scaffolding Systems">Scaffolding Systems</option>
-                    <option value="Highway Infrastructure">Highway Infrastructure</option>
-                  </select>
+            {previewMode === 'preview' ? (
+              /* Live Preview of formatted article */
+              <div className="space-y-6 max-h-[70vh] overflow-y-auto p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                <div className="space-y-2">
+                  <span className="px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold">
+                    {blogForm.category}
+                  </span>
+                  <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                    {blogForm.title || 'Untitled Engineering Guide'}
+                  </h1>
+                  <p className="text-sm text-slate-600">{blogForm.excerpt}</p>
                 </div>
 
+                {blogForm.featuredImage && (
+                  <div className="h-60 rounded-xl overflow-hidden bg-slate-200">
+                    <img src={blogForm.featuredImage} alt="Preview" className="w-full h-full object-cover" />
+                  </div>
+                )}
+
+                <div className="prose prose-slate max-w-none text-xs sm:text-sm space-y-4">
+                  {blogForm.content.split('\n\n').map((paragraph, idx) => {
+                    if (paragraph.startsWith('## ')) {
+                      return <h2 key={idx} className="text-lg font-bold text-slate-900 border-t pt-3">{paragraph.replace('## ', '')}</h2>;
+                    }
+                    if (paragraph.startsWith('### ')) {
+                      return <h3 key={idx} className="text-base font-bold text-slate-800">{paragraph.replace('### ', '')}</h3>;
+                    }
+                    if (paragraph.startsWith('|')) {
+                      const rows = paragraph.trim().split('\n').filter((r) => !r.includes('---'));
+                      return (
+                        <div key={idx} className="overflow-x-auto border rounded-xl">
+                          <table className="w-full text-left text-xs">
+                            <thead className="bg-slate-100 font-bold border-b">
+                              <tr>
+                                {rows[0].split('|').filter(Boolean).map((h, i) => (
+                                  <th key={i} className="p-2">{h.trim()}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {rows.slice(1).map((r, ri) => (
+                                <tr key={ri} className="border-b">
+                                  {r.split('|').filter(Boolean).map((c, ci) => (
+                                    <td key={ci} className="p-2">{c.trim()}</td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      );
+                    }
+                    return <p key={idx}>{paragraph}</p>;
+                  })}
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={handleSaveBlog} className="space-y-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-black text-slate-900">Read Time</label>
+                  <label className="text-xs font-black text-slate-900">Article Title *</label>
                   <input
                     type="text"
-                    placeholder="e.g. 6 min read"
-                    value={blogForm.readTime}
-                    onChange={(e) => setBlogForm({ ...blogForm, readTime: e.target.value })}
-                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                    required
+                    placeholder="e.g. Complete Guide to POT-PTFE Bridge Bearings in Bihar"
+                    value={blogForm.title}
+                    onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })}
+                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-red-600"
                   />
                 </div>
-              </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-black text-slate-900">Short Excerpt (Search Meta Description) *</label>
-                <textarea
-                  rows={2}
-                  required
-                  placeholder="Brief 2-line summary for Google Search snippet..."
-                  value={blogForm.excerpt}
-                  onChange={(e) => setBlogForm({ ...blogForm, excerpt: e.target.value })}
-                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-medium text-slate-900"
-                />
-              </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-xs font-black text-slate-900">Category *</label>
+                    <select
+                      value={blogForm.category}
+                      onChange={(e) => setBlogForm({ ...blogForm, category: e.target.value as any })}
+                      className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                    >
+                      <option value="Bridge Bearings">Bridge Bearings</option>
+                      <option value="Expansion Joints">Expansion Joints</option>
+                      <option value="Formwork & Shuttering">Formwork & Shuttering</option>
+                      <option value="Scaffolding Systems">Scaffolding Systems</option>
+                      <option value="Highway Infrastructure">Highway Infrastructure</option>
+                      <option value="PEB Structures">PEB Structures</option>
+                    </select>
+                  </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-black text-slate-900">Full Article Content (Markdown / Text) *</label>
-                <textarea
-                  rows={8}
-                  required
-                  placeholder="Write complete technical guide with headings (## Heading), bullet points, specifications, and IRC/IS codes..."
-                  value={blogForm.content}
-                  onChange={(e) => setBlogForm({ ...blogForm, content: e.target.value })}
-                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-900"
-                />
-              </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-black text-slate-900">Author</label>
+                    <input
+                      type="text"
+                      value={blogForm.authorName}
+                      onChange={(e) => setBlogForm({ ...blogForm, authorName: e.target.value })}
+                      className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                    />
+                  </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-xs font-black text-slate-900">Read Time</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. 6 min read"
+                      value={blogForm.readTime}
+                      onChange={(e) => setBlogForm({ ...blogForm, readTime: e.target.value })}
+                      className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                    />
+                  </div>
+                </div>
+
                 <div className="space-y-1">
-                  <label className="text-xs font-black text-slate-900">Featured Image URL</label>
-                  <input
-                    type="text"
-                    value={blogForm.featuredImage}
-                    onChange={(e) => setBlogForm({ ...blogForm, featuredImage: e.target.value })}
+                  <label className="text-xs font-black text-slate-900">Short Excerpt (Search Snippet) *</label>
+                  <textarea
+                    rows={2}
+                    required
+                    placeholder="Brief summary for Google Search snippet..."
+                    value={blogForm.excerpt}
+                    onChange={(e) => setBlogForm({ ...blogForm, excerpt: e.target.value })}
+                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-medium text-slate-900"
+                  />
+                </div>
+
+                {/* Quick Format Helpers Toolbar */}
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-black text-slate-900">Article Content *</label>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="text-[10px] text-slate-500 font-bold">Quick Format:</span>
+                      <button
+                        type="button"
+                        onClick={() => insertHelper('## Section Heading\n\nEnter text content here...')}
+                        className="px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
+                      >
+                        + H2 Heading
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => insertHelper('### Subheading\n\nDetails...')}
+                        className="px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
+                      >
+                        + H3 Sub
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => insertHelper('- Point 1\n- Point 2\n- Point 3')}
+                        className="px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
+                      >
+                        + Bullet List
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => insertHelper('| Parameter | Specification | Compliance |\n| :--- | :--- | :--- |\n| **Material** | IS 2062 Grade E250 | Certified |\n| **Thickness** | 12mm / 14mm | Checked |')}
+                        className="px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
+                      >
+                        + Spec Table
+                      </button>
+                    </div>
+                  </div>
+
+                  <textarea
+                    rows={9}
+                    required
+                    placeholder="Write complete technical guide..."
+                    value={blogForm.content}
+                    onChange={(e) => setBlogForm({ ...blogForm, content: e.target.value })}
                     className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-900"
                   />
                 </div>
 
-                <div className="space-y-1">
-                  <label className="text-xs font-black text-slate-900">Tags (comma separated)</label>
-                  <input
-                    type="text"
-                    value={blogForm.tags}
-                    onChange={(e) => setBlogForm({ ...blogForm, tags: e.target.value })}
-                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-xs font-black text-slate-900">Featured Image URL</label>
+                    <input
+                      type="text"
+                      value={blogForm.featuredImage}
+                      onChange={(e) => setBlogForm({ ...blogForm, featuredImage: e.target.value })}
+                      className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-900"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-xs font-black text-slate-900">Tags (comma separated)</label>
+                    <input
+                      type="text"
+                      value={blogForm.tags}
+                      onChange={(e) => setBlogForm({ ...blogForm, tags: e.target.value })}
+                      className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex items-center gap-2 pt-2">
-                <input
-                  type="checkbox"
-                  id="isFeatured"
-                  checked={blogForm.isFeatured}
-                  onChange={(e) => setBlogForm({ ...blogForm, isFeatured: e.target.checked })}
-                  className="w-4 h-4 text-red-600 rounded"
-                />
-                <label htmlFor="isFeatured" className="text-xs font-black text-slate-900">
-                  Feature this article on top of the Blog home page
-                </label>
-              </div>
+                <div className="flex items-center gap-2 pt-2">
+                  <input
+                    type="checkbox"
+                    id="isFeatured"
+                    checked={blogForm.isFeatured}
+                    onChange={(e) => setBlogForm({ ...blogForm, isFeatured: e.target.checked })}
+                    className="w-4 h-4 text-red-600 rounded"
+                  />
+                  <label htmlFor="isFeatured" className="text-xs font-black text-slate-900">
+                    Feature this article on top of the Blog home page
+                  </label>
+                </div>
 
-              <div className="pt-4 border-t border-neutral-200 flex items-center justify-end gap-3">
-                <button
-                  type="button"
-                  onClick={() => setIsBlogModalOpen(false)}
-                  className="px-5 py-2.5 rounded-xl border border-neutral-300 text-xs font-bold text-slate-700 hover:bg-neutral-100"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center gap-2"
-                >
-                  <Save className="w-4 h-4" />
-                  <span>{editingBlog ? 'Update Article' : 'Publish Article Live'}</span>
-                </button>
-              </div>
-            </form>
+                <div className="pt-4 border-t border-neutral-200 flex items-center justify-end gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setIsBlogModalOpen(false)}
+                    className="px-5 py-2.5 rounded-xl border border-neutral-300 text-xs font-bold text-slate-700 hover:bg-neutral-100"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center gap-2"
+                  >
+                    <Save className="w-4 h-4" />
+                    <span>{editingBlog ? 'Update Article' : 'Publish Article Live'}</span>
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       )}
@@ -838,7 +1192,7 @@ export default function MasterCMSPage() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-black text-slate-900">Short Specification Description</label>
+                <label className="text-xs font-black text-slate-900">Short Description</label>
                 <textarea
                   rows={2}
                   value={productForm.shortDescription}
@@ -860,6 +1214,136 @@ export default function MasterCMSPage() {
                   className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider shadow-md"
                 >
                   Save Product
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* CREATE PHOTO MODAL */}
+      {isPhotoModalOpen && (
+        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-6 my-8">
+            <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
+              <div className="flex items-center gap-2">
+                <ImageIcon className="w-5 h-5 text-red-600" />
+                <h3 className="text-lg font-black text-slate-950">Add Factory Photo</h3>
+              </div>
+              <button onClick={() => setIsPhotoModalOpen(false)} className="p-1.5 rounded-lg hover:bg-neutral-100 text-slate-500">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSavePhoto} className="space-y-4">
+              <div className="space-y-1">
+                <label className="text-xs font-black text-slate-900">Photo Title *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Heavy Centering Plates Staging"
+                  value={photoForm.title}
+                  onChange={(e) => setPhotoForm({ ...photoForm, title: e.target.value })}
+                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <label className="text-xs font-black text-slate-900">Category</label>
+                  <select
+                    value={photoForm.category}
+                    onChange={(e) => setPhotoForm({ ...photoForm, category: e.target.value })}
+                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                  >
+                    <option value="Shuttering & Centering">Shuttering & Centering</option>
+                    <option value="Scaffolding Systems">Scaffolding Systems</option>
+                    <option value="Expansion Joints & Bearings">Bridge Bearings & Joints</option>
+                    <option value="Highway & Barriers">Highway & Crash Barriers</option>
+                    <option value="Drainage Infrastructure">Bridge Drainage</option>
+                  </select>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-black text-slate-900">Price / MOQ</label>
+                  <input
+                    type="text"
+                    value={photoForm.price}
+                    onChange={(e) => setPhotoForm({ ...photoForm, price: e.target.value })}
+                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-black text-slate-900">Image URL *</label>
+                <input
+                  type="text"
+                  required
+                  value={photoForm.imageUrl}
+                  onChange={(e) => setPhotoForm({ ...photoForm, imageUrl: e.target.value })}
+                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-900"
+                />
+              </div>
+
+              <div className="pt-4 border-t border-neutral-200 flex justify-end gap-3">
+                <button type="button" onClick={() => setIsPhotoModalOpen(false)} className="px-4 py-2 border rounded-xl text-xs font-bold text-slate-700">
+                  Cancel
+                </button>
+                <button type="submit" className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black">
+                  Save Photo
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* CREATE VIDEO MODAL */}
+      {isVideoModalOpen && (
+        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-6 my-8">
+            <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
+              <div className="flex items-center gap-2">
+                <Video className="w-5 h-5 text-red-600" />
+                <h3 className="text-lg font-black text-slate-950">Add Plant Video / YouTube Embed</h3>
+              </div>
+              <button onClick={() => setIsVideoModalOpen(false)} className="p-1.5 rounded-lg hover:bg-neutral-100 text-slate-500">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveVideo} className="space-y-4">
+              <div className="space-y-1">
+                <label className="text-xs font-black text-slate-900">Video Title *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Inside JMK Factory - Shuttering Plate Welding"
+                  value={videoForm.title}
+                  onChange={(e) => setVideoForm({ ...videoForm, title: e.target.value })}
+                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-black text-slate-900">YouTube Video ID or Link *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. b_fLp787q_E or https://youtu.be/..."
+                  value={videoForm.youtubeId}
+                  onChange={(e) => setVideoForm({ ...videoForm, youtubeId: e.target.value })}
+                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-900"
+                />
+              </div>
+
+              <div className="pt-4 border-t border-neutral-200 flex justify-end gap-3">
+                <button type="button" onClick={() => setIsVideoModalOpen(false)} className="px-4 py-2 border rounded-xl text-xs font-bold text-slate-700">
+                  Cancel
+                </button>
+                <button type="submit" className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black">
+                  Save Video
                 </button>
               </div>
             </form>

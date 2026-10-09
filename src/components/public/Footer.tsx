@@ -325,6 +325,15 @@ export default function Footer() {
                 <Lock className="w-3.5 h-3.5" />
                 <span>Staff & ERP Portal</span>
               </Link>
+              <div>
+                <Link
+                  href="/dashboard/super-admin/cms"
+                  className="inline-flex items-center gap-1 text-xs font-bold text-slate-700 hover:text-red-600 transition"
+                >
+                  <span>⚙️ Website CMS & Blog Console</span>
+                  <ArrowUpRight className="w-3 h-3 text-red-600" />
+                </Link>
+              </div>
               <p className="text-[11px] text-neutral-500 font-bold">
                 Download our mobile app to manage orders
               </p>
