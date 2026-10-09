@@ -50,6 +50,8 @@ export default function MasterCMSPage() {
   const [editingBlog, setEditingBlog] = useState<BlogPost | null>(null);
   const [previewMode, setPreviewMode] = useState<'editor' | 'preview'>('editor');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const photoFileInputRef = useRef<HTMLInputElement>(null);
+  const productFileInputRef = useRef<HTMLInputElement>(null);
 
   const [blogForm, setBlogForm] = useState({
     title: '',
@@ -210,7 +212,41 @@ export default function MasterCMSPage() {
           ...prev,
           featuredImage: reader.result as string,
         }));
-        showNotification('Image loaded successfully from device!');
+        showNotification('Blog image loaded successfully from device!');
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleProductFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      alert('File exceeds 5MB limit.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (typeof reader.result === 'string') {
+        setProductForm((prev) => ({ ...prev, featuredImage: reader.result as string }));
+        showNotification('Product image loaded from device!');
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handlePhotoFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      alert('File exceeds 5MB limit.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (typeof reader.result === 'string') {
+        setPhotoForm((prev) => ({ ...prev, imageUrl: reader.result as string }));
+        showNotification('Gallery photo loaded from device!');
       }
     };
     reader.readAsDataURL(file);
@@ -922,17 +958,17 @@ export default function MasterCMSPage() {
 
       {/* FULL-FEATURED PROFESSIONAL BLOG EDITOR MODAL */}
       {isBlogModalOpen && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
-          <div className="bg-white border-2 border-neutral-200 rounded-3xl p-5 sm:p-7 max-w-5xl w-full shadow-2xl space-y-5 my-6">
+        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
+          <div className="bg-white border-2 border-neutral-300 rounded-2xl sm:rounded-3xl max-w-4xl w-full max-h-[94vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             
-            {/* Modal Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-neutral-200 pb-3 gap-3">
+            {/* Modal Sticky Header */}
+            <div className="px-5 py-3.5 border-b border-neutral-200 bg-white flex flex-wrap items-center justify-between gap-3 shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 rounded-xl bg-red-50 text-red-600 border border-red-200">
                   <FileText className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-black text-slate-950">
+                  <h3 className="text-base sm:text-lg font-black text-slate-950 leading-tight">
                     {editingBlog ? 'Edit Engineering Publication' : 'Write & Publish Technical Engineering Article'}
                   </h3>
                   <p className="text-[11px] text-slate-500 font-medium">
@@ -947,20 +983,21 @@ export default function MasterCMSPage() {
                   <button
                     type="button"
                     onClick={() => setPreviewMode('editor')}
-                    className={`px-3 py-1.5 rounded-lg transition ${previewMode === 'editor' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}
+                    className={`px-3 py-1.5 rounded-lg transition ${previewMode === 'editor' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-900'}`}
                   >
                     ✏️ Editor Mode
                   </button>
                   <button
                     type="button"
                     onClick={() => setPreviewMode('preview')}
-                    className={`px-3 py-1.5 rounded-lg transition ${previewMode === 'preview' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}
+                    className={`px-3 py-1.5 rounded-lg transition ${previewMode === 'preview' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-900'}`}
                   >
                     👁️ Live Website Preview
                   </button>
                 </div>
 
                 <button
+                  type="button"
                   onClick={() => setIsBlogModalOpen(false)}
                   className="p-1.5 rounded-xl hover:bg-neutral-100 text-slate-400 hover:text-slate-700"
                 >
@@ -969,295 +1006,299 @@ export default function MasterCMSPage() {
               </div>
             </div>
 
-            {previewMode === 'preview' ? (
-              /* Live Preview of formatted article */
-              <div className="space-y-5 max-h-[68vh] overflow-y-auto p-5 bg-slate-50 rounded-2xl border border-slate-200">
-                <div className="space-y-2">
-                  <span className="px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold">
-                    {blogForm.category}
-                  </span>
-                  <h1 className="text-xl sm:text-3xl font-extrabold text-slate-900">
-                    {blogForm.title || 'Untitled Engineering Guide'}
-                  </h1>
-                  <p className="text-sm text-slate-600 font-normal">{blogForm.excerpt}</p>
-                </div>
-
-                {blogForm.featuredImage && (
-                  <div className="h-48 sm:h-56 rounded-xl overflow-hidden bg-slate-200 border">
-                    <img src={blogForm.featuredImage} alt="Preview" className="w-full h-full object-cover" />
+            {/* Scrollable Modal Body */}
+            <div className="p-5 overflow-y-auto flex-1 space-y-4 bg-slate-50/40">
+              {previewMode === 'preview' ? (
+                /* Live Preview of formatted article */
+                <div className="space-y-5 p-5 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                  <div className="space-y-2">
+                    <span className="px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold">
+                      {blogForm.category}
+                    </span>
+                    <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900">
+                      {blogForm.title || 'Untitled Engineering Guide'}
+                    </h1>
+                    <p className="text-xs sm:text-sm text-slate-600 font-normal">{blogForm.excerpt || 'No excerpt provided yet.'}</p>
                   </div>
-                )}
 
-                <div className="prose prose-slate max-w-none text-xs sm:text-sm space-y-4">
-                  {blogForm.content.split('\n\n').map((paragraph, idx) => {
-                    if (paragraph.startsWith('## ')) {
-                      return <h2 key={idx} className="text-lg font-bold text-slate-900 border-t pt-3">{paragraph.replace('## ', '')}</h2>;
-                    }
-                    if (paragraph.startsWith('### ')) {
-                      return <h3 key={idx} className="text-base font-bold text-slate-800">{paragraph.replace('### ', '')}</h3>;
-                    }
-                    if (paragraph.startsWith('|')) {
-                      const rows = paragraph.trim().split('\n').filter((r) => !r.includes('---'));
-                      return (
-                        <div key={idx} className="overflow-x-auto border rounded-xl bg-white">
-                          <table className="w-full text-left text-xs">
-                            <thead className="bg-slate-100 font-bold border-b">
-                              <tr>
-                                {rows[0].split('|').filter(Boolean).map((h, i) => (
-                                  <th key={i} className="p-2.5">{h.trim()}</th>
-                                ))}
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {rows.slice(1).map((r, ri) => (
-                                <tr key={ri} className="border-b">
-                                  {r.split('|').filter(Boolean).map((c, ci) => (
-                                    <td key={ci} className="p-2.5">{c.trim()}</td>
+                  {blogForm.featuredImage && (
+                    <div className="h-44 sm:h-56 rounded-xl overflow-hidden bg-slate-200 border">
+                      <img src={blogForm.featuredImage} alt="Preview" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+
+                  <div className="prose prose-slate max-w-none text-xs sm:text-sm space-y-4">
+                    {blogForm.content.split('\n\n').map((paragraph, idx) => {
+                      if (paragraph.startsWith('## ')) {
+                        return <h2 key={idx} className="text-lg font-bold text-slate-900 border-t pt-3">{paragraph.replace('## ', '')}</h2>;
+                      }
+                      if (paragraph.startsWith('### ')) {
+                        return <h3 key={idx} className="text-base font-bold text-slate-800">{paragraph.replace('### ', '')}</h3>;
+                      }
+                      if (paragraph.startsWith('|')) {
+                        const rows = paragraph.trim().split('\n').filter((r) => !r.includes('---'));
+                        return (
+                          <div key={idx} className="overflow-x-auto border rounded-xl bg-white">
+                            <table className="w-full text-left text-xs">
+                              <thead className="bg-slate-100 font-bold border-b">
+                                <tr>
+                                  {rows[0].split('|').filter(Boolean).map((h, i) => (
+                                    <th key={i} className="p-2.5">{h.trim()}</th>
                                   ))}
                                 </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                      );
-                    }
-                    return <p key={idx}>{paragraph}</p>;
-                  })}
-                </div>
-              </div>
-            ) : (
-              <div className="space-y-4 max-h-[72vh] overflow-y-auto pr-1">
-                {/* Title */}
-                <div className="space-y-1">
-                  <label className="text-xs font-black text-slate-900">Article Title *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Complete Technical Guide to POT-PTFE Bridge Bearings (IRC:83 Standards)"
-                    value={blogForm.title}
-                    onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })}
-                    className="w-full p-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-red-600 focus:bg-white"
-                  />
-                </div>
-
-                {/* Metadata Row */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div className="space-y-1">
-                    <label className="text-xs font-black text-slate-900">Category *</label>
-                    <select
-                      value={blogForm.category}
-                      onChange={(e) => setBlogForm({ ...blogForm, category: e.target.value as any })}
-                      className="w-full p-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
-                    >
-                      <option value="Bridge Bearings">Bridge Bearings</option>
-                      <option value="Expansion Joints">Expansion Joints</option>
-                      <option value="Formwork & Shuttering">Formwork & Shuttering</option>
-                      <option value="Scaffolding Systems">Scaffolding Systems</option>
-                      <option value="Highway Infrastructure">Highway Infrastructure</option>
-                      <option value="PEB Structures">PEB Structures</option>
-                    </select>
+                              </thead>
+                              <tbody>
+                                {rows.slice(1).map((r, ri) => (
+                                  <tr key={ri} className="border-b">
+                                    {r.split('|').filter(Boolean).map((c, ci) => (
+                                      <td key={ci} className="p-2.5">{c.trim()}</td>
+                                    ))}
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        );
+                      }
+                      return <p key={idx}>{paragraph}</p>;
+                    })}
                   </div>
-
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {/* Title */}
                   <div className="space-y-1">
-                    <label className="text-xs font-black text-slate-900">Author</label>
+                    <label className="text-xs font-black text-slate-900">Article Title *</label>
                     <input
                       type="text"
-                      value={blogForm.authorName}
-                      onChange={(e) => setBlogForm({ ...blogForm, authorName: e.target.value })}
-                      className="w-full p-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                      required
+                      placeholder="e.g. Complete Technical Guide to POT-PTFE Bridge Bearings (IRC:83 Standards)"
+                      value={blogForm.title}
+                      onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })}
+                      className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-red-600 shadow-sm"
                     />
                   </div>
 
-                  <div className="space-y-1">
-                    <label className="text-xs font-black text-slate-900">Status</label>
-                    <select
-                      value={blogForm.status}
-                      onChange={(e) => setBlogForm({ ...blogForm, status: e.target.value as any })}
-                      className="w-full p-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
-                    >
-                      <option value="published">🟢 Published (Live on Website)</option>
-                      <option value="draft">🟡 Draft (Hidden / Work in Progress)</option>
-                    </select>
-                  </div>
-                </div>
+                  {/* Metadata Row */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="space-y-1">
+                      <label className="text-xs font-black text-slate-900">Category *</label>
+                      <select
+                        value={blogForm.category}
+                        onChange={(e) => setBlogForm({ ...blogForm, category: e.target.value as any })}
+                        className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 shadow-sm"
+                      >
+                        <option value="Bridge Bearings">Bridge Bearings</option>
+                        <option value="Expansion Joints">Expansion Joints</option>
+                        <option value="Formwork & Shuttering">Formwork & Shuttering</option>
+                        <option value="Scaffolding Systems">Scaffolding Systems</option>
+                        <option value="Highway Infrastructure">Highway Infrastructure</option>
+                        <option value="PEB Structures">PEB Structures</option>
+                      </select>
+                    </div>
 
-                {/* Excerpt */}
-                <div className="space-y-1">
-                  <label className="text-xs font-black text-slate-900">Short Excerpt (Search Snippet) *</label>
-                  <textarea
-                    rows={2}
-                    required
-                    placeholder="Brief 2-line summary for Google Search snippet..."
-                    value={blogForm.excerpt}
-                    onChange={(e) => setBlogForm({ ...blogForm, excerpt: e.target.value })}
-                    className="w-full p-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-medium text-slate-900"
-                  />
-                </div>
+                    <div className="space-y-1">
+                      <label className="text-xs font-black text-slate-900">Author</label>
+                      <input
+                        type="text"
+                        value={blogForm.authorName}
+                        onChange={(e) => setBlogForm({ ...blogForm, authorName: e.target.value })}
+                        className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 shadow-sm"
+                      />
+                    </div>
 
-                {/* Rich Formatting Toolbar */}
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between flex-wrap gap-2">
-                    <label className="text-xs font-black text-slate-900">Article Content *</label>
-                    <div className="flex items-center gap-1 flex-wrap">
-                      <span className="text-[10px] text-slate-400 font-bold mr-1">Insert:</span>
-                      <button
-                        type="button"
-                        onClick={() => insertHelper('## Section Title\n\nWrite content here...')}
-                        className="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
+                    <div className="space-y-1">
+                      <label className="text-xs font-black text-slate-900">Status</label>
+                      <select
+                        value={blogForm.status}
+                        onChange={(e) => setBlogForm({ ...blogForm, status: e.target.value as any })}
+                        className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 shadow-sm"
                       >
-                        + H2 Heading
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => insertHelper('### Subheading\n\nDetails...')}
-                        className="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
-                      >
-                        + H3 Sub
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => insertHelper('- Key specification point 1\n- Key specification point 2\n- Key specification point 3')}
-                        className="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
-                      >
-                        + Bullet List
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => insertHelper('| Parameter | Value / Code | Verification |\n| :--- | :--- | :--- |\n| **Steel Grade** | IS 2062 Grade E250 | In-house Tested |\n| **Yield Strength** | ≥ 250 MPa | Verified |\n| **Corrosion Primer** | Red Oxide 2-Coat | MoRTH 2700 |')}
-                        className="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold rounded border"
-                      >
-                        + Spec Table
-                      </button>
+                        <option value="published">🟢 Published (Live on Website)</option>
+                        <option value="draft">🟡 Draft (Hidden / Work in Progress)</option>
+                      </select>
                     </div>
                   </div>
 
-                  <textarea
-                    rows={8}
-                    required
-                    placeholder="Write your article content using markdown..."
-                    value={blogForm.content}
-                    onChange={(e) => setBlogForm({ ...blogForm, content: e.target.value })}
-                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-900 leading-relaxed focus:bg-white"
-                  />
-                </div>
-
-                {/* Image Upload & URL Row */}
-                <div className="bg-slate-50 border border-neutral-200 rounded-2xl p-3.5 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <label className="text-xs font-black text-slate-900 flex items-center gap-1.5">
-                      <ImageIcon className="w-4 h-4 text-red-600" />
-                      <span>Featured Image (Upload from Computer / URL)</span>
-                    </label>
-
-                    {/* Hidden file input */}
-                    <input
-                      type="file"
-                      ref={fileInputRef}
-                      accept="image/*"
-                      onChange={handleImageFileUpload}
-                      className="hidden"
-                    />
-
-                    <button
-                      type="button"
-                      onClick={() => fileInputRef.current?.click()}
-                      className="px-3 py-1.5 bg-slate-900 hover:bg-black text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
-                    >
-                      <Upload className="w-3.5 h-3.5" />
-                      <span>Upload Image File</span>
-                    </button>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-16 h-14 rounded-xl overflow-hidden bg-slate-200 border shrink-0 flex items-center justify-center">
-                      {blogForm.featuredImage ? (
-                        <img src={blogForm.featuredImage} alt="Preview" className="w-full h-full object-cover" />
-                      ) : (
-                        <ImageIcon className="w-6 h-6 text-slate-400" />
-                      )}
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Or paste image URL (https://...)"
-                      value={blogForm.featuredImage}
-                      onChange={(e) => setBlogForm({ ...blogForm, featuredImage: e.target.value })}
-                      className="w-full p-2 bg-white border border-neutral-300 rounded-xl text-xs font-mono text-slate-800"
-                    />
-                  </div>
-                </div>
-
-                {/* Tags & Featured Checkbox */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                  {/* Excerpt */}
                   <div className="space-y-1">
-                    <label className="text-xs font-black text-slate-900">Tags (comma separated)</label>
-                    <input
-                      type="text"
-                      value={blogForm.tags}
-                      onChange={(e) => setBlogForm({ ...blogForm, tags: e.target.value })}
-                      className="w-full p-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                    <label className="text-xs font-black text-slate-900">Short Excerpt (Search Snippet) *</label>
+                    <textarea
+                      rows={2}
+                      required
+                      placeholder="Brief 2-line summary for Google Search snippet..."
+                      value={blogForm.excerpt}
+                      onChange={(e) => setBlogForm({ ...blogForm, excerpt: e.target.value })}
+                      className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-medium text-slate-900 shadow-sm"
                     />
                   </div>
 
-                  <div className="flex items-center gap-2 pt-5">
-                    <input
-                      type="checkbox"
-                      id="isFeatured"
-                      checked={blogForm.isFeatured}
-                      onChange={(e) => setBlogForm({ ...blogForm, isFeatured: e.target.checked })}
-                      className="w-4 h-4 text-red-600 rounded"
+                  {/* Image Upload & URL Row */}
+                  <div className="bg-white border border-neutral-200 rounded-2xl p-3.5 space-y-3 shadow-sm">
+                    <div className="flex items-center justify-between">
+                      <label className="text-xs font-black text-slate-900 flex items-center gap-1.5">
+                        <ImageIcon className="w-4 h-4 text-red-600" />
+                        <span>Featured Image (Upload from Computer / URL)</span>
+                      </label>
+
+                      {/* Hidden file input */}
+                      <input
+                        type="file"
+                        ref={fileInputRef}
+                        accept="image/*"
+                        onChange={handleImageFileUpload}
+                        className="hidden"
+                      />
+
+                      <button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        className="px-3 py-1.5 bg-slate-900 hover:bg-black text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
+                      >
+                        <Upload className="w-3.5 h-3.5" />
+                        <span>Upload Image File</span>
+                      </button>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <div className="w-16 h-14 rounded-xl overflow-hidden bg-slate-100 border shrink-0 flex items-center justify-center">
+                        {blogForm.featuredImage ? (
+                          <img src={blogForm.featuredImage} alt="Preview" className="w-full h-full object-cover" />
+                        ) : (
+                          <ImageIcon className="w-6 h-6 text-slate-400" />
+                        )}
+                      </div>
+                      <input
+                        type="text"
+                        placeholder="Or paste image URL (https://...)"
+                        value={blogForm.featuredImage}
+                        onChange={(e) => setBlogForm({ ...blogForm, featuredImage: e.target.value })}
+                        className="w-full p-2 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-800"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Rich Formatting Toolbar */}
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <label className="text-xs font-black text-slate-900">Article Content *</label>
+                      <div className="flex items-center gap-1 flex-wrap">
+                        <span className="text-[10px] text-slate-400 font-bold mr-1">Insert:</span>
+                        <button
+                          type="button"
+                          onClick={() => insertHelper('## Section Title\n\nWrite content here...')}
+                          className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[10px] font-bold rounded border shadow-xs"
+                        >
+                          + H2 Heading
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => insertHelper('### Subheading\n\nDetails...')}
+                          className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[10px] font-bold rounded border shadow-xs"
+                        >
+                          + H3 Sub
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => insertHelper('- Key specification point 1\n- Key specification point 2\n- Key specification point 3')}
+                          className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[10px] font-bold rounded border shadow-xs"
+                        >
+                          + Bullet List
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => insertHelper('| Parameter | Value / Code | Verification |\n| :--- | :--- | :--- |\n| **Steel Grade** | IS 2062 Grade E250 | In-house Tested |\n| **Yield Strength** | ≥ 250 MPa | Verified |\n| **Corrosion Primer** | Red Oxide 2-Coat | MoRTH 2700 |')}
+                          className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[10px] font-bold rounded border shadow-xs"
+                        >
+                          + Spec Table
+                        </button>
+                      </div>
+                    </div>
+
+                    <textarea
+                      rows={9}
+                      required
+                      placeholder="Write your article content using markdown..."
+                      value={blogForm.content}
+                      onChange={(e) => setBlogForm({ ...blogForm, content: e.target.value })}
+                      className="w-full p-3 bg-white border border-neutral-300 rounded-xl text-xs font-mono text-slate-900 leading-relaxed focus:ring-2 focus:ring-red-600 shadow-sm"
                     />
-                    <label htmlFor="isFeatured" className="text-xs font-black text-slate-900">
-                      Feature this article on top
-                    </label>
+                  </div>
+
+                  {/* Tags & Featured Checkbox */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                    <div className="space-y-1">
+                      <label className="text-xs font-black text-slate-900">Tags (comma separated)</label>
+                      <input
+                        type="text"
+                        value={blogForm.tags}
+                        onChange={(e) => setBlogForm({ ...blogForm, tags: e.target.value })}
+                        className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 shadow-sm"
+                      />
+                    </div>
+
+                    <div className="flex items-center gap-2 pt-5">
+                      <input
+                        type="checkbox"
+                        id="isFeatured"
+                        checked={blogForm.isFeatured}
+                        onChange={(e) => setBlogForm({ ...blogForm, isFeatured: e.target.checked })}
+                        className="w-4 h-4 text-red-600 rounded"
+                      />
+                      <label htmlFor="isFeatured" className="text-xs font-black text-slate-900">
+                        Feature this article on top
+                      </label>
+                    </div>
                   </div>
                 </div>
+              )}
+            </div>
 
-                {/* Action Buttons */}
-                <div className="pt-4 border-t border-neutral-200 flex flex-wrap items-center justify-between gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setIsBlogModalOpen(false)}
-                    className="px-4 py-2.5 rounded-xl border border-neutral-300 text-xs font-bold text-slate-700 hover:bg-neutral-100"
-                  >
-                    Cancel
-                  </button>
+            {/* Modal Sticky Footer - Always Visible at the Bottom */}
+            <div className="px-5 py-3.5 border-t border-neutral-200 bg-white flex flex-wrap items-center justify-between gap-3 shrink-0">
+              <button
+                type="button"
+                onClick={() => setIsBlogModalOpen(false)}
+                className="px-4 py-2.5 rounded-xl border border-neutral-300 text-xs font-bold text-slate-700 hover:bg-neutral-100 transition"
+              >
+                Cancel
+              </button>
 
-                  <div className="flex items-center gap-2.5">
-                    <button
-                      type="button"
-                      onClick={() => handleSaveBlogWithStatus('draft')}
-                      className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 rounded-xl text-xs font-bold transition flex items-center gap-1.5"
-                    >
-                      <Save className="w-3.5 h-3.5 text-slate-600" />
-                      <span>Save as Draft</span>
-                    </button>
+              <div className="flex items-center gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => handleSaveBlogWithStatus('draft')}
+                  className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
+                >
+                  <Save className="w-3.5 h-3.5 text-slate-600" />
+                  <span>Save as Draft</span>
+                </button>
 
-                    <button
-                      type="button"
-                      onClick={() => handleSaveBlogWithStatus('published')}
-                      className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center gap-2"
-                    >
-                      <FileCheck className="w-4 h-4" />
-                      <span>{editingBlog ? 'Update & Publish Live' : 'Publish to Live Website'}</span>
-                    </button>
-                  </div>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => handleSaveBlogWithStatus('published')}
+                  className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center gap-2"
+                >
+                  <FileCheck className="w-4 h-4" />
+                  <span>{editingBlog ? 'Update & Publish Live' : 'Publish to Live Website'}</span>
+                </button>
               </div>
-            )}
+            </div>
           </div>
         </div>
       )}
 
       {/* CREATE PRODUCT MODAL */}
       {isProductModalOpen && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 sm:p-8 max-w-xl w-full shadow-2xl space-y-6 my-8">
-            <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
+        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
+          <div className="bg-white border-2 border-neutral-300 rounded-2xl sm:rounded-3xl max-w-xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            <div className="px-5 py-4 border-b border-neutral-200 flex items-center justify-between shrink-0 bg-white">
               <div className="flex items-center gap-2">
                 <Package className="w-5 h-5 text-red-600" />
-                <h3 className="text-lg font-black text-slate-950">Add New Engineering Product</h3>
+                <h3 className="text-base sm:text-lg font-black text-slate-950">Add New Industrial Product</h3>
               </div>
               <button
+                type="button"
                 onClick={() => setIsProductModalOpen(false)}
                 className="p-1.5 rounded-lg hover:bg-neutral-100 text-slate-500"
               >
@@ -1265,92 +1306,135 @@ export default function MasterCMSPage() {
               </button>
             </div>
 
-            <form onSubmit={handleSaveProduct} className="space-y-4">
-              <div className="space-y-1">
-                <label className="text-xs font-black text-slate-900">Product Name *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. 25-Ton POT-PTFE Bridge Bearing"
-                  value={productForm.name}
-                  onChange={(e) => setProductForm({ ...productForm, name: e.target.value })}
-                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSaveProduct} className="flex-1 flex flex-col overflow-hidden">
+              <div className="p-5 overflow-y-auto flex-1 space-y-4 bg-slate-50/50">
                 <div className="space-y-1">
-                  <label className="text-xs font-black text-slate-900">Category</label>
-                  <select
-                    value={productForm.category}
-                    onChange={(e) => {
-                      const val = e.target.value;
-                      const labelMap: Record<string, string> = {
-                        shuttering: 'Shuttering Plates',
-                        scaffolding: 'Scaffolding Systems',
-                        bearings: 'Bridge Bearings',
-                        joints: 'Expansion Joints',
-                        drainage: 'MS Drainage Spouts',
-                      };
-                      setProductForm({
-                        ...productForm,
-                        category: val,
-                        categoryLabel: labelMap[val] || 'Engineering',
-                      });
-                    }}
-                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
-                  >
-                    <option value="joints">Expansion Joints</option>
-                    <option value="bearings">Bridge Bearings</option>
-                    <option value="shuttering">Shuttering & Centering</option>
-                    <option value="scaffolding">Scaffolding Systems</option>
-                    <option value="drainage">Drainage Spouts</option>
-                  </select>
-                </div>
-
-                <div className="space-y-1">
-                  <label className="text-xs font-black text-slate-900">Material Grade</label>
+                  <label className="text-xs font-black text-slate-900">Product Name *</label>
                   <input
                     type="text"
-                    value={productForm.materialGrade}
-                    onChange={(e) => setProductForm({ ...productForm, materialGrade: e.target.value })}
-                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                    required
+                    placeholder="e.g. 25-Ton POT-PTFE Bridge Bearing"
+                    value={productForm.name}
+                    onChange={(e) => setProductForm({ ...productForm, name: e.target.value })}
+                    className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 shadow-sm"
                   />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <label className="text-xs font-black text-slate-900">Category</label>
+                    <select
+                      value={productForm.category}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const labelMap: Record<string, string> = {
+                          shuttering: 'Shuttering Plates',
+                          scaffolding: 'Scaffolding Systems',
+                          bearings: 'Bridge Bearings',
+                          joints: 'Expansion Joints',
+                          drainage: 'MS Drainage Spouts',
+                        };
+                        setProductForm({
+                          ...productForm,
+                          category: val,
+                          categoryLabel: labelMap[val] || 'Engineering',
+                        });
+                      }}
+                      className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 shadow-sm"
+                    >
+                      <option value="joints">Expansion Joints</option>
+                      <option value="bearings">Bridge Bearings</option>
+                      <option value="shuttering">Shuttering & Centering</option>
+                      <option value="scaffolding">Scaffolding Systems</option>
+                      <option value="drainage">Drainage Spouts</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-xs font-black text-slate-900">Material Grade</label>
+                    <input
+                      type="text"
+                      value={productForm.materialGrade}
+                      onChange={(e) => setProductForm({ ...productForm, materialGrade: e.target.value })}
+                      className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 shadow-sm"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-black text-slate-900">Price Estimate</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. ₹4,500 / Set"
+                    value={productForm.price}
+                    onChange={(e) => setProductForm({ ...productForm, price: e.target.value })}
+                    className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 shadow-sm"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-black text-slate-900">Short Description</label>
+                  <textarea
+                    rows={2}
+                    value={productForm.shortDescription}
+                    onChange={(e) => setProductForm({ ...productForm, shortDescription: e.target.value })}
+                    className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-medium text-slate-900 shadow-sm"
+                  />
+                </div>
+
+                {/* Product Image Upload */}
+                <div className="bg-white border border-neutral-200 rounded-2xl p-3.5 space-y-3 shadow-sm">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-black text-slate-900 flex items-center gap-1.5">
+                      <ImageIcon className="w-4 h-4 text-red-600" />
+                      <span>Product Image</span>
+                    </label>
+                    <input
+                      type="file"
+                      ref={productFileInputRef}
+                      accept="image/*"
+                      onChange={handleProductFileUpload}
+                      className="hidden"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => productFileInputRef.current?.click()}
+                      className="px-3 py-1 bg-slate-900 hover:bg-black text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shadow-sm"
+                    >
+                      <Upload className="w-3.5 h-3.5" />
+                      <span>Upload File</span>
+                    </button>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-14 h-12 rounded-xl overflow-hidden bg-slate-100 border shrink-0 flex items-center justify-center">
+                      {productForm.featuredImage ? (
+                        <img src={productForm.featuredImage} alt="Preview" className="w-full h-full object-cover" />
+                      ) : (
+                        <ImageIcon className="w-5 h-5 text-slate-400" />
+                      )}
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Or paste image URL"
+                      value={productForm.featuredImage}
+                      onChange={(e) => setProductForm({ ...productForm, featuredImage: e.target.value })}
+                      className="w-full p-2 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-800"
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-black text-slate-900">Price Estimate</label>
-                <input
-                  type="text"
-                  placeholder="e.g. ₹4,500 / Set"
-                  value={productForm.price}
-                  onChange={(e) => setProductForm({ ...productForm, price: e.target.value })}
-                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-xs font-black text-slate-900">Short Description</label>
-                <textarea
-                  rows={2}
-                  value={productForm.shortDescription}
-                  onChange={(e) => setProductForm({ ...productForm, shortDescription: e.target.value })}
-                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-medium text-slate-900"
-                />
-              </div>
-
-              <div className="pt-4 border-t border-neutral-200 flex items-center justify-end gap-3">
+              <div className="px-5 py-3.5 border-t border-neutral-200 bg-white flex items-center justify-end gap-3 shrink-0">
                 <button
                   type="button"
                   onClick={() => setIsProductModalOpen(false)}
-                  className="px-5 py-2.5 rounded-xl border border-neutral-300 text-xs font-bold text-slate-700"
+                  className="px-4 py-2 rounded-xl border border-neutral-300 text-xs font-bold text-slate-700 hover:bg-neutral-100"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider shadow-md"
+                  className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider shadow-md"
                 >
                   Save Product
                 </button>
@@ -1362,74 +1446,117 @@ export default function MasterCMSPage() {
 
       {/* CREATE PHOTO MODAL */}
       {isPhotoModalOpen && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-6 my-8">
-            <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
+        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
+          <div className="bg-white border-2 border-neutral-300 rounded-2xl sm:rounded-3xl max-w-lg w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            <div className="px-5 py-4 border-b border-neutral-200 flex items-center justify-between shrink-0 bg-white">
               <div className="flex items-center gap-2">
                 <ImageIcon className="w-5 h-5 text-red-600" />
-                <h3 className="text-lg font-black text-slate-950">Add Factory Photo</h3>
+                <h3 className="text-base sm:text-lg font-black text-slate-950">Add Factory Photo</h3>
               </div>
-              <button onClick={() => setIsPhotoModalOpen(false)} className="p-1.5 rounded-lg hover:bg-neutral-100 text-slate-500">
+              <button
+                type="button"
+                onClick={() => setIsPhotoModalOpen(false)}
+                className="p-1.5 rounded-lg hover:bg-neutral-100 text-slate-500"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleSavePhoto} className="space-y-4">
-              <div className="space-y-1">
-                <label className="text-xs font-black text-slate-900">Photo Title *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Heavy Centering Plates Staging"
-                  value={photoForm.title}
-                  onChange={(e) => setPhotoForm({ ...photoForm, title: e.target.value })}
-                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
+            <form onSubmit={handleSavePhoto} className="flex-1 flex flex-col overflow-hidden">
+              <div className="p-5 overflow-y-auto flex-1 space-y-4 bg-slate-50/50">
                 <div className="space-y-1">
-                  <label className="text-xs font-black text-slate-900">Category</label>
-                  <select
-                    value={photoForm.category}
-                    onChange={(e) => setPhotoForm({ ...photoForm, category: e.target.value })}
-                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
-                  >
-                    <option value="Shuttering & Centering">Shuttering & Centering</option>
-                    <option value="Scaffolding Systems">Scaffolding Systems</option>
-                    <option value="Expansion Joints & Bearings">Bridge Bearings & Joints</option>
-                    <option value="Highway & Barriers">Highway & Crash Barriers</option>
-                    <option value="Drainage Infrastructure">Bridge Drainage</option>
-                  </select>
-                </div>
-
-                <div className="space-y-1">
-                  <label className="text-xs font-black text-slate-900">Price / MOQ</label>
+                  <label className="text-xs font-black text-slate-900">Photo Title *</label>
                   <input
                     type="text"
-                    value={photoForm.price}
-                    onChange={(e) => setPhotoForm({ ...photoForm, price: e.target.value })}
-                    className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
+                    required
+                    placeholder="e.g. Heavy Centering Plates Staging"
+                    value={photoForm.title}
+                    onChange={(e) => setPhotoForm({ ...photoForm, title: e.target.value })}
+                    className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 shadow-sm"
                   />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <label className="text-xs font-black text-slate-900">Category</label>
+                    <select
+                      value={photoForm.category}
+                      onChange={(e) => setPhotoForm({ ...photoForm, category: e.target.value })}
+                      className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 shadow-sm"
+                    >
+                      <option value="Shuttering & Centering">Shuttering & Centering</option>
+                      <option value="Scaffolding Systems">Scaffolding Systems</option>
+                      <option value="Expansion Joints & Bearings">Bridge Bearings & Joints</option>
+                      <option value="Highway & Barriers">Highway & Crash Barriers</option>
+                      <option value="Drainage Infrastructure">Bridge Drainage</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-xs font-black text-slate-900">Price / MOQ</label>
+                    <input
+                      type="text"
+                      value={photoForm.price}
+                      onChange={(e) => setPhotoForm({ ...photoForm, price: e.target.value })}
+                      className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 shadow-sm"
+                    />
+                  </div>
+                </div>
+
+                {/* Photo Upload Row */}
+                <div className="bg-white border border-neutral-200 rounded-2xl p-3.5 space-y-3 shadow-sm">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-black text-slate-900 flex items-center gap-1.5">
+                      <ImageIcon className="w-4 h-4 text-red-600" />
+                      <span>Upload Photo from Device</span>
+                    </label>
+                    <input
+                      type="file"
+                      ref={photoFileInputRef}
+                      accept="image/*"
+                      onChange={handlePhotoFileUpload}
+                      className="hidden"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => photoFileInputRef.current?.click()}
+                      className="px-3 py-1 bg-slate-900 hover:bg-black text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shadow-sm"
+                    >
+                      <Upload className="w-3.5 h-3.5" />
+                      <span>Upload File</span>
+                    </button>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-14 h-12 rounded-xl overflow-hidden bg-slate-100 border shrink-0 flex items-center justify-center">
+                      {photoForm.imageUrl ? (
+                        <img src={photoForm.imageUrl} alt="Preview" className="w-full h-full object-cover" />
+                      ) : (
+                        <ImageIcon className="w-5 h-5 text-slate-400" />
+                      )}
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Or enter Image URL"
+                      value={photoForm.imageUrl}
+                      onChange={(e) => setPhotoForm({ ...photoForm, imageUrl: e.target.value })}
+                      className="w-full p-2 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-800"
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-black text-slate-900">Image URL *</label>
-                <input
-                  type="text"
-                  required
-                  value={photoForm.imageUrl}
-                  onChange={(e) => setPhotoForm({ ...photoForm, imageUrl: e.target.value })}
-                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-900"
-                />
-              </div>
-
-              <div className="pt-4 border-t border-neutral-200 flex justify-end gap-3">
-                <button type="button" onClick={() => setIsPhotoModalOpen(false)} className="px-4 py-2 border rounded-xl text-xs font-bold text-slate-700">
+              <div className="px-5 py-3.5 border-t border-neutral-200 bg-white flex justify-end gap-3 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setIsPhotoModalOpen(false)}
+                  className="px-4 py-2 border border-neutral-300 rounded-xl text-xs font-bold text-slate-700 hover:bg-neutral-100"
+                >
                   Cancel
                 </button>
-                <button type="submit" className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black">
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider shadow-md"
+                >
                   Save Photo
                 </button>
               </div>
@@ -1440,48 +1567,61 @@ export default function MasterCMSPage() {
 
       {/* CREATE VIDEO MODAL */}
       {isVideoModalOpen && (
-        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-6 my-8">
-            <div className="flex items-center justify-between border-b border-neutral-200 pb-4">
+        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
+          <div className="bg-white border-2 border-neutral-300 rounded-2xl sm:rounded-3xl max-w-lg w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            <div className="px-5 py-4 border-b border-neutral-200 flex items-center justify-between shrink-0 bg-white">
               <div className="flex items-center gap-2">
                 <Video className="w-5 h-5 text-red-600" />
-                <h3 className="text-lg font-black text-slate-950">Add Plant Video / YouTube Embed</h3>
+                <h3 className="text-base sm:text-lg font-black text-slate-950">Add Plant Video / YouTube Embed</h3>
               </div>
-              <button onClick={() => setIsVideoModalOpen(false)} className="p-1.5 rounded-lg hover:bg-neutral-100 text-slate-500">
+              <button
+                type="button"
+                onClick={() => setIsVideoModalOpen(false)}
+                className="p-1.5 rounded-lg hover:bg-neutral-100 text-slate-500"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleSaveVideo} className="space-y-4">
-              <div className="space-y-1">
-                <label className="text-xs font-black text-slate-900">Video Title *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Inside JMK Factory - Shuttering Plate Welding"
-                  value={videoForm.title}
-                  onChange={(e) => setVideoForm({ ...videoForm, title: e.target.value })}
-                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-slate-900"
-                />
+            <form onSubmit={handleSaveVideo} className="flex-1 flex flex-col overflow-hidden">
+              <div className="p-5 overflow-y-auto flex-1 space-y-4 bg-slate-50/50">
+                <div className="space-y-1">
+                  <label className="text-xs font-black text-slate-900">Video Title *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Inside JMK Factory - Shuttering Plate Welding"
+                    value={videoForm.title}
+                    onChange={(e) => setVideoForm({ ...videoForm, title: e.target.value })}
+                    className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-slate-900 shadow-sm"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-black text-slate-900">YouTube Video ID or Link *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. b_fLp787q_E or https://youtu.be/..."
+                    value={videoForm.youtubeId}
+                    onChange={(e) => setVideoForm({ ...videoForm, youtubeId: e.target.value })}
+                    className="w-full p-2.5 bg-white border border-neutral-300 rounded-xl text-xs font-mono text-slate-900 shadow-sm"
+                  />
+                </div>
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-black text-slate-900">YouTube Video ID or Link *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. b_fLp787q_E or https://youtu.be/..."
-                  value={videoForm.youtubeId}
-                  onChange={(e) => setVideoForm({ ...videoForm, youtubeId: e.target.value })}
-                  className="w-full p-3 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-mono text-slate-900"
-                />
-              </div>
-
-              <div className="pt-4 border-t border-neutral-200 flex justify-end gap-3">
-                <button type="button" onClick={() => setIsVideoModalOpen(false)} className="px-4 py-2 border rounded-xl text-xs font-bold text-slate-700">
+              <div className="px-5 py-3.5 border-t border-neutral-200 bg-white flex justify-end gap-3 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setIsVideoModalOpen(false)}
+                  className="px-4 py-2 border border-neutral-300 rounded-xl text-xs font-bold text-slate-700 hover:bg-neutral-100"
+                >
                   Cancel
                 </button>
-                <button type="submit" className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black">
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider shadow-md"
+                >
                   Save Video
                 </button>
               </div>
