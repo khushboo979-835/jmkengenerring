@@ -297,6 +297,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="hover:text-red-600 transition-colors block text-red-600 font-black">
+                  📰 Engineering Blog & Guides
+                </Link>
+              </li>
+              <li>
                 <a
                   href="#download-brochure"
                   onClick={(e) => {

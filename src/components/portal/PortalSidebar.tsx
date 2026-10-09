@@ -18,7 +18,8 @@ import {
   HardHat,
   Package,
   TrendingUp,
-  Award
+  Award,
+  Globe
 } from 'lucide-react';
 import { AuthUser } from '@/lib/rbac';
 
@@ -37,6 +38,12 @@ export default function PortalSidebar({ user, isOpen, onClose }: PortalSidebarPr
       href: '/dashboard/super-admin',
       icon: TrendingUp,
       badge: 'Patna HQ',
+    },
+    {
+      label: 'Website CMS & Blog Desk',
+      href: '/dashboard/super-admin/cms',
+      icon: Globe,
+      badge: 'Live Web',
     },
     {
       label: 'Branch Provisioning',

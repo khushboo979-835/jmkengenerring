@@ -231,6 +231,15 @@ export default function Navbar() {
             </Link>
 
             <Link
+              href="/blog"
+              className={`hover:text-red-600 transition ${
+                pathname.startsWith('/blog') ? 'text-red-600 font-black' : ''
+              }`}
+            >
+              Blog
+            </Link>
+
+            <Link
               href="/contact"
               className={`hover:text-red-600 transition ${
                 pathname === '/contact' ? 'text-red-600 font-black' : ''
@@ -328,6 +337,15 @@ export default function Navbar() {
               className="block py-1.5 text-sm font-bold text-neutral-800 hover:text-red-600"
             >
               Photos
+            </Link>
+            <Link
+              href="/blog"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block py-1.5 text-sm font-bold hover:text-red-600 ${
+                pathname.startsWith('/blog') ? 'text-red-600 font-black' : 'text-neutral-800'
+              }`}
+            >
+              📰 Engineering Blog
             </Link>
             <Link
               href="/contact"

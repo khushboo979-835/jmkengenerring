@@ -16,12 +16,18 @@ if (productsBlockMatch) {
   }
 }
 
+// Read blogData.ts to extract blogs
+const blogDataPath = path.join(__dirname, '../src/lib/blogData.ts');
+const blogDataContent = fs.readFileSync(blogDataPath, 'utf8');
+const blogSlugs = [...blogDataContent.matchAll(/slug:\s*'([^']+)'/g)].map((m) => m[1]);
+
 const baseUrl = 'https://www.jmkengineering.in';
 const now = new Date().toISOString();
 
 const staticRoutes = [
   { loc: `${baseUrl}/`, changefreq: 'daily', priority: '1.0' },
   { loc: `${baseUrl}/products`, changefreq: 'daily', priority: '0.9' },
+  { loc: `${baseUrl}/blog`, changefreq: 'daily', priority: '0.85' },
   { loc: `${baseUrl}/about`, changefreq: 'weekly', priority: '0.8' },
   { loc: `${baseUrl}/contact`, changefreq: 'weekly', priority: '0.8' },
   { loc: `${baseUrl}/photos`, changefreq: 'weekly', priority: '0.7' },
@@ -52,7 +58,13 @@ const productRoutes = seedProducts.map((prod) => ({
   priority: '0.85',
 }));
 
-const allRoutes = [...staticRoutes, ...categoryRoutes, ...productRoutes];
+const blogRoutes = blogSlugs.map((slug) => ({
+  loc: `${baseUrl}/blog/${slug}`,
+  changefreq: 'weekly',
+  priority: '0.8',
+}));
+
+const allRoutes = [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes];
 
 let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
