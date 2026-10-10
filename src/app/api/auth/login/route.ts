@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { dataStore } from '@/lib/dataStore';
 import { signToken } from '@/lib/auth';
+import { connectToDatabase } from '@/lib/mongodb';
+import { User } from '@/models/User';
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,7 +16,32 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const user = dataStore.getUserByEmail(email);
+    let user = dataStore.getUserByEmail(email);
+
+    if (!user) {
+      // Try MongoDB
+      const conn = await connectToDatabase();
+      if (conn) {
+        try {
+          const mongoUser = await User.findOne({ email: email.toLowerCase() });
+          if (mongoUser && (mongoUser.passwordHash === password || (mongoUser as any).password === password)) {
+            user = dataStore.addUser({
+              name: mongoUser.name,
+              email: mongoUser.email,
+              password: password,
+              role: mongoUser.role,
+              branchId: (mongoUser.branchId as string) || 'br_patna_hq',
+              branchName: 'Patna HQ Works',
+              designation: mongoUser.designation || 'Staff',
+              phone: mongoUser.phone || '+91 74939 16194',
+            });
+          }
+        } catch (dbErr) {
+          console.warn('MongoDB login check fallback:', dbErr);
+        }
+      }
+    }
+
     if (!user || user.password !== password) {
       return NextResponse.json(
         { error: 'Invalid email or password.' },

@@ -450,9 +450,52 @@ const RFQS: RFQRecord[] = [
 // Unified In-Memory Store API
 export const dataStore = {
   // Users
-  getUsers: () => USERS,
+  getUsers: (role?: string, branchId?: string) => {
+    let list = USERS;
+    if (role && role !== 'all') {
+      list = list.filter((u) => u.role === role);
+    }
+    if (branchId && branchId !== 'all') {
+      list = list.filter((u) => u.branchId === branchId);
+    }
+    return list;
+  },
   getUserById: (id: string) => USERS.find((u) => u.id === id),
   getUserByEmail: (email: string) => USERS.find((u) => u.email.toLowerCase() === email.toLowerCase()),
+  addUser: (user: Omit<UserRecord, 'id'>) => {
+    const existing = USERS.find((u) => u.email.toLowerCase() === user.email.toLowerCase());
+    if (existing) {
+      throw new Error('A user with this email address already exists.');
+    }
+    const newUser: UserRecord = {
+      ...user,
+      id: 'usr_' + Date.now().toString().slice(-6),
+    };
+    USERS.push(newUser);
+    return newUser;
+  },
+  updateUser: (id: string, updates: Partial<UserRecord>) => {
+    const user = USERS.find((u) => u.id === id);
+    if (!user) return null;
+    if (updates.email && updates.email.toLowerCase() !== user.email.toLowerCase()) {
+      const duplicate = USERS.find(
+        (u) => u.id !== id && u.email.toLowerCase() === updates.email!.toLowerCase()
+      );
+      if (duplicate) {
+        throw new Error('Another user is already registered with this email address.');
+      }
+    }
+    Object.assign(user, updates);
+    return user;
+  },
+  deleteUser: (id: string) => {
+    const idx = USERS.findIndex((u) => u.id === id);
+    if (idx >= 0) {
+      USERS.splice(idx, 1);
+      return true;
+    }
+    return false;
+  },
   
   // Branches
   getBranches: () => BRANCHES,

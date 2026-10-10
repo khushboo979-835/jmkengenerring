@@ -26,14 +26,20 @@ import {
   FileSpreadsheet,
   Check,
   Clock,
-  Truck
+  Truck,
+  Edit,
+  KeyRound,
+  Eye,
+  EyeOff,
+  UserCheck
 } from 'lucide-react';
 import { formatCurrency, formatDate } from '@/lib/utils';
 import { SEED_BRANCHES } from '@/lib/seedData';
 
 export default function SuperAdminPage() {
-  const [activeTab, setActiveTab] = useState<'overview' | 'crm' | 'boq' | 'dpr' | 'snags'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'branch_admins' | 'crm' | 'boq' | 'dpr' | 'snags'>('overview');
   const [branches, setBranches] = useState<any[]>([]);
+  const [users, setUsers] = useState<any[]>([]);
   const [vouchers, setVouchers] = useState<any[]>([]);
   const [indents, setIndents] = useState<any[]>([]);
   const [attendance, setAttendance] = useState<any[]>([]);
@@ -44,6 +50,20 @@ export default function SuperAdminPage() {
   const [loading, setLoading] = useState(true);
   const [syncingDb, setSyncingDb] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
+
+  // Branch Admin Management Modal State
+  const [adminModalOpen, setAdminModalOpen] = useState(false);
+  const [editingAdmin, setEditingAdmin] = useState<any | null>(null);
+  const [visiblePasswords, setVisiblePasswords] = useState<{ [key: string]: boolean }>({});
+  const [adminForm, setAdminForm] = useState({
+    name: '',
+    email: '',
+    password: '',
+    branchId: 'br_patna_hq',
+    branchName: 'Patna HQ & Heavy Fabrication Plant',
+    designation: 'Fabrication Plant Supervisor',
+    phone: '+91 74939 16194',
+  });
 
   // New Lead Modal State
   const [newLeadModalOpen, setNewLeadModalOpen] = useState(false);
@@ -63,7 +83,8 @@ export default function SuperAdminPage() {
 
   const loadHQData = async () => {
     try {
-      const [bRes, vRes, iRes, aRes, rRes, dRes, sRes, tRes] = await Promise.all([
+      const [uRes, bRes, vRes, iRes, aRes, rRes, dRes, sRes, tRes] = await Promise.all([
+        fetch('/api/users').then((r) => r.json()),
         fetch('/api/branches').then((r) => r.json()),
         fetch('/api/vouchers').then((r) => r.json()),
         fetch('/api/indents').then((r) => r.json()),
@@ -74,6 +95,7 @@ export default function SuperAdminPage() {
         fetch('/api/tasks').then((r) => r.json()),
       ]);
 
+      setUsers(uRes.users || []);
       setBranches(bRes.branches || SEED_BRANCHES);
       setVouchers(vRes.vouchers || []);
       setIndents(iRes.indents || []);
@@ -110,6 +132,102 @@ export default function SuperAdminPage() {
       setSyncingDb(false);
       setTimeout(() => setSyncMessage(null), 5000);
     }
+  };
+
+  // Branch Admin CRUD Handlers
+  const openCreateAdminModal = () => {
+    setEditingAdmin(null);
+    setAdminForm({
+      name: '',
+      email: '',
+      password: '',
+      branchId: branches[0]?.id || 'br_patna_hq',
+      branchName: branches[0]?.name || 'Patna HQ & Heavy Fabrication Plant',
+      designation: 'Fabrication Plant Supervisor',
+      phone: '+91 74939 16194',
+    });
+    setAdminModalOpen(true);
+  };
+
+  const openEditAdminModal = (adm: any) => {
+    setEditingAdmin(adm);
+    setAdminForm({
+      name: adm.name || '',
+      email: adm.email || '',
+      password: adm.password || '',
+      branchId: adm.branchId || 'br_patna_hq',
+      branchName: adm.branchName || 'Patna HQ & Heavy Fabrication Plant',
+      designation: adm.designation || 'Fabrication Plant Supervisor',
+      phone: adm.phone || '+91 74939 16194',
+    });
+    setAdminModalOpen(true);
+  };
+
+  const handleSaveBranchAdmin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!adminForm.name || !adminForm.email || !adminForm.password) {
+      alert('Please fill in name, email, and password.');
+      return;
+    }
+
+    try {
+      if (editingAdmin) {
+        const res = await fetch('/api/users', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: editingAdmin.id,
+            ...adminForm,
+            role: 'BRANCH_ADMIN',
+          }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          alert(data.error || 'Failed to update branch admin');
+          return;
+        }
+      } else {
+        const res = await fetch('/api/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...adminForm,
+            role: 'BRANCH_ADMIN',
+          }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          alert(data.error || 'Failed to create branch admin');
+          return;
+        }
+      }
+
+      setAdminModalOpen(false);
+      setEditingAdmin(null);
+      await loadHQData();
+    } catch (err) {
+      console.error(err);
+      alert('Error saving branch admin credentials');
+    }
+  };
+
+  const handleDeleteBranchAdmin = async (id: string, name: string) => {
+    if (!confirm(`Are you sure you want to delete Branch Admin account for "${name}"?`)) return;
+    try {
+      const res = await fetch(`/api/users?id=${id}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.error || 'Failed to delete branch admin');
+        return;
+      }
+      await loadHQData();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const togglePasswordVisibility = (id: string) => {
+    setVisiblePasswords((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   // Live actions for Vouchers
@@ -244,6 +362,8 @@ export default function SuperAdminPage() {
   const pendingApprovalsCount = vouchers.filter((v) => v.status === 'PENDING_HQ').length + indents.filter((i) => i.status === 'PENDING_APPROVAL').length;
   const totalBoqValue = boqItems.reduce((acc, b) => acc + b.quantity * b.rate, 0);
 
+  const branchAdmins = users.filter((u) => u.role === 'BRANCH_ADMIN');
+
   return (
     <div className="space-y-8 font-sans">
       {/* Top Banner */}
@@ -283,16 +403,16 @@ export default function SuperAdminPage() {
             <span>Review Signoff Desk ({pendingApprovalsCount})</span>
           </Link>
           <button
-            onClick={() => setNewLeadModalOpen(true)}
+            onClick={openCreateAdminModal}
             className="px-4 py-2.5 bg-black hover:bg-neutral-800 text-white rounded-xl text-xs font-bold transition flex items-center gap-2"
           >
-            <Plus className="w-4 h-4" />
-            <span>+ New CRM Lead</span>
+            <UserCheck className="w-4 h-4 text-red-500" />
+            <span>+ Provision Branch Admin</span>
           </button>
         </div>
       </div>
 
-      {/* Segmented Feature Navigation (Onsite Teams Architecture) */}
+      {/* Segmented Feature Navigation */}
       <div className="flex flex-wrap items-center gap-2 border-b-2 border-neutral-200 pb-3">
         <button
           onClick={() => setActiveTab('overview')}
@@ -301,6 +421,16 @@ export default function SuperAdminPage() {
           }`}
         >
           Executive Overview
+        </button>
+        <button
+          onClick={() => setActiveTab('branch_admins')}
+          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition flex items-center gap-1.5 ${
+            activeTab === 'branch_admins' ? 'bg-red-600 text-white shadow-md' : 'bg-neutral-100 text-slate-800 hover:bg-neutral-200'
+          }`}
+        >
+          <Users className="w-4 h-4" />
+          <span>Branch Admins Governance</span>
+          <span className="bg-white/20 text-xs px-1.5 py-0.2 rounded-full font-mono">{branchAdmins.length}</span>
         </button>
         <button
           onClick={() => setActiveTab('crm')}
@@ -591,7 +721,105 @@ export default function SuperAdminPage() {
         </div>
       )}
 
-      {/* TAB 2: CRM LEADS & QUOTATIONS (Pre-Construction) */}
+      {/* TAB 2: BRANCH ADMINS GOVERNANCE (Super Admin Management) */}
+      {activeTab === 'branch_admins' && (
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 className="text-xl font-black text-black">Branch Administrators Governance</h2>
+              <p className="text-xs text-neutral-600">
+                Super Admin management desk to provision, modify, and delete Branch Administrator login credentials.
+              </p>
+            </div>
+            <button
+              onClick={openCreateAdminModal}
+              className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center gap-2 self-start"
+            >
+              <Plus className="w-4 h-4" />
+              <span>+ Provision Branch Admin</span>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {branchAdmins.map((adm) => {
+              const isPasswordVisible = visiblePasswords[adm.id] || false;
+              return (
+                <div
+                  key={adm.id}
+                  className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-6 space-y-4 shadow-sm transition"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-2xl bg-red-50 text-red-600 border border-red-200 flex items-center justify-center font-black text-lg">
+                        {adm.name.slice(0, 2).toUpperCase()}
+                      </div>
+                      <div>
+                        <h4 className="text-base font-black text-black">{adm.name}</h4>
+                        <span className="text-[10px] font-mono font-bold bg-blue-100 text-blue-800 border border-blue-200 px-2 py-0.5 rounded">
+                          BRANCH ADMIN
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        onClick={() => openEditAdminModal(adm)}
+                        className="p-2 text-neutral-500 hover:text-black rounded-xl hover:bg-neutral-100 transition"
+                        title="Edit / Modify Admin"
+                      >
+                        <Edit className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => handleDeleteBranchAdmin(adm.id, adm.name)}
+                        className="p-2 text-neutral-400 hover:text-red-600 rounded-xl hover:bg-red-50 transition"
+                        title="Delete Admin"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 bg-neutral-50 rounded-2xl border border-neutral-200 space-y-2 text-xs">
+                    <div className="flex justify-between items-center">
+                      <span className="text-neutral-500 font-bold">Login Email / ID:</span>
+                      <span className="font-mono font-black text-black">{adm.email}</span>
+                    </div>
+
+                    <div className="flex justify-between items-center">
+                      <span className="text-neutral-500 font-bold">Password:</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-mono font-bold text-red-600 bg-white px-2 py-0.5 rounded border border-neutral-200">
+                          {isPasswordVisible ? adm.password : '••••••••'}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => togglePasswordVisibility(adm.id)}
+                          className="text-neutral-400 hover:text-black p-1"
+                          title={isPasswordVisible ? 'Hide Password' : 'Show Password'}
+                        >
+                          {isPasswordVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-between items-center">
+                      <span className="text-neutral-500 font-bold">Assigned Facility:</span>
+                      <span className="font-bold text-neutral-800">{adm.branchName}</span>
+                    </div>
+
+                    <div className="flex justify-between items-center pt-1 border-t border-neutral-200 text-[11px]">
+                      <span className="text-neutral-500">Designation & Contact:</span>
+                      <span className="text-neutral-700 font-medium">{adm.designation} • {adm.phone}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* TAB 3: CRM LEADS & QUOTATIONS (Pre-Construction) */}
       {activeTab === 'crm' && (
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -678,7 +906,7 @@ export default function SuperAdminPage() {
         </div>
       )}
 
-      {/* TAB 3: BOQ & COST ESTIMATION (Pre-Construction) */}
+      {/* TAB 4: BOQ & COST ESTIMATION (Pre-Construction) */}
       {activeTab === 'boq' && (
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -733,7 +961,7 @@ export default function SuperAdminPage() {
         </div>
       )}
 
-      {/* TAB 4: DAILY PROGRESS REPORTS (DPR) (Project Execution) */}
+      {/* TAB 5: DAILY PROGRESS REPORTS (DPR) (Project Execution) */}
       {activeTab === 'dpr' && (
         <div className="space-y-6">
           <div className="flex items-center justify-between">
@@ -813,7 +1041,7 @@ export default function SuperAdminPage() {
         </div>
       )}
 
-      {/* TAB 5: SITE DEFECT SNAGS (Project Execution) */}
+      {/* TAB 6: SITE DEFECT SNAGS (Project Execution) */}
       {activeTab === 'snags' && (
         <div className="space-y-6">
           <div className="flex items-center justify-between">
@@ -884,6 +1112,125 @@ export default function SuperAdminPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* Branch Admin Provisioning / Edit Modal */}
+      {adminModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white text-black p-6 sm:p-8 rounded-3xl max-w-lg w-full border-2 border-neutral-200 space-y-5">
+            <div>
+              <span className="text-[11px] font-black uppercase text-red-600 tracking-wider">Super Admin Node Control</span>
+              <h3 className="text-xl font-black text-slate-900 mt-0.5">
+                {editingAdmin ? 'Modify Branch Admin Credentials' : 'Provision New Branch Administrator'}
+              </h3>
+              <p className="text-xs text-neutral-600 font-medium">
+                Set login email and password for the Branch Manager to authenticate into their operations desk.
+              </p>
+            </div>
+
+            <form onSubmit={handleSaveBranchAdmin} className="space-y-3.5 text-xs">
+              <div>
+                <label className="font-bold text-neutral-800 block mb-1">Full Name of Admin *</label>
+                <input
+                  type="text"
+                  required
+                  value={adminForm.name}
+                  onChange={(e) => setAdminForm({ ...adminForm, name: e.target.value })}
+                  placeholder="e.g. Sanjay Singh"
+                  className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600 font-medium"
+                />
+              </div>
+
+              <div>
+                <label className="font-bold text-neutral-800 block mb-1">Official Login Email (User ID) *</label>
+                <input
+                  type="email"
+                  required
+                  value={adminForm.email}
+                  onChange={(e) => setAdminForm({ ...adminForm, email: e.target.value })}
+                  placeholder="e.g. patna.admin@jmkengineering.com"
+                  className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600 font-mono"
+                />
+              </div>
+
+              <div>
+                <label className="font-bold text-neutral-800 block mb-1">Password *</label>
+                <input
+                  type="text"
+                  required
+                  value={adminForm.password}
+                  onChange={(e) => setAdminForm({ ...adminForm, password: e.target.value })}
+                  placeholder="e.g. patna123"
+                  className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600 font-mono"
+                />
+                <span className="text-[10px] text-neutral-500 mt-1 block">
+                  Branch Admin will use this exact password to sign in to the portal.
+                </span>
+              </div>
+
+              <div>
+                <label className="font-bold text-neutral-800 block mb-1">Assigned Branch / Location *</label>
+                <select
+                  value={adminForm.branchId}
+                  onChange={(e) => {
+                    const sel = branches.find((b) => b.id === e.target.value);
+                    setAdminForm({
+                      ...adminForm,
+                      branchId: e.target.value,
+                      branchName: sel ? sel.name : 'Branch Depot',
+                    });
+                  }}
+                  className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600 font-bold bg-white"
+                >
+                  {branches.map((b) => (
+                    <option key={b.id} value={b.id}>
+                      {b.name} ({b.city})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="font-bold text-neutral-800 block mb-1">Designation</label>
+                  <input
+                    type="text"
+                    value={adminForm.designation}
+                    onChange={(e) => setAdminForm({ ...adminForm, designation: e.target.value })}
+                    placeholder="e.g. Fabrication Superintendent"
+                    className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600"
+                  />
+                </div>
+                <div>
+                  <label className="font-bold text-neutral-800 block mb-1">Phone Number</label>
+                  <input
+                    type="text"
+                    value={adminForm.phone}
+                    onChange={(e) => setAdminForm({ ...adminForm, phone: e.target.value })}
+                    placeholder="e.g. +91 74939 16194"
+                    className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600 font-mono"
+                  />
+                </div>
+              </div>
+
+              <div className="flex justify-end gap-2 pt-3 border-t border-neutral-200">
+                <button
+                  type="button"
+                  onClick={() => setAdminModalOpen(false)}
+                  className="px-4 py-2 bg-neutral-100 text-xs font-bold rounded-xl hover:bg-neutral-200 transition"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-black uppercase rounded-xl transition shadow-md"
+                >
+                  {editingAdmin ? 'Update Credentials' : 'Save & Provision Admin'}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
