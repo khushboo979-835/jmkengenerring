@@ -191,7 +191,7 @@ export interface RFQRecord {
   createdAt: string;
 }
 
-// Initial in-memory data tables
+// Initial in-memory data tables (Clean state: no dummy records)
 const USERS: UserRecord[] = [
   {
     id: 'usr_hq_super_admin',
@@ -202,250 +202,27 @@ const USERS: UserRecord[] = [
     designation: 'Managing Director & Head of Works',
     phone: '+91 74939 16194',
   },
-  {
-    id: 'usr_admin_patna',
-    name: 'Sanjay Singh',
-    email: 'patna.admin@jmkengineering.com',
-    password: 'patna123',
-    role: 'BRANCH_ADMIN',
-    branchId: 'br_patna_hq',
-    branchName: 'Patna HQ & Heavy Fabrication Plant',
-    designation: 'Fabrication Plant Supervisor',
-    phone: '+91 74939 16194',
-  },
-  {
-    id: 'usr_staff_patna',
-    name: 'Er. Rahul Kumar',
-    email: 'engineer.patna@jmkengineering.com',
-    password: 'staff123',
-    role: 'STAFF',
-    branchId: 'br_patna_hq',
-    branchName: 'Patna HQ & Heavy Fabrication Plant',
-    designation: 'Senior QA/QC Site Engineer',
-    phone: '+91 74939 16194',
-  },
 ];
 
 const BRANCHES: SeedBranch[] = [...SEED_BRANCHES];
 
 const PRODUCTS: SeedProduct[] = [...SEED_PRODUCTS];
 
-const WORKERS: WorkerRecord[] = [
-  { id: 'wrk_01', name: 'Shambhu Singh', trade: 'Master Press Brake Operator', phone: '+91 74939 16194', wageType: 'DAILY', dailyRate: 1000, branchId: 'br_patna_hq', branchName: 'Patna HQ & Heavy Fabrication Plant' },
-  { id: 'wrk_02', name: 'Akhilesh Thakur', trade: 'Shearing Machine Incharge', phone: '+91 74939 16194', wageType: 'DAILY', dailyRate: 900, branchId: 'br_patna_hq', branchName: 'Patna HQ & Heavy Fabrication Plant' },
-  { id: 'wrk_03', name: 'Upendra Rai', trade: 'Coating & Galvanizing Specialist', phone: '+91 74939 16194', wageType: 'DAILY', dailyRate: 800, branchId: 'br_patna_hq', branchName: 'Patna HQ & Heavy Fabrication Plant' },
-  { id: 'wrk_04', name: 'Rameshwar Mahato', trade: 'Shuttering Plate Fitter', phone: '+91 74939 16194', wageType: 'DAILY', dailyRate: 850, branchId: 'br_patna_hq', branchName: 'Patna HQ & Heavy Fabrication Plant' },
-  { id: 'wrk_05', name: 'Sunil Paswan', trade: 'Heavy Scaffolding Rigger', phone: '+91 74939 16194', wageType: 'DAILY', dailyRate: 750, branchId: 'br_patna_hq', branchName: 'Patna HQ & Heavy Fabrication Plant' },
-];
+const WORKERS: WorkerRecord[] = [];
 
-const ATTENDANCE_RECORDS: AttendanceRecord[] = [
-  {
-    id: 'att_01',
-    workerId: 'wrk_01',
-    workerName: 'Shambhu Singh',
-    trade: 'Master Press Brake Operator',
-    wageType: 'DAILY',
-    dailyRate: 1000,
-    branchId: 'br_patna_hq',
-    branchName: 'Patna HQ & Heavy Fabrication Plant',
-    date: new Date().toISOString().split('T')[0],
-    status: 'PRESENT',
-    checkInTime: '08:00 AM',
-    verifiedGpsCoords: { lat: 25.5941, lng: 85.1376, distanceMeters: 12, isWithinGeofence: true },
-    markedBy: 'Sanjay Singh',
-  },
-  {
-    id: 'att_02',
-    workerId: 'wrk_02',
-    workerName: 'Akhilesh Thakur',
-    trade: 'Shearing Machine Incharge',
-    wageType: 'DAILY',
-    dailyRate: 900,
-    branchId: 'br_patna_hq',
-    branchName: 'Patna HQ & Heavy Fabrication Plant',
-    date: new Date().toISOString().split('T')[0],
-    status: 'PRESENT',
-    checkInTime: '08:15 AM',
-    verifiedGpsCoords: { lat: 25.5942, lng: 85.1375, distanceMeters: 18, isWithinGeofence: true },
-    markedBy: 'Sanjay Singh',
-  },
-  {
-    id: 'att_03',
-    workerId: 'wrk_03',
-    workerName: 'Upendra Rai',
-    trade: 'Coating & Galvanizing Specialist',
-    wageType: 'DAILY',
-    dailyRate: 800,
-    branchId: 'br_patna_hq',
-    branchName: 'Patna HQ & Heavy Fabrication Plant',
-    date: new Date().toISOString().split('T')[0],
-    status: 'PRESENT',
-    checkInTime: '08:20 AM',
-    verifiedGpsCoords: { lat: 25.5940, lng: 85.1377, distanceMeters: 25, isWithinGeofence: true },
-    markedBy: 'Sanjay Singh',
-  },
-];
+const ATTENDANCE_RECORDS: AttendanceRecord[] = [];
 
-const INDENTS: IndentRecord[] = [
-  {
-    id: 'ind_01',
-    indentNo: 'IND-2024-PAT-001',
-    branchId: 'br_patna_hq',
-    branchName: 'Patna HQ & Heavy Fabrication Plant',
-    requestedBy: {
-      id: 'usr_admin_patna',
-      name: 'Sanjay Singh',
-      email: 'patna.admin@jmkengineering.com',
-    },
-    items: [
-      {
-        productName: '13 Kg & 20 Kg Mild Steel Centering Sheets',
-        variant: 'MS Centering Sheet 20 Kg (1200x600mm)',
-        quantity: 250,
-        unit: 'Pcs',
-        urgency: 'URGENT',
-        estimatedCost: 350000,
-      },
-      {
-        productName: 'Adjustable Steel Scaffolding Props & Acrow Jacks',
-        variant: 'Prop Jack Size 2 (2m - 3.5m)',
-        quantity: 150,
-        unit: 'Pcs',
-        urgency: 'ROUTINE',
-        estimatedCost: 187500,
-      },
-    ],
-    purpose: 'Fabrication replenishment for Patna Outer Ring Road Flyover Package',
-    requiredByDate: '2025-01-15',
-    status: 'PENDING_APPROVAL',
-    createdAt: new Date().toISOString(),
-  },
-];
+const INDENTS: IndentRecord[] = [];
 
-const FINANCIAL_VOUCHERS: FinancialVoucherRecord[] = [
-  {
-    id: 'vch_01',
-    voucherNo: 'VCH-2024-PAT-001',
-    branchId: 'br_patna_hq',
-    branchName: 'Patna HQ & Heavy Fabrication Plant',
-    vendorName: 'Tata Steel Authorized Stockyard Patna',
-    category: 'MATERIAL_PURCHASE',
-    amount: 85000,
-    billDate: new Date().toISOString().split('T')[0],
-    description: 'IS 2062 Grade E250 Mild Steel Plates procurement for shuttering plate laser cut line',
-    invoiceNo: 'TS-PAT-2024-118',
-    status: 'PENDING_HQ',
-    requiresHqApproval: true,
-    createdBy: {
-      id: 'usr_admin_patna',
-      name: 'Sanjay Singh',
-    },
-    createdAt: new Date().toISOString(),
-  },
-];
+const FINANCIAL_VOUCHERS: FinancialVoucherRecord[] = [];
 
-const TASKS: TaskRecord[] = [
-  {
-    id: 'tsk_01',
-    title: 'Precision Dimension Check: 3500 kN POT Bearings',
-    description: 'Carry out 8K mirror stainless plate thickness check and PTFE disc lubrication inspection prior to NHAI inspection.',
-    branchId: 'br_patna_hq',
-    branchName: 'Patna HQ & Heavy Fabrication Plant',
-    assignedToName: 'Er. Rahul Kumar',
-    assignedToRole: 'Site QA/QC Engineer',
-    dueDate: '2025-01-20',
-    priority: 'HIGH',
-    status: 'IN_PROGRESS',
-    progressPercent: 70,
-    category: 'INSPECTION',
-    createdAt: new Date().toISOString(),
-  },
-  {
-    id: 'tsk_02',
-    title: 'Ultrasonic Flaw Detection (UT) on Strip Seal Welds',
-    description: '100% NDT testing of anchorage loop welds on 20-inch expansion joint assemblies.',
-    branchId: 'br_patna_hq',
-    branchName: 'Patna HQ & Heavy Fabrication Plant',
-    assignedToName: 'Er. Rahul Kumar',
-    assignedToRole: 'Site QA/QC Engineer',
-    dueDate: '2025-01-25',
-    priority: 'HIGH',
-    status: 'PENDING',
-    progressPercent: 20,
-    category: 'SAFETY',
-    createdAt: new Date().toISOString(),
-  },
-];
+const TASKS: TaskRecord[] = [];
 
-const SNAGS: SnagRecord[] = [
-  {
-    id: 'sng_01',
-    snagNumber: 'SNG-2024-PAT-001',
-    title: 'Weld Bead Spatter on Centering Stiffener Flange',
-    description: 'Minor weld spatter noted along secondary angle stiffener during visual inspection. Scheduled for grinding touchup.',
-    location: 'Bay 2 Welding Bay',
-    branchId: 'br_patna_hq',
-    branchName: 'Patna HQ & Heavy Fabrication Plant',
-    category: 'FINISHING',
-    priority: 'MEDIUM',
-    status: 'OPEN',
-    reportedBy: {
-      id: 'usr_staff_patna',
-      name: 'Er. Rahul Kumar',
-      role: 'Site QA/QC Engineer',
-    },
-    assignedTo: 'Akhilesh Thakur',
-    photoUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
-    createdAt: new Date().toISOString(),
-  },
-];
+const SNAGS: SnagRecord[] = [];
 
-const DPRS: DPRRecord[] = [
-  {
-    id: 'dpr_01',
-    dprNo: 'DPR-2024-PAT-001',
-    branchId: 'br_patna_hq',
-    branchName: 'Patna HQ & Heavy Fabrication Plant',
-    date: new Date().toISOString().split('T')[0],
-    weather: 'Clear / 24°C',
-    labourCount: {
-      skilled: 15,
-      unskilled: 15,
-      supervisors: 3,
-      total: 33,
-    },
-    workAccomplished: 'Fabricated 280 pcs 20 Kg Centering Sheets and assembled 16 sets POT-PTFE bridge bearing base plates.',
-    materialReceived: 'Received 25 Tonnes IS 2062 Grade E250 Mild Steel plates from Tata Steel Stockyard.',
-    machineryDeployed: '1x CNC Hydraulic Press Brake, 1x Heavy Shearing Machine, 4x MIG Welding Units.',
-    roadblocks: 'None. Continuous power and smooth production.',
-    safetyObservations: '100% PPE compliance across shearing and welding bays. Zero accidents.',
-    submittedBy: {
-      id: 'usr_admin_patna',
-      name: 'Sanjay Singh',
-    },
-    createdAt: new Date().toISOString(),
-  },
-];
+const DPRS: DPRRecord[] = [];
 
-const RFQS: RFQRecord[] = [
-  {
-    id: 'rfq_01',
-    rfqNo: 'RFQ-2024-9041',
-    customerName: 'Sunil Mehta',
-    companyName: 'Afcons Infrastructure Ltd',
-    email: 's.mehta@afcons.com',
-    phone: '+91 98200 91823',
-    city: 'Mumbai',
-    state: 'Maharashtra',
-    selectedProducts: [
-      { name: 'Elastomeric POT PTFE Bridge Bearings', category: 'bearings', quantity: '24 Units (3500 kN Capacity)' },
-      { name: 'Strip Seal Expansion Joints', category: 'joints', quantity: '360 Running Meters' },
-    ],
-    projectDetails: 'Requirement for Mumbai Metro Line 4 Elevated Viaduct Package. Need MoRTH & RDSO test certificates.',
-    status: 'NEW',
-    createdAt: '2024-11-24T15:20:00Z',
-  },
-];
+const RFQS: RFQRecord[] = [];
 
 // Unified In-Memory Store API
 export const dataStore = {

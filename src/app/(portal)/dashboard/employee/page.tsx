@@ -18,6 +18,7 @@ import {
 import { formatCurrency, formatDate } from '@/lib/utils';
 import { AuthUser } from '@/lib/rbac';
 import SnagReportModal from '@/components/portal/SnagReportModal';
+import { downloadWageSlipPdf } from '@/lib/pdfGenerator';
 
 export default function EmployeePage() {
   const [user, setUser] = useState<AuthUser | null>(null);
@@ -46,12 +47,36 @@ export default function EmployeePage() {
     loadData();
   }, []);
 
-  const handleDownloadSlip = () => {
-    setDownloadingSlip(true);
-    setTimeout(() => {
+  const handleDownloadSlip = async () => {
+    try {
+      setDownloadingSlip(true);
+      await downloadWageSlipPdf(
+        {
+          employeeName: user?.name || 'Er. Staff Engineer',
+          employeeId: user?.id || 'JMK-ENG-PAT-024',
+          designation: user?.designation || 'QA/QC Site Inspection Engineer',
+          branchName: user?.branchName || 'Patna HQ Works & Heavy Fabrication Plant',
+          month: 'November',
+          year: '2024',
+          workingDays: 26,
+          presentDays: 25.5,
+          basicPay: 30000,
+          hra: 7500,
+          siteAllowance: 5000,
+          specialAllowance: 2500,
+          pfDeduction: 2160,
+          esicDeduction: 340,
+          professionalTax: 200,
+          netPay: 41800,
+        },
+        `JMK_Wage_Slip_November_2024_${(user?.name || 'Staff').replace(/[^a-zA-Z0-9]/g, '_')}.pdf`
+      );
+    } catch (err) {
+      console.error('Failed to generate PDF:', err);
+      alert('Failed to generate PDF wage slip.');
+    } finally {
       setDownloadingSlip(false);
-      alert('Monthly Digital Wage Slip (November 2024) downloaded successfully for ' + (user?.name || 'Staff Member'));
-    }, 1000);
+    }
   };
 
   return (
@@ -121,25 +146,35 @@ export default function EmployeePage() {
           </div>
 
           <div className="space-y-3">
-            {tasks.map((task) => (
-              <div
-                key={task.id}
-                className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 space-y-2 text-xs hover:border-red-300 transition"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-black text-red-600 uppercase tracking-wider">
-                    {task.category}
-                  </span>
-                  <span className="text-[10px] text-neutral-500 font-medium">Due: {task.dueDate}</span>
-                </div>
-                <h4 className="font-black text-black text-sm">{task.title}</h4>
-                <p className="text-xs text-neutral-600 font-medium">{task.description}</p>
-                <div className="pt-2 flex justify-between text-[11px] text-neutral-600 border-t border-neutral-200">
-                  <span>Status: <strong className="text-black">{task.status}</strong></span>
-                  <span className="font-mono text-emerald-700 font-black">{task.progressPercent}%</span>
-                </div>
+            {tasks.length === 0 ? (
+              <div className="p-8 text-center bg-neutral-50 rounded-2xl border border-dashed border-neutral-300 space-y-2">
+                <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto" />
+                <p className="text-sm font-bold text-slate-800">No Assigned Tasks</p>
+                <p className="text-xs text-neutral-500">
+                  You are all caught up! New site inspection orders and quality checks will appear here when assigned.
+                </p>
               </div>
-            ))}
+            ) : (
+              tasks.map((task) => (
+                <div
+                  key={task.id}
+                  className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 space-y-2 text-xs hover:border-red-300 transition"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-black text-red-600 uppercase tracking-wider">
+                      {task.category}
+                    </span>
+                    <span className="text-[10px] text-neutral-500 font-medium">Due: {task.dueDate}</span>
+                  </div>
+                  <h4 className="font-black text-black text-sm">{task.title}</h4>
+                  <p className="text-xs text-neutral-600 font-medium">{task.description}</p>
+                  <div className="pt-2 flex justify-between text-[11px] text-neutral-600 border-t border-neutral-200">
+                    <span>Status: <strong className="text-black">{task.status}</strong></span>
+                    <span className="font-mono text-emerald-700 font-black">{task.progressPercent}%</span>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
 

@@ -64,13 +64,13 @@ export default function ApprovalsPage() {
     loadData();
   }, []);
 
-  const totalSites = branches.length > 0 ? branches.length : 1;
+  const totalSites = branches.length;
   const presentTurnout = attendance.filter((a) => a.status === 'PRESENT').length;
-  const totalTurnout = attendance.length > 0 ? attendance.length : 5;
+  const totalTurnout = attendance.length;
   const totalVoucherSpend = vouchers.reduce((acc, v) => acc + (v.amount || 0), 0);
   const pendingVouchers = vouchers.filter((v) => v.status === 'PENDING_HQ');
   const pendingIndents = indents.filter((i) => i.status === 'PENDING_APPROVAL');
-  const pendingAuthorizationsCount = pendingVouchers.length + pendingIndents.length + (raBill04Approved ? 0 : 1) + (slideApproved ? 0 : 1);
+  const pendingAuthorizationsCount = pendingVouchers.length + pendingIndents.length;
 
   // Live approval handlers
   const handleApproveVoucher = async (id: string, status: 'APPROVED' | 'REJECTED') => {
@@ -260,7 +260,7 @@ export default function ApprovalsPage() {
               Combined Shift Turnout
             </span>
             <p className="text-2xl sm:text-3xl font-black text-emerald-600 font-mono">
-              {presentTurnout > 0 ? presentTurnout : 3} / {totalTurnout} Logged
+              {presentTurnout} / {totalTurnout} Logged
             </p>
             <span className="text-[10px] text-emerald-700 font-mono font-bold block">
               ● 100% Attendance Verified
@@ -330,7 +330,7 @@ export default function ApprovalsPage() {
                 }`}
               >
                 <FileText className="w-4 h-4" />
-                <span>Client RA Bills (2)</span>
+                <span>Client RA Bills (0)</span>
               </button>
             </div>
 
@@ -457,172 +457,16 @@ export default function ApprovalsPage() {
                 </div>
               ))}
 
-              {/* Cards Container for Featured Pre-Configured Sign-Offs */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Card 1: RA Bill #04 - Apex Electricals */}
-                <div className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-6 space-y-5 shadow-lg transition flex flex-col justify-between">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-black text-red-600 bg-red-50 px-2.5 py-1 rounded-md border border-red-200">
-                          RA BILL #04
-                        </span>
-                        <span className="text-xs font-bold text-neutral-500 font-mono">
-                          Subcon Package: PAT-PKG-4
-                        </span>
-                      </div>
-
-                      <span className={`text-[11px] font-mono font-bold px-2.5 py-1 rounded-full ${
-                        raBill04Approved ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-700 font-black animate-pulse'
-                      }`}>
-                        {raBill04Approved ? '✓ AUTHORIZED FOR DISBURSEMENT' : '● PENDING HQ SIGNOFF'}
-                      </span>
-                    </div>
-
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-black text-slate-900">
-                        Apex Electricals & Power Infrastructure
-                      </h3>
-                      <p className="text-xs text-neutral-600 font-medium leading-relaxed">
-                        Subcontractor RA Bill for 33kV dedicated power line energization, high-mast tower wiring, and Patna batching plant transformer synchronization.
-                      </p>
-                    </div>
-
-                    <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 space-y-2 text-xs">
-                      <div className="flex justify-between border-b border-neutral-200 pb-2">
-                        <span className="text-neutral-500 font-bold">Claimed Amount:</span>
-                        <span className="font-mono text-lg font-black text-slate-900">₹ 1,85,000</span>
-                      </div>
-                      <div className="flex justify-between border-b border-neutral-200 pb-2">
-                        <span className="text-neutral-500 font-bold">BOQ Verified Metric:</span>
-                        <span className="font-bold text-emerald-700">100% Quantity Matched against BOQ Item 4.12</span>
-                      </div>
-                      <div className="flex justify-between pt-1">
-                        <span className="text-neutral-500 font-bold">Site Engineer Verification:</span>
-                        <span className="font-bold text-slate-800">Er. Amitabh Verma (Passed QC)</span>
-                      </div>
-                    </div>
-
-                    <div className="p-3 bg-neutral-100 rounded-xl border border-neutral-300 flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-2 text-slate-800 font-medium truncate">
-                        <Paperclip className="w-4 h-4 text-red-600 shrink-0" />
-                        <span className="truncate">Apex_Electricals_Signed_Measurement_Book_MB42.pdf</span>
-                      </div>
-                      <span className="text-[10px] font-mono text-neutral-500 bg-white px-2 py-0.5 rounded border border-neutral-300 shrink-0 font-bold">
-                        3.4 MB
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-neutral-200 flex items-center justify-end gap-3">
-                    <button
-                      onClick={() => {
-                        setActiveQueryTarget({ title: 'RA Bill #04 - Apex Electricals', type: 'ra' });
-                        setQueryModalOpen(true);
-                      }}
-                      disabled={raBill04Approved}
-                      className="px-5 py-2.5 bg-neutral-100 hover:bg-neutral-200 text-slate-900 rounded-xl text-xs font-bold border border-neutral-300 transition"
-                    >
-                      Reject / Query
-                    </button>
-
-                    <button
-                      onClick={handleApproveRaBill04}
-                      disabled={raBill04Approved}
-                      className={`px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center gap-2 ${
-                        raBill04Approved
-                          ? 'bg-emerald-600 text-white cursor-default'
-                          : 'bg-red-600 hover:bg-red-700 text-white shadow-red-600/30'
-                      }`}
-                    >
-                      <CheckCircle2 className="w-4 h-4" />
-                      <span>{raBill04Approved ? 'Disbursement Approved' : 'Approve Payment'}</span>
-                    </button>
-                  </div>
+              {/* Clean Empty State when no pending items exist */}
+              {pendingVouchers.length === 0 && pendingIndents.length === 0 && (
+                <div className="bg-white border-2 border-dashed border-neutral-300 rounded-3xl p-12 text-center space-y-3">
+                  <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
+                  <h3 className="text-lg font-black text-slate-900">All Approvals Cleared</h3>
+                  <p className="text-xs text-neutral-500 max-w-md mx-auto">
+                    There are currently no pending financial vouchers or material indents awaiting Super Admin authorization. All queues are fully cleared!
+                  </p>
                 </div>
-
-                {/* Card 2: Emergency Diesel Purchase Order with Slide-to-Approve Trigger */}
-                <div className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-6 space-y-5 shadow-lg transition flex flex-col justify-between">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-black text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">
-                          EMERGENCY PO #D-882
-                        </span>
-                        <span className="text-xs font-bold text-neutral-500 font-mono">
-                          Branch: Patna HQ
-                        </span>
-                      </div>
-
-                      <span className={`text-[11px] font-mono font-bold px-2.5 py-1 rounded-full ${
-                        slideApproved ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800 font-black'
-                      }`}>
-                        {slideApproved ? '✓ DISPATCH CONFIRMED' : '● REQUIRES SLIDE APPROVAL'}
-                      </span>
-                    </div>
-
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <Fuel className="w-5 h-5 text-red-600" />
-                        <h3 className="text-xl font-black text-slate-900">
-                          Emergency High-Speed Diesel (HSD) Purchase
-                        </h3>
-                      </div>
-                      <p className="text-xs text-neutral-600 font-medium leading-relaxed">
-                        Emergency procurement of 500 Litres HSD for Patna 60m³/hr concrete batching plant generator & 250 MT hydraulic bending press continuous pour cycle.
-                      </p>
-                    </div>
-
-                    <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 space-y-2 text-xs">
-                      <div className="flex justify-between border-b border-neutral-200 pb-2">
-                        <span className="text-neutral-500 font-bold">Quantity & Vendor:</span>
-                        <span className="font-bold text-slate-900">500 Litres (Indian Oil Corp Depot)</span>
-                      </div>
-                      <div className="flex justify-between border-b border-neutral-200 pb-2">
-                        <span className="text-neutral-500 font-bold">Total Claim:</span>
-                        <span className="font-mono text-lg font-black text-slate-900">₹ 47,250</span>
-                      </div>
-                      <div className="flex justify-between pt-1">
-                        <span className="text-neutral-500 font-bold">Authorizing Manager:</span>
-                        <span className="font-bold text-slate-800">Sanjay Singh (Plant Superintendent)</span>
-                      </div>
-                    </div>
-
-                    <div className="p-3 bg-neutral-100 rounded-xl border border-neutral-300 flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-2 text-slate-800 font-medium truncate">
-                        <Paperclip className="w-4 h-4 text-red-600 shrink-0" />
-                        <span className="truncate">IOCL_Official_Indent_Challan_IOC5519.pdf</span>
-                      </div>
-                      <span className="text-[10px] font-mono text-neutral-500 bg-white px-2 py-0.5 rounded border border-neutral-300 shrink-0 font-bold">
-                        1.2 MB
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-neutral-200 space-y-2">
-                    <div className="relative h-14 bg-neutral-100 rounded-2xl border-2 border-neutral-300 overflow-hidden flex items-center justify-center select-none">
-                      {slideApproved ? (
-                        <div className="w-full h-full bg-emerald-600 text-white font-black text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 animate-fadeIn">
-                          <Check className="w-5 h-5" />
-                          <span>Diesel PO Dispatched & Released</span>
-                        </div>
-                      ) : (
-                        <button
-                          onClick={handleApproveEmergencyPO}
-                          className="w-full h-full bg-slate-900 hover:bg-black text-white text-xs font-black uppercase tracking-wider flex items-center justify-center gap-3 transition"
-                        >
-                          <Sliders className="w-4 h-4 text-red-500" />
-                          <span>Click / Slide to Executive Approve (₹47,250)</span>
-                          <ArrowRight className="w-4 h-4 text-red-500" />
-                        </button>
-                      )}
-                    </div>
-                    <p className="text-[10px] text-neutral-500 text-center font-medium">
-                      Instant banking webhook dispatches electronic funds to IOCL Patna vendor account.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
           )}
 
@@ -634,64 +478,74 @@ export default function ApprovalsPage() {
                 <span className="text-xs text-neutral-600 font-bold">{vouchers.length} Total Invoices</span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {vouchers.map((vch) => (
-                  <div
-                    key={vch.id}
-                    className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-5 space-y-3 shadow-sm transition"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <span className="text-[10px] font-mono font-bold text-neutral-500 bg-neutral-100 px-2 py-0.5 rounded">
-                          {vch.voucherNo}
-                        </span>
-                        <h4 className="text-base font-black text-black mt-1">{vch.vendorName}</h4>
-                        <p className="text-[11px] text-neutral-500 font-mono">Invoice: {vch.invoiceNo || 'N/A'}</p>
-                      </div>
-                      <span
-                        className={`text-[9px] font-mono px-2.5 py-1 rounded font-extrabold ${
-                          vch.status === 'APPROVED'
-                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                            : vch.status === 'REJECTED'
-                            ? 'bg-neutral-100 text-neutral-700 border border-neutral-300'
-                            : 'bg-amber-100 text-amber-800 border border-amber-300'
-                        }`}
-                      >
-                        {vch.status}
-                      </span>
-                    </div>
-
-                    <p className="text-xs text-neutral-600 font-medium line-clamp-2">{vch.description}</p>
-
-                    <div className="pt-2 border-t border-neutral-200 flex items-center justify-between text-xs">
-                      <div>
-                        <span className="text-neutral-500 block text-[10px]">Total Amount</span>
-                        <span className="font-mono font-black text-base text-slate-900">
-                          {formatCurrency(vch.amount)}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        {vch.status !== 'APPROVED' && (
-                          <button
-                            onClick={() => handleApproveVoucher(vch.id, 'APPROVED')}
-                            className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition"
-                          >
-                            Approve
-                          </button>
-                        )}
-                        <button
-                          onClick={() => handleDeleteVoucher(vch.id)}
-                          className="p-1.5 text-neutral-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition"
-                          title="Delete Voucher"
+              {vouchers.length === 0 ? (
+                <div className="bg-white border-2 border-dashed border-neutral-300 rounded-3xl p-12 text-center space-y-3">
+                  <FileText className="w-12 h-12 text-neutral-400 mx-auto" />
+                  <h3 className="text-lg font-black text-slate-900">No Vendor Invoices Recorded</h3>
+                  <p className="text-xs text-neutral-500 max-w-md mx-auto">
+                    When site engineers or branch administrators record vendor vouchers or material bills, they will appear here.
+                  </p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {vouchers.map((vch) => (
+                    <div
+                      key={vch.id}
+                      className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-5 space-y-3 shadow-sm transition"
+                    >
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <span className="text-[10px] font-mono font-bold text-neutral-500 bg-neutral-100 px-2 py-0.5 rounded">
+                            {vch.voucherNo}
+                          </span>
+                          <h4 className="text-base font-black text-black mt-1">{vch.vendorName}</h4>
+                          <p className="text-[11px] text-neutral-500 font-mono">Invoice: {vch.invoiceNo || 'N/A'}</p>
+                        </div>
+                        <span
+                          className={`text-[9px] font-mono px-2.5 py-1 rounded font-extrabold ${
+                            vch.status === 'APPROVED'
+                              ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                              : vch.status === 'REJECTED'
+                              ? 'bg-neutral-100 text-neutral-700 border border-neutral-300'
+                              : 'bg-amber-100 text-amber-800 border border-amber-300'
+                          }`}
                         >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                          {vch.status}
+                        </span>
+                      </div>
+
+                      <p className="text-xs text-neutral-600 font-medium line-clamp-2">{vch.description}</p>
+
+                      <div className="pt-2 border-t border-neutral-200 flex items-center justify-between text-xs">
+                        <div>
+                          <span className="text-neutral-500 block text-[10px]">Total Amount</span>
+                          <span className="font-mono font-black text-base text-slate-900">
+                            {formatCurrency(vch.amount)}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          {vch.status !== 'APPROVED' && (
+                            <button
+                              onClick={() => handleApproveVoucher(vch.id, 'APPROVED')}
+                              className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition"
+                            >
+                              Approve
+                            </button>
+                          )}
+                          <button
+                            onClick={() => handleDeleteVoucher(vch.id)}
+                            className="p-1.5 text-neutral-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition"
+                            title="Delete Voucher"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
@@ -700,83 +554,15 @@ export default function ApprovalsPage() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-base font-black text-black">Client & Subcontractor RA Certification Matrix</h3>
-                <span className="text-xs text-neutral-600 font-bold">2 Live Packages</span>
+                <span className="text-xs text-neutral-600 font-bold">0 Live Packages</span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-white border-2 border-neutral-200 rounded-3xl p-5 space-y-4 shadow-sm">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <span className="text-[10px] font-mono font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200">
-                        RA BILL #04
-                      </span>
-                      <h4 className="text-base font-black text-black mt-1">Apex Electricals & Power Infrastructure</h4>
-                      <p className="text-[11px] text-neutral-500">Patna Outer Ring Road Flyover Project</p>
-                    </div>
-                    <span className="text-[9px] font-mono px-2 py-0.5 rounded font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300">
-                      {raBill04Approved ? 'APPROVED' : 'PENDING'}
-                    </span>
-                  </div>
-
-                  <div className="p-3 bg-neutral-50 rounded-xl space-y-1 text-xs">
-                    <div className="flex justify-between">
-                      <span className="text-neutral-500">Gross Claim:</span>
-                      <span className="font-mono font-bold text-black">₹1,85,000</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-neutral-500">TDS & Retention (5%):</span>
-                      <span className="font-mono font-bold text-neutral-600">-₹9,250</span>
-                    </div>
-                    <div className="flex justify-between border-t border-neutral-200 pt-1">
-                      <span className="font-bold text-black">Net Payable:</span>
-                      <span className="font-mono font-black text-emerald-700">₹1,75,750</span>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-end gap-2 pt-2 border-t border-neutral-200">
-                    <button
-                      onClick={handleApproveRaBill04}
-                      disabled={raBill04Approved}
-                      className="px-4 py-2 bg-red-600 hover:bg-red-700 disabled:bg-neutral-300 text-white rounded-xl text-xs font-black uppercase tracking-wider transition"
-                    >
-                      {raBill04Approved ? 'Signoff Done' : 'Authorise Payment'}
-                    </button>
-                  </div>
-                </div>
-
-                <div className="bg-white border-2 border-neutral-200 rounded-3xl p-5 space-y-4 shadow-sm">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <span className="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
-                        RA BILL #02
-                      </span>
-                      <h4 className="text-base font-black text-black mt-1">Afcons Infrastructure Metro Viaduct</h4>
-                      <p className="text-[11px] text-neutral-500">POT Bearings & Expansion Joints Package</p>
-                    </div>
-                    <span className="text-[9px] font-mono px-2 py-0.5 rounded font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300">
-                      CERTIFIED
-                    </span>
-                  </div>
-
-                  <div className="p-3 bg-neutral-50 rounded-xl space-y-1 text-xs">
-                    <div className="flex justify-between">
-                      <span className="text-neutral-500">Gross Value:</span>
-                      <span className="font-mono font-bold text-black">₹12,45,000</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-neutral-500">Advance Adjusted:</span>
-                      <span className="font-mono font-bold text-neutral-600">-₹2,00,000</span>
-                    </div>
-                    <div className="flex justify-between border-t border-neutral-200 pt-1">
-                      <span className="font-bold text-black">Net Certified:</span>
-                      <span className="font-mono font-black text-emerald-700">₹10,45,000</span>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-end gap-2 pt-2 border-t border-neutral-200">
-                    <span className="text-xs text-neutral-500 font-bold self-center">MB-18 Signoff by NHAI QC</span>
-                  </div>
-                </div>
+              <div className="bg-white border-2 border-dashed border-neutral-300 rounded-3xl p-12 text-center space-y-3">
+                <Layers className="w-12 h-12 text-neutral-400 mx-auto" />
+                <h3 className="text-lg font-black text-slate-900">No Client RA Bills Pending</h3>
+                <p className="text-xs text-neutral-500 max-w-md mx-auto">
+                  Measurement Book (MB) submissions and client running account bills will appear here when submitted.
+                </p>
               </div>
             </div>
           )}

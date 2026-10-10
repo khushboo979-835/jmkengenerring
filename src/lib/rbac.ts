@@ -7,6 +7,8 @@ export interface AuthUser {
   role: UserRole;
   branchId?: string;
   branchName?: string;
+  designation?: string;
+  phone?: string;
 }
 
 export const ROLE_PERMISSIONS = {

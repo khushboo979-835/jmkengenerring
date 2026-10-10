@@ -31,7 +31,9 @@ import {
   KeyRound,
   Eye,
   EyeOff,
-  UserCheck
+  UserCheck,
+  ClipboardList,
+  ShieldCheck
 } from 'lucide-react';
 import { formatCurrency, formatDate } from '@/lib/utils';
 import { SEED_BRANCHES } from '@/lib/seedData';
@@ -613,48 +615,54 @@ export default function SuperAdminPage() {
               </div>
 
               <div className="space-y-3">
-                {vouchers.slice(0, 4).map((vch) => (
-                  <div
-                    key={vch.id}
-                    className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs hover:border-red-300 transition"
-                  >
-                    <div className="space-y-1 max-w-[65%]">
-                      <div className="flex items-center gap-2">
-                        <span className="font-mono text-[10px] font-bold text-neutral-500">{vch.voucherNo}</span>
-                        <span className="text-[10px] bg-white border border-neutral-200 px-1.5 py-0.5 rounded font-bold text-neutral-700">
-                          {vch.branchName.split(' ')[0]}
-                        </span>
+                {vouchers.length === 0 ? (
+                  <p className="text-xs text-neutral-500 text-center py-6 font-medium">
+                    No expense vouchers logged. When branches record bills, they will appear here.
+                  </p>
+                ) : (
+                  vouchers.slice(0, 4).map((vch) => (
+                    <div
+                      key={vch.id}
+                      className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs hover:border-red-300 transition"
+                    >
+                      <div className="space-y-1 max-w-[65%]">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-[10px] font-bold text-neutral-500">{vch.voucherNo}</span>
+                          <span className="text-[10px] bg-white border border-neutral-200 px-1.5 py-0.5 rounded font-bold text-neutral-700">
+                            {vch.branchName.split(' ')[0]}
+                          </span>
+                        </div>
+                        <p className="font-black text-black truncate">{vch.vendorName}</p>
+                        <p className="text-[11px] text-neutral-600 truncate font-medium">{vch.description}</p>
                       </div>
-                      <p className="font-black text-black truncate">{vch.vendorName}</p>
-                      <p className="text-[11px] text-neutral-600 truncate font-medium">{vch.description}</p>
-                    </div>
 
-                    <div className="sm:text-right space-y-1 flex sm:flex-col items-center sm:items-end justify-between">
-                      <span className="font-mono font-black text-sm text-black block">
-                        {formatCurrency(vch.amount)}
-                      </span>
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
-                            vch.status === 'APPROVED'
-                              ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                              : 'bg-amber-100 text-amber-800 border border-amber-300'
-                          }`}
-                        >
-                          {vch.status}
+                      <div className="sm:text-right space-y-1 flex sm:flex-col items-center sm:items-end justify-between">
+                        <span className="font-mono font-black text-sm text-black block">
+                          {formatCurrency(vch.amount)}
                         </span>
-                        {vch.status !== 'APPROVED' && (
-                          <button
-                            onClick={() => handleApproveVoucher(vch.id)}
-                            className="px-2.5 py-1 bg-emerald-600 text-white rounded-md text-[10px] font-bold hover:bg-emerald-700 transition"
+                        <div className="flex items-center gap-2">
+                          <span
+                            className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
+                              vch.status === 'APPROVED'
+                                ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                                : 'bg-amber-100 text-amber-800 border border-amber-300'
+                            }`}
                           >
-                            Approve
-                          </button>
-                        )}
+                            {vch.status}
+                          </span>
+                          {vch.status !== 'APPROVED' && (
+                            <button
+                              onClick={() => handleApproveVoucher(vch.id)}
+                              className="px-2.5 py-1 bg-emerald-600 text-white rounded-md text-[10px] font-bold hover:bg-emerald-700 transition"
+                            >
+                              Approve
+                            </button>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
 
@@ -674,47 +682,53 @@ export default function SuperAdminPage() {
               </div>
 
               <div className="space-y-3">
-                {indents.slice(0, 3).map((ind) => (
-                  <div
-                    key={ind.id}
-                    className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 space-y-2 text-xs hover:border-red-300 transition"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="font-mono text-[10px] text-red-600 font-black">{ind.indentNo}</span>
-                        <span className="text-[10px] text-neutral-600 bg-white border border-neutral-200 px-1.5 py-0.5 rounded font-bold">
-                          {ind.branchName}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
-                            ind.status === 'APPROVED'
-                              ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                              : 'bg-amber-100 text-amber-800 border border-amber-300'
-                          }`}
-                        >
-                          {ind.status}
-                        </span>
-                        {ind.status !== 'APPROVED' && (
-                          <button
-                            onClick={() => handleApproveIndent(ind.id)}
-                            className="px-2.5 py-1 bg-red-600 text-white rounded-md text-[10px] font-bold hover:bg-red-700 transition"
+                {indents.length === 0 ? (
+                  <p className="text-xs text-neutral-500 text-center py-6 font-medium">
+                    No factory manufacturing indents requested.
+                  </p>
+                ) : (
+                  indents.slice(0, 3).map((ind) => (
+                    <div
+                      key={ind.id}
+                      className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 space-y-2 text-xs hover:border-red-300 transition"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-[10px] text-red-600 font-black">{ind.indentNo}</span>
+                          <span className="text-[10px] text-neutral-600 bg-white border border-neutral-200 px-1.5 py-0.5 rounded font-bold">
+                            {ind.branchName}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span
+                            className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
+                              ind.status === 'APPROVED'
+                                ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                                : 'bg-amber-100 text-amber-800 border border-amber-300'
+                            }`}
                           >
-                            Dispatch
-                          </button>
-                        )}
+                            {ind.status}
+                          </span>
+                          {ind.status !== 'APPROVED' && (
+                            <button
+                              onClick={() => handleApproveIndent(ind.id)}
+                              className="px-2.5 py-1 bg-red-600 text-white rounded-md text-[10px] font-bold hover:bg-red-700 transition"
+                            >
+                              Dispatch
+                            </button>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="text-neutral-800">
+                        <p className="font-bold text-black">{ind.purpose}</p>
+                        <p className="text-[11px] text-neutral-600 font-medium mt-0.5">
+                          Items: {ind.items.map((it: any) => `${it.quantity} ${it.unit} of ${it.productName}`).join(', ')}
+                        </p>
                       </div>
                     </div>
-
-                    <div className="text-neutral-800">
-                      <p className="font-bold text-black">{ind.purpose}</p>
-                      <p className="text-[11px] text-neutral-600 font-medium mt-0.5">
-                        Items: {ind.items.map((it: any) => `${it.quantity} ${it.unit} of ${it.productName}`).join(', ')}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
           </div>
@@ -740,82 +754,92 @@ export default function SuperAdminPage() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {branchAdmins.map((adm) => {
-              const isPasswordVisible = visiblePasswords[adm.id] || false;
-              return (
-                <div
-                  key={adm.id}
-                  className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-6 space-y-4 shadow-sm transition"
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-2xl bg-red-50 text-red-600 border border-red-200 flex items-center justify-center font-black text-lg">
-                        {adm.name.slice(0, 2).toUpperCase()}
+          {branchAdmins.length === 0 ? (
+            <div className="bg-white border-2 border-dashed border-neutral-300 rounded-3xl p-12 text-center space-y-3">
+              <UserCheck className="w-12 h-12 text-neutral-400 mx-auto" />
+              <h3 className="text-lg font-black text-slate-900">No Branch Administrators Provisioned</h3>
+              <p className="text-xs text-neutral-500 max-w-md mx-auto">
+                Click &quot;+ Provision Branch Admin&quot; above to create login credentials (email and password) for a fabrication plant or regional depot supervisor.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {branchAdmins.map((adm) => {
+                const isPasswordVisible = visiblePasswords[adm.id] || false;
+                return (
+                  <div
+                    key={adm.id}
+                    className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-6 space-y-4 shadow-sm transition"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-2xl bg-red-50 text-red-600 border border-red-200 flex items-center justify-center font-black text-lg">
+                          {adm.name.slice(0, 2).toUpperCase()}
+                        </div>
+                        <div>
+                          <h4 className="text-base font-black text-black">{adm.name}</h4>
+                          <span className="text-[10px] font-mono font-bold bg-blue-100 text-blue-800 border border-blue-200 px-2 py-0.5 rounded">
+                            BRANCH ADMIN
+                          </span>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="text-base font-black text-black">{adm.name}</h4>
-                        <span className="text-[10px] font-mono font-bold bg-blue-100 text-blue-800 border border-blue-200 px-2 py-0.5 rounded">
-                          BRANCH ADMIN
-                        </span>
-                      </div>
-                    </div>
 
-                    <div className="flex items-center gap-1.5">
-                      <button
-                        onClick={() => openEditAdminModal(adm)}
-                        className="p-2 text-neutral-500 hover:text-black rounded-xl hover:bg-neutral-100 transition"
-                        title="Edit / Modify Admin"
-                      >
-                        <Edit className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => handleDeleteBranchAdmin(adm.id, adm.name)}
-                        className="p-2 text-neutral-400 hover:text-red-600 rounded-xl hover:bg-red-50 transition"
-                        title="Delete Admin"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="p-3.5 bg-neutral-50 rounded-2xl border border-neutral-200 space-y-2 text-xs">
-                    <div className="flex justify-between items-center">
-                      <span className="text-neutral-500 font-bold">Login Email / ID:</span>
-                      <span className="font-mono font-black text-black">{adm.email}</span>
-                    </div>
-
-                    <div className="flex justify-between items-center">
-                      <span className="text-neutral-500 font-bold">Password:</span>
                       <div className="flex items-center gap-1.5">
-                        <span className="font-mono font-bold text-red-600 bg-white px-2 py-0.5 rounded border border-neutral-200">
-                          {isPasswordVisible ? adm.password : '••••••••'}
-                        </span>
                         <button
-                          type="button"
-                          onClick={() => togglePasswordVisibility(adm.id)}
-                          className="text-neutral-400 hover:text-black p-1"
-                          title={isPasswordVisible ? 'Hide Password' : 'Show Password'}
+                          onClick={() => openEditAdminModal(adm)}
+                          className="p-2 text-neutral-500 hover:text-black rounded-xl hover:bg-neutral-100 transition"
+                          title="Edit / Modify Admin"
                         >
-                          {isPasswordVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                          <Edit className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteBranchAdmin(adm.id, adm.name)}
+                          className="p-2 text-neutral-400 hover:text-red-600 rounded-xl hover:bg-red-50 transition"
+                          title="Delete Admin"
+                        >
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
 
-                    <div className="flex justify-between items-center">
-                      <span className="text-neutral-500 font-bold">Assigned Facility:</span>
-                      <span className="font-bold text-neutral-800">{adm.branchName}</span>
-                    </div>
+                    <div className="p-3.5 bg-neutral-50 rounded-2xl border border-neutral-200 space-y-2 text-xs">
+                      <div className="flex justify-between items-center">
+                        <span className="text-neutral-500 font-bold">Login Email / ID:</span>
+                        <span className="font-mono font-black text-black">{adm.email}</span>
+                      </div>
 
-                    <div className="flex justify-between items-center pt-1 border-t border-neutral-200 text-[11px]">
-                      <span className="text-neutral-500">Designation & Contact:</span>
-                      <span className="text-neutral-700 font-medium">{adm.designation} • {adm.phone}</span>
+                      <div className="flex justify-between items-center">
+                        <span className="text-neutral-500 font-bold">Password:</span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-mono font-bold text-red-600 bg-white px-2 py-0.5 rounded border border-neutral-200">
+                            {isPasswordVisible ? adm.password : '••••••••'}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => togglePasswordVisibility(adm.id)}
+                            className="text-neutral-400 hover:text-black p-1"
+                            title={isPasswordVisible ? 'Hide Password' : 'Show Password'}
+                          >
+                            {isPasswordVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="flex justify-between items-center">
+                        <span className="text-neutral-500 font-bold">Assigned Facility:</span>
+                        <span className="font-bold text-neutral-800">{adm.branchName}</span>
+                      </div>
+
+                      <div className="flex justify-between items-center pt-1 border-t border-neutral-200 text-[11px]">
+                        <span className="text-neutral-500">Designation & Contact:</span>
+                        <span className="text-neutral-700 font-medium">{adm.designation} • {adm.phone}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
 
@@ -838,71 +862,81 @@ export default function SuperAdminPage() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 gap-4">
-            {rfqs.map((lead) => (
-              <div
-                key={lead.id || lead._id}
-                className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-5 space-y-3 shadow-sm transition"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-100 pb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-black text-red-600 bg-red-50 px-2.5 py-1 rounded-md border border-red-200">
-                      {lead.rfqNo || 'RFQ-2024-LEAD'}
-                    </span>
-                    <span className="text-xs font-bold text-neutral-700">{lead.customerName}</span>
-                    <span className="text-xs text-neutral-400">•</span>
-                    <span className="text-xs font-bold text-neutral-500">{lead.companyName}</span>
+          {rfqs.length === 0 ? (
+            <div className="bg-white border-2 border-dashed border-neutral-300 rounded-3xl p-12 text-center space-y-3">
+              <FileSpreadsheet className="w-12 h-12 text-neutral-400 mx-auto" />
+              <h3 className="text-lg font-black text-slate-900">No Inquiries or Leads</h3>
+              <p className="text-xs text-neutral-500 max-w-md mx-auto">
+                Customer RFQ requests from the website or manual proposals will appear here.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-4">
+              {rfqs.map((lead) => (
+                <div
+                  key={lead.id || lead._id}
+                  className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-5 space-y-3 shadow-sm transition"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-100 pb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-xs font-black text-red-600 bg-red-50 px-2.5 py-1 rounded-md border border-red-200">
+                        {lead.rfqNo || 'RFQ-2024-LEAD'}
+                      </span>
+                      <span className="text-xs font-bold text-neutral-700">{lead.customerName}</span>
+                      <span className="text-xs text-neutral-400">•</span>
+                      <span className="text-xs font-bold text-neutral-500">{lead.companyName}</span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <select
+                        value={lead.status || 'NEW'}
+                        onChange={(e) => handleUpdateRfqStatus(lead.id || lead._id, e.target.value)}
+                        className="px-2.5 py-1 text-xs font-bold rounded-lg border border-neutral-300 bg-white"
+                      >
+                        <option value="NEW">NEW LEAD</option>
+                        <option value="QUOTED">QUOTATION SENT</option>
+                        <option value="CONVERTED">CONVERTED (WON)</option>
+                        <option value="CLOSED">CLOSED</option>
+                      </select>
+
+                      <button
+                        onClick={() => handleDeleteRfq(lead.id || lead._id)}
+                        className="p-1.5 text-neutral-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition"
+                        title="Delete Lead"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <select
-                      value={lead.status || 'NEW'}
-                      onChange={(e) => handleUpdateRfqStatus(lead.id || lead._id, e.target.value)}
-                      className="px-2.5 py-1 text-xs font-bold rounded-lg border border-neutral-300 bg-white"
-                    >
-                      <option value="NEW">NEW LEAD</option>
-                      <option value="QUOTED">QUOTATION SENT</option>
-                      <option value="CONVERTED">CONVERTED (WON)</option>
-                      <option value="CLOSED">CLOSED</option>
-                    </select>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div>
+                      <span className="text-neutral-500 font-bold block text-[11px]">Contact & Location</span>
+                      <p className="font-bold text-black mt-0.5">{lead.phone}</p>
+                      <p className="text-neutral-600 font-medium">{lead.email}</p>
+                      <p className="text-neutral-500 text-[10px] mt-0.5">{lead.city}, {lead.state}</p>
+                    </div>
 
-                    <button
-                      onClick={() => handleDeleteRfq(lead.id || lead._id)}
-                      className="p-1.5 text-neutral-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition"
-                      title="Delete Lead"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
+                    <div>
+                      <span className="text-neutral-500 font-bold block text-[11px]">Requirement Details</span>
+                      <p className="text-neutral-700 font-medium mt-0.5 line-clamp-2">{lead.projectDetails}</p>
+                    </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                  <div>
-                    <span className="text-neutral-500 font-bold block text-[11px]">Contact & Location</span>
-                    <p className="font-bold text-black mt-0.5">{lead.phone}</p>
-                    <p className="text-neutral-600 font-medium">{lead.email}</p>
-                    <p className="text-neutral-500 text-[10px] mt-0.5">{lead.city}, {lead.state}</p>
-                  </div>
-
-                  <div>
-                    <span className="text-neutral-500 font-bold block text-[11px]">Requirement Details</span>
-                    <p className="text-neutral-700 font-medium mt-0.5 line-clamp-2">{lead.projectDetails}</p>
-                  </div>
-
-                  <div>
-                    <span className="text-neutral-500 font-bold block text-[11px]">Products Inquired</span>
-                    <div className="space-y-1 mt-0.5">
-                      {lead.selectedProducts?.map((p: any, idx: number) => (
-                        <span key={idx} className="inline-block bg-neutral-100 text-black px-2 py-0.5 rounded text-[10px] font-bold mr-1 mb-1">
-                          {p.name} ({p.quantity})
-                        </span>
-                      ))}
+                    <div>
+                      <span className="text-neutral-500 font-bold block text-[11px]">Products Inquired</span>
+                      <div className="space-y-1 mt-0.5">
+                        {lead.selectedProducts?.map((p: any, idx: number) => (
+                          <span key={idx} className="inline-block bg-neutral-100 text-black px-2 py-0.5 rounded text-[10px] font-bold mr-1 mb-1">
+                            {p.name} ({p.quantity})
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -974,70 +1008,80 @@ export default function SuperAdminPage() {
             <span className="text-xs font-mono font-bold text-neutral-500">{dprs.length} DPRs Logged</span>
           </div>
 
-          <div className="space-y-4">
-            {dprs.map((dpr) => (
-              <div
-                key={dpr.id}
-                className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-6 space-y-4 shadow-sm transition"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-200 pb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-black text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
-                      {dpr.dprNo}
-                    </span>
-                    <span className="text-xs font-bold text-black">{dpr.branchName}</span>
-                    <span className="text-xs text-neutral-400">•</span>
-                    <span className="text-xs font-mono text-neutral-500">{dpr.date}</span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono bg-neutral-100 px-2 py-0.5 rounded font-bold">
-                      Weather: {dpr.weather}
-                    </span>
-                    <button
-                      onClick={() => handleDeleteDpr(dpr.id)}
-                      className="p-1.5 text-neutral-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition"
-                      title="Delete DPR"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
-                  <div className="p-3 bg-neutral-50 rounded-2xl border border-neutral-200">
-                    <span className="text-neutral-500 font-bold block text-[10px]">Labour Deployed</span>
-                    <p className="text-lg font-black font-mono text-black mt-1">
-                      {dpr.labourCount?.total || 33} Workers
-                    </p>
-                    <p className="text-[10px] text-neutral-600 mt-0.5">
-                      Skilled: {dpr.labourCount?.skilled || 15} • Unskilled: {dpr.labourCount?.unskilled || 15}
-                    </p>
-                  </div>
-
-                  <div className="md:col-span-3 space-y-2">
-                    <div>
-                      <span className="font-bold text-black text-[11px]">Work Accomplished Today:</span>
-                      <p className="text-neutral-700 font-medium mt-0.5">{dpr.workAccomplished}</p>
+          {dprs.length === 0 ? (
+            <div className="bg-white border-2 border-dashed border-neutral-300 rounded-3xl p-12 text-center space-y-3">
+              <ClipboardList className="w-12 h-12 text-neutral-400 mx-auto" />
+              <h3 className="text-lg font-black text-slate-900">No Daily Progress Reports Yet</h3>
+              <p className="text-xs text-neutral-500 max-w-md mx-auto">
+                Daily reports submitted by site incharge or QA/QC engineers will appear here.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {dprs.map((dpr) => (
+                <div
+                  key={dpr.id}
+                  className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-6 space-y-4 shadow-sm transition"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-200 pb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-xs font-black text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
+                        {dpr.dprNo}
+                      </span>
+                      <span className="text-xs font-bold text-black">{dpr.branchName}</span>
+                      <span className="text-xs text-neutral-400">•</span>
+                      <span className="text-xs font-mono text-neutral-500">{dpr.date}</span>
                     </div>
 
-                    {dpr.materialReceived && (
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-mono bg-neutral-100 px-2 py-0.5 rounded font-bold">
+                        Weather: {dpr.weather}
+                      </span>
+                      <button
+                        onClick={() => handleDeleteDpr(dpr.id)}
+                        className="p-1.5 text-neutral-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition"
+                        title="Delete DPR"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+                    <div className="p-3 bg-neutral-50 rounded-2xl border border-neutral-200">
+                      <span className="text-neutral-500 font-bold block text-[10px]">Labour Deployed</span>
+                      <p className="text-lg font-black font-mono text-black mt-1">
+                        {dpr.labourCount?.total || 33} Workers
+                      </p>
+                      <p className="text-[10px] text-neutral-600 mt-0.5">
+                        Skilled: {dpr.labourCount?.skilled || 15} • Unskilled: {dpr.labourCount?.unskilled || 15}
+                      </p>
+                    </div>
+
+                    <div className="md:col-span-3 space-y-2">
                       <div>
-                        <span className="font-bold text-black text-[11px]">Material Received:</span>
-                        <p className="text-neutral-600 font-medium mt-0.5">{dpr.materialReceived}</p>
+                        <span className="font-bold text-black text-[11px]">Work Accomplished Today:</span>
+                        <p className="text-neutral-700 font-medium mt-0.5">{dpr.workAccomplished}</p>
                       </div>
-                    )}
 
-                    <div className="flex flex-wrap items-center gap-4 text-[11px] text-neutral-500 pt-1 border-t border-neutral-100">
-                      <span>Machinery: <strong className="text-black">{dpr.machineryDeployed}</strong></span>
-                      <span>Safety: <strong className="text-emerald-700">{dpr.safetyObservations}</strong></span>
-                      <span>Submitted By: <strong className="text-black">{dpr.submittedBy?.name || 'Site Incharge'}</strong></span>
+                      {dpr.materialReceived && (
+                        <div>
+                          <span className="font-bold text-black text-[11px]">Material Received:</span>
+                          <p className="text-neutral-600 font-medium mt-0.5">{dpr.materialReceived}</p>
+                        </div>
+                      )}
+
+                      <div className="flex flex-wrap items-center gap-4 text-[11px] text-neutral-500 pt-1 border-t border-neutral-100">
+                        <span>Machinery: <strong className="text-black">{dpr.machineryDeployed}</strong></span>
+                        <span>Safety: <strong className="text-emerald-700">{dpr.safetyObservations}</strong></span>
+                        <span>Submitted By: <strong className="text-black">{dpr.submittedBy?.name || 'Site Incharge'}</strong></span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -1054,65 +1098,75 @@ export default function SuperAdminPage() {
             <span className="text-xs font-mono font-bold text-neutral-500">{snags.length} Snags Tracked</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {snags.map((snag) => (
-              <div
-                key={snag.id}
-                className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-5 space-y-4 shadow-sm transition"
-              >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <span className="text-[10px] font-mono font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200">
-                      {snag.snagNumber || 'SNG-QC'}
-                    </span>
-                    <h4 className="text-base font-black text-black mt-1.5">{snag.title}</h4>
-                    <p className="text-[11px] text-neutral-500 font-mono">Location: {snag.location} • {snag.category}</p>
-                  </div>
-                  <span
-                    className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
-                      snag.status === 'RESOLVED'
-                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                        : 'bg-red-100 text-red-800 border border-red-300'
-                    }`}
-                  >
-                    {snag.status}
-                  </span>
-                </div>
-
-                <p className="text-xs text-neutral-600 font-medium">{snag.description}</p>
-
-                {snag.photoUrl && (
-                  <div className="h-32 w-full rounded-2xl overflow-hidden border border-neutral-200 relative bg-neutral-100">
-                    <img src={snag.photoUrl} alt="Defect Proof" className="w-full h-full object-cover" />
-                  </div>
-                )}
-
-                <div className="pt-2 border-t border-neutral-200 flex items-center justify-between text-xs">
-                  <span className="text-neutral-500 text-[11px]">
-                    Assigned: <strong className="text-black">{snag.assignedTo || 'Fabrication Team'}</strong>
-                  </span>
-
-                  <div className="flex items-center gap-2">
-                    {snag.status !== 'RESOLVED' && (
-                      <button
-                        onClick={() => handleResolveSnag(snag.id)}
-                        className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition"
-                      >
-                        Resolve Snag
-                      </button>
-                    )}
-                    <button
-                      onClick={() => handleDeleteSnag(snag.id)}
-                      className="p-1.5 text-neutral-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition"
-                      title="Delete Snag"
+          {snags.length === 0 ? (
+            <div className="bg-white border-2 border-dashed border-neutral-300 rounded-3xl p-12 text-center space-y-3">
+              <ShieldCheck className="w-12 h-12 text-emerald-600 mx-auto" />
+              <h3 className="text-lg font-black text-slate-900">No Defect Snags Logged</h3>
+              <p className="text-xs text-neutral-500 max-w-md mx-auto">
+                All quality and fabrication checks are passing! Snags logged by QA/QC site engineers with camera proof will appear here.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {snags.map((snag) => (
+                <div
+                  key={snag.id}
+                  className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-5 space-y-4 shadow-sm transition"
+                >
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <span className="text-[10px] font-mono font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200">
+                        {snag.snagNumber || 'SNG-QC'}
+                      </span>
+                      <h4 className="text-base font-black text-black mt-1.5">{snag.title}</h4>
+                      <p className="text-[11px] text-neutral-500 font-mono">Location: {snag.location} • {snag.category}</p>
+                    </div>
+                    <span
+                      className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
+                        snag.status === 'RESOLVED'
+                          ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                          : 'bg-red-100 text-red-800 border border-red-300'
+                      }`}
                     >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                      {snag.status}
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-neutral-600 font-medium">{snag.description}</p>
+
+                  {snag.photoUrl && (
+                    <div className="h-32 w-full rounded-2xl overflow-hidden border border-neutral-200 relative bg-neutral-100">
+                      <img src={snag.photoUrl} alt="Defect Proof" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+
+                  <div className="pt-2 border-t border-neutral-200 flex items-center justify-between text-xs">
+                    <span className="text-neutral-500 text-[11px]">
+                      Assigned: <strong className="text-black">{snag.assignedTo || 'Fabrication Team'}</strong>
+                    </span>
+
+                    <div className="flex items-center gap-2">
+                      {snag.status !== 'RESOLVED' && (
+                        <button
+                          onClick={() => handleResolveSnag(snag.id)}
+                          className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition"
+                        >
+                          Resolve Snag
+                        </button>
+                      )}
+                      <button
+                        onClick={() => handleDeleteSnag(snag.id)}
+                        className="p-1.5 text-neutral-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition"
+                        title="Delete Snag"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 

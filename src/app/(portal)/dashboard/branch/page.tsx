@@ -359,14 +359,23 @@ export default function BranchOperationsPage() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {siteEngineers.map((eng) => {
-              const isPasswordVisible = visiblePasswords[eng.id] || false;
-              return (
-                <div
-                  key={eng.id}
-                  className="bg-neutral-50 border-2 border-neutral-200 hover:border-red-600 rounded-2xl p-5 space-y-3 transition"
-                >
+          {siteEngineers.length === 0 ? (
+            <div className="p-8 text-center bg-neutral-50 rounded-2xl border border-dashed border-neutral-300 space-y-2">
+              <UserCheck className="w-8 h-8 text-neutral-400 mx-auto" />
+              <p className="text-sm font-bold text-slate-800">No Site Engineers Provisioned Yet</p>
+              <p className="text-xs text-neutral-500">
+                Click &quot;+ Provision Site Engineer&quot; above to create login credentials for your QA/QC field engineering team.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {siteEngineers.map((eng) => {
+                const isPasswordVisible = visiblePasswords[eng.id] || false;
+                return (
+                  <div
+                    key={eng.id}
+                    className="bg-neutral-50 border-2 border-neutral-200 hover:border-red-600 rounded-2xl p-5 space-y-3 transition"
+                  >
                   <div className="flex items-start justify-between">
                     <div>
                       <h3 className="text-base font-black text-black">{eng.name}</h3>
@@ -429,7 +438,8 @@ export default function BranchOperationsPage() {
                 </div>
               );
             })}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Live Attendance Shift Log Table */}
