@@ -87,15 +87,15 @@ export default function EmployeePage() {
           </div>
           <div>
             <div className="flex items-center gap-2 justify-center md:justify-start">
-              <h2 className="text-xl font-black text-black">{user?.name || 'Er. Rahul Choudhary'}</h2>
+              <h2 className="text-xl font-black text-black">{user?.name || 'Er. Rahul Kumar'}</h2>
               <span className="text-[10px] font-mono font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300 px-2 py-0.5 rounded">
                 ● ACTIVE STAFF
               </span>
             </div>
             <p className="text-xs text-neutral-600 mt-0.5 font-medium">
-              Role: <strong className="text-black">QA/QC Site Inspection Engineer</strong> • {user?.branchName || 'Delhi NCR Depot'}
+              Role: <strong className="text-black">QA/QC Site Inspection Engineer</strong> • {user?.branchName || 'Patna HQ Works'}
             </p>
-            <p className="text-[11px] text-neutral-500 font-mono mt-0.5">Employee ID: JMK-ENG-2024-041</p>
+            <p className="text-[11px] text-neutral-500 font-mono mt-0.5">Employee ID: JMK-ENG-PAT-024</p>
           </div>
         </div>
 

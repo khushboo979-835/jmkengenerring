@@ -32,7 +32,7 @@ export default function AttendancePage() {
   const [gpsError, setGpsError] = useState<string | null>(null);
   const [gpsChecking, setGpsChecking] = useState(false);
 
-  const targetBranch = SEED_BRANCHES[1]; // Default Delhi Depot or user assigned
+  const targetBranch = SEED_BRANCHES[0]; // Patna HQ Heavy Fabrication Plant
 
   const checkLiveGps = () => {
     if (!navigator.geolocation) {

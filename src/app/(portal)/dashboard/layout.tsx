@@ -30,6 +30,16 @@ export default function DashboardLayout({
             if (data.user.role === 'BRANCH_ADMIN' && data.user.branchId) {
               setSelectedBranch(data.user.branchId);
             }
+
+            // Role route guard
+            if (data.user.role === 'STAFF' && (pathname.startsWith('/dashboard/super-admin') || pathname === '/dashboard/branch')) {
+              router.replace('/dashboard/employee');
+              return;
+            }
+            if (data.user.role === 'BRANCH_ADMIN' && pathname.startsWith('/dashboard/super-admin')) {
+              router.replace('/dashboard/branch');
+              return;
+            }
           } else {
             router.push('/portal/login');
           }

@@ -89,6 +89,17 @@ export default function PortalSidebar({ user, isOpen, onClose }: PortalSidebarPr
       href: '/dashboard/employee',
       icon: Users,
     },
+    {
+      label: 'GPS Daily Punch-In',
+      href: '/dashboard/branch/attendance',
+      icon: MapPin,
+      badge: 'Live GPS',
+    },
+    {
+      label: 'QC Tasks & Defect Snags',
+      href: '/dashboard/branch/tasks',
+      icon: ClipboardList,
+    },
   ];
 
   return (
@@ -220,33 +231,46 @@ export default function PortalSidebar({ user, isOpen, onClose }: PortalSidebarPr
               </div>
             )}
 
-            {/* Staff / Engineer Section */}
-            <div className="space-y-1">
-              <span className="px-3 text-[10px] font-black text-neutral-900 uppercase tracking-wider block mb-2">
-                Field Staff & Engineering
-              </span>
-              {staffLinks.map((link) => {
-                const Icon = link.icon;
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={onClose}
-                    className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-extrabold transition ${
-                      isActive
-                        ? 'bg-red-600 text-white shadow-md shadow-red-600/30'
-                        : 'text-neutral-800 hover:bg-neutral-100 hover:text-black'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-neutral-600'}`} />
-                      <span>{link.label}</span>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
+            {/* Staff / Engineer Section (Shown for Staff, and also available for Super Admin) */}
+            {(user?.role === 'SUPER_ADMIN' || user?.role === 'STAFF') && (
+              <div className="space-y-1">
+                <span className="px-3 text-[10px] font-black text-neutral-900 uppercase tracking-wider block mb-2">
+                  Field Staff & Engineering
+                </span>
+                {staffLinks.map((link) => {
+                  const Icon = link.icon;
+                  const isActive = pathname === link.href;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={onClose}
+                      className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-extrabold transition ${
+                        isActive
+                          ? 'bg-red-600 text-white shadow-md shadow-red-600/30'
+                          : 'text-neutral-800 hover:bg-neutral-100 hover:text-black'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-neutral-600'}`} />
+                        <span>{link.label}</span>
+                      </div>
+                      {link.badge && (
+                        <span
+                          className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${
+                            isActive
+                              ? 'bg-red-800 text-white'
+                              : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                          }`}
+                        >
+                          {link.badge}
+                        </span>
+                      )}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
 

@@ -22,7 +22,7 @@ export default function BranchTasksPage() {
   const [isSnagModalOpen, setIsSnagModalOpen] = useState(false);
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [newTaskCategory, setNewTaskCategory] = useState('CASTING');
-  const [newTaskAssignee, setNewTaskAssignee] = useState('Manoj Kumar');
+  const [newTaskAssignee, setNewTaskAssignee] = useState('Er. Rahul Kumar');
   const [newTaskDueDate, setNewTaskDueDate] = useState(
     new Date(Date.now() + 3 * 86400000).toISOString().split('T')[0]
   );

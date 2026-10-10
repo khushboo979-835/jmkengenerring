@@ -28,29 +28,22 @@ export default function LoginPage() {
 
   const quickDemoAccounts = [
     {
-      label: 'Super Admin (Patna HQ)',
+      label: 'Super Admin (Patna Master HQ)',
       email: 'hq@jmkengineering.com',
       password: 'admin123',
       role: 'SUPER_ADMIN',
       badge: 'Master HQ Command',
     },
     {
-      label: 'Branch Admin (Delhi Depot)',
-      email: 'delhi.admin@jmkengineering.com',
-      password: 'delhi123',
+      label: 'Branch Admin (Patna Fabrication Plant)',
+      email: 'patna.admin@jmkengineering.com',
+      password: 'patna123',
       role: 'BRANCH_ADMIN',
-      badge: 'Delhi NCR Hub',
+      badge: 'Plant Operations',
     },
     {
-      label: 'Branch Admin (Mumbai Hub)',
-      email: 'mumbai.admin@jmkengineering.com',
-      password: 'mumbai123',
-      role: 'BRANCH_ADMIN',
-      badge: 'Mumbai Hub',
-    },
-    {
-      label: 'Site QA/QC Engineer',
-      email: 'engineer.delhi@jmkengineering.com',
+      label: 'Site QA/QC Engineer (Field Operations)',
+      email: 'engineer.patna@jmkengineering.com',
       password: 'staff123',
       role: 'STAFF',
       badge: 'Field Engineering',
@@ -130,7 +123,7 @@ export default function LoginPage() {
             Universal Smart Login
           </h2>
           <p className="text-xs text-neutral-600 font-medium">
-            Patna HQ • Delhi NCR • Mumbai • Kolkata Logistics Nodes
+            Patna Central HQ • Heavy Fabrication Works • Multi-Site ERP
           </p>
         </div>
 

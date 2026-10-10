@@ -25,81 +25,51 @@ import {
 import DPRSubmissionModal from '@/components/portal/DPRSubmissionModal';
 import { AuthUser } from '@/lib/rbac';
 
-// Screen 3 Muster Roll Mock Data (Onsite ERP style)
-const MUSTER_ROLL_WORKERS = [
-  {
-    id: 'EMP-PAT-081',
-    name: 'Rameshwar Mahato',
-    trade: 'Master Shuttering Carpenter',
-    shift: 'General Shift (08:00 - 17:00)',
-    punchTime: '07:54 AM (GPS Verified)',
-    biometricStatus: 'FaceID Verified',
-    wageRate: '₹ 850 / day',
-    overtimeHours: '1.5 hrs',
-    status: 'PRESENT',
-  },
-  {
-    id: 'EMP-PAT-094',
-    name: 'Dinesh Kumar Sharma',
-    trade: 'Hydraulic Press & Bending Operator',
-    shift: 'General Shift (08:00 - 17:00)',
-    punchTime: '07:58 AM (GPS Verified)',
-    biometricStatus: 'FaceID Verified',
-    wageRate: '₹ 950 / day',
-    overtimeHours: '2.0 hrs',
-    status: 'PRESENT',
-  },
-  {
-    id: 'EMP-PAT-102',
-    name: 'Md. Tariq Anwar',
-    trade: 'Certified Submerged Arc Welder',
-    shift: 'General Shift (08:00 - 17:00)',
-    punchTime: '08:02 AM (GPS Verified)',
-    biometricStatus: 'FaceID Verified',
-    wageRate: '₹ 900 / day',
-    overtimeHours: '0.0 hrs',
-    status: 'PRESENT',
-  },
-  {
-    id: 'EMP-PAT-118',
-    name: 'Sunil Paswan',
-    trade: 'Scaffolding & Staging Rigger',
-    shift: 'General Shift (08:00 - 17:00)',
-    punchTime: '07:49 AM (GPS Verified)',
-    biometricStatus: 'FaceID Verified',
-    wageRate: '₹ 750 / day',
-    overtimeHours: '1.0 hrs',
-    status: 'PRESENT',
-  },
-  {
-    id: 'EMP-PAT-125',
-    name: 'Vikash Kumar Roy',
-    trade: 'Formwork Quality & Gauge Inspector',
-    shift: 'General Shift (08:00 - 17:00)',
-    punchTime: '07:52 AM (GPS Verified)',
-    biometricStatus: 'FaceID Verified',
-    wageRate: '₹ 1,100 / day',
-    overtimeHours: '1.0 hrs',
-    status: 'PRESENT',
-  },
-];
-
 export default function BranchOperationsPage() {
   const [user, setUser] = useState<AuthUser | null>(null);
+  const [attendance, setAttendance] = useState<any[]>([]);
+  const [tasks, setTasks] = useState<any[]>([]);
+  const [indents, setIndents] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const [isDprModalOpen, setIsDprModalOpen] = useState(false);
 
   useEffect(() => {
-    fetch('/api/auth/me')
-      .then((res) => res.json())
-      .then((data) => setUser(data.user))
-      .catch((err) => console.error(err));
+    async function loadData() {
+      try {
+        const [uRes, aRes, tRes, iRes] = await Promise.all([
+          fetch('/api/auth/me'),
+          fetch('/api/attendance'),
+          fetch('/api/tasks'),
+          fetch('/api/indents'),
+        ]);
+        const [uData, aData, tData, iData] = await Promise.all([
+          uRes.json(),
+          aRes.json(),
+          tRes.json(),
+          iRes.json(),
+        ]);
+        setUser(uData.user);
+        setAttendance(aData.attendance || []);
+        setTasks(tData.tasks || []);
+        setIndents(iData.indents || []);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadData();
   }, []);
+
+  const presentCount = attendance.filter((a) => a.status === 'PRESENT').length;
+  const activeTasksCount = tasks.filter((t) => t.status !== 'COMPLETED').length;
+  const pendingIndentsCount = indents.filter((i) => i.status === 'PENDING_APPROVAL').length;
 
   return (
     <div className="bg-white text-slate-900 min-h-screen p-4 sm:p-6 lg:p-8 space-y-8 font-sans">
       <div className="max-w-7xl mx-auto space-y-8">
         
-        {/* Screen 3 Mandate: Context Bar showing "📍 Patna Branch Workspace" & "GPS Geofence: Active Zone" */}
+        {/* Context Bar */}
         <div className="bg-white border-2 border-neutral-200 rounded-3xl p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2 flex-wrap">
@@ -108,7 +78,7 @@ export default function BranchOperationsPage() {
               <span className="text-neutral-400">|</span>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-red-700 text-xs font-black">
                 <MapPin className="w-3.5 h-3.5" />
-                <span>📍 Patna Branch Workspace</span>
+                <span>📍 {user?.branchName || 'Patna Works Plant'}</span>
               </div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-black">
                 <Radio className="w-3.5 h-3.5 animate-pulse" />
@@ -132,7 +102,7 @@ export default function BranchOperationsPage() {
           </button>
         </div>
 
-        {/* Screen 3 Mandate: Live Telemetry Metric Boxes (Labour Strength: 142 present | Delayed tasks: 1 | Low material Alerts: 2 items) */}
+        {/* Live Telemetry Metric Boxes */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="p-5 rounded-3xl bg-white border-2 border-neutral-200 hover:border-red-600 transition shadow-sm flex items-center justify-between">
             <div className="space-y-1">
@@ -140,10 +110,10 @@ export default function BranchOperationsPage() {
                 Labour Strength
               </span>
               <p className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
-                142 present
+                {presentCount} present
               </p>
               <span className="text-[10px] font-mono text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded">
-                ● 100% FaceID Verified
+                ● {attendance.length > 0 ? `${attendance.length} Total Registered` : 'Shift Active'}
               </span>
             </div>
             <div className="w-12 h-12 rounded-2xl bg-neutral-100 text-slate-800 flex items-center justify-center border border-neutral-200">
@@ -154,13 +124,13 @@ export default function BranchOperationsPage() {
           <div className="p-5 rounded-3xl bg-white border-2 border-neutral-200 hover:border-red-600 transition shadow-sm flex items-center justify-between">
             <div className="space-y-1">
               <span className="text-[11px] font-black uppercase tracking-wider text-neutral-500">
-                Delayed Tasks
+                Active Site Tasks
               </span>
               <p className="text-2xl sm:text-3xl font-black text-red-600 font-mono">
-                1 task
+                {activeTasksCount} tasks
               </p>
               <span className="text-[10px] font-mono text-red-600 font-bold bg-red-50 px-2 py-0.5 rounded">
-                Ganga Bridge Pier 4 Bending Delay
+                {tasks.length} Total Tracked
               </span>
             </div>
             <div className="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center border border-red-200">
@@ -171,13 +141,13 @@ export default function BranchOperationsPage() {
           <div className="p-5 rounded-3xl bg-white border-2 border-neutral-200 hover:border-red-600 transition shadow-sm flex items-center justify-between">
             <div className="space-y-1">
               <span className="text-[11px] font-black uppercase tracking-wider text-neutral-500">
-                Low Material Alerts
+                Pending Indents
               </span>
               <p className="text-2xl sm:text-3xl font-black text-amber-600 font-mono">
-                2 items
+                {pendingIndentsCount} items
               </p>
               <span className="text-[10px] font-mono text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded">
-                27kg MS Shuttering & Neoprene
+                Awaiting HQ Dispatch
               </span>
             </div>
             <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200">
@@ -218,7 +188,7 @@ export default function BranchOperationsPage() {
               Material Stock Indent
             </h3>
             <p className="text-xs text-neutral-600 font-medium">
-              Request raw steel coils, Fe 410 plates, or dispatch finished formwork to Delhi & Mumbai.
+              Request raw steel coils, Fe 410 plates, or dispatch finished formwork to site operations.
             </p>
             <div className="text-xs font-black text-red-600 flex items-center gap-1 pt-1">
               <span>Create Indent Request</span>
@@ -246,11 +216,11 @@ export default function BranchOperationsPage() {
           </button>
         </div>
 
-        {/* Screen 3 Mandate - Lower Section: Table of Daily Labour Muster Roll */}
+        {/* Lower Section: Table of Daily Labour Muster Roll */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-xs font-black text-red-600 uppercase tracking-wider">Patna Central Works</span>
+              <span className="text-xs font-black text-red-600 uppercase tracking-wider">{user?.branchName || 'Patna Central Works'}</span>
               <h2 className="text-xl sm:text-2xl font-black text-slate-900">
                 Daily Labour Muster Roll & Biometric Time Logs
               </h2>
@@ -274,38 +244,46 @@ export default function BranchOperationsPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-neutral-200 text-slate-800">
-                {MUSTER_ROLL_WORKERS.map((worker) => (
-                  <tr key={worker.id} className="hover:bg-neutral-50 transition">
-                    <td className="py-3.5 px-4 font-black text-slate-900">
-                      <div>{worker.name}</div>
-                      <span className="text-[10px] font-mono text-neutral-500">{worker.id}</span>
-                    </td>
-                    <td className="py-3.5 px-4 font-bold text-slate-700">
-                      {worker.trade}
-                    </td>
-                    <td className="py-3.5 px-4 text-xs text-neutral-600 font-medium">
-                      {worker.shift}
-                    </td>
-                    <td className="py-3.5 px-4 font-mono text-xs">
-                      <div className="text-emerald-700 font-bold flex items-center gap-1">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>{worker.biometricStatus}</span>
-                      </div>
-                      <div className="text-[10px] text-neutral-500">{worker.punchTime}</div>
-                    </td>
-                    <td className="py-3.5 px-4 font-black font-mono text-slate-900">
-                      {worker.wageRate}
-                    </td>
-                    <td className="py-3.5 px-4 font-mono text-xs font-bold text-red-600">
-                      {worker.overtimeHours}
-                    </td>
-                    <td className="py-3.5 px-4">
-                      <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase tracking-wider">
-                        {worker.status}
-                      </span>
+                {attendance.length === 0 ? (
+                  <tr>
+                    <td colSpan={7} className="py-8 text-center text-xs text-neutral-500 font-bold">
+                      No worker punch-in records logged today. Click &quot;GPS Attendance Kiosk&quot; to check-in workers.
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  attendance.map((worker) => (
+                    <tr key={worker.id} className="hover:bg-neutral-50 transition">
+                      <td className="py-3.5 px-4 font-black text-slate-900">
+                        <div>{worker.workerName}</div>
+                        <span className="text-[10px] font-mono text-neutral-500">{worker.workerId}</span>
+                      </td>
+                      <td className="py-3.5 px-4 font-bold text-slate-700">
+                        {worker.trade}
+                      </td>
+                      <td className="py-3.5 px-4 text-xs text-neutral-600 font-medium">
+                        General Shift (08:00 - 17:00)
+                      </td>
+                      <td className="py-3.5 px-4 font-mono text-xs">
+                        <div className="text-emerald-700 font-bold flex items-center gap-1">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                          <span>GPS Verified ({worker.verifiedGpsCoords?.distanceMeters || 15}m)</span>
+                        </div>
+                        <div className="text-[10px] text-neutral-500">{worker.checkInTime || '08:00 AM'}</div>
+                      </td>
+                      <td className="py-3.5 px-4 font-black font-mono text-slate-900">
+                        ₹{worker.dailyRate || 850} / day
+                      </td>
+                      <td className="py-3.5 px-4 font-mono text-xs font-bold text-red-600">
+                        0.0 hrs
+                      </td>
+                      <td className="py-3.5 px-4">
+                        <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase tracking-wider">
+                          {worker.status}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>

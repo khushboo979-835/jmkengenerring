@@ -133,9 +133,38 @@ export default function PortalHeader({
                 <p className="text-xs font-black text-black">{user?.name}</p>
                 <p className="text-[11px] text-neutral-600 truncate font-medium">{user?.email}</p>
                 <p className="text-[10px] text-red-600 font-extrabold uppercase mt-1">
-                  Role: {user?.role}
+                  Active Role: {user?.role}
                 </p>
               </div>
+
+              {user?.role === 'SUPER_ADMIN' && (
+                <div className="p-2 border-b border-neutral-200 space-y-1">
+                  <span className="text-[10px] font-black text-neutral-500 uppercase tracking-wider block px-1">
+                    Switch Role Workspace:
+                  </span>
+                  <Link
+                    href="/dashboard/super-admin"
+                    onClick={() => setUserDropdownOpen(false)}
+                    className="block px-2.5 py-1.5 text-xs text-neutral-800 hover:bg-red-50 hover:text-red-700 rounded-lg font-bold transition"
+                  >
+                    👑 Super Admin (HQ Telemetry)
+                  </Link>
+                  <Link
+                    href="/dashboard/branch"
+                    onClick={() => setUserDropdownOpen(false)}
+                    className="block px-2.5 py-1.5 text-xs text-neutral-800 hover:bg-red-50 hover:text-red-700 rounded-lg font-bold transition"
+                  >
+                    👷 Branch Operations (Site Desk)
+                  </Link>
+                  <Link
+                    href="/dashboard/employee"
+                    onClick={() => setUserDropdownOpen(false)}
+                    className="block px-2.5 py-1.5 text-xs text-neutral-800 hover:bg-red-50 hover:text-red-700 rounded-lg font-bold transition"
+                  >
+                    🛠️ Field Engineer / Staff Desk
+                  </Link>
+                </div>
+              )}
 
               <Link
                 href="/"

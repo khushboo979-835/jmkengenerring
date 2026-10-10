@@ -82,25 +82,29 @@ export default function SuperAdminPage() {
 
   const totalAllocatedBudget = branches.reduce((acc, b) => acc + (b.allocatedBudget || 0), 0);
   const totalCurrentSpend = branches.reduce((acc, b) => acc + (b.currentSpend || 0), 0);
+  const spendPctOverall = totalAllocatedBudget > 0 ? Math.round((totalCurrentSpend / totalAllocatedBudget) * 100) : 0;
   const totalActiveWorkers = branches.reduce((acc, b) => acc + (b.activeWorkersCount || 0), 0);
+  const presentWorkersToday = attendance.filter((a) => a.status === 'PRESENT').length;
+  const totalWorkersLogged = attendance.length;
+  const gpsVerifiedPct = totalWorkersLogged > 0 ? Math.round((attendance.filter((a) => a.verifiedGpsCoords?.isWithinGeofence).length / totalWorkersLogged) * 100) : 100;
   const pendingApprovalsCount = vouchers.filter((v) => v.status === 'PENDING_HQ').length + indents.filter((i) => i.status === 'PENDING_APPROVAL').length;
 
   return (
     <div className="space-y-8">
       {/* Top Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-neutral-200 pb-6">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-orange-600/10 border border-orange-500/20 text-orange-400 text-xs font-bold uppercase tracking-wider mb-1">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-red-50 border border-red-200 text-red-700 text-xs font-bold uppercase tracking-wider mb-1">
             <span>Patna Central HQ • Master Executive Telemetry</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-black tracking-tight">
             Multi-Branch Enterprise Control Center
           </h1>
-          <p className="text-xs text-slate-400">
-            Real-time telemetry across 4 regional nodes: Patna HQ Works, Delhi NCR, Mumbai Western Hub, Kolkata Eastern Depot.
+          <p className="text-xs text-neutral-600">
+            Real-time operations telemetry for Patna Central HQ Works & Active Fabrication Sites.
           </p>
           {syncMessage && (
-            <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs rounded-lg font-medium">
+            <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs rounded-lg font-medium">
               <CheckCircle2 className="w-3.5 h-3.5" />
               <span>{syncMessage}</span>
             </div>
@@ -114,7 +118,7 @@ export default function SuperAdminPage() {
             className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition shadow-lg flex items-center gap-2"
           >
             <Database className="w-4 h-4" />
-            <span>{syncingDb ? 'Syncing...' : 'Sync MongoDB Atlas'}</span>
+            <span>{syncingDb ? 'Syncing...' : 'Sync Database'}</span>
           </button>
           <Link
             href="/dashboard/super-admin/approvals"
@@ -141,10 +145,14 @@ export default function SuperAdminPage() {
             <Users className="w-4 h-4 text-emerald-600" />
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl sm:text-3xl font-black text-black">842</span>
-            <span className="text-xs text-neutral-500 font-bold">/ 910 Logged</span>
+            <span className="text-2xl sm:text-3xl font-black text-black">
+              {presentWorkersToday > 0 ? presentWorkersToday : totalActiveWorkers}
+            </span>
+            <span className="text-xs text-neutral-500 font-bold">
+              / {totalWorkersLogged > 0 ? totalWorkersLogged : totalActiveWorkers} Onsite
+            </span>
           </div>
-          <p className="text-[11px] text-emerald-700 font-bold">92.5% GPS Geofence Verified Today</p>
+          <p className="text-[11px] text-emerald-700 font-bold">{gpsVerifiedPct}% GPS Geofence Verified Today</p>
         </div>
 
         {/* Working Capital Budget */}
@@ -159,7 +167,7 @@ export default function SuperAdminPage() {
             </span>
           </div>
           <p className="text-[11px] text-neutral-600">
-            Current Spend: <strong className="text-red-600">{formatCurrency(totalCurrentSpend)}</strong> (51.3% Utilized)
+            Current Spend: <strong className="text-red-600">{formatCurrency(totalCurrentSpend)}</strong> ({spendPctOverall}% Utilized)
           </p>
         </div>
 
@@ -181,14 +189,16 @@ export default function SuperAdminPage() {
         {/* Regional Depots Active */}
         <div className="bg-white border-2 border-neutral-200 hover:border-red-600 transition p-5 rounded-2xl space-y-2 shadow-sm">
           <div className="flex items-center justify-between text-neutral-600 text-xs">
-            <span className="font-extrabold uppercase tracking-wider">Regional Depots</span>
+            <span className="font-extrabold uppercase tracking-wider">Regional Facilities</span>
             <Building2 className="w-4 h-4 text-neutral-800" />
           </div>
           <div className="flex items-baseline gap-2">
             <span className="text-2xl sm:text-3xl font-black text-black">{branches.length}</span>
             <span className="text-xs text-emerald-700 font-black">100% Operational</span>
           </div>
-          <p className="text-[11px] text-neutral-600 font-medium">Patna, Delhi, Mumbai, Kolkata</p>
+          <p className="text-[11px] text-neutral-600 font-medium">
+            {branches.map((b) => b.city).join(', ') || 'Patna Works'}
+          </p>
         </div>
       </div>
 
