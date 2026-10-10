@@ -78,12 +78,12 @@ export default function IndentRequestModal({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          branchId: user?.branchId || 'br_delhi',
-          branchName: user?.branchName || 'Delhi NCR Depot',
+          branchId: user?.branchId || 'br_patna_hq',
+          branchName: user?.branchName || 'Patna HQ & Heavy Fabrication Plant',
           requestedBy: {
-            id: user?.id || 'usr_staff',
-            name: user?.name || 'Site Incharge',
-            email: user?.email || 'staff@jmkengineering.com',
+            id: user?.id || 'usr_admin_patna',
+            name: user?.name || 'Sanjay Singh',
+            email: user?.email || 'patna.admin@jmkengineering.com',
           },
           items,
           purpose,

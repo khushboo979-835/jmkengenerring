@@ -11,7 +11,8 @@ import {
   Clock,
   Layers,
   AlertTriangle,
-  RefreshCw
+  RefreshCw,
+  Trash2
 } from 'lucide-react';
 import { SEED_PRODUCTS, SeedProduct } from '@/lib/seedData';
 import { AuthUser } from '@/lib/rbac';
@@ -97,6 +98,30 @@ export default function BranchInventoryPage() {
     }
   };
 
+  const handleDeleteIndent = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this indent?')) return;
+    try {
+      await fetch(`/api/indents?id=${id}`, { method: 'DELETE' });
+      setIndents((prev) => prev.filter((i) => i.id !== id));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleAdjustStock = (index: number, delta: number) => {
+    setInventoryStock((prev) =>
+      prev.map((item, idx) => {
+        if (idx !== index) return item;
+        const newStock = Math.max(0, item.inStock + delta);
+        return {
+          ...item,
+          inStock: newStock,
+          status: newStock <= item.reorderLevel ? 'LOW_STOCK' : 'HEALTHY',
+        };
+      })
+    );
+  };
+
   useEffect(() => {
     loadData();
   }, []);
@@ -170,13 +195,31 @@ export default function BranchInventoryPage() {
                 </div>
               </div>
 
-              <button
-                onClick={() => setIsIndentModalOpen(true)}
-                className="w-full py-2 bg-neutral-100 hover:bg-red-600 hover:text-white text-black rounded-xl text-xs font-bold border border-neutral-300 transition flex items-center justify-center gap-1.5"
-              >
-                <span>Request Patna Works Replenishment</span>
-                <ArrowRight className="w-3 h-3" />
-              </button>
+              <div className="flex items-center justify-between gap-2 pt-1">
+                <div className="flex items-center gap-1">
+                  <button
+                    onClick={() => handleAdjustStock(idx, 25)}
+                    className="px-2 py-1 bg-neutral-100 hover:bg-neutral-200 text-black text-[10px] font-bold rounded border border-neutral-300 transition"
+                    title="Receive Stock"
+                  >
+                    +25 In
+                  </button>
+                  <button
+                    onClick={() => handleAdjustStock(idx, -25)}
+                    className="px-2 py-1 bg-neutral-100 hover:bg-neutral-200 text-black text-[10px] font-bold rounded border border-neutral-300 transition"
+                    title="Dispatch Stock"
+                  >
+                    -25 Out
+                  </button>
+                </div>
+                <button
+                  onClick={() => setIsIndentModalOpen(true)}
+                  className="py-1 px-3 bg-red-600 hover:bg-red-700 text-white rounded text-[10px] font-bold transition flex items-center gap-1"
+                >
+                  <span>Indent HQ</span>
+                  <ArrowRight className="w-3 h-3" />
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -204,17 +247,26 @@ export default function BranchInventoryPage() {
                   </span>
                   <span className="text-neutral-800 font-bold">{indent.branchName}</span>
                 </div>
-                <span
-                  className={`text-[10px] font-mono px-2.5 py-1 rounded-lg font-extrabold ${
-                    indent.status === 'APPROVED'
-                      ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                      : indent.status === 'PENDING_APPROVAL'
-                      ? 'bg-red-100 text-red-800 border border-red-300'
-                      : 'bg-blue-100 text-blue-800 border border-blue-300'
-                  }`}
-                >
-                  ● {indent.status}
-                </span>
+                <div className="flex items-center gap-2">
+                  <span
+                    className={`text-[10px] font-mono px-2.5 py-1 rounded-lg font-extrabold ${
+                      indent.status === 'APPROVED'
+                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                        : indent.status === 'PENDING_APPROVAL'
+                        ? 'bg-red-100 text-red-800 border border-red-300'
+                        : 'bg-blue-100 text-blue-800 border border-blue-300'
+                    }`}
+                  >
+                    ● {indent.status}
+                  </span>
+                  <button
+                    onClick={() => handleDeleteIndent(indent.id)}
+                    className="p-1 text-neutral-400 hover:text-red-600 rounded transition"
+                    title="Delete Indent"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
 
               <p className="text-sm font-bold text-black">{indent.purpose}</p>

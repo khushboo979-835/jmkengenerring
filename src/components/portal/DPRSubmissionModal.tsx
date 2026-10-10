@@ -46,8 +46,8 @@ export default function DPRSubmissionModal({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          branchId: user?.branchId || 'br_delhi',
-          branchName: user?.branchName || 'Delhi NCR Depot',
+          branchId: user?.branchId || 'br_patna_hq',
+          branchName: user?.branchName || 'Patna HQ & Heavy Fabrication Plant',
           date,
           weather,
           labourCount: {
@@ -62,8 +62,8 @@ export default function DPRSubmissionModal({
           roadblocks,
           safetyObservations,
           submittedBy: {
-            id: user?.id || 'usr_admin',
-            name: user?.name || 'Amitabh Verma',
+            id: user?.id || 'usr_admin_patna',
+            name: user?.name || 'Sanjay Singh',
           },
         }),
       });

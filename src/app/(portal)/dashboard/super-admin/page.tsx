@@ -16,19 +16,82 @@ import {
   Layers,
   ArrowRight,
   Database,
-  RefreshCw
+  RefreshCw,
+  PhoneCall,
+  Mail,
+  MapPin,
+  Trash2,
+  Plus,
+  Camera,
+  FileSpreadsheet,
+  Check,
+  Clock,
+  Truck
 } from 'lucide-react';
 import { formatCurrency, formatDate } from '@/lib/utils';
 import { SEED_BRANCHES } from '@/lib/seedData';
 
 export default function SuperAdminPage() {
+  const [activeTab, setActiveTab] = useState<'overview' | 'crm' | 'boq' | 'dpr' | 'snags'>('overview');
   const [branches, setBranches] = useState<any[]>([]);
   const [vouchers, setVouchers] = useState<any[]>([]);
   const [indents, setIndents] = useState<any[]>([]);
   const [attendance, setAttendance] = useState<any[]>([]);
+  const [rfqs, setRfqs] = useState<any[]>([]);
+  const [dprs, setDprs] = useState<any[]>([]);
+  const [snags, setSnags] = useState<any[]>([]);
+  const [tasks, setTasks] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [syncingDb, setSyncingDb] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
+
+  // New Lead Modal State
+  const [newLeadModalOpen, setNewLeadModalOpen] = useState(false);
+  const [leadName, setLeadName] = useState('');
+  const [leadCompany, setLeadCompany] = useState('');
+  const [leadPhone, setLeadPhone] = useState('');
+  const [leadCity, setLeadCity] = useState('');
+  const [leadDetails, setLeadDetails] = useState('');
+
+  // Static/Simulated BOQ Items (Pre-Construction)
+  const [boqItems, setBoqItems] = useState([
+    { id: 'boq_1', code: 'BOQ-1.01', description: 'Elastomeric POT PTFE Bridge Bearings (3500 kN Capacity)', unit: 'Units', quantity: 24, rate: 85000, status: 'APPROVED' },
+    { id: 'boq_2', code: 'BOQ-2.04', description: 'Strip Seal Single Gap Modular Expansion Joints (IS 2062)', unit: 'Mtrs', quantity: 360, rate: 4200, status: 'APPROVED' },
+    { id: 'boq_3', code: 'BOQ-3.12', description: 'Mild Steel Centering Sheets 20 Kg (1200x600mm Laser Cut)', unit: 'Pcs', quantity: 1500, rate: 1400, status: 'IN_PROGRESS' },
+    { id: 'boq_4', code: 'BOQ-4.08', description: 'Heavy Duty Scaffolding Cuplock Systems & Props (Grade 410)', unit: 'Sets', quantity: 200, rate: 12500, status: 'PENDING' },
+  ]);
+
+  const loadHQData = async () => {
+    try {
+      const [bRes, vRes, iRes, aRes, rRes, dRes, sRes, tRes] = await Promise.all([
+        fetch('/api/branches').then((r) => r.json()),
+        fetch('/api/vouchers').then((r) => r.json()),
+        fetch('/api/indents').then((r) => r.json()),
+        fetch('/api/attendance').then((r) => r.json()),
+        fetch('/api/rfq').then((r) => r.json()),
+        fetch('/api/dpr').then((r) => r.json()),
+        fetch('/api/snags').then((r) => r.json()),
+        fetch('/api/tasks').then((r) => r.json()),
+      ]);
+
+      setBranches(bRes.branches || SEED_BRANCHES);
+      setVouchers(vRes.vouchers || []);
+      setIndents(iRes.indents || []);
+      setAttendance(aRes.attendance || []);
+      setRfqs(rRes.rfqs || []);
+      setDprs(dRes.dprs || []);
+      setSnags(sRes.snags || []);
+      setTasks(tRes.tasks || []);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadHQData();
+  }, []);
 
   const handleSyncDatabase = async () => {
     setSyncingDb(true);
@@ -49,36 +112,127 @@ export default function SuperAdminPage() {
     }
   };
 
-  useEffect(() => {
-    async function loadHQData() {
-      try {
-        const [bRes, vRes, iRes, aRes] = await Promise.all([
-          fetch('/api/branches'),
-          fetch('/api/vouchers'),
-          fetch('/api/indents'),
-          fetch('/api/attendance'),
-        ]);
-
-        const [bData, vData, iData, aData] = await Promise.all([
-          bRes.json(),
-          vRes.json(),
-          iRes.json(),
-          aRes.json(),
-        ]);
-
-        setBranches(bData.branches || SEED_BRANCHES);
-        setVouchers(vData.vouchers || []);
-        setIndents(iData.indents || []);
-        setAttendance(aData.attendance || []);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
+  // Live actions for Vouchers
+  const handleApproveVoucher = async (id: string) => {
+    try {
+      await fetch('/api/vouchers', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id,
+          status: 'APPROVED',
+          approvedBy: { id: 'usr_hq_super_admin', name: 'Er. Rajesh Kumar Sharma', date: new Date().toISOString() },
+        }),
+      });
+      setVouchers((prev) => prev.map((v) => (v.id === id ? { ...v, status: 'APPROVED' } : v)));
+    } catch (e) {
+      console.error(e);
     }
+  };
 
-    loadHQData();
-  }, []);
+  // Live actions for Indents
+  const handleApproveIndent = async (id: string) => {
+    try {
+      await fetch('/api/indents', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id,
+          status: 'APPROVED',
+          approvedBy: { id: 'usr_hq_super_admin', name: 'Er. Rajesh Kumar Sharma', date: new Date().toISOString() },
+        }),
+      });
+      setIndents((prev) => prev.map((i) => (i.id === id ? { ...i, status: 'APPROVED' } : i)));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  // RFQ CRUD
+  const handleUpdateRfqStatus = async (id: string, status: string) => {
+    try {
+      await fetch('/api/rfq', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, status }),
+      });
+      setRfqs((prev) => prev.map((r) => (r.id === id ? { ...r, status } : r)));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleDeleteRfq = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this lead?')) return;
+    try {
+      await fetch(`/api/rfq?id=${id}`, { method: 'DELETE' });
+      setRfqs((prev) => prev.filter((r) => r.id !== id));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleCreateLead = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!leadName || !leadPhone) return;
+    try {
+      await fetch('/api/rfq', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customerName: leadName,
+          companyName: leadCompany || 'Enterprise Client',
+          phone: leadPhone,
+          city: leadCity || 'Patna Works Queue',
+          projectDetails: leadDetails || 'Direct Super Admin RFQ',
+        }),
+      });
+      setLeadName('');
+      setLeadCompany('');
+      setLeadPhone('');
+      setLeadCity('');
+      setLeadDetails('');
+      setNewLeadModalOpen(false);
+      loadHQData();
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  // Snag Resolve & Delete
+  const handleResolveSnag = async (id: string) => {
+    try {
+      await fetch('/api/snags', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, resolutionNotes: 'Super Admin HQ signed off and closed.' }),
+      });
+      setSnags((prev) => prev.map((s) => (s.id === id ? { ...s, status: 'RESOLVED' } : s)));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleDeleteSnag = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this snag defect?')) return;
+    try {
+      await fetch(`/api/snags?id=${id}`, { method: 'DELETE' });
+      setSnags((prev) => prev.filter((s) => s.id !== id));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  // DPR Delete
+  const handleDeleteDpr = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this Daily Progress Report?')) return;
+    try {
+      await fetch(`/api/dpr?id=${id}`, { method: 'DELETE' });
+      setDprs((prev) => prev.filter((d) => d.id !== id));
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const totalAllocatedBudget = branches.reduce((acc, b) => acc + (b.allocatedBudget || 0), 0);
   const totalCurrentSpend = branches.reduce((acc, b) => acc + (b.currentSpend || 0), 0);
@@ -88,9 +242,10 @@ export default function SuperAdminPage() {
   const totalWorkersLogged = attendance.length;
   const gpsVerifiedPct = totalWorkersLogged > 0 ? Math.round((attendance.filter((a) => a.verifiedGpsCoords?.isWithinGeofence).length / totalWorkersLogged) * 100) : 100;
   const pendingApprovalsCount = vouchers.filter((v) => v.status === 'PENDING_HQ').length + indents.filter((i) => i.status === 'PENDING_APPROVAL').length;
+  const totalBoqValue = boqItems.reduce((acc, b) => acc + b.quantity * b.rate, 0);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 font-sans">
       {/* Top Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-neutral-200 pb-6">
         <div>
@@ -127,244 +282,694 @@ export default function SuperAdminPage() {
             <Award className="w-4 h-4" />
             <span>Review Signoff Desk ({pendingApprovalsCount})</span>
           </Link>
-          <Link
-            href="/dashboard/super-admin/branches"
-            className="px-4 py-2.5 bg-black hover:bg-neutral-800 text-white rounded-xl text-xs font-bold transition"
+          <button
+            onClick={() => setNewLeadModalOpen(true)}
+            className="px-4 py-2.5 bg-black hover:bg-neutral-800 text-white rounded-xl text-xs font-bold transition flex items-center gap-2"
           >
-            + Provision Branch
-          </Link>
+            <Plus className="w-4 h-4" />
+            <span>+ New CRM Lead</span>
+          </button>
         </div>
       </div>
 
-      {/* Global Telemetry Ribbon */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Total Workforce */}
-        <div className="bg-white border-2 border-neutral-200 hover:border-red-600 transition p-5 rounded-2xl space-y-2 shadow-sm">
-          <div className="flex items-center justify-between text-neutral-600 text-xs">
-            <span className="font-extrabold uppercase tracking-wider">Workforce Strength</span>
-            <Users className="w-4 h-4 text-emerald-600" />
-          </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl sm:text-3xl font-black text-black">
-              {presentWorkersToday > 0 ? presentWorkersToday : totalActiveWorkers}
-            </span>
-            <span className="text-xs text-neutral-500 font-bold">
-              / {totalWorkersLogged > 0 ? totalWorkersLogged : totalActiveWorkers} Onsite
-            </span>
-          </div>
-          <p className="text-[11px] text-emerald-700 font-bold">{gpsVerifiedPct}% GPS Geofence Verified Today</p>
-        </div>
-
-        {/* Working Capital Budget */}
-        <div className="bg-white border-2 border-neutral-200 hover:border-red-600 transition p-5 rounded-2xl space-y-2 shadow-sm">
-          <div className="flex items-center justify-between text-neutral-600 text-xs">
-            <span className="font-extrabold uppercase tracking-wider">Consolidated Working Capital</span>
-            <DollarSign className="w-4 h-4 text-red-600" />
-          </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl sm:text-3xl font-black text-black font-mono">
-              {formatCurrency(totalAllocatedBudget)}
-            </span>
-          </div>
-          <p className="text-[11px] text-neutral-600">
-            Current Spend: <strong className="text-red-600">{formatCurrency(totalCurrentSpend)}</strong> ({spendPctOverall}% Utilized)
-          </p>
-        </div>
-
-        {/* Pending Executive Approvals */}
-        <div className="bg-white border-2 border-neutral-200 hover:border-red-600 transition p-5 rounded-2xl space-y-2 shadow-sm">
-          <div className="flex items-center justify-between text-neutral-600 text-xs">
-            <span className="font-extrabold uppercase tracking-wider">Pending HQ Approvals</span>
-            <Award className="w-4 h-4 text-red-600" />
-          </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl sm:text-3xl font-black text-red-600 font-mono">
-              {pendingApprovalsCount}
-            </span>
-            <span className="text-xs text-neutral-500 font-bold">Items Requiring Signoff</span>
-          </div>
-          <p className="text-[11px] text-red-700 font-bold">High-Value Vouchers & Material Indents</p>
-        </div>
-
-        {/* Regional Depots Active */}
-        <div className="bg-white border-2 border-neutral-200 hover:border-red-600 transition p-5 rounded-2xl space-y-2 shadow-sm">
-          <div className="flex items-center justify-between text-neutral-600 text-xs">
-            <span className="font-extrabold uppercase tracking-wider">Regional Facilities</span>
-            <Building2 className="w-4 h-4 text-neutral-800" />
-          </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl sm:text-3xl font-black text-black">{branches.length}</span>
-            <span className="text-xs text-emerald-700 font-black">100% Operational</span>
-          </div>
-          <p className="text-[11px] text-neutral-600 font-medium">
-            {branches.map((b) => b.city).join(', ') || 'Patna Works'}
-          </p>
-        </div>
+      {/* Segmented Feature Navigation (Onsite Teams Architecture) */}
+      <div className="flex flex-wrap items-center gap-2 border-b-2 border-neutral-200 pb-3">
+        <button
+          onClick={() => setActiveTab('overview')}
+          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition ${
+            activeTab === 'overview' ? 'bg-red-600 text-white shadow-md' : 'bg-neutral-100 text-slate-800 hover:bg-neutral-200'
+          }`}
+        >
+          Executive Overview
+        </button>
+        <button
+          onClick={() => setActiveTab('crm')}
+          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition flex items-center gap-1.5 ${
+            activeTab === 'crm' ? 'bg-red-600 text-white shadow-md' : 'bg-neutral-100 text-slate-800 hover:bg-neutral-200'
+          }`}
+        >
+          <span>CRM Leads & Quotations</span>
+          <span className="bg-white/20 text-xs px-1.5 py-0.2 rounded-full font-mono">{rfqs.length}</span>
+        </button>
+        <button
+          onClick={() => setActiveTab('boq')}
+          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition flex items-center gap-1.5 ${
+            activeTab === 'boq' ? 'bg-red-600 text-white shadow-md' : 'bg-neutral-100 text-slate-800 hover:bg-neutral-200'
+          }`}
+        >
+          <span>BOQ & Cost Estimation</span>
+        </button>
+        <button
+          onClick={() => setActiveTab('dpr')}
+          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition flex items-center gap-1.5 ${
+            activeTab === 'dpr' ? 'bg-red-600 text-white shadow-md' : 'bg-neutral-100 text-slate-800 hover:bg-neutral-200'
+          }`}
+        >
+          <span>Daily Progress Reports (DPR)</span>
+          <span className="bg-white/20 text-xs px-1.5 py-0.2 rounded-full font-mono">{dprs.length}</span>
+        </button>
+        <button
+          onClick={() => setActiveTab('snags')}
+          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition flex items-center gap-1.5 ${
+            activeTab === 'snags' ? 'bg-red-600 text-white shadow-md' : 'bg-neutral-100 text-slate-800 hover:bg-neutral-200'
+          }`}
+        >
+          <span>Site Defect Snags (QC)</span>
+          <span className="bg-white/20 text-xs px-1.5 py-0.2 rounded-full font-mono">{snags.length}</span>
+        </button>
       </div>
 
-      {/* Regional Branch Telemetry Grid */}
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-lg font-black text-black">Regional Depot Telemetry & Spend Ledger</h2>
-          <Link href="/dashboard/super-admin/branches" className="text-xs text-red-600 font-extrabold hover:underline">
-            Manage All Branches →
-          </Link>
-        </div>
+      {/* TAB 1: EXECUTIVE OVERVIEW */}
+      {activeTab === 'overview' && (
+        <div className="space-y-8">
+          {/* Global Telemetry Ribbon */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* Total Workforce */}
+            <div className="bg-white border-2 border-neutral-200 hover:border-red-600 transition p-5 rounded-2xl space-y-2 shadow-sm">
+              <div className="flex items-center justify-between text-neutral-600 text-xs">
+                <span className="font-extrabold uppercase tracking-wider">Workforce Strength</span>
+                <Users className="w-4 h-4 text-emerald-600" />
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl sm:text-3xl font-black text-black">
+                  {presentWorkersToday > 0 ? presentWorkersToday : totalActiveWorkers}
+                </span>
+                <span className="text-xs text-neutral-500 font-bold">
+                  / {totalWorkersLogged > 0 ? totalWorkersLogged : totalActiveWorkers} Onsite
+                </span>
+              </div>
+              <p className="text-[11px] text-emerald-700 font-bold">{gpsVerifiedPct}% GPS Geofence Verified Today</p>
+            </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {branches.map((branch) => {
-            const spendPct = branch.allocatedBudget
-              ? Math.round((branch.currentSpend / branch.allocatedBudget) * 100)
-              : 0;
-            return (
+            {/* Working Capital Budget */}
+            <div className="bg-white border-2 border-neutral-200 hover:border-red-600 transition p-5 rounded-2xl space-y-2 shadow-sm">
+              <div className="flex items-center justify-between text-neutral-600 text-xs">
+                <span className="font-extrabold uppercase tracking-wider">Consolidated Working Capital</span>
+                <DollarSign className="w-4 h-4 text-red-600" />
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl sm:text-3xl font-black text-black font-mono">
+                  {formatCurrency(totalAllocatedBudget)}
+                </span>
+              </div>
+              <p className="text-[11px] text-neutral-600">
+                Current Spend: <strong className="text-red-600">{formatCurrency(totalCurrentSpend)}</strong> ({spendPctOverall}% Utilized)
+              </p>
+            </div>
+
+            {/* Pending Executive Approvals */}
+            <div className="bg-white border-2 border-neutral-200 hover:border-red-600 transition p-5 rounded-2xl space-y-2 shadow-sm">
+              <div className="flex items-center justify-between text-neutral-600 text-xs">
+                <span className="font-extrabold uppercase tracking-wider">Pending HQ Approvals</span>
+                <Award className="w-4 h-4 text-red-600" />
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl sm:text-3xl font-black text-red-600 font-mono">
+                  {pendingApprovalsCount}
+                </span>
+                <span className="text-xs text-neutral-500 font-bold">Items Requiring Signoff</span>
+              </div>
+              <p className="text-[11px] text-red-700 font-bold">High-Value Vouchers & Material Indents</p>
+            </div>
+
+            {/* Regional Depots Active */}
+            <div className="bg-white border-2 border-neutral-200 hover:border-red-600 transition p-5 rounded-2xl space-y-2 shadow-sm">
+              <div className="flex items-center justify-between text-neutral-600 text-xs">
+                <span className="font-extrabold uppercase tracking-wider">Regional Facilities</span>
+                <Building2 className="w-4 h-4 text-neutral-800" />
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl sm:text-3xl font-black text-black">{branches.length}</span>
+                <span className="text-xs text-emerald-700 font-black">100% Operational</span>
+              </div>
+              <p className="text-[11px] text-neutral-600 font-medium">
+                {branches.map((b) => b.city).join(', ') || 'Patna Works'}
+              </p>
+            </div>
+          </div>
+
+          {/* Regional Branch Telemetry Grid */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-black text-black">Regional Depot Telemetry & Spend Ledger</h2>
+              <span className="text-xs text-neutral-500 font-mono">Didarganj Heavy Works Facility</span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {branches.map((branch) => {
+                const spendPct = branch.allocatedBudget
+                  ? Math.round((branch.currentSpend / branch.allocatedBudget) * 100)
+                  : 0;
+                return (
+                  <div
+                    key={branch.id}
+                    className="bg-white border-2 border-neutral-200 p-5 rounded-2xl space-y-4 hover:border-red-600 transition shadow-sm"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <span className="text-[10px] font-mono font-black text-red-700 bg-red-50 px-2 py-0.5 rounded border border-red-200">
+                          {branch.code}
+                        </span>
+                        <h3 className="text-sm font-black text-black mt-1.5">{branch.name}</h3>
+                        <p className="text-[11px] text-neutral-600 font-medium mt-0.5">Incharge: {branch.adminName}</p>
+                      </div>
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-sm"></span>
+                    </div>
+
+                    <div className="space-y-1.5 text-xs text-neutral-700">
+                      <div className="flex justify-between text-[11px]">
+                        <span className="text-neutral-500 font-bold">Working Budget:</span>
+                        <span className="font-mono font-black text-black">{formatCurrency(branch.allocatedBudget)}</span>
+                      </div>
+                      <div className="flex justify-between text-[11px]">
+                        <span className="text-neutral-500 font-bold">Current Spend:</span>
+                        <span className="font-mono font-bold text-red-600">{formatCurrency(branch.currentSpend)}</span>
+                      </div>
+
+                      <div className="w-full h-2 bg-neutral-100 rounded-full overflow-hidden mt-1 border border-neutral-200">
+                        <div
+                          className={`h-full rounded-full ${spendPct > 80 ? 'bg-red-600' : 'bg-red-500'}`}
+                          style={{ width: `${Math.min(spendPct, 100)}%` }}
+                        ></div>
+                      </div>
+                      <div className="text-[10px] text-neutral-500 font-extrabold text-right">{spendPct}% Utilized</div>
+                    </div>
+
+                    <div className="pt-2 border-t border-neutral-200 flex items-center justify-between text-[10px] text-neutral-600 font-bold">
+                      <span>GPS Radius: {branch.locationCoords?.radiusMeters || 500}m</span>
+                      <span className="text-black font-extrabold">{branch.activeWorkersCount} Workers</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 2-Column: Recent High-Value Vouchers & Pending Indents with Quick Action Buttons */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Pending Financial Vouchers Desk */}
+            <div className="lg:col-span-6 bg-white border-2 border-neutral-200 rounded-3xl p-6 space-y-4 shadow-sm">
+              <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
+                <div>
+                  <h2 className="text-base font-black text-black">Branch Expense Vouchers Ledger</h2>
+                  <p className="text-[11px] text-neutral-600 font-medium">Claims &gt; ₹50,000 threshold require HQ signoff</p>
+                </div>
+                <Link
+                  href="/dashboard/super-admin/approvals"
+                  className="text-xs text-red-600 font-extrabold hover:underline"
+                >
+                  Full Signoff Desk →
+                </Link>
+              </div>
+
+              <div className="space-y-3">
+                {vouchers.slice(0, 4).map((vch) => (
+                  <div
+                    key={vch.id}
+                    className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs hover:border-red-300 transition"
+                  >
+                    <div className="space-y-1 max-w-[65%]">
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-[10px] font-bold text-neutral-500">{vch.voucherNo}</span>
+                        <span className="text-[10px] bg-white border border-neutral-200 px-1.5 py-0.5 rounded font-bold text-neutral-700">
+                          {vch.branchName.split(' ')[0]}
+                        </span>
+                      </div>
+                      <p className="font-black text-black truncate">{vch.vendorName}</p>
+                      <p className="text-[11px] text-neutral-600 truncate font-medium">{vch.description}</p>
+                    </div>
+
+                    <div className="sm:text-right space-y-1 flex sm:flex-col items-center sm:items-end justify-between">
+                      <span className="font-mono font-black text-sm text-black block">
+                        {formatCurrency(vch.amount)}
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <span
+                          className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
+                            vch.status === 'APPROVED'
+                              ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                              : 'bg-amber-100 text-amber-800 border border-amber-300'
+                          }`}
+                        >
+                          {vch.status}
+                        </span>
+                        {vch.status !== 'APPROVED' && (
+                          <button
+                            onClick={() => handleApproveVoucher(vch.id)}
+                            className="px-2.5 py-1 bg-emerald-600 text-white rounded-md text-[10px] font-bold hover:bg-emerald-700 transition"
+                          >
+                            Approve
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Central Works Manufacturing Indents */}
+            <div className="lg:col-span-6 bg-white border-2 border-neutral-200 rounded-3xl p-6 space-y-4 shadow-sm">
+              <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
+                <div>
+                  <h2 className="text-base font-black text-black">Central Manufacturing Indents</h2>
+                  <p className="text-[11px] text-neutral-600 font-medium">Material dispatch requisitions from regional yards</p>
+                </div>
+                <Link
+                  href="/dashboard/super-admin/approvals"
+                  className="text-xs text-red-600 font-extrabold hover:underline"
+                >
+                  Dispatch Queue →
+                </Link>
+              </div>
+
+              <div className="space-y-3">
+                {indents.slice(0, 3).map((ind) => (
+                  <div
+                    key={ind.id}
+                    className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 space-y-2 text-xs hover:border-red-300 transition"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-[10px] text-red-600 font-black">{ind.indentNo}</span>
+                        <span className="text-[10px] text-neutral-600 bg-white border border-neutral-200 px-1.5 py-0.5 rounded font-bold">
+                          {ind.branchName}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span
+                          className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
+                            ind.status === 'APPROVED'
+                              ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                              : 'bg-amber-100 text-amber-800 border border-amber-300'
+                          }`}
+                        >
+                          {ind.status}
+                        </span>
+                        {ind.status !== 'APPROVED' && (
+                          <button
+                            onClick={() => handleApproveIndent(ind.id)}
+                            className="px-2.5 py-1 bg-red-600 text-white rounded-md text-[10px] font-bold hover:bg-red-700 transition"
+                          >
+                            Dispatch
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="text-neutral-800">
+                      <p className="font-bold text-black">{ind.purpose}</p>
+                      <p className="text-[11px] text-neutral-600 font-medium mt-0.5">
+                        Items: {ind.items.map((it: any) => `${it.quantity} ${it.unit} of ${it.productName}`).join(', ')}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 2: CRM LEADS & QUOTATIONS (Pre-Construction) */}
+      {activeTab === 'crm' && (
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 className="text-xl font-black text-black">CRM — Leads & Quotations Pipeline</h2>
+              <p className="text-xs text-neutral-600">
+                Incoming RFQ submissions from the website and client direct proposals.
+              </p>
+            </div>
+            <button
+              onClick={() => setNewLeadModalOpen(true)}
+              className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-2 self-start"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Add New Lead</span>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4">
+            {rfqs.map((lead) => (
               <div
-                key={branch.id}
-                className="bg-white border-2 border-neutral-200 p-5 rounded-2xl space-y-4 hover:border-red-600 transition shadow-sm"
+                key={lead.id || lead._id}
+                className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-5 space-y-3 shadow-sm transition"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-100 pb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs font-black text-red-600 bg-red-50 px-2.5 py-1 rounded-md border border-red-200">
+                      {lead.rfqNo || 'RFQ-2024-LEAD'}
+                    </span>
+                    <span className="text-xs font-bold text-neutral-700">{lead.customerName}</span>
+                    <span className="text-xs text-neutral-400">•</span>
+                    <span className="text-xs font-bold text-neutral-500">{lead.companyName}</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <select
+                      value={lead.status || 'NEW'}
+                      onChange={(e) => handleUpdateRfqStatus(lead.id || lead._id, e.target.value)}
+                      className="px-2.5 py-1 text-xs font-bold rounded-lg border border-neutral-300 bg-white"
+                    >
+                      <option value="NEW">NEW LEAD</option>
+                      <option value="QUOTED">QUOTATION SENT</option>
+                      <option value="CONVERTED">CONVERTED (WON)</option>
+                      <option value="CLOSED">CLOSED</option>
+                    </select>
+
+                    <button
+                      onClick={() => handleDeleteRfq(lead.id || lead._id)}
+                      className="p-1.5 text-neutral-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition"
+                      title="Delete Lead"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                  <div>
+                    <span className="text-neutral-500 font-bold block text-[11px]">Contact & Location</span>
+                    <p className="font-bold text-black mt-0.5">{lead.phone}</p>
+                    <p className="text-neutral-600 font-medium">{lead.email}</p>
+                    <p className="text-neutral-500 text-[10px] mt-0.5">{lead.city}, {lead.state}</p>
+                  </div>
+
+                  <div>
+                    <span className="text-neutral-500 font-bold block text-[11px]">Requirement Details</span>
+                    <p className="text-neutral-700 font-medium mt-0.5 line-clamp-2">{lead.projectDetails}</p>
+                  </div>
+
+                  <div>
+                    <span className="text-neutral-500 font-bold block text-[11px]">Products Inquired</span>
+                    <div className="space-y-1 mt-0.5">
+                      {lead.selectedProducts?.map((p: any, idx: number) => (
+                        <span key={idx} className="inline-block bg-neutral-100 text-black px-2 py-0.5 rounded text-[10px] font-bold mr-1 mb-1">
+                          {p.name} ({p.quantity})
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* TAB 3: BOQ & COST ESTIMATION (Pre-Construction) */}
+      {activeTab === 'boq' && (
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 className="text-xl font-black text-black">Bill of Quantity (BOQ) & Cost Estimation</h2>
+              <p className="text-xs text-neutral-600">
+                Itemized schedule of rates and working capital estimates for heavy fabrication orders.
+              </p>
+            </div>
+            <div className="p-3 bg-red-50 border border-red-200 rounded-2xl text-right">
+              <span className="text-[10px] font-bold text-red-700 uppercase">Estimated Works Value</span>
+              <p className="text-xl font-mono font-black text-red-600">{formatCurrency(totalBoqValue)}</p>
+            </div>
+          </div>
+
+          <div className="bg-white border-2 border-neutral-200 rounded-3xl overflow-hidden shadow-sm">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-neutral-100 text-neutral-700 font-black uppercase text-[10px] border-b border-neutral-200">
+                  <tr>
+                    <th className="p-4">Item Code</th>
+                    <th className="p-4">Description of Works / Material</th>
+                    <th className="p-4">Unit</th>
+                    <th className="p-4">Quantity</th>
+                    <th className="p-4">Unit Rate (₹)</th>
+                    <th className="p-4">Total Amount (₹)</th>
+                    <th className="p-4">QC Status</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-neutral-200">
+                  {boqItems.map((item) => (
+                    <tr key={item.id} className="hover:bg-neutral-50 transition font-medium">
+                      <td className="p-4 font-mono font-bold text-red-600">{item.code}</td>
+                      <td className="p-4 font-bold text-black">{item.description}</td>
+                      <td className="p-4">{item.unit}</td>
+                      <td className="p-4 font-mono font-bold">{item.quantity}</td>
+                      <td className="p-4 font-mono">{formatCurrency(item.rate)}</td>
+                      <td className="p-4 font-mono font-black text-slate-900">{formatCurrency(item.quantity * item.rate)}</td>
+                      <td className="p-4">
+                        <span className={`px-2 py-0.5 rounded text-[10px] font-extrabold ${
+                          item.status === 'APPROVED' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
+                        }`}>
+                          {item.status}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 4: DAILY PROGRESS REPORTS (DPR) (Project Execution) */}
+      {activeTab === 'dpr' && (
+        <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-xl font-black text-black">Daily Progress Reports (DPR) Central Feed</h2>
+              <p className="text-xs text-neutral-600">
+                Verified daily logs from site engineers covering labour counts, machinery, and daily output.
+              </p>
+            </div>
+            <span className="text-xs font-mono font-bold text-neutral-500">{dprs.length} DPRs Logged</span>
+          </div>
+
+          <div className="space-y-4">
+            {dprs.map((dpr) => (
+              <div
+                key={dpr.id}
+                className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-6 space-y-4 shadow-sm transition"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-200 pb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs font-black text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
+                      {dpr.dprNo}
+                    </span>
+                    <span className="text-xs font-bold text-black">{dpr.branchName}</span>
+                    <span className="text-xs text-neutral-400">•</span>
+                    <span className="text-xs font-mono text-neutral-500">{dpr.date}</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono bg-neutral-100 px-2 py-0.5 rounded font-bold">
+                      Weather: {dpr.weather}
+                    </span>
+                    <button
+                      onClick={() => handleDeleteDpr(dpr.id)}
+                      className="p-1.5 text-neutral-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition"
+                      title="Delete DPR"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+                  <div className="p-3 bg-neutral-50 rounded-2xl border border-neutral-200">
+                    <span className="text-neutral-500 font-bold block text-[10px]">Labour Deployed</span>
+                    <p className="text-lg font-black font-mono text-black mt-1">
+                      {dpr.labourCount?.total || 33} Workers
+                    </p>
+                    <p className="text-[10px] text-neutral-600 mt-0.5">
+                      Skilled: {dpr.labourCount?.skilled || 15} • Unskilled: {dpr.labourCount?.unskilled || 15}
+                    </p>
+                  </div>
+
+                  <div className="md:col-span-3 space-y-2">
+                    <div>
+                      <span className="font-bold text-black text-[11px]">Work Accomplished Today:</span>
+                      <p className="text-neutral-700 font-medium mt-0.5">{dpr.workAccomplished}</p>
+                    </div>
+
+                    {dpr.materialReceived && (
+                      <div>
+                        <span className="font-bold text-black text-[11px]">Material Received:</span>
+                        <p className="text-neutral-600 font-medium mt-0.5">{dpr.materialReceived}</p>
+                      </div>
+                    )}
+
+                    <div className="flex flex-wrap items-center gap-4 text-[11px] text-neutral-500 pt-1 border-t border-neutral-100">
+                      <span>Machinery: <strong className="text-black">{dpr.machineryDeployed}</strong></span>
+                      <span>Safety: <strong className="text-emerald-700">{dpr.safetyObservations}</strong></span>
+                      <span>Submitted By: <strong className="text-black">{dpr.submittedBy?.name || 'Site Incharge'}</strong></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* TAB 5: SITE DEFECT SNAGS (Project Execution) */}
+      {activeTab === 'snags' && (
+        <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-xl font-black text-black">Quality Snags & Defect QC Tracker</h2>
+              <p className="text-xs text-neutral-600">
+                Logged fabrication & erection defects with site camera proofs and resolution status.
+              </p>
+            </div>
+            <span className="text-xs font-mono font-bold text-neutral-500">{snags.length} Snags Tracked</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {snags.map((snag) => (
+              <div
+                key={snag.id}
+                className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-5 space-y-4 shadow-sm transition"
               >
                 <div className="flex items-start justify-between">
                   <div>
-                    <span className="text-[10px] font-mono font-black text-red-700 bg-red-50 px-2 py-0.5 rounded border border-red-200">
-                      {branch.code}
+                    <span className="text-[10px] font-mono font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200">
+                      {snag.snagNumber || 'SNG-QC'}
                     </span>
-                    <h3 className="text-sm font-black text-black mt-1.5">{branch.name}</h3>
-                    <p className="text-[11px] text-neutral-600 font-medium mt-0.5">Incharge: {branch.adminName}</p>
+                    <h4 className="text-base font-black text-black mt-1.5">{snag.title}</h4>
+                    <p className="text-[11px] text-neutral-500 font-mono">Location: {snag.location} • {snag.category}</p>
                   </div>
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-sm"></span>
-                </div>
-
-                <div className="space-y-1.5 text-xs text-neutral-700">
-                  <div className="flex justify-between text-[11px]">
-                    <span className="text-neutral-500 font-bold">Working Budget:</span>
-                    <span className="font-mono font-black text-black">{formatCurrency(branch.allocatedBudget)}</span>
-                  </div>
-                  <div className="flex justify-between text-[11px]">
-                    <span className="text-neutral-500 font-bold">Current Spend:</span>
-                    <span className="font-mono font-bold text-red-600">{formatCurrency(branch.currentSpend)}</span>
-                  </div>
-
-                  {/* Spend Progress Bar */}
-                  <div className="w-full h-2 bg-neutral-100 rounded-full overflow-hidden mt-1 border border-neutral-200">
-                    <div
-                      className={`h-full rounded-full ${spendPct > 80 ? 'bg-red-600' : 'bg-red-500'}`}
-                      style={{ width: `${Math.min(spendPct, 100)}%` }}
-                    ></div>
-                  </div>
-                  <div className="text-[10px] text-neutral-500 font-extrabold text-right">{spendPct}% Utilized</div>
-                </div>
-
-                <div className="pt-2 border-t border-neutral-200 flex items-center justify-between text-[10px] text-neutral-600 font-bold">
-                  <span>GPS Radius: {branch.locationCoords?.radiusMeters || 500}m</span>
-                  <span className="text-black font-extrabold">{branch.activeWorkersCount} Workers</span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* 2-Column: Recent High-Value Vouchers & Pending Indents */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Pending Financial Vouchers Desk */}
-        <div className="lg:col-span-6 bg-white border-2 border-neutral-200 rounded-3xl p-6 space-y-4 shadow-sm">
-          <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
-            <div>
-              <h2 className="text-base font-black text-black">Recent Branch Expense Vouchers</h2>
-              <p className="text-[11px] text-neutral-600 font-medium">Items &gt; ₹50,000 threshold require Patna HQ signoff</p>
-            </div>
-            <Link
-              href="/dashboard/super-admin/approvals"
-              className="text-xs text-red-600 font-extrabold hover:underline"
-            >
-              Signoff Desk →
-            </Link>
-          </div>
-
-          <div className="space-y-3">
-            {vouchers.slice(0, 4).map((vch) => (
-              <div
-                key={vch.id}
-                className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 flex items-center justify-between text-xs hover:border-red-300 transition"
-              >
-                <div className="space-y-1 max-w-[65%]">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-[10px] font-bold text-neutral-500">{vch.voucherNo}</span>
-                    <span className="text-[10px] bg-white border border-neutral-200 px-1.5 py-0.5 rounded font-bold text-neutral-700">
-                      {vch.branchName.split(' ')[0]}
-                    </span>
-                  </div>
-                  <p className="font-black text-black truncate">{vch.vendorName}</p>
-                  <p className="text-[11px] text-neutral-600 truncate font-medium">{vch.description}</p>
-                </div>
-
-                <div className="text-right space-y-1">
-                  <span className="font-mono font-black text-sm text-black block">
-                    {formatCurrency(vch.amount)}
-                  </span>
                   <span
                     className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
-                      vch.status === 'APPROVED'
+                      snag.status === 'RESOLVED'
                         ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
                         : 'bg-red-100 text-red-800 border border-red-300'
                     }`}
                   >
-                    {vch.status}
+                    {snag.status}
                   </span>
+                </div>
+
+                <p className="text-xs text-neutral-600 font-medium">{snag.description}</p>
+
+                {snag.photoUrl && (
+                  <div className="h-32 w-full rounded-2xl overflow-hidden border border-neutral-200 relative bg-neutral-100">
+                    <img src={snag.photoUrl} alt="Defect Proof" className="w-full h-full object-cover" />
+                  </div>
+                )}
+
+                <div className="pt-2 border-t border-neutral-200 flex items-center justify-between text-xs">
+                  <span className="text-neutral-500 text-[11px]">
+                    Assigned: <strong className="text-black">{snag.assignedTo || 'Fabrication Team'}</strong>
+                  </span>
+
+                  <div className="flex items-center gap-2">
+                    {snag.status !== 'RESOLVED' && (
+                      <button
+                        onClick={() => handleResolveSnag(snag.id)}
+                        className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition"
+                      >
+                        Resolve Snag
+                      </button>
+                    )}
+                    <button
+                      onClick={() => handleDeleteSnag(snag.id)}
+                      className="p-1.5 text-neutral-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition"
+                      title="Delete Snag"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
+      )}
 
-        {/* Pending Central Works Indents */}
-        <div className="lg:col-span-6 bg-white border-2 border-neutral-200 rounded-3xl p-6 space-y-4 shadow-sm">
-          <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
-            <div>
-              <h2 className="text-base font-black text-black">Central Manufacturing Indents</h2>
-              <p className="text-[11px] text-neutral-600 font-medium">Material dispatch requisitions from regional yards</p>
-            </div>
-            <Link
-              href="/dashboard/super-admin/approvals"
-              className="text-xs text-red-600 font-extrabold hover:underline"
-            >
-              Dispatch Queue →
-            </Link>
-          </div>
-
-          <div className="space-y-3">
-            {indents.slice(0, 3).map((ind) => (
-              <div
-                key={ind.id}
-                className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 space-y-2 text-xs hover:border-red-300 transition"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-[10px] text-red-600 font-black">{ind.indentNo}</span>
-                    <span className="text-[10px] text-neutral-600 bg-white border border-neutral-200 px-1.5 py-0.5 rounded font-bold">
-                      {ind.branchName}
-                    </span>
-                  </div>
-                  <span
-                    className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
-                      ind.status === 'APPROVED'
-                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                        : 'bg-red-100 text-red-800 border border-red-300'
-                    }`}
-                  >
-                    {ind.status}
-                  </span>
-                </div>
-
-                <div className="text-neutral-800">
-                  <p className="font-bold text-black">{ind.purpose}</p>
-                  <p className="text-[11px] text-neutral-600 font-medium mt-0.5">
-                    Items: {ind.items.map((it: any) => `${it.quantity} ${it.unit} of ${it.productName}`).join(', ')}
-                  </p>
-                </div>
+      {/* New Lead Modal */}
+      {newLeadModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white text-black p-6 rounded-3xl max-w-md w-full border-2 border-neutral-200 space-y-4">
+            <h3 className="text-lg font-black text-slate-900">+ Add New CRM Lead / RFQ</h3>
+            <form onSubmit={handleCreateLead} className="space-y-3 text-xs">
+              <div>
+                <label className="font-bold text-neutral-700 block mb-1">Customer / Contact Name *</label>
+                <input
+                  type="text"
+                  required
+                  value={leadName}
+                  onChange={(e) => setLeadName(e.target.value)}
+                  placeholder="e.g. Ramesh Chandra"
+                  className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600"
+                />
               </div>
-            ))}
+
+              <div>
+                <label className="font-bold text-neutral-700 block mb-1">Company / Organization</label>
+                <input
+                  type="text"
+                  value={leadCompany}
+                  onChange={(e) => setLeadCompany(e.target.value)}
+                  placeholder="e.g. L&T Heavy Civil Infra"
+                  className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600"
+                />
+              </div>
+
+              <div>
+                <label className="font-bold text-neutral-700 block mb-1">Contact Phone Number *</label>
+                <input
+                  type="text"
+                  required
+                  value={leadPhone}
+                  onChange={(e) => setLeadPhone(e.target.value)}
+                  placeholder="e.g. +91 98765 43210"
+                  className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600"
+                />
+              </div>
+
+              <div>
+                <label className="font-bold text-neutral-700 block mb-1">Location / Destination City</label>
+                <input
+                  type="text"
+                  value={leadCity}
+                  onChange={(e) => setLeadCity(e.target.value)}
+                  placeholder="e.g. Patna / Ranchi"
+                  className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600"
+                />
+              </div>
+
+              <div>
+                <label className="font-bold text-neutral-700 block mb-1">Requirement Details</label>
+                <textarea
+                  rows={2}
+                  value={leadDetails}
+                  onChange={(e) => setLeadDetails(e.target.value)}
+                  placeholder="e.g. Urgent requirement for 500 pcs MS centering plates..."
+                  className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600"
+                />
+              </div>
+
+              <div className="flex justify-end gap-2 pt-2 border-t border-neutral-200">
+                <button
+                  type="button"
+                  onClick={() => setNewLeadModalOpen(false)}
+                  className="px-4 py-2 bg-neutral-100 text-xs font-bold rounded-xl"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-red-600 text-white text-xs font-black uppercase rounded-xl"
+                >
+                  Save Lead
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

@@ -10,7 +10,8 @@ import {
   Layers,
   ArrowRight,
   Filter,
-  Check
+  Check,
+  Trash2
 } from 'lucide-react';
 import { AuthUser } from '@/lib/rbac';
 import SnagReportModal from '@/components/portal/SnagReportModal';
@@ -79,8 +80,8 @@ export default function BranchTasksPage() {
         body: JSON.stringify({
           title: newTaskTitle,
           category: newTaskCategory,
-          branchId: user?.branchId || 'br_delhi',
-          branchName: user?.branchName || 'Delhi NCR Depot',
+          branchId: user?.branchId || 'br_patna_hq',
+          branchName: user?.branchName || 'Patna HQ & Heavy Fabrication Plant',
           assignedToName: newTaskAssignee,
           assignedToRole: 'Field Fitter',
           dueDate: newTaskDueDate,
@@ -104,6 +105,26 @@ export default function BranchTasksPage() {
           resolutionNotes: 'Inspection resolved. Flange re-aligned and approved by Site QA.',
         }),
       });
+      await loadData();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteTask = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this task?')) return;
+    try {
+      await fetch(`/api/tasks?id=${id}`, { method: 'DELETE' });
+      await loadData();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteSnag = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this snag defect?')) return;
+    try {
+      await fetch(`/api/snags?id=${id}`, { method: 'DELETE' });
       await loadData();
     } catch (err) {
       console.error(err);
@@ -190,15 +211,24 @@ export default function BranchTasksPage() {
                       <p className="text-xs text-neutral-600 mt-1 font-medium">{task.description}</p>
                     )}
                   </div>
-                  <span
-                    className={`text-[10px] font-mono font-extrabold px-2 py-0.5 rounded ${
-                      task.status === 'COMPLETED'
-                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                        : 'bg-red-100 text-red-800 border border-red-300'
-                    }`}
-                  >
-                    {task.status}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`text-[10px] font-mono font-extrabold px-2 py-0.5 rounded ${
+                        task.status === 'COMPLETED'
+                          ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                          : 'bg-red-100 text-red-800 border border-red-300'
+                      }`}
+                    >
+                      {task.status}
+                    </span>
+                    <button
+                      onClick={() => handleDeleteTask(task.id)}
+                      className="p-1 text-neutral-400 hover:text-red-600 rounded transition"
+                      title="Delete Task"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
 
                 {/* Progress Bar & Slider */}
@@ -258,15 +288,24 @@ export default function BranchTasksPage() {
                   <span className="font-mono text-[10px] text-red-700 font-black bg-red-50 px-2 py-0.5 rounded border border-red-200">
                     {snag.snagNumber}
                   </span>
-                  <span
-                    className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
-                      snag.status === 'RESOLVED'
-                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                        : 'bg-red-100 text-red-800 border border-red-300 animate-pulse'
-                    }`}
-                  >
-                    ● {snag.status}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`text-[9px] font-mono px-2 py-0.5 rounded font-extrabold ${
+                        snag.status === 'RESOLVED'
+                          ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                          : 'bg-red-100 text-red-800 border border-red-300 animate-pulse'
+                      }`}
+                    >
+                      ● {snag.status}
+                    </span>
+                    <button
+                      onClick={() => handleDeleteSnag(snag.id)}
+                      className="p-1 text-neutral-400 hover:text-red-600 rounded transition"
+                      title="Delete Snag"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
 
                 <div>

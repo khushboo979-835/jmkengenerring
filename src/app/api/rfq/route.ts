@@ -81,3 +81,54 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+
+export async function PATCH(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { id, status, customerName, companyName, notes } = body;
+    if (!id) {
+      return NextResponse.json({ error: 'Missing id' }, { status: 400 });
+    }
+
+    const conn = await connectToDatabase();
+    if (conn) {
+      try {
+        await RFQprovider.findByIdAndUpdate(id, { $set: { status, customerName, companyName, notes } });
+      } catch (e) {
+        console.warn('MongoDB RFQ update fallback:', e);
+      }
+    }
+
+    const updated = dataStore.updateRFQ(id, { status, customerName, companyName });
+    return NextResponse.json({ success: true, rfq: updated });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+export const PUT = PATCH;
+
+export async function DELETE(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get('id');
+    if (!id) {
+      return NextResponse.json({ error: 'Missing id' }, { status: 400 });
+    }
+
+    const conn = await connectToDatabase();
+    if (conn) {
+      try {
+        await RFQprovider.findByIdAndDelete(id);
+      } catch (e) {
+        console.warn('MongoDB RFQ delete fallback:', e);
+      }
+    }
+
+    const success = dataStore.deleteRFQ(id);
+    return NextResponse.json({ success });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+

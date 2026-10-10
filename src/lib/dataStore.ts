@@ -503,6 +503,30 @@ export const dataStore = {
       return newRec;
     }
   },
+  deleteAttendance: (id: string) => {
+    const idx = ATTENDANCE_RECORDS.findIndex((a) => a.id === id);
+    if (idx >= 0) {
+      ATTENDANCE_RECORDS.splice(idx, 1);
+      return true;
+    }
+    return false;
+  },
+  addWorker: (worker: Omit<WorkerRecord, 'id'>) => {
+    const newWorker: WorkerRecord = {
+      ...worker,
+      id: 'wrk_' + Date.now(),
+    };
+    WORKERS.push(newWorker);
+    return newWorker;
+  },
+  deleteWorker: (id: string) => {
+    const idx = WORKERS.findIndex((w) => w.id === id);
+    if (idx >= 0) {
+      WORKERS.splice(idx, 1);
+      return true;
+    }
+    return false;
+  },
 
   // Indents
   getIndents: (branchId?: string) => {
@@ -531,6 +555,14 @@ export const dataStore = {
     }
     return item;
   },
+  deleteIndent: (id: string) => {
+    const idx = INDENTS.findIndex((i) => i.id === id);
+    if (idx >= 0) {
+      INDENTS.splice(idx, 1);
+      return true;
+    }
+    return false;
+  },
 
   // Vouchers
   getVouchers: (branchId?: string) => {
@@ -558,6 +590,14 @@ export const dataStore = {
     }
     return vch;
   },
+  deleteVoucher: (id: string) => {
+    const idx = FINANCIAL_VOUCHERS.findIndex((v) => v.id === id);
+    if (idx >= 0) {
+      FINANCIAL_VOUCHERS.splice(idx, 1);
+      return true;
+    }
+    return false;
+  },
 
   // Tasks
   getTasks: (branchId?: string) => {
@@ -582,6 +622,14 @@ export const dataStore = {
       t.status = status;
     }
     return t;
+  },
+  deleteTask: (id: string) => {
+    const idx = TASKS.findIndex((t) => t.id === id);
+    if (idx >= 0) {
+      TASKS.splice(idx, 1);
+      return true;
+    }
+    return false;
   },
 
   // Snags
@@ -611,6 +659,14 @@ export const dataStore = {
     }
     return snag;
   },
+  deleteSnag: (id: string) => {
+    const idx = SNAGS.findIndex((s) => s.id === id);
+    if (idx >= 0) {
+      SNAGS.splice(idx, 1);
+      return true;
+    }
+    return false;
+  },
 
   // DPRs
   getDPRs: (branchId?: string) => {
@@ -630,6 +686,14 @@ export const dataStore = {
     DPRS.unshift(newDPR);
     return newDPR;
   },
+  deleteDPR: (id: string) => {
+    const idx = DPRS.findIndex((d) => d.id === id);
+    if (idx >= 0) {
+      DPRS.splice(idx, 1);
+      return true;
+    }
+    return false;
+  },
 
   // RFQs
   getRFQs: () => RFQS,
@@ -644,5 +708,20 @@ export const dataStore = {
     };
     RFQS.unshift(newRFQ);
     return newRFQ;
+  },
+  updateRFQ: (id: string, updates: Partial<RFQRecord>) => {
+    const rfq = RFQS.find((r) => r.id === id);
+    if (rfq) {
+      Object.assign(rfq, updates);
+    }
+    return rfq;
+  },
+  deleteRFQ: (id: string) => {
+    const idx = RFQS.findIndex((r) => r.id === id);
+    if (idx >= 0) {
+      RFQS.splice(idx, 1);
+      return true;
+    }
+    return false;
   },
 };
