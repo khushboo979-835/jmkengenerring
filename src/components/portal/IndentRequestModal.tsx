@@ -83,7 +83,7 @@ export default function IndentRequestModal({
           requestedBy: {
             id: user?.id || 'usr_admin_patna',
             name: user?.name || 'Sanjay Singh',
-            email: user?.email || 'patna.admin@jmkengineering.com',
+            email: user?.email || 'jmkengineering2@gmail.com',
           },
           items,
           purpose,

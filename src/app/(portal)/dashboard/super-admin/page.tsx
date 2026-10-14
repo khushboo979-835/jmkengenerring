@@ -1204,7 +1204,7 @@ export default function SuperAdminPage() {
                   required
                   value={adminForm.email}
                   onChange={(e) => setAdminForm({ ...adminForm, email: e.target.value })}
-                  placeholder="e.g. patna.admin@jmkengineering.com"
+                  placeholder="e.g. patna.admin@gmail.com"
                   className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600 font-mono"
                 />
               </div>

@@ -16,14 +16,20 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    let user = dataStore.getUserByEmail(email);
+    const cleanEmail = email.trim().toLowerCase();
+    let user = dataStore.getUserByEmail(cleanEmail);
+
+    // Support convenient login for Super Admin
+    if (!user && (cleanEmail === 'admin' || cleanEmail === 'jmkengineering2@gmail.com' || cleanEmail === 'superadmin')) {
+      user = dataStore.getUserByEmail('jmkengineering2@gmail.com') || dataStore.getUsers().find((u) => u.role === 'SUPER_ADMIN');
+    }
 
     if (!user) {
       // Try MongoDB
       const conn = await connectToDatabase();
       if (conn) {
         try {
-          const mongoUser = await User.findOne({ email: email.toLowerCase() });
+          const mongoUser = await User.findOne({ email: cleanEmail });
           if (mongoUser && (mongoUser.passwordHash === password || (mongoUser as any).password === password)) {
             user = dataStore.addUser({
               name: mongoUser.name,

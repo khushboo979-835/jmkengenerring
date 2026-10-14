@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     const newIndent = dataStore.addIndent({
       branchId,
       branchName: branchName || 'Branch Depot',
-      requestedBy: requestedBy || { id: 'usr_unknown', name: 'Site Incharge', email: 'site@jmkengineering.com' },
+      requestedBy: requestedBy || { id: 'usr_unknown', name: 'Site Incharge', email: 'jmkengineering2@gmail.com' },
       items,
       purpose,
       requiredByDate,

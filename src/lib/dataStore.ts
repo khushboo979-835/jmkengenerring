@@ -196,7 +196,7 @@ const USERS: UserRecord[] = [
   {
     id: 'usr_hq_super_admin',
     name: 'Er. Rajesh Kumar Sharma',
-    email: 'hq@jmkengineering.com',
+    email: 'jmkengineering2@gmail.com',
     password: 'admin123',
     role: 'SUPER_ADMIN',
     designation: 'Managing Director & Head of Works',

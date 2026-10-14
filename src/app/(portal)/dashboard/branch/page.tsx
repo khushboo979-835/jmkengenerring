@@ -552,7 +552,7 @@ export default function BranchOperationsPage() {
                   required
                   value={engineerForm.email}
                   onChange={(e) => setEngineerForm({ ...engineerForm, email: e.target.value })}
-                  placeholder="e.g. engineer.patna@jmkengineering.com"
+                  placeholder="e.g. engineer.patna@gmail.com"
                   className="w-full p-2.5 border-2 border-neutral-300 rounded-xl outline-none focus:border-red-600 font-mono"
                 />
               </div>
