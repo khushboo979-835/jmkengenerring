@@ -20,8 +20,18 @@ export async function POST(req: NextRequest) {
     let user = dataStore.getUserByEmail(cleanEmail);
 
     // Support convenient login for Super Admin
-    if (!user && (cleanEmail === 'admin' || cleanEmail === 'jmkengineering2@gmail.com' || cleanEmail === 'superadmin')) {
-      user = dataStore.getUserByEmail('jmkengineering2@gmail.com') || dataStore.getUsers().find((u) => u.role === 'SUPER_ADMIN');
+    if (
+      !user &&
+      (cleanEmail === 'admin' ||
+        cleanEmail === 'superadmin' ||
+        cleanEmail === 'contact@jmkengineering.com' ||
+        cleanEmail === 'admin@jmkengineering.com' ||
+        cleanEmail === 'jmkengineering2@gmail.com')
+    ) {
+      user =
+        dataStore.getUserByEmail('contact@jmkengineering.com') ||
+        dataStore.getUserByEmail('jmkengineering2@gmail.com') ||
+        dataStore.getUsers().find((u) => u.role === 'SUPER_ADMIN');
     }
 
     if (!user) {

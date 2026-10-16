@@ -256,21 +256,21 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 </div>
               </div>
 
-              {/* Vishwakarma Puja Festive Offer Banner */}
+              {/* Navratri & Durga Puja Festive Offer Banner */}
               <div className="p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-red-500/10 to-amber-500/15 border-2 border-amber-400/50 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full border border-amber-300 overflow-hidden shrink-0 shadow-sm">
                   <img
-                    src="/images/vishwakarma-puja.jpg"
-                    alt="Lord Vishwakarma Puja"
+                    src="/images/navratri-durga-puja.jpg"
+                    alt="Maa Durga Navratri"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div>
                   <div className="text-xs font-black text-amber-800 uppercase tracking-wider flex items-center gap-1.5">
-                    <span>🎉 Shubh Vishwakarma Puja Offer: Flat 10% OFF</span>
+                    <span>🎉 Shubh Navratri & Durga Puja Offer: Flat 10% OFF</span>
                   </div>
                   <p className="text-xs text-neutral-800 font-semibold mt-0.5">
-                    Get <strong className="text-red-700 font-black">Flat 10% OFF</strong> on this product when requesting your formal BOQ quote today. (Use Code: <span className="font-mono bg-amber-100 px-1.5 py-0.5 rounded text-red-700 font-black">JMKVISHWA10</span>)
+                    Get <strong className="text-red-700 font-black">Flat 10% OFF</strong> on this product when requesting your formal BOQ quote today. (Use Code: <span className="font-mono bg-amber-100 px-1.5 py-0.5 rounded text-red-700 font-black">JMKNAVRATRI10</span>)
                   </p>
                 </div>
               </div>

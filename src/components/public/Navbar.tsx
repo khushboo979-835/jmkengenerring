@@ -35,7 +35,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* 1. Shubh Vishwakarma Puja Sticky Announcement Banner */}
+      {/* 1. Shubh Navratri & Durga Puja Sticky Announcement Banner */}
       <FestiveOfferBar />
 
       {/* Top Status Bar with Modern Smooth Moving Marquee Ticker */}

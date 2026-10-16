@@ -8,7 +8,7 @@ export default function FestiveOfferBar() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const isDismissed = sessionStorage.getItem('jmk_vishwakarma_bar_dismissed');
+    const isDismissed = sessionStorage.getItem('jmk_navratri_bar_dismissed');
     if (isDismissed) {
       setIsVisible(false);
     }
@@ -16,13 +16,13 @@ export default function FestiveOfferBar() {
 
   const handleDismiss = () => {
     setIsVisible(false);
-    sessionStorage.setItem('jmk_vishwakarma_bar_dismissed', 'true');
+    sessionStorage.setItem('jmk_navratri_bar_dismissed', 'true');
   };
 
   const handleCopyCode = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    navigator.clipboard.writeText('JMKVISHWA10');
+    navigator.clipboard.writeText('JMKNAVRATRI10');
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -30,7 +30,7 @@ export default function FestiveOfferBar() {
   if (!isVisible) return null;
 
   const whatsappMessage = encodeURIComponent(
-    'Namaste JMK Engineering! I want to claim the 10% Vishwakarma Puja discount (Code: JMKVISHWA10) for our steel/scaffolding requirement.'
+    'Namaste JMK Engineering! I want to claim the 10% Navratri Festive discount (Code: JMKNAVRATRI10) for our steel/scaffolding requirement.'
   );
 
   return (
@@ -40,22 +40,22 @@ export default function FestiveOfferBar() {
 
       <div className="max-w-[1650px] mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 relative z-10">
         
-        {/* Left: Prominent Lord Vishwakarma Portrait with Radiant Divine Aura */}
+        {/* Left: Prominent Maa Durga Divine Portrait with Radiant Celestial Aura */}
         <div className="flex items-center gap-3 sm:gap-4 w-full md:w-auto justify-center md:justify-start">
-          {/* Large Lord Vishwakarma Image with Golden Divine Glow & Float Animation */}
+          {/* Large Maa Durga Image with Golden Divine Glow & Float Animation */}
           <div className="relative shrink-0 group cursor-pointer">
             {/* Glowing Celestial Aura */}
             <div className="absolute -inset-1 bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 rounded-2xl blur-sm opacity-90 group-hover:opacity-100 animate-pulse"></div>
             
             <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-2xl border-2 sm:border-3 border-yellow-200 overflow-hidden shadow-2xl bg-amber-950/80 ring-2 ring-amber-400/80 transition-transform duration-300 group-hover:scale-105">
               <img
-                src="/images/vishwakarma-puja.jpg"
-                alt="Lord Vishwakarma - Supreme Divine Architect & Engineer"
+                src="/images/navratri-durga-puja.jpg"
+                alt="Maa Durga - Divine Mother of Strength, Prosperity & Victory"
                 className="w-full h-full object-cover object-center"
               />
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent py-0.5 text-center">
                 <span className="text-[9px] sm:text-[10px] font-black text-amber-200 tracking-tighter uppercase block leading-none">
-                  जय विश्वकर्मा
+                  जय माँ दुर्गा
                 </span>
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function FestiveOfferBar() {
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-1.5 sm:gap-2">
               <span className="inline-flex items-center gap-1.5 font-black bg-amber-950/60 text-yellow-300 px-3 py-1 rounded-full text-xs sm:text-[13px] border border-yellow-400/50 uppercase tracking-wide shadow-sm">
                 <Flame className="w-3.5 h-3.5 text-yellow-400 animate-bounce" />
-                <span>Shubh Vishwakarma Puja Mahotsav</span>
+                <span>Shubh Navratri & Durga Puja Mahotsav</span>
               </span>
 
               <span className="inline-flex items-center gap-1 bg-white text-red-700 px-2.5 py-0.5 rounded-full text-xs font-black shadow-md border border-amber-300 animate-pulse">
@@ -82,7 +82,7 @@ export default function FestiveOfferBar() {
             </div>
 
             <p className="text-xs sm:text-sm md:text-[15px] font-extrabold text-white leading-tight">
-              Exclusive Factory Offer on <span className="text-yellow-200 underline decoration-yellow-300 font-black">Heavy Steel Fabrication</span>, Shuttering Plates, Bridge Bearings & Scaffolding Bulk Bookings!
+              Exclusive Navratri Festive Offer on <span className="text-yellow-200 underline decoration-yellow-300 font-black">Heavy Steel Fabrication</span>, Shuttering Plates, Bridge Bearings & Scaffolding Bulk Bookings!
             </p>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function FestiveOfferBar() {
             title="Click to copy coupon code"
           >
             <span className="text-[11px] font-bold text-yellow-300 uppercase">Code:</span>
-            <span className="font-mono font-black text-xs sm:text-sm text-yellow-100 tracking-wider">JMKVISHWA10</span>
+            <span className="font-mono font-black text-xs sm:text-sm text-yellow-100 tracking-wider">JMKNAVRATRI10</span>
             {copied ? (
               <span className="flex items-center gap-0.5 text-emerald-300 text-[10px] font-black bg-emerald-950/60 px-1.5 py-0.5 rounded">
                 <Check className="w-3 h-3" /> Copied!

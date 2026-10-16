@@ -214,18 +214,18 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
           {/* Main Headline & Action Buttons with Classy JMK Engineering & Developers Sentence */}
           <div className="relative z-20 max-w-4xl mx-auto text-center space-y-4 my-auto py-4">
             
-            {/* Vishwakarma Puja Festive Glowing Advantage Pill (Enlarged Divine Portrait & Glowing Animation) */}
+            {/* Navratri & Durga Puja Festive Glowing Advantage Pill (Enlarged Divine Portrait & Glowing Animation) */}
             <div className="inline-flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-2 rounded-full bg-gradient-to-r from-amber-600/95 via-red-600/95 to-amber-700/95 border-2 border-yellow-300 shadow-[0_0_20px_rgba(251,191,36,0.45)] backdrop-blur-md transform hover:scale-105 transition-transform duration-300">
               <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-yellow-200 overflow-hidden shrink-0 shadow-lg ring-2 ring-amber-400/80 bg-amber-950">
                 <img
-                  src="/images/vishwakarma-puja.jpg"
-                  alt="Lord Vishwakarma"
+                  src="/images/navratri-durga-puja.jpg"
+                  alt="Maa Durga"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="text-left leading-tight">
                 <span className="text-[11px] sm:text-xs font-black text-yellow-200 tracking-wide block">
-                  ✨ Shubh Vishwakarma Puja Special Advantage
+                  ✨ Shubh Navratri & Durga Puja Special Advantage
                 </span>
                 <span className="text-[10px] sm:text-[11px] font-bold text-white block">
                   Flat <strong className="text-yellow-300 font-black">10% Off</strong> on Commercial RFQs & Fabrication

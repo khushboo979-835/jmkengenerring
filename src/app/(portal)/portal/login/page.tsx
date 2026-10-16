@@ -117,7 +117,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-3.5 py-2.5 bg-white border-2 border-neutral-300 rounded-xl text-xs text-black font-medium focus:outline-none focus:border-red-600 transition"
-                  placeholder="jmkengineering2@gmail.com"
+                  placeholder="contact@jmkengineering.com"
                   autoComplete="email"
                 />
               </div>

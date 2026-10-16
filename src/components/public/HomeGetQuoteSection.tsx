@@ -80,7 +80,7 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
           customerName: contractorName || 'Valued Contractor',
           phone: phoneNumber,
           city: destinationCity || 'Not Specified',
-          projectDetails: `BOQ Estimate Request: ${quantity} ${selectedProduct.unit} of ${selectedProduct.name} (~${totalEstimatedWeightMt} MT, Est: ₹${discountedCostInr.toLocaleString('en-IN')} with 10% Vishwakarma Puja discount)`,
+          projectDetails: `BOQ Estimate Request: ${quantity} ${selectedProduct.unit} of ${selectedProduct.name} (~${totalEstimatedWeightMt} MT, Est: ₹${discountedCostInr.toLocaleString('en-IN')} with 10% Navratri Festive discount)`,
           selectedProducts: [selectedProduct.name],
           source: 'Home Calculator (Festive 10% Offer)'
         })
@@ -231,7 +231,7 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
                 </div>
                 <h3 className="text-xl font-black text-black">Quotation Request Received!</h3>
                 <p className="text-xs sm:text-sm text-neutral-700 max-w-sm mx-auto leading-relaxed font-medium">
-                  Thank you, <strong className="text-black">{contractorName || 'Valued Contractor'}</strong>. Our Patna technical estimation desk will call you at <strong className="text-red-600">{phoneNumber}</strong> within 2 hours with the formal stamped BOQ including your <strong>10% Vishwakarma Puja Rebate</strong>.
+                  Thank you, <strong className="text-black">{contractorName || 'Valued Contractor'}</strong>. Our Patna technical estimation desk will call you at <strong className="text-red-600">{phoneNumber}</strong> within 2 hours with the formal stamped BOQ including your <strong>10% Navratri Festive Rebate</strong>.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
@@ -253,14 +253,14 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
                 <div className="p-2.5 rounded-xl bg-gradient-to-r from-amber-500/15 via-red-500/10 to-amber-500/15 border border-amber-400/50 flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-full border border-amber-300 overflow-hidden shrink-0 shadow-sm">
                     <img
-                      src="/images/vishwakarma-puja.jpg"
-                      alt="Lord Vishwakarma"
+                      src="/images/navratri-durga-puja.jpg"
+                      alt="Maa Durga"
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="text-[11px] leading-tight">
-                    <strong className="text-amber-800 font-bold block">✨ Vishwakarma Puja 10% Discount:</strong>
-                    <span className="text-neutral-700">Celebrating Vishwakarma Puja: Flat 10% savings on your initial fabrication order. (Promo: <strong className="text-red-700 font-mono">JMKVISHWA10</strong>)</span>
+                    <strong className="text-amber-800 font-bold block">✨ Navratri & Durga Puja 10% Discount:</strong>
+                    <span className="text-neutral-700">Celebrating Shubh Navratri: Flat 10% savings on your initial fabrication order. (Promo: <strong className="text-red-700 font-mono">JMKNAVRATRI10</strong>)</span>
                   </div>
                 </div>
 

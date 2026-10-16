@@ -146,14 +146,14 @@ export default function DelayedRFQPopup() {
               <div className="p-2.5 rounded-xl bg-gradient-to-r from-amber-500/15 via-red-500/10 to-amber-500/15 border border-amber-400/50 flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-full border border-amber-300 overflow-hidden shrink-0 shadow-sm">
                   <img
-                    src="/images/vishwakarma-puja.jpg"
-                    alt="Lord Vishwakarma"
+                    src="/images/navratri-durga-puja.jpg"
+                    alt="Maa Durga"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="text-[11px] leading-snug">
-                  <strong className="text-amber-800 font-bold block">✨ Shubh Vishwakarma Puja Offer:</strong>
-                  <span className="text-neutral-800">Celebrating Vishwakarma Puja: Flat 10% savings on your initial fabrication order. (Code: <strong className="text-red-700 font-mono">JMKVISHWA10</strong>)</span>
+                  <strong className="text-amber-800 font-bold block">✨ Shubh Navratri & Durga Puja Offer:</strong>
+                  <span className="text-neutral-800">Celebrating Navratri: Flat 10% savings on your initial fabrication order. (Code: <strong className="text-red-700 font-mono">JMKNAVRATRI10</strong>)</span>
                 </div>
               </div>
 
