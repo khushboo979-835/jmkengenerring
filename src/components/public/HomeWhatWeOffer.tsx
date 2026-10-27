@@ -33,12 +33,12 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'joints',
     title: 'Expansion Joints',
     slug: 'ss-expansion-joints',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg',
+    imageUrl: '/images/products/strip-seal-bridge-expansion-joint.jpg',
     items: [
-      'Ss Expansion Joints',
-      '20inch MS Expansion Joint',
-      'Strip Seal Expansion Joint',
-      'Bitumen Expansion Joints'
+      'SS Bridge Expansion Joint',
+      'MS Bridge Expansion Joint',
+      'Strip Seal Bridge Joint',
+      'Bitumen Asphaltic Joint'
     ],
     specsBadge: 'MoRTH / IRC:SP:69',
     standard: 'Bridge Grade'
@@ -47,11 +47,11 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'shuttering',
     title: 'Shuttering Plates & Formwork',
     slug: '20-kg-ms-shuttering-plate',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/5/507525256/PU/PQ/IM/146888318/steel-shuttering-plate-500x500.jpg',
+    imageUrl: '/images/hero/steel-shuttering-box-culvert.jpg',
     items: [
-      '20 Kg MS Shuttering Plate',
-      '27 kg Iron Shuttering Plate',
-      '35 Kg MS Shuttering Plates',
+      'MS Shuttering Plate',
+      'Heavy Iron Shuttering Plate',
+      'Heavy Stiffened Shuttering Plate',
       'Column Shuttering Plates'
     ],
     specsBadge: 'IS 2062 Grade Steel',
@@ -61,7 +61,7 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'scaffolding',
     title: 'Scaffolding Systems & Props',
     slug: 'scaffolding-adjustable-prop-jack',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/1/482920899/KK/PC/RQ/146888318/scaffolding-adjustable-props-jack-500x500.jpg',
+    imageUrl: '/images/hero/scaffolding-cuplock-staging.jpg',
     items: [
       'Adjustable Steel Scaffolding Jack',
       'Scaffolding Adjustable Prop Jack',
@@ -75,11 +75,11 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'drainage',
     title: 'Bridge Drainage Spouts',
     slug: 'iron-drainage-spouts',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476989955/PV/II/RN/146888318/mild-steel-pop-up-drainage-spout-500x500.jpg',
+    imageUrl: '/images/drive_downloads/folder3_jmk_pic_new/591960f4-6489-4401-bd15-bae27a2ade22.jfif',
     items: [
-      'Iron Drainage Spouts',
-      '12mm MS Drainage Spout',
-      '10mm Mild Steel Drainage Spout',
+      'MS Bridge Deck Drainage Spout',
+      'Mild Steel Bridge Drainage Spout',
+      'Heavy MS Deck Drainage Spout',
       'Cast Iron Carriageway Spouts'
     ],
     specsBadge: 'IRC:83 / Cast Iron & GI',
@@ -89,7 +89,7 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'bearings',
     title: 'Bridge Bearings & POT-PTFE',
     slug: 'elastomeric-pot-ptfe-bridge-bearings',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476991491/YM/YK/CZ/146888318/elastomeric-bridge-bearing-500x500.jpg',
+    imageUrl: '/images/hero/pot-ptfe-bridge-bearing-plates.jpg',
     items: [
       'Elastomeric Pot PTFE Bearings',
       'Elastomeric Bridge Bearing',
@@ -103,11 +103,11 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'centering',
     title: 'Centering Sheets & Planks',
     slug: 'mild-steel-centring-plates',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/4/507136787/QF/CS/CD/146888318/mild-steel-centering-sheet-500x500.jpg',
+    imageUrl: '/images/drive_downloads/folder2_jmk/10.png',
     items: [
       'Mild Steel Centring Plates',
-      '13 Kg Mild Steel Centering Sheet',
-      '20 Kg Steel Centering Plates',
+      'Mild Steel Centering Sheet',
+      'Steel Centering Plate Panel',
       'Mild Steel Scaffolding Planks'
     ],
     specsBadge: 'Cold Sheared High Yield',
@@ -117,7 +117,7 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'h-frame',
     title: 'H-Frame Scaffolding & Towers',
     slug: 'iron-h-frame-scaffolding-system',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/5/507519619/CV/TB/SN/146888318/mild-steel-h-frame-scaffolding-500x500.jpg',
+    imageUrl: '/images/drive_downloads/folder2_jmk/2.png',
     items: [
       'Iron H Frame Scaffolding System',
       'Mild Steel H Frame Scaffolding',
@@ -131,7 +131,7 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'couplers',
     title: 'Scaffolding Couplers & Planks',
     slug: 'mild-steel-scaffolding-walkway-planks',
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/5/512287021/CV/VO/ET/146888318/scaffold-walkway-plank-500x500.jpeg',
+    imageUrl: '/images/drive_downloads/folder1_old_pic/b6660900-b132-47f5-b926-30c939b7c8e8.jfif',
     items: [
       'MS Scaffolding Walkway Planks',
       'Pressed Mild Steel Swivel Coupler',

@@ -70,14 +70,14 @@ export const SEED_BRANCHES: SeedBranch[] = [
 export const SEED_PRODUCTS: SeedProduct[] = [
   {
     "id": "prod_ss-expansion-joints",
-    "name": "Ss Expansion Joints",
+    "name": "SS Bridge Expansion Joint",
     "slug": "ss-expansion-joints",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 3,500",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty Ss Expansion Joints manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade Ss Expansion Joints manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty SS Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade SS Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -118,12 +118,12 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/stainless-steel-bridge-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/7/438212537/OO/SD/EE/146888318/strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/7/438212526/RJ/MS/FS/146888318/strip-seal-expansion-joint-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg",
+    "featuredImage": "/images/products/stainless-steel-bridge-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -135,14 +135,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_20inch-ms-expansion-joint",
-    "name": "20inch MS Expansion Joint",
+    "name": "MS Bridge Expansion Joint",
     "slug": "20inch-ms-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 2,500",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 20inch MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 20inch MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty MS Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade MS Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -181,7 +181,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/strip-seal-bridge-expansion-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476482060/WM/KC/MN/146888318/img-20241227-wa0086-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/575236545/GE/DM/ZE/146888318/2inch-ms-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/577870901/II/IC/HZ/146888318/strip-seal-expansion-joint-500x500.jpeg",
@@ -194,7 +194,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "https://5.imimg.com/data5/SELLER/Default/2026/1/577870918/SA/ZC/ZV/146888318/strip-seal-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/577870927/RD/YM/GT/146888318/strip-seal-expansion-joint-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476482060/WM/KC/MN/146888318/img-20241227-wa0086-500x500.jpg",
+    "featuredImage": "/images/products/strip-seal-bridge-expansion-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -206,14 +206,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_strip-seal-expansion-joint",
-    "name": "Strip Seal Expansion Joint",
+    "name": "Strip Seal Bridge Expansion Joint",
     "slug": "strip-seal-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 2,800 - ₹ 3,000 / RMT",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty Strip Seal Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade Strip Seal Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Strip Seal Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Strip Seal Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -254,11 +254,11 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/strip-seal-bridge-expansion-joint.jpg", 
       "/images/drive_downloads/folder3_jmk_pic_new/d4164f62-ed93-4c41-b5c4-6415d708a9bc.jfif",
       "https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg"
     ],
-    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/d4164f62-ed93-4c41-b5c4-6415d708a9bc.jfif",
+    "featuredImage": "/images/products/strip-seal-bridge-expansion-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -270,14 +270,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_7inch-bitumen-expansion-joint",
-    "name": "7inch Bitumen Expansion Joint",
+    "name": "Bitumen Asphaltic Bridge Joint",
     "slug": "7inch-bitumen-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 350",
     "minOrderQuantity": "100 kg",
-    "shortDescription": "Heavy-duty 7inch Bitumen Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 7inch Bitumen Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Bitumen Asphaltic Bridge Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Bitumen Asphaltic Bridge Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -321,12 +321,12 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/compression-seal-bridge-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/506813568/WP/MD/MF/146888318/floor-aluminum-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/506814519/NI/YT/SB/146888318/floor-aluminum-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/510964109/QT/NW/IU/146888318/floor-aluminum-joint-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/506813568/WP/MD/MF/146888318/floor-aluminum-joint-500x500.jpg",
+    "featuredImage": "/images/products/compression-seal-bridge-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -338,14 +338,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_3-inch-aluminum-expansion-joint",
-    "name": "3 inch Aluminum Expansion Joint",
+    "name": "Aluminum Architectural Expansion Joint",
     "slug": "3-inch-aluminum-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 2,800",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 3 inch Aluminum Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 3 inch Aluminum Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Aluminum Architectural Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Aluminum Architectural Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -385,14 +385,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/aluminum-architectural-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512287495/GC/TL/EE/146888318/3-inch-iron-road-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507160738/UU/RO/TM/146888318/road-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/510958483/TQ/CV/TQ/146888318/road-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512287488/DL/BG/YT/146888318/3-inch-iron-road-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512287500/LZ/UG/EB/146888318/3-inch-iron-road-expansion-joint-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/5/512287495/GC/TL/EE/146888318/3-inch-iron-road-expansion-joint-500x500.jpeg",
+    "featuredImage": "/images/products/aluminum-architectural-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -404,14 +404,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_3-inch-iron-road-expansion-joint",
-    "name": "3 inch Iron Road Expansion Joint",
+    "name": "Iron Roadway Expansion Joint",
     "slug": "3-inch-iron-road-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 3,250",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 3 inch Iron Road Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 3 inch Iron Road Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Iron Roadway Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Iron Roadway Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -449,13 +449,13 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/finger-type-bridge-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507025907/YI/TT/ET/146888318/strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512282426/AQ/BX/KA/146888318/5inch-ss-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512282429/MC/EC/XK/146888318/5inch-ss-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512282430/BM/YD/CW/146888318/5inch-ss-expansion-joint-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507025907/YI/TT/ET/146888318/strip-seal-expansion-joint-500x500.jpg",
+    "featuredImage": "/images/products/finger-type-bridge-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -467,14 +467,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_5inch-ss-expansion-joint",
-    "name": "5inch SS Expansion Joint",
+    "name": "Stainless Steel Expansion Joint",
     "slug": "5inch-ss-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 3,100",
     "minOrderQuantity": "10kg",
-    "shortDescription": "Heavy-duty 5inch SS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 5inch SS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Stainless Steel Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Stainless Steel Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -513,13 +513,13 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/stainless-steel-bridge-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507021407/YK/PP/SE/146888318/building-expansion-joint-treatment-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512280986/MZ/EE/LK/146888318/3-inch-ss-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512280992/NO/OZ/WK/146888318/3-inch-ss-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512280996/BO/GX/UO/146888318/3-inch-ss-expansion-joint-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507021407/YK/PP/SE/146888318/building-expansion-joint-treatment-500x500.jpg",
+    "featuredImage": "/images/products/stainless-steel-bridge-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -531,14 +531,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_3-inch-ss-expansion-joint",
-    "name": "3 inch SS  Expansion Joint",
+    "name": "SS Modular Expansion Joint",
     "slug": "3-inch-ss-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 2,900",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 3 inch SS  Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 3 inch SS  Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty SS Modular Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade SS Modular Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -577,12 +577,12 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/modular-bridge-expansion-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476107385/WC/OP/WW/146888318/1000055737-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476107387/JF/PL/SK/146888318/1000055705-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476107392/FQ/PX/BN/146888318/1000055709-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476107385/WC/OP/WW/146888318/1000055737-500x500.jpg",
+    "featuredImage": "/images/products/modular-bridge-expansion-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -594,14 +594,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_22inch-ms-expansion-joint",
-    "name": "22inch MS Expansion Joint",
+    "name": "Modular MS Expansion Joint",
     "slug": "22inch-ms-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 2,650",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 22inch MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 22inch MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Modular MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Modular MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -640,7 +640,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/modular-bridge-expansion-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476471556/OT/UQ/FS/146888318/expansion-joints-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476471532/NT/QE/NJ/146888318/expansion-joints-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476471498/JQ/SC/XV/146888318/expansion-joints-500x500.jpg",
@@ -653,7 +653,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476471539/AS/JN/XR/146888318/expansion-joints-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476471565/FN/BF/BG/146888318/expansion-joints-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476471556/OT/UQ/FS/146888318/expansion-joints-500x500.jpg",
+    "featuredImage": "/images/products/modular-bridge-expansion-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -665,14 +665,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_3-inch-strip-seal-expansion-joint",
-    "name": "3 Inch Strip Seal Expansion Joint",
+    "name": "Single Gap Strip Seal Joint",
     "slug": "3-inch-strip-seal-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 2,500",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 3 Inch Strip Seal Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 3 Inch Strip Seal Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Single Gap Strip Seal Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Single Gap Strip Seal Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -710,13 +710,13 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/strip-seal-bridge-expansion-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/506805118/JW/IS/MM/146888318/expansion-joint-treatment-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512280325/RJ/IZ/OO/146888318/3-4-inch-ss-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512280329/VD/BY/VW/146888318/3-4-inch-ss-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512280334/YS/SV/NO/146888318/3-4-inch-ss-expansion-joint-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/506805118/JW/IS/MM/146888318/expansion-joint-treatment-500x500.jpg",
+    "featuredImage": "/images/products/strip-seal-bridge-expansion-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -728,14 +728,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_3-4-inch-ss-expansion-joint",
-    "name": "3/4 inch SS Expansion Joint",
+    "name": "Flexible SS Expansion Joint",
     "slug": "3-4-inch-ss-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 2,900",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 3/4 inch SS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 3/4 inch SS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Flexible SS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Flexible SS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -774,12 +774,12 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/stainless-steel-bridge-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/506826772/DF/QB/FE/146888318/copper-strip-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/510963027/AJ/VC/EF/146888318/copper-strip-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/510963030/VZ/MP/BB/146888318/copper-strip-expansion-joint-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/506826772/DF/QB/FE/146888318/copper-strip-expansion-joint-500x500.jpg",
+    "featuredImage": "/images/products/stainless-steel-bridge-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -791,14 +791,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_3-inch-copper-strip-expansion-joint",
-    "name": "3 inch Copper Strip Expansion Joint",
+    "name": "Copper Strip Waterstop Joint",
     "slug": "3-inch-copper-strip-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 940",
     "minOrderQuantity": "10kg",
-    "shortDescription": "Heavy-duty 3 inch Copper Strip Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 3 inch Copper Strip Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Copper Strip Waterstop Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Copper Strip Waterstop Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -836,14 +836,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/copper-waterstop-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512283556/TF/EA/YX/146888318/1-2-inch-ms-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507022855/BA/PA/PQ/146888318/bridge-strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507022967/IG/EZ/VL/146888318/bridge-strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512283552/LK/AF/NJ/146888318/1-2-inch-ms-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512283553/JS/JD/YU/146888318/1-2-inch-ms-expansion-joint-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/5/512283556/TF/EA/YX/146888318/1-2-inch-ms-expansion-joint-500x500.jpeg",
+    "featuredImage": "/images/products/copper-waterstop-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -855,14 +855,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_1-2-inch-ms-expansion-joint",
-    "name": "1/2 inch MS  Expansion Joint",
+    "name": "MS Highway Deck Expansion Joint",
     "slug": "1-2-inch-ms-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 3,500",
     "minOrderQuantity": "12kg",
-    "shortDescription": "Heavy-duty 1/2 inch MS  Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 1/2 inch MS  Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty MS Highway Deck Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade MS Highway Deck Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -901,12 +901,12 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/strip-seal-bridge-expansion-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476105521/MT/TT/AY/146888318/1000055862-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476105525/IF/IY/NE/146888318/1000055860-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476105528/ZI/GZ/AX/146888318/1000055773-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476105521/MT/TT/AY/146888318/1000055862-500x500.jpg",
+    "featuredImage": "/images/products/strip-seal-bridge-expansion-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -918,14 +918,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_18inch-ms-expansion-joint",
-    "name": "18inch MS Expansion Joint",
+    "name": "Heavy Duty MS Expansion Joint",
     "slug": "18inch-ms-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 2,500",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 18inch MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 18inch MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Heavy Duty MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Heavy Duty MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -964,12 +964,12 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/modular-bridge-expansion-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507035834/YK/FI/HX/146888318/single-strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512282827/LI/JL/JE/146888318/6inch-ss-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512282839/SS/DK/TR/146888318/6inch-ss-expansion-joint-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507035834/YK/FI/HX/146888318/single-strip-seal-expansion-joint-500x500.jpg",
+    "featuredImage": "/images/products/modular-bridge-expansion-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -981,14 +981,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_6inch-ss-expansion-joint",
-    "name": "6inch SS Expansion Joint",
+    "name": "SS Finger Type Expansion Joint",
     "slug": "6inch-ss-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 3,050",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 6inch SS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 6inch SS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty SS Finger Type Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade SS Finger Type Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1027,7 +1027,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/finger-type-bridge-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2026/4/604173077/PQ/RP/JC/146888318/whatsapp-image-2026-04-30-at-13-33-22-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/577870109/OL/AI/RW/146888318/strip-seal-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/577870108/AW/JQ/KF/146888318/strip-seal-expansion-joint-500x500.jpeg",
@@ -1035,7 +1035,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476107535/BV/JX/AK/146888318/1000055697-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476106853/NK/AN/AV/146888318/1000055705-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2026/4/604173077/PQ/RP/JC/146888318/whatsapp-image-2026-04-30-at-13-33-22-500x500.jpeg",
+    "featuredImage": "/images/products/finger-type-bridge-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1047,14 +1047,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_expansion-joints",
-    "name": "Expansion Joints",
+    "name": "Elastomeric Bridge Expansion Joint",
     "slug": "expansion-joints",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 2,700",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty Expansion Joints manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade Expansion Joints manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Elastomeric Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Elastomeric Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1095,10 +1095,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/compression-seal-bridge-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507034516/YF/JO/WV/146888318/building-expansion-joints-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507034516/YF/JO/WV/146888318/building-expansion-joints-500x500.jpg",
+    "featuredImage": "/images/products/compression-seal-bridge-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1110,14 +1110,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_1-2-inch-building-expansion-joints",
-    "name": "1/2 inch Building Expansion Joints",
+    "name": "Building Floor & Wall Expansion Joint",
     "slug": "1-2-inch-building-expansion-joints",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 2,799",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 1/2 inch Building Expansion Joints manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 1/2 inch Building Expansion Joints manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Building Floor & Wall Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Building Floor & Wall Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1156,10 +1156,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/aluminum-architectural-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/505863862/GE/DW/FC/146888318/modular-bridge-expansion-joint-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/505863862/GE/DW/FC/146888318/modular-bridge-expansion-joint-500x500.jpg",
+    "featuredImage": "/images/products/aluminum-architectural-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1171,14 +1171,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_4inch-iron-bridge-expansion-joint",
-    "name": "4inch Iron Bridge Expansion Joint",
+    "name": "Iron Bridge Deck Expansion Joint",
     "slug": "4inch-iron-bridge-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 2,500",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 4inch Iron Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 4inch Iron Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Iron Bridge Deck Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Iron Bridge Deck Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1219,11 +1219,11 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/finger-type-bridge-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476483305/UL/JW/IQ/146888318/img-20241227-wa0035-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476483303/PB/MA/OB/146888318/img-20241227-wa0037-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476483305/UL/JW/IQ/146888318/img-20241227-wa0035-500x500.jpg",
+    "featuredImage": "/images/products/finger-type-bridge-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1235,14 +1235,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_10inch-ms-expansion-joint",
-    "name": "10inch MS Expansion Joint",
+    "name": "Compression Seal MS Expansion Joint",
     "slug": "10inch-ms-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 3,000",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 10inch MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 10inch MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Compression Seal MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Compression Seal MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1281,11 +1281,11 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/compression-seal-bridge-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990811/WV/PB/UH/146888318/mild-steel-compression-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991326/OI/ZQ/HK/146888318/mild-steel-compression-seal-expansion-joint-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476990811/WV/PB/UH/146888318/mild-steel-compression-seal-expansion-joint-500x500.jpg",
+    "featuredImage": "/images/products/compression-seal-bridge-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1297,14 +1297,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_6inch-ms-expansion-joint",
-    "name": "6inch MS Expansion Joint",
+    "name": "Single Gap MS Expansion Joint",
     "slug": "6inch-ms-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 1,400",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 6inch MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 6inch MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Single Gap MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Single Gap MS Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1343,11 +1343,11 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/strip-seal-bridge-expansion-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992639/RZ/GY/SZ/146888318/mild-steel-strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992657/TW/WR/QJ/146888318/mild-steel-strip-seal-expansion-joint-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476992639/RZ/GY/SZ/146888318/mild-steel-strip-seal-expansion-joint-500x500.jpg",
+    "featuredImage": "/images/products/strip-seal-bridge-expansion-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1359,14 +1359,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_3-4-inch-ms-strip-seal-expansion-joint",
-    "name": "3/4 inch MS Strip Seal Expansion Joint",
+    "name": "MS Strip Seal Bridge Joint",
     "slug": "3-4-inch-ms-strip-seal-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 3,500",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 3/4 inch MS Strip Seal Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 3/4 inch MS Strip Seal Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty MS Strip Seal Bridge Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade MS Strip Seal Bridge Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1405,10 +1405,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/strip-seal-bridge-expansion-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507159856/GG/KG/EJ/146888318/bridge-expansion-joint-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507159856/GG/KG/EJ/146888318/bridge-expansion-joint-500x500.jpg",
+    "featuredImage": "/images/products/strip-seal-bridge-expansion-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1420,14 +1420,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_5inch-ms-bridge-expansion-joint",
-    "name": "5inch MS Bridge Expansion Joint",
+    "name": "Reinforced Bridge Expansion Joint",
     "slug": "5inch-ms-bridge-expansion-joint",
     "category": "joints",
     "categoryLabel": "Expansion Joints",
     "price": "₹ 2,850",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 5inch MS Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 5inch MS Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Reinforced Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Reinforced Bridge Expansion Joint manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1466,14 +1466,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/products/modular-bridge-expansion-joint.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991144/AO/SM/KN/146888318/pot-ptfe-bridge-bearings-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476982660/HG/JP/XN/146888318/shuttering-plate-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
+    "featuredImage": "/images/products/modular-bridge-expansion-joint.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1485,14 +1485,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_20-kg-ms-shuttering-plate",
-    "name": "20 Kg MS Shuttering Plate",
+    "name": "MS Shuttering Plate (Standard 2x3)",
     "slug": "20-kg-ms-shuttering-plate",
     "category": "shuttering",
     "categoryLabel": "Shuttering Plates & Formwork",
     "price": "₹ 68 / Kg",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 20 Kg MS Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 20 Kg MS Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty MS Shuttering Plate (Standard 2x3) manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade MS Shuttering Plate (Standard 2x3) manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1548,14 +1548,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_27-kg-iron-shuttering-plate",
-    "name": "27 kg Iron Shuttering Plate",
+    "name": "Heavy Iron Shuttering Plate",
     "slug": "27-kg-iron-shuttering-plate",
     "category": "shuttering",
     "categoryLabel": "Shuttering Plates & Formwork",
     "price": "₹ 67 / Kg",
     "minOrderQuantity": "27 kg",
-    "shortDescription": "Heavy-duty 27 kg Iron Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 27 kg Iron Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Heavy Iron Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Heavy Iron Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1613,14 +1613,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_35-kg-ms-shuttering-plates",
-    "name": "35 Kg MS Shuttering Plates",
+    "name": "Heavy Duty Stiffened Shuttering Plate",
     "slug": "35-kg-ms-shuttering-plates",
     "category": "shuttering",
     "categoryLabel": "Shuttering Plates & Formwork",
     "price": "₹ 67",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 35 Kg MS Shuttering Plates manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 35 Kg MS Shuttering Plates manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Heavy Duty Stiffened Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Heavy Duty Stiffened Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1660,13 +1660,13 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/16.png", 
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512284571/LS/MI/UP/146888318/15-kg-ms-scaffolding-shuttering-plates-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507115196/KA/DR/QX/146888318/scaffolding-shuttering-plates-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512284552/TR/ST/JU/146888318/15-kg-ms-scaffolding-shuttering-plates-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512284564/WJ/ZO/CI/146888318/15-kg-ms-scaffolding-shuttering-plates-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/5/512284571/LS/MI/UP/146888318/15-kg-ms-scaffolding-shuttering-plates-500x500.jpeg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/16.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1678,14 +1678,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_15-kg-ms-scaffolding-shuttering-plates",
-    "name": "15 kg MS Scaffolding Shuttering Plates",
+    "name": "MS Scaffolding Shuttering Plate",
     "slug": "15-kg-ms-scaffolding-shuttering-plates",
     "category": "shuttering",
     "categoryLabel": "Shuttering Plates & Formwork",
     "price": "₹ 63.50",
     "minOrderQuantity": "15 kg",
-    "shortDescription": "Heavy-duty 15 kg MS Scaffolding Shuttering Plates manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 15 kg MS Scaffolding Shuttering Plates manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty MS Scaffolding Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade MS Scaffolding Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1725,12 +1725,12 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/19.png", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/506871862/TH/ZI/AZ/146888318/mild-steel-shuttering-plate-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/510961843/YB/NL/VV/146888318/mild-steel-shuttering-plate-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/510961846/FS/BT/AR/146888318/mild-steel-shuttering-plate-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/506871862/TH/ZI/AZ/146888318/mild-steel-shuttering-plate-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/19.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1742,14 +1742,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_35-kg-mild-steel-shuttering-plate",
-    "name": "35 Kg Mild Steel Shuttering Plate",
+    "name": "Mild Steel Culvert Shuttering Plate",
     "slug": "35-kg-mild-steel-shuttering-plate",
     "category": "shuttering",
     "categoryLabel": "Shuttering Plates & Formwork",
     "price": "₹ 63.50",
     "minOrderQuantity": "35 Kg",
-    "shortDescription": "Heavy-duty 35 Kg Mild Steel Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 35 Kg Mild Steel Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Mild Steel Culvert Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Mild Steel Culvert Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1789,10 +1789,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/10.png", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/506852248/EU/OI/NA/146888318/ms-steel-shuttering-plate-1000-x-1250mm-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/506852248/EU/OI/NA/146888318/ms-steel-shuttering-plate-1000-x-1250mm-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/10.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1804,14 +1804,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_20-kg-ms-shuttering-plate-28",
-    "name": "20 Kg MS Shuttering Plate",
+    "name": "Standard MS Shuttering Plate Panel",
     "slug": "20-kg-ms-shuttering-plate-28",
     "category": "shuttering",
     "categoryLabel": "Shuttering Plates & Formwork",
     "price": "₹ 61",
     "minOrderQuantity": "20 Kg",
-    "shortDescription": "Heavy-duty 20 Kg MS Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 20 Kg MS Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Standard MS Shuttering Plate Panel manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Standard MS Shuttering Plate Panel manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -1850,14 +1850,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/14.png", 
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992217/SS/KY/PD/146888318/mild-steel-pile-round-shuttering-plate-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992254/DS/DH/KN/146888318/mild-steel-pile-round-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476107648/NI/AA/JO/146888318/1000055647-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476105271/IH/SQ/OV/146888318/1000055898-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476105269/IS/GM/RK/146888318/1000055902-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476992217/SS/KY/PD/146888318/mild-steel-pile-round-shuttering-plate-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/14.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -1869,14 +1869,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_round-ms-shuttering-plate",
-    "name": "Round MS Shuttering Plate",
+    "name": "Round Pier MS Shuttering Plate",
     "slug": "round-ms-shuttering-plate",
     "category": "shuttering",
     "categoryLabel": "Shuttering Plates & Formwork",
     "price": "₹ 80 / Kg",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty Round MS Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade Round MS Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Round Pier MS Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Round Pier MS Shuttering Plate manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -2039,7 +2039,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/17.png", 
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990981/FW/JQ/NE/146888318/scaffolding-adjustable-u-head-jack-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991050/LK/KI/BC/146888318/scaffolding-adjustable-u-head-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991077/ZZ/VD/DQ/146888318/scaffolding-adjustable-u-head-jack-500x500.jpeg",
@@ -2049,7 +2049,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476105697/DV/LA/YC/146888318/1000055842-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/475942423/SW/ZF/VU/146888318/adjustable-u-head-jack-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476990981/FW/JQ/NE/146888318/scaffolding-adjustable-u-head-jack-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/17.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -2234,7 +2234,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/18.png", 
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991613/QE/LZ/PH/146888318/scaffolding-adjustable-props-jack-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991627/MM/FD/XN/146888318/1000055842-500x500.jpeg",
@@ -2248,7 +2248,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "https://5.imimg.com/data5/SELLER/Default/2026/5/605865966/DW/VC/IO/146888318/adjustable-steel-scaffolding-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2026/5/605865947/BK/AZ/PF/146888318/adjustable-steel-scaffolding-jack-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/18.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -2260,14 +2260,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_adjustable-steel-scaffolding-jack",
-    "name": "Adjustable Steel Scaffolding  Jack",
+    "name": "Adjustable Steel Scaffolding Jack",
     "slug": "adjustable-steel-scaffolding-jack",
     "category": "scaffolding",
     "categoryLabel": "Scaffolding Jacks & Props",
     "price": "₹ 66",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty Adjustable Steel Scaffolding  Jack manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade Adjustable Steel Scaffolding  Jack manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Adjustable Steel Scaffolding Jack manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Adjustable Steel Scaffolding Jack manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -2306,14 +2306,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/11.png", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991144/AO/SM/KN/146888318/pot-ptfe-bridge-bearings-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476982660/HG/JP/XN/146888318/shuttering-plate-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/11.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -2390,14 +2390,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_12mm-ms-drainage-spout",
-    "name": "12mm MS Drainage Spout",
+    "name": "MS Bridge Deck Drainage Spout",
     "slug": "12mm-ms-drainage-spout",
     "category": "drainage",
     "categoryLabel": "Bridge Drainage Spouts",
     "price": "₹ 1,000 / Piece",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 12mm MS Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 12mm MS Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty MS Bridge Deck Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade MS Bridge Deck Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -2454,14 +2454,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_10mm-mild-steel-drainage-spout",
-    "name": "10mm Mild Steel Drainage Spout",
+    "name": "Mild Steel Bridge Drainage Spout",
     "slug": "10mm-mild-steel-drainage-spout",
     "category": "drainage",
     "categoryLabel": "Bridge Drainage Spouts",
     "price": "₹ 799",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 10mm Mild Steel Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 10mm Mild Steel Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Mild Steel Bridge Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Mild Steel Bridge Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -2518,14 +2518,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_14mm-ms-drainage-spout",
-    "name": "14mm MS Drainage Spout",
+    "name": "Heavy Duty MS Drainage Spout",
     "slug": "14mm-ms-drainage-spout",
     "category": "drainage",
     "categoryLabel": "Bridge Drainage Spouts",
     "price": "₹ 600",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 14mm MS Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 14mm MS Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Heavy Duty MS Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Heavy Duty MS Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -2564,7 +2564,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["https://5.imimg.com/data5/SELLER/Default/2024/12/476990546/WS/DD/IR/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2026/1/575240119/PK/PK/DH/146888318/8mm-ms-bridges-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/577874337/FF/VU/ZV/146888318/8mm-ms-bridges-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990475/XP/DZ/KU/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpg",
@@ -2578,7 +2578,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476105861/JK/ZV/WM/146888318/1000055759-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476105856/GD/LL/DC/146888318/1000055757-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2026/1/575240119/PK/PK/DH/146888318/8mm-ms-bridges-drainage-spouts-500x500.jpeg",
+    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476990546/WS/DD/IR/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -2654,14 +2654,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_5mm-ss-drainage-spouts",
-    "name": "5mm SS Drainage Spouts",
+    "name": "Stainless Steel Bridge Drainage Spout",
     "slug": "5mm-ss-drainage-spouts",
     "category": "drainage",
     "categoryLabel": "Bridge Drainage Spouts",
     "price": "₹ 700",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty 5mm SS Drainage Spouts manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 5mm SS Drainage Spouts manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Stainless Steel Bridge Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Stainless Steel Bridge Drainage Spout manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -2700,14 +2700,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder3_jmk_pic_new/591960f4-6489-4401-bd15-bae27a2ade22.jfif", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991144/AO/SM/KN/146888318/pot-ptfe-bridge-bearings-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476982660/HG/JP/XN/146888318/shuttering-plate-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/591960f4-6489-4401-bd15-bae27a2ade22.jfif",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -2767,12 +2767,12 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/hero/pot-ptfe-bridge-bearing-plates.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991491/YM/YK/CZ/146888318/elastomeric-bridge-bearing-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476483695/NK/VL/NN/146888318/img-20241227-wa0034-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991516/AR/RH/RB/146888318/elastomeric-bridge-bearing-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/12/476991491/YM/YK/CZ/146888318/elastomeric-bridge-bearing-500x500.jpg",
+    "featuredImage": "/images/hero/pot-ptfe-bridge-bearing-plates.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -2847,14 +2847,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_pot-ptfe-bridge-bearings",
-    "name": "Pot Ptfe Bridge Bearings",
+    "name": "Pot PTFE Bridge Bearings",
     "slug": "pot-ptfe-bridge-bearings",
     "category": "bearings",
     "categoryLabel": "Bridge & Structural Bearings",
     "price": "₹ 14,500 / Piece",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty Pot Ptfe Bridge Bearings manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade Pot Ptfe Bridge Bearings manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Pot PTFE Bridge Bearings manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Pot PTFE Bridge Bearings manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -2956,7 +2956,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder3_jmk_pic_new/b6c17132-df14-4773-b3bf-1925e540cc88.jfif", 
       "https://5.imimg.com/data5/SELLER/Default/2024/7/438218769/OF/SP/HF/146888318/elastomeric-bearing-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476464034/XA/CG/NX/146888318/bridge-bearings-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476464071/XM/WQ/TM/146888318/bridge-bearings-500x500.jpg",
@@ -2964,7 +2964,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476464069/QN/TC/FX/146888318/bridge-bearings-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476464060/WM/QA/HC/146888318/bridge-bearings-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2024/7/438218769/OF/SP/HF/146888318/elastomeric-bearing-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/b6c17132-df14-4773-b3bf-1925e540cc88.jfif",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -2976,14 +2976,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_elastomeric-bridge-bearing-46",
-    "name": "Elastomeric Bridge Bearing",
+    "name": "IRC Approved Elastomeric Bearing Pad",
     "slug": "elastomeric-bridge-bearing-46",
     "category": "bearings",
     "categoryLabel": "Bridge & Structural Bearings",
     "price": "₹ 2,500",
     "minOrderQuantity": "50 Pieces",
-    "shortDescription": "Heavy-duty Elastomeric Bridge Bearing manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade Elastomeric Bridge Bearing manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty IRC Approved Elastomeric Bearing Pad manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade IRC Approved Elastomeric Bearing Pad manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -3021,14 +3021,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/hero/pot-ptfe-bridge-bearing-plates.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476982660/HG/JP/XN/146888318/shuttering-plate-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
+    "featuredImage": "/images/hero/pot-ptfe-bridge-bearing-plates.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -3087,13 +3087,13 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/10.png", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507136787/QF/CS/CD/146888318/mild-steel-centering-sheet-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512284979/SF/KJ/TU/146888318/13-kg-mild-steel-centering-sheet-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512284983/UT/AM/AD/146888318/13-kg-mild-steel-centering-sheet-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512284984/FF/SM/VU/146888318/13-kg-mild-steel-centering-sheet-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507136787/QF/CS/CD/146888318/mild-steel-centering-sheet-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/10.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -3105,14 +3105,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_13-kg-mild-steel-centering-sheet",
-    "name": "13 Kg Mild Steel Centering Sheet",
+    "name": "Mild Steel Centering Sheet",
     "slug": "13-kg-mild-steel-centering-sheet",
     "category": "centering",
     "categoryLabel": "Centering Plates & Sheets",
     "price": "₹ 63.50",
     "minOrderQuantity": "13 Kg",
-    "shortDescription": "Heavy-duty 13 Kg Mild Steel Centering Sheet manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 13 Kg Mild Steel Centering Sheet manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Mild Steel Centering Sheet manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Mild Steel Centering Sheet manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -3152,13 +3152,13 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/3.png", 
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512285387/EX/GL/SB/146888318/20-kg-steel-centering-plates-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507104354/NA/OS/NC/146888318/steel-centering-plates-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512285379/JR/PM/OG/146888318/20-kg-steel-centering-plates-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512285384/JD/CP/YZ/146888318/20-kg-steel-centering-plates-500x500.jpeg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/5/512285387/EX/GL/SB/146888318/20-kg-steel-centering-plates-500x500.jpeg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/3.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -3170,14 +3170,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_20-kg-steel-centering-plates",
-    "name": "20 Kg Steel Centering Plates",
+    "name": "Steel Centering Plate Panel",
     "slug": "20-kg-steel-centering-plates",
     "category": "centering",
     "categoryLabel": "Centering Plates & Sheets",
     "price": "₹ 63.50",
     "minOrderQuantity": "20 Kg",
-    "shortDescription": "Heavy-duty 20 Kg Steel Centering Plates manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 20 Kg Steel Centering Plates manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Steel Centering Plate Panel manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Steel Centering Plate Panel manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -3216,14 +3216,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/14.png", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991144/AO/SM/KN/146888318/pot-ptfe-bridge-bearings-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/14.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -3403,14 +3403,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/29.png", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991144/AO/SM/KN/146888318/pot-ptfe-bridge-bearings-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/29.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -3532,14 +3532,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder3_jmk_pic_new/a0c55ac9-0a5a-4668-96f7-a5caeb89cc47.jfif", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991144/AO/SM/KN/146888318/pot-ptfe-bridge-bearings-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/a0c55ac9-0a5a-4668-96f7-a5caeb89cc47.jfif",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -3615,14 +3615,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
   },
   {
     "id": "prod_6-meter-ms-channel",
-    "name": "6 Meter MS Channel",
+    "name": "Structural MS Channel Beam",
     "slug": "6-meter-ms-channel",
     "category": "channels",
     "categoryLabel": "MS Structural Channels",
     "price": "₹ 48,000",
     "minOrderQuantity": "6 Meter",
-    "shortDescription": "Heavy-duty 6 Meter MS Channel manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
-    "fullDescription": "Heavy-duty industrial grade 6 Meter MS Channel manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
+    "shortDescription": "Heavy-duty Structural MS Channel Beam manufactured by JMK Engineering & Developers to IRC, MORTH, and IS standards for bridge and infrastructure projects.",
+    "fullDescription": "Heavy-duty industrial grade Structural MS Channel Beam manufactured by JMK Engineering & Developers to IRC, MORTH, and IS compliance standards. Optimized for bridges, flyovers, commercial infrastructure, and heavy civil construction projects.",
     "weightVariants": [
       "13 Kg",
       "20 Kg",
@@ -3661,14 +3661,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["https://5.imimg.com/data5/SELLER/Default/2025/4/506857058/BT/GD/DK/146888318/ms-channel-100-x-50-500x500.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991144/AO/SM/KN/146888318/pot-ptfe-bridge-bearings-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
+    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/506857058/BT/GD/DK/146888318/ms-channel-100-x-50-500x500.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -3786,14 +3786,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/hero/highway-w-beam-crash-barrier.jpg", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991144/AO/SM/KN/146888318/pot-ptfe-bridge-bearings-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
+    "featuredImage": "/images/hero/highway-w-beam-crash-barrier.jpg",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -3850,10 +3850,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/19.png", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507161482/ZL/RO/JG/146888318/kwikstage-scaffolding-system-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507161482/ZL/RO/JG/146888318/kwikstage-scaffolding-system-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/19.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -3911,14 +3911,14 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/6.png", 
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991144/AO/SM/KN/146888318/pot-ptfe-bridge-bearings-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/6.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -3976,10 +3976,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": [
+    "imageUrls": ["/images/drive_downloads/folder2_jmk/17.png", 
       "https://5.imimg.com/data5/SELLER/Default/2025/5/507518778/UU/QU/DO/146888318/pressed-mild-steel-swivel-coupler-500x500.jpg"
     ],
-    "featuredImage": "https://5.imimg.com/data5/SELLER/Default/2025/5/507518778/UU/QU/DO/146888318/pressed-mild-steel-swivel-coupler-500x500.jpg",
+    "featuredImage": "/images/drive_downloads/folder2_jmk/17.png",
     "complianceStandards": [
       "IS 2062",
       "MoRTH Section 2000",
@@ -5084,7 +5084,7 @@ export const INDIA_MART_GALLERY_PHOTOS: PhotoGalleryItem[] = [
   },
   {
     "id": "gal_exp_14",
-    "title": "20inch Heavy Duty Strip Seal Expansion Joint",
+    "title": "Heavy Duty Strip Seal Expansion Joint",
     "category": "Expansion Joints & Bearings",
     "price": "₹2,500 / Meter",
     "imageUrl": "https://5.imimg.com/data5/SELLER/Default/2024/7/438212537/OO/SD/EE/146888318/strip-seal-expansion-joint-500x500.jpg",
