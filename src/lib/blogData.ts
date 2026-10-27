@@ -311,19 +311,89 @@ All JMK PEB structures are modeled and designed adhering to:
   },
 ];
 
+export const BLOG_SLUG_ALIASES: Record<string, string> = {
+  'ms-shuttineg-plate': 'ms-shuttering-plates-is2062-steel-centering-specifications',
+  'ms-shuttineg-plates': 'ms-shuttering-plates-is2062-steel-centering-specifications',
+  'ms-shuttering-plate': 'ms-shuttering-plates-is2062-steel-centering-specifications',
+  'ms-shuttering-plates': 'ms-shuttering-plates-is2062-steel-centering-specifications',
+  'shuttering-plate': 'ms-shuttering-plates-is2062-steel-centering-specifications',
+  'shuttering-plates': 'ms-shuttering-plates-is2062-steel-centering-specifications',
+  'steel-shuttering-plates': 'ms-shuttering-plates-is2062-steel-centering-specifications',
+  'centering-plates': 'ms-shuttering-plates-is2062-steel-centering-specifications',
+  'bridge-bearings': 'bridge-bearings-pot-ptfe-elastomeric-guide-bihar',
+  'pot-ptfe-bearings': 'bridge-bearings-pot-ptfe-elastomeric-guide-bihar',
+  'pot-ptfe': 'bridge-bearings-pot-ptfe-elastomeric-guide-bihar',
+  'elastomeric-bearings': 'bridge-bearings-pot-ptfe-elastomeric-guide-bihar',
+  'strip-seal-joints': 'strip-seal-vs-modular-expansion-joints-bridge-construction',
+  'strip-seal-expansion-joint': 'strip-seal-vs-modular-expansion-joints-bridge-construction',
+  'expansion-joints': 'strip-seal-vs-modular-expansion-joints-bridge-construction',
+  'drainage-spouts': 'morth-compliant-carriageway-drainage-spouts-fabrication',
+  'bridge-drainage-spouts': 'morth-compliant-carriageway-drainage-spouts-fabrication',
+  'scaffolding-cuplock': 'cuplock-scaffolding-vs-h-frame-system-safety-efficiency',
+  'cuplock-scaffolding': 'cuplock-scaffolding-vs-h-frame-system-safety-efficiency',
+  'peb-structures': 'peb-industrial-structures-warehouse-shed-fabrication-patna',
+};
+
+// Runtime dynamic blog registry (persists during process lifetime)
+let runtimeBlogs: BlogPost[] = [...SEED_BLOGS];
+
+export function registerDynamicBlog(blog: BlogPost): void {
+  const existingIdx = runtimeBlogs.findIndex(
+    (b) => b.id === blog.id || b.slug.toLowerCase() === blog.slug.toLowerCase()
+  );
+  if (existingIdx >= 0) {
+    runtimeBlogs[existingIdx] = blog;
+  } else {
+    runtimeBlogs.unshift(blog);
+  }
+}
+
+export function syncRuntimeBlogs(blogs: BlogPost[]): void {
+  if (Array.isArray(blogs) && blogs.length > 0) {
+    const map = new Map<string, BlogPost>();
+    SEED_BLOGS.forEach((b) => map.set(b.slug, b));
+    blogs.forEach((b) => map.set(b.slug, b));
+    runtimeBlogs = Array.from(map.values());
+  }
+}
+
 export function getAllBlogs(): BlogPost[] {
-  return SEED_BLOGS;
+  return runtimeBlogs.length > 0 ? runtimeBlogs : SEED_BLOGS;
 }
 
 export function getBlogBySlug(slug: string): BlogPost | undefined {
-  return SEED_BLOGS.find((blog) => blog.slug === slug);
+  if (!slug) return undefined;
+  const clean = slug.toLowerCase().trim();
+
+  const all = getAllBlogs();
+
+  // 1. Direct match (case-insensitive)
+  const direct = all.find((b) => b.slug.toLowerCase() === clean);
+  if (direct) return direct;
+
+  // 2. Check alias map
+  const targetSlug = BLOG_SLUG_ALIASES[clean];
+  if (targetSlug) {
+    const aliased = all.find((b) => b.slug.toLowerCase() === targetSlug.toLowerCase());
+    if (aliased) return aliased;
+  }
+
+  // 3. Partial / fuzzy match
+  const fuzzy = all.find((b) => {
+    const bSlug = b.slug.toLowerCase();
+    return bSlug.includes(clean) || clean.includes(bSlug);
+  });
+  if (fuzzy) return fuzzy;
+
+  return undefined;
 }
 
 export function getFeaturedBlogs(): BlogPost[] {
-  return SEED_BLOGS.filter((b) => b.isFeatured);
+  return getAllBlogs().filter((b) => b.isFeatured);
 }
 
 export function getBlogsByCategory(category: string): BlogPost[] {
-  if (category === 'all' || category === 'All') return SEED_BLOGS;
-  return SEED_BLOGS.filter((b) => b.category.toLowerCase() === category.toLowerCase());
+  const all = getAllBlogs();
+  if (category === 'all' || category === 'All') return all;
+  return all.filter((b) => b.category.toLowerCase() === category.toLowerCase());
 }

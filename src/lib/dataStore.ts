@@ -1,4 +1,5 @@
 import { SEED_PRODUCTS, SEED_BRANCHES, SeedProduct, SeedBranch } from './seedData';
+import { BlogPost, SEED_BLOGS } from './blogData';
 
 export interface UserRecord {
   id: string;
@@ -223,6 +224,8 @@ const SNAGS: SnagRecord[] = [];
 const DPRS: DPRRecord[] = [];
 
 const RFQS: RFQRecord[] = [];
+
+const BLOGS: BlogPost[] = [...SEED_BLOGS];
 
 // Unified In-Memory Store API
 export const dataStore = {
@@ -543,5 +546,49 @@ export const dataStore = {
       return true;
     }
     return false;
+  },
+
+  // Blogs
+  getBlogs: (category?: string) => {
+    let list = BLOGS;
+    if (category && category !== 'all' && category !== 'All') {
+      list = list.filter((b) => b.category.toLowerCase() === category.toLowerCase());
+    }
+    return list;
+  },
+  getBlogBySlug: (slug: string) => {
+    const clean = slug.toLowerCase().trim();
+    return BLOGS.find((b) => b.slug.toLowerCase() === clean);
+  },
+  addBlog: (blog: BlogPost) => {
+    const existingIdx = BLOGS.findIndex(
+      (b) => b.id === blog.id || b.slug.toLowerCase() === blog.slug.toLowerCase()
+    );
+    if (existingIdx >= 0) {
+      BLOGS[existingIdx] = blog;
+    } else {
+      BLOGS.unshift(blog);
+    }
+    return blog;
+  },
+  deleteBlog: (id: string) => {
+    const idx = BLOGS.findIndex((b) => b.id === id);
+    if (idx >= 0) {
+      BLOGS.splice(idx, 1);
+      return true;
+    }
+    return false;
+  },
+  syncBlogs: (newBlogs: BlogPost[]) => {
+    if (!Array.isArray(newBlogs) || newBlogs.length === 0) {
+      // Safety: Never wipe out blogs to empty
+      if (BLOGS.length === 0) {
+        BLOGS.push(...SEED_BLOGS);
+      }
+      return BLOGS;
+    }
+    BLOGS.length = 0;
+    BLOGS.push(...newBlogs);
+    return BLOGS;
   },
 };

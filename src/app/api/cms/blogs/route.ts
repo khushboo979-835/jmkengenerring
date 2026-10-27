@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import { Blog } from '@/models/Blog';
-import { SEED_BLOGS, BlogPost } from '@/lib/blogData';
+import { SEED_BLOGS, BlogPost, getBlogBySlug, registerDynamicBlog, syncRuntimeBlogs } from '@/lib/blogData';
+import { dataStore } from '@/lib/dataStore';
 import fs from 'fs';
 import path from 'path';
 
@@ -13,11 +14,16 @@ function readStoredBlogs(): BlogPost[] | null {
   try {
     if (fs.existsSync(TMP_DATA_FILE)) {
       const data = fs.readFileSync(TMP_DATA_FILE, 'utf8');
-      return JSON.parse(data);
+      const parsed = JSON.parse(data);
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
     }
+  } catch {}
+
+  try {
     if (fs.existsSync(PRIMARY_DATA_FILE)) {
       const data = fs.readFileSync(PRIMARY_DATA_FILE, 'utf8');
-      return JSON.parse(data);
+      const parsed = JSON.parse(data);
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
     }
   } catch (e) {
     console.error('Error reading stored blogs:', e);
@@ -43,8 +49,21 @@ function writeStoredBlogs(blogs: BlogPost[]) {
   }
 }
 
-// Global runtime memory
-let memoryBlogs: BlogPost[] = readStoredBlogs() ?? [...SEED_BLOGS];
+// Global runtime memory (guaranteed baseline with SEED_BLOGS)
+let memoryBlogs: BlogPost[] = (() => {
+  const stored = readStoredBlogs();
+  if (stored && stored.length > 0) {
+    const map = new Map<string, BlogPost>();
+    SEED_BLOGS.forEach((b) => map.set(b.slug, b));
+    stored.forEach((b) => map.set(b.slug, b));
+    return Array.from(map.values());
+  }
+  return [...SEED_BLOGS];
+})();
+
+// Initialize runtime registries
+syncRuntimeBlogs(memoryBlogs);
+dataStore.syncBlogs(memoryBlogs);
 
 export async function GET(req: NextRequest) {
   try {
@@ -55,7 +74,9 @@ export async function GET(req: NextRequest) {
     const db = await connectToDatabase();
     if (db) {
       if (slug) {
-        const blogDoc = await Blog.findOne({ slug });
+        const blogDoc = await Blog.findOne({
+          $or: [{ slug }, { slug: slug.toLowerCase() }],
+        });
         if (blogDoc) return NextResponse.json({ success: true, blog: blogDoc });
       } else {
         let query: any = {};
@@ -63,24 +84,31 @@ export async function GET(req: NextRequest) {
           query.category = { $regex: new RegExp(`^${category}$`, 'i') };
         }
         const blogs = await Blog.find(query).sort({ publishedAt: -1 });
-        return NextResponse.json({ success: true, blogs });
+        if (blogs && blogs.length > 0) {
+          return NextResponse.json({ success: true, blogs });
+        }
       }
     }
 
     const stored = readStoredBlogs();
-    if (stored !== null) {
-      memoryBlogs = stored;
+    if (stored !== null && stored.length > 0) {
+      const map = new Map<string, BlogPost>();
+      SEED_BLOGS.forEach((b) => map.set(b.slug, b));
+      stored.forEach((b) => map.set(b.slug, b));
+      memoryBlogs = Array.from(map.values());
     }
 
     if (slug) {
-      const blog = memoryBlogs.find((b) => b.slug === slug);
+      const blog =
+        getBlogBySlug(slug) ||
+        memoryBlogs.find((b) => b.slug.toLowerCase() === slug.toLowerCase());
       if (!blog) {
         return NextResponse.json({ error: 'Article not found' }, { status: 404 });
       }
       return NextResponse.json({ success: true, blog });
     }
 
-    let result = memoryBlogs;
+    let result = memoryBlogs.length > 0 ? memoryBlogs : [...SEED_BLOGS];
     if (category && category !== 'all' && category !== 'All') {
       result = result.filter((b) => b.category.toLowerCase() === category.toLowerCase());
     }
@@ -98,25 +126,43 @@ export async function POST(req: NextRequest) {
 
     // Check if this is a full sync from client CMS
     if (body.syncAll && Array.isArray(body.blogs)) {
-      memoryBlogs = body.blogs;
-      writeStoredBlogs(body.blogs);
+      if (body.blogs.length === 0) {
+        // Safety: Do NOT wipe out; reset to SEED_BLOGS
+        memoryBlogs = [...SEED_BLOGS];
+      } else {
+        const map = new Map<string, BlogPost>();
+        SEED_BLOGS.forEach((b) => map.set(b.slug, b));
+        body.blogs.forEach((b: BlogPost) => map.set(b.slug, b));
+        memoryBlogs = Array.from(map.values());
+      }
+
+      writeStoredBlogs(memoryBlogs);
+      syncRuntimeBlogs(memoryBlogs);
+      dataStore.syncBlogs(memoryBlogs);
 
       const db = await connectToDatabase();
       if (db) {
         try {
           await Blog.deleteMany({});
-          if (body.blogs.length > 0) {
-            await Blog.insertMany(body.blogs.map((b: any) => ({
-              ...b,
-              publishedAt: new Date(b.publishedAt || Date.now()),
-            })));
+          if (memoryBlogs.length > 0) {
+            await Blog.insertMany(
+              memoryBlogs.map((b: any) => ({
+                ...b,
+                publishedAt: new Date(b.publishedAt || Date.now()),
+              }))
+            );
           }
         } catch (err) {
           console.error('MongoDB sync error:', err);
         }
       }
 
-      return NextResponse.json({ success: true, message: 'Synced successfully', count: memoryBlogs.length });
+      return NextResponse.json({
+        success: true,
+        message: 'Synced successfully',
+        count: memoryBlogs.length,
+        blogs: memoryBlogs,
+      });
     }
 
     const {
@@ -167,6 +213,8 @@ export async function POST(req: NextRequest) {
     const updated = [newBlog, ...currentList.filter(b => b.slug !== generatedSlug)];
     memoryBlogs = updated;
     writeStoredBlogs(updated);
+    registerDynamicBlog(newBlog);
+    dataStore.addBlog(newBlog);
 
     const db = await connectToDatabase();
     if (db) {

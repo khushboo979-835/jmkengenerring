@@ -1,8 +1,8 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { getAllBlogs, getBlogBySlug, BlogPost } from '@/lib/blogData';
+import { getAllBlogs, getBlogBySlug, BlogPost, BLOG_SLUG_ALIASES } from '@/lib/blogData';
 import BlogDetailClient from '@/components/public/BlogDetailClient';
+import DynamicBlogDetailFallback from '@/components/public/DynamicBlogDetailFallback';
 
 interface PageProps {
   params: {
@@ -10,12 +10,18 @@ interface PageProps {
   };
 }
 
+export const dynamicParams = true;
+
 // 1. Static Site Generation (SSG) for 0% runtime lag and instant navigation
 export async function generateStaticParams() {
   const blogs = getAllBlogs();
-  return blogs.map((b) => ({
+  const baseSlugs = blogs.map((b) => ({
     slug: b.slug,
   }));
+  const aliasSlugs = Object.keys(BLOG_SLUG_ALIASES).map((slug) => ({
+    slug,
+  }));
+  return [...baseSlugs, ...aliasSlugs];
 }
 
 // 2. SEO-Optimized Metadata per Blog Article
@@ -93,7 +99,7 @@ export default function BlogPostPage({ params }: PageProps) {
   const post = getBlogBySlug(params.slug);
 
   if (!post) {
-    notFound();
+    return <DynamicBlogDetailFallback slug={params.slug} />;
   }
 
   // Google JSON-LD Structured Data Schema for BlogPosting

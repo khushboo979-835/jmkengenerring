@@ -140,48 +140,80 @@ export default function MasterCMSPage() {
     setTimeout(() => setNotification(null), 4000);
   };
 
-  // Hydrate from localStorage and sync with server API
+  // Hydrate blogs safely from server API and localStorage
   useEffect(() => {
-    try {
-      const isInitialized = localStorage.getItem('jmk_cms_blogs_initialized') === 'true';
-      const savedBlogs = localStorage.getItem('jmk_cms_blogs');
+    const loadAllData = async () => {
+      try {
+        let serverBlogs: BlogPost[] = [];
+        try {
+          const res = await fetch('/api/cms/blogs');
+          const data = await res.json();
+          if (data.success && Array.isArray(data.blogs) && data.blogs.length > 0) {
+            serverBlogs = data.blogs;
+          }
+        } catch (e) {
+          console.error('Failed to fetch from /api/cms/blogs:', e);
+        }
 
-      if (isInitialized && savedBlogs !== null) {
-        const parsed = JSON.parse(savedBlogs);
-        setBlogs(parsed);
-        // Sync client's authoritative state with server
-        fetch('/api/cms/blogs', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ syncAll: true, blogs: parsed }),
-        }).catch(() => {});
-      } else {
-        // First time load: fetch from API
-        fetch('/api/cms/blogs')
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.success && Array.isArray(data.blogs)) {
-              setBlogs(data.blogs);
-              localStorage.setItem('jmk_cms_blogs', JSON.stringify(data.blogs));
+        let localBlogs: BlogPost[] = [];
+        try {
+          const saved = localStorage.getItem('jmk_cms_blogs');
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              localBlogs = parsed;
             }
-          })
-          .catch((err) => console.error('Failed to fetch blogs from database:', err));
+          }
+        } catch (e) {
+          console.error('Failed to parse local blogs:', e);
+        }
+
+        // Combine: baseline SEED_BLOGS + serverBlogs + localBlogs (ensuring nothing is lost)
+        const map = new Map<string, BlogPost>();
+        SEED_BLOGS.forEach((b) => map.set(b.slug, b));
+        serverBlogs.forEach((b) => map.set(b.slug, b));
+        localBlogs.forEach((b) => {
+          if (!map.has(b.slug)) {
+            map.set(b.slug, b);
+          }
+        });
+
+        const finalBlogs = Array.from(map.values());
+        setBlogs(finalBlogs);
+        localStorage.setItem('jmk_cms_blogs_initialized', 'true');
+        localStorage.setItem('jmk_cms_blogs', JSON.stringify(finalBlogs));
+
+        // If local had extra posts that weren't on server, sync to server
+        if (localBlogs.length > serverBlogs.length) {
+          fetch('/api/cms/blogs', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ syncAll: true, blogs: finalBlogs }),
+          }).catch(() => {});
+        }
+      } catch (e) {
+        console.error('Error hydrating CMS blogs:', e);
+        setBlogs(SEED_BLOGS);
       }
 
-      const savedProducts = localStorage.getItem('jmk_cms_products');
-      if (savedProducts !== null) setProducts(JSON.parse(savedProducts));
+      try {
+        const savedProducts = localStorage.getItem('jmk_cms_products');
+        if (savedProducts !== null) setProducts(JSON.parse(savedProducts));
 
-      const savedPhotos = localStorage.getItem('jmk_cms_photos');
-      if (savedPhotos !== null) setPhotos(JSON.parse(savedPhotos));
+        const savedPhotos = localStorage.getItem('jmk_cms_photos');
+        if (savedPhotos !== null) setPhotos(JSON.parse(savedPhotos));
 
-      const savedVideos = localStorage.getItem('jmk_cms_videos');
-      if (savedVideos !== null) setVideos(JSON.parse(savedVideos));
+        const savedVideos = localStorage.getItem('jmk_cms_videos');
+        if (savedVideos !== null) setVideos(JSON.parse(savedVideos));
 
-      const savedSettings = localStorage.getItem('jmk_cms_settings');
-      if (savedSettings !== null) setSettings(JSON.parse(savedSettings));
-    } catch (e) {
-      console.error(e);
-    }
+        const savedSettings = localStorage.getItem('jmk_cms_settings');
+        if (savedSettings !== null) setSettings(JSON.parse(savedSettings));
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    loadAllData();
   }, []);
 
   // Word count & read-time auto calculate
@@ -397,6 +429,30 @@ export default function MasterCMSPage() {
         console.error(e);
       }
       showNotification(`Article deleted successfully.`);
+    }
+  };
+
+  const handleRestoreDefaultBlogs = async () => {
+    if (confirm('Restore all standard engineering articles to the console?')) {
+      const map = new Map<string, BlogPost>();
+      SEED_BLOGS.forEach((b) => map.set(b.slug, b));
+      blogs.forEach((b) => {
+        if (!map.has(b.slug)) map.set(b.slug, b);
+      });
+      const restored = Array.from(map.values());
+      setBlogs(restored);
+      try {
+        localStorage.setItem('jmk_cms_blogs_initialized', 'true');
+        localStorage.setItem('jmk_cms_blogs', JSON.stringify(restored));
+        await fetch('/api/cms/blogs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ syncAll: true, blogs: restored }),
+        });
+      } catch (e) {
+        console.error(e);
+      }
+      showNotification('Engineering articles restored successfully!');
     }
   };
 
@@ -620,13 +676,24 @@ export default function MasterCMSPage() {
               <p className="text-xs text-slate-500 font-medium">Add, edit, or delete engineering blog posts to rank on Google Search.</p>
             </div>
 
-            <button
-              onClick={handleOpenNewBlog}
-              className="px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-2xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Write New Article</span>
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleRestoreDefaultBlogs}
+                className="px-4 py-3 bg-white border border-neutral-300 hover:bg-neutral-100 text-slate-800 rounded-2xl text-xs font-bold transition flex items-center gap-2"
+                title="Restore all default articles"
+              >
+                <RefreshCw className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Restore Defaults</span>
+              </button>
+
+              <button
+                onClick={handleOpenNewBlog}
+                className="px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-2xl text-xs font-black uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Write New Article</span>
+              </button>
+            </div>
           </div>
 
           <div className="bg-white border-2 border-neutral-200 rounded-3xl overflow-hidden shadow-sm">
@@ -643,6 +710,24 @@ export default function MasterCMSPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-neutral-200">
+                  {blogs.length === 0 && (
+                    <tr>
+                      <td colSpan={6} className="p-12 text-center">
+                        <div className="flex flex-col items-center justify-center gap-3 max-w-sm mx-auto">
+                          <AlertCircle className="w-8 h-8 text-amber-600" />
+                          <p className="font-bold text-sm text-slate-800">No blog articles currently loaded</p>
+                          <p className="text-xs text-slate-500">Click below to restore all standard engineering articles to the console.</p>
+                          <button
+                            onClick={handleRestoreDefaultBlogs}
+                            className="mt-2 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-black uppercase rounded-xl transition shadow flex items-center gap-2"
+                          >
+                            <RefreshCw className="w-3.5 h-3.5" />
+                            <span>Restore Standard Articles</span>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  )}
                   {blogs.map((post) => (
                     <tr key={post.id} className="hover:bg-neutral-50 transition">
                       <td className="p-4 max-w-xs sm:max-w-md">

@@ -40,28 +40,42 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
 
   // Synchronize dynamic CMS posts from authoritative localStorage & API
   React.useEffect(() => {
-    try {
-      const isInitialized = localStorage.getItem('jmk_cms_blogs_initialized') === 'true';
-      const saved = localStorage.getItem('jmk_cms_blogs');
-      if (isInitialized && saved !== null) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) {
-          setPosts(parsed);
-          return;
+    async function syncPosts() {
+      let loadedPosts: BlogPost[] = initialPosts;
+
+      // 1. Fetch from server API
+      try {
+        const res = await fetch('/api/cms/blogs');
+        const data = await res.json();
+        if (data.success && Array.isArray(data.blogs) && data.blogs.length > 0) {
+          loadedPosts = data.blogs;
         }
+      } catch (e) {
+        console.error('Failed to fetch from /api/cms/blogs:', e);
       }
-    } catch (e) {
-      console.error(e);
+
+      // 2. Check client localStorage for newly added articles
+      try {
+        const saved = localStorage.getItem('jmk_cms_blogs');
+        if (saved) {
+          const parsed: BlogPost[] = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            const map = new Map<string, BlogPost>();
+            loadedPosts.forEach((p) => map.set(p.slug, p));
+            parsed.forEach((p) => map.set(p.slug, p));
+            loadedPosts = Array.from(map.values());
+          }
+        }
+      } catch (e) {
+        console.error('Failed to read localStorage blogs:', e);
+      }
+
+      if (loadedPosts.length > 0) {
+        setPosts(loadedPosts);
+      }
     }
 
-    fetch('/api/cms/blogs')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success && Array.isArray(data.blogs)) {
-          setPosts(data.blogs);
-        }
-      })
-      .catch(() => {});
+    syncPosts();
   }, [initialPosts]);
 
   const filteredPosts = useMemo(() => {
