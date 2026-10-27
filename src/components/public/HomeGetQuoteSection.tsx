@@ -28,12 +28,12 @@ interface ProductQuoteOption {
 }
 
 const QUOTE_PRODUCTS: ProductQuoteOption[] = [
-  { id: 'shuttering', name: '27 Kg MS Shuttering Plates (IS 2062)', unit: 'Pieces', basePrice: 1950, weightPerUnitKg: 27, minQty: 25 },
-  { id: 'props', name: 'Scaffolding Adjustable Prop Jacks (IS 1161)', unit: 'Pieces', basePrice: 1250, weightPerUnitKg: 12, minQty: 50 },
-  { id: 'joints', name: 'Strip Seal Bridge Expansion Joints', unit: 'Meters', basePrice: 2400, weightPerUnitKg: 35, minQty: 10 },
-  { id: 'centering', name: '13 Kg Mild Steel Centering Sheets', unit: 'Pieces', basePrice: 950, weightPerUnitKg: 13, minQty: 50 },
+  { id: 'shuttering', name: 'Shuttering Plates (IS 2062)', unit: 'Pieces', basePrice: 1950, weightPerUnitKg: 27, minQty: 25 },
+  { id: 'props', name: 'Scaffolding Prop Jacks (IS 1161)', unit: 'Pieces', basePrice: 1250, weightPerUnitKg: 12, minQty: 50 },
+  { id: 'joints', name: 'Expansion Joints (IRC:SP:69)', unit: 'Meters', basePrice: 2400, weightPerUnitKg: 35, minQty: 10 },
+  { id: 'centering', name: 'Centering Sheets (High Tensile)', unit: 'Pieces', basePrice: 950, weightPerUnitKg: 13, minQty: 50 },
   { id: 'bearings', name: 'POT-PTFE Bridge Bearings (IRC:83 Part III)', unit: 'Sets', basePrice: 12500, weightPerUnitKg: 85, minQty: 2 },
-  { id: 'spouts', name: '12mm MS Bridge Drainage Spouts', unit: 'Pieces', basePrice: 1650, weightPerUnitKg: 18, minQty: 20 },
+  { id: 'spouts', name: 'Bridge Drainage Spouts (MoRTH)', unit: 'Pieces', basePrice: 1650, weightPerUnitKg: 18, minQty: 20 },
 ];
 
 export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (productName?: string) => void }) {

@@ -33,12 +33,12 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'joints',
     title: 'Expansion Joints',
     slug: 'ss-expansion-joints',
-    imageUrl: '/images/products/strip-seal-bridge-expansion-joint.jpg',
+    imageUrl: '/images/indiamart/bridge-expansion-joint-500x500.jpg',
     items: [
-      'SS Bridge Expansion Joint',
-      'MS Bridge Expansion Joint',
-      'Strip Seal Bridge Joint',
-      'Bitumen Asphaltic Joint'
+      'Bridge Expansion Joint',
+      'Modular Expansion Joint',
+      'Strip Seal Joint',
+      'Bitumen Expansion Joint'
     ],
     specsBadge: 'MoRTH / IRC:SP:69',
     standard: 'Bridge Grade'
@@ -47,12 +47,12 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'shuttering',
     title: 'Shuttering Plates & Formwork',
     slug: '20-kg-ms-shuttering-plate',
-    imageUrl: '/images/hero/steel-shuttering-box-culvert.jpg',
+    imageUrl: '/images/indiamart/shuttering-plate-500x500.jpeg',
     items: [
-      'MS Shuttering Plate',
-      'Heavy Iron Shuttering Plate',
-      'Heavy Stiffened Shuttering Plate',
-      'Column Shuttering Plates'
+      'Shuttering Plate (Standard)',
+      'Column Shuttering Plate',
+      'Culvert Shuttering Plate',
+      'Round Pier Shuttering Plate'
     ],
     specsBadge: 'IS 2062 Grade Steel',
     standard: 'High-Load Yield'
@@ -61,12 +61,12 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'scaffolding',
     title: 'Scaffolding Systems & Props',
     slug: 'scaffolding-adjustable-prop-jack',
-    imageUrl: '/images/hero/scaffolding-cuplock-staging.jpg',
+    imageUrl: '/images/indiamart/scaffolding-adjustable-acrospan-500x500.jpeg',
     items: [
-      'Adjustable Steel Scaffolding Jack',
-      'Scaffolding Adjustable Prop Jack',
-      'Vertical Scaffolding Jack',
-      'Forged U-Head & Base Jacks'
+      'Scaffolding Prop Jack',
+      'Adjustable Prop Jack',
+      'U-Head Jack',
+      'Vertical Base Jack'
     ],
     specsBadge: 'IS 1161 Heavy Duty',
     standard: 'Tested 40kN+'
@@ -75,12 +75,12 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'drainage',
     title: 'Bridge Drainage Spouts',
     slug: 'iron-drainage-spouts',
-    imageUrl: '/images/drive_downloads/folder3_jmk_pic_new/591960f4-6489-4401-bd15-bae27a2ade22.jfif',
+    imageUrl: '/images/indiamart/mild-steel-drainage-spout-500x500.jpg',
     items: [
-      'MS Bridge Deck Drainage Spout',
-      'Mild Steel Bridge Drainage Spout',
-      'Heavy MS Deck Drainage Spout',
-      'Cast Iron Carriageway Spouts'
+      'Bridge Drainage Spout',
+      'Drainage Spout (12mm)',
+      'Galvanized Drainage Spout',
+      'Deck Drainage Spout'
     ],
     specsBadge: 'IRC:83 / Cast Iron & GI',
     standard: 'MoRTH Sec 2700'
@@ -89,12 +89,12 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'bearings',
     title: 'Bridge Bearings & POT-PTFE',
     slug: 'elastomeric-pot-ptfe-bridge-bearings',
-    imageUrl: '/images/hero/pot-ptfe-bridge-bearing-plates.jpg',
+    imageUrl: '/images/indiamart/pot-ptfe-bridge-bearings-500x500.jpg',
     items: [
-      'Elastomeric Pot PTFE Bearings',
+      'POT-PTFE Bridge Bearing',
       'Elastomeric Bridge Bearing',
-      'Pot PTFE Bridge Bearings',
-      'Reinforced Neoprene Pads'
+      'POT Bearing',
+      'Neoprene Bearing Pad'
     ],
     specsBadge: 'IRC:83 (Part II & III)',
     standard: 'Virgin Polymer'
@@ -103,12 +103,12 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'centering',
     title: 'Centering Sheets & Planks',
     slug: 'mild-steel-centring-plates',
-    imageUrl: '/images/drive_downloads/folder2_jmk/10.png',
+    imageUrl: '/images/indiamart/mild-steel-centering-sheet-500x500.jpg',
     items: [
-      'Mild Steel Centring Plates',
-      'Mild Steel Centering Sheet',
-      'Steel Centering Plate Panel',
-      'Mild Steel Scaffolding Planks'
+      'Centering Plate',
+      'Centering Sheet',
+      'Centering Panel',
+      'Walkway Plank'
     ],
     specsBadge: 'Cold Sheared High Yield',
     standard: 'Batch Verified'
@@ -117,12 +117,12 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'h-frame',
     title: 'H-Frame Scaffolding & Towers',
     slug: 'iron-h-frame-scaffolding-system',
-    imageUrl: '/images/drive_downloads/folder2_jmk/2.png',
+    imageUrl: '/images/indiamart/h-frame-scaffolding-500x500.jpg',
     items: [
-      'Iron H Frame Scaffolding System',
-      'Mild Steel H Frame Scaffolding',
-      'Stainless Steel H Frame',
-      'Cross Braces & Couplers'
+      'H Frame Scaffolding System',
+      'H Frame Scaffolding',
+      'Heavy Duty H Frame Scaffolding',
+      'Cross Bracing System'
     ],
     specsBadge: 'Modular Staging',
     standard: 'Precision Lock'
@@ -131,12 +131,12 @@ const OFFER_CATEGORIES: OfferCategory[] = [
     id: 'couplers',
     title: 'Scaffolding Couplers & Planks',
     slug: 'mild-steel-scaffolding-walkway-planks',
-    imageUrl: '/images/drive_downloads/folder1_old_pic/b6660900-b132-47f5-b926-30c939b7c8e8.jfif',
+    imageUrl: '/images/indiamart/scaffold-walkway-plank-500x500.jpeg',
     items: [
-      'MS Scaffolding Walkway Planks',
-      'Pressed Mild Steel Swivel Coupler',
-      'Drop Forged Right Angle Coupler',
-      'Joint Pins & Clamp Fittings'
+      'Scaffolding Walkway Plank',
+      'Walkway Plank (Perforated Jali)',
+      'Swivel Coupler',
+      'Cuplock Scaffolding System'
     ],
     specsBadge: 'BS 1139 Standard',
     standard: 'Heavy Forged'

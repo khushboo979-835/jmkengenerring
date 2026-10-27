@@ -435,7 +435,7 @@ export default function ManufacturingAnimationShowcase({ onOpenRFQ }: Manufactur
               <span>•</span>
               <span>🌉 Hydraulic Rig: POT-PTFE Bearing 10,000 kN Load Verified</span>
               <span>•</span>
-              <span>🔩 Expansion Line: 20-inch MS Strip Seal Assembly Testing Passed</span>
+              <span>🔩 Expansion Line: Bridge Expansion Joint Assembly Testing Passed</span>
               <span>•</span>
               <span>🚚 Dispatch Gate: 35 MT Consignment Released to Delhi NCR Hub</span>
               <span>•</span>
