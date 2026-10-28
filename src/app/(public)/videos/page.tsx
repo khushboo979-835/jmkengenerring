@@ -341,54 +341,30 @@ export default function VideosPage() {
           <div className="bg-neutral-900 border border-neutral-800 rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl text-white my-auto">
             {/* Modal Video Player Stage */}
             <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
-              <img
-                src={activeVideo.thumbnailUrl}
-                alt={activeVideo.title}
-                className="w-full h-full object-contain"
-              />
+              {activeVideo.videoEmbedUrl || activeVideo.videoUrl ? (
+                <iframe
+                  src={activeVideo.videoEmbedUrl || activeVideo.videoUrl}
+                  title={activeVideo.title}
+                  className="w-full h-full border-0"
+                  allow="autoplay; encrypted-media; fullscreen"
+                  allowFullScreen
+                />
+              ) : (
+                <img
+                  src={activeVideo.thumbnailUrl}
+                  alt={activeVideo.title}
+                  className="w-full h-full object-contain"
+                />
+              )}
 
-              {/* Overlay simulation */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60 flex flex-col justify-between p-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="bg-red-600 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded">
-                      {activeVideo.category}
-                    </span>
-                    <span className="text-xs font-mono text-neutral-300">
-                      Duration: {activeVideo.duration}
-                    </span>
-                  </div>
-
-                  <button
-                    onClick={() => setActiveVideo(null)}
-                    className="p-2 bg-black/60 hover:bg-red-600 text-white rounded-full transition"
-                    title="Close Video"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-
-                {/* Big Center Play/Pause indicator */}
-                <div className="flex items-center justify-center">
-                  <button
-                    onClick={() => setIsPlaying(!isPlaying)}
-                    className="w-16 h-16 rounded-full bg-red-600/90 hover:bg-red-600 text-white flex items-center justify-center shadow-2xl transition hover:scale-110"
-                  >
-                    <Play className="w-7 h-7 fill-white ml-1" />
-                  </button>
-                </div>
-
-                {/* Bottom Video Progress Bar simulation */}
-                <div className="space-y-2">
-                  <div className="w-full bg-neutral-700 h-1.5 rounded-full overflow-hidden">
-                    <div className="bg-red-600 h-full w-2/3 animate-pulse" />
-                  </div>
-                  <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400">
-                    <span>0:18 / {activeVideo.duration}</span>
-                    <span className="text-red-400 font-bold">1080p Full HD Factory Reel</span>
-                  </div>
-                </div>
-              </div>
+              {/* Close Button top-right */}
+              <button
+                onClick={() => setActiveVideo(null)}
+                className="absolute top-3 right-3 z-20 p-2 bg-black/70 hover:bg-red-600 text-white rounded-full transition shadow-lg backdrop-blur-sm"
+                title="Close Video"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
             {/* Modal Metadata & Actions */}
@@ -427,6 +403,19 @@ export default function VideosPage() {
                     <ExternalLink className="w-3.5 h-3.5 text-red-400" />
                     <span>IndiaMART</span>
                   </a>
+
+                  {activeVideo.videoUrl && (
+                    <a
+                      href={activeVideo.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2.5 bg-neutral-800 hover:bg-neutral-700 text-amber-300 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-neutral-700"
+                      title="Open full video in Google Drive"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
+                      <span>Drive Video</span>
+                    </a>
+                  )}
                 </div>
               </div>
 

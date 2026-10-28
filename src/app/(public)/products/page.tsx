@@ -22,11 +22,14 @@ import {
   ClipboardCheck,
   TrendingUp,
   MapPin,
-  Sparkles
+  Sparkles,
+  Play,
+  Video
 } from 'lucide-react';
 import { SEED_PRODUCTS, SeedProduct } from '@/lib/seedData';
 import RFQModal from '@/components/public/RFQModal';
 import ProvisionProductModal from '@/components/portal/ProvisionProductModal';
+import ProductVideoModal from '@/components/public/ProductVideoModal';
 
 const CATEGORIES = [
   { id: 'all', label: 'All Products (60+)' },
@@ -51,6 +54,11 @@ function ProductsContent() {
   const [isRfqOpen, setIsRfqOpen] = useState(false);
   const [isProvisionOpen, setIsProvisionOpen] = useState(false);
   const [activeRfqProduct, setActiveRfqProduct] = useState<string | undefined>();
+  const [activeVideoProduct, setActiveVideoProduct] = useState<SeedProduct | null>(null);
+
+  const handleOpenVideo = (product: SeedProduct) => {
+    setActiveVideoProduct(product);
+  };
 
   const filteredProducts = useMemo(() => {
     return SEED_PRODUCTS.filter((prod) => {
@@ -312,6 +320,22 @@ function ProductsContent() {
                         </span>
                       </div>
 
+                      {product.videoEmbedUrl && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleOpenVideo(product);
+                          }}
+                          className="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 bg-neutral-950/90 hover:bg-red-600 text-amber-300 hover:text-white rounded-lg text-[10px] font-black uppercase tracking-wider shadow-md hover:scale-105 transition border border-neutral-700"
+                          title="Watch Factory & Product Video"
+                        >
+                          <Play className="w-2.5 h-2.5 fill-current" />
+                          <span>Video</span>
+                        </button>
+                      )}
+
                       <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs">
                         <span className="font-mono text-xs bg-red-100 text-red-700 px-2.5 py-1 rounded-md font-black border border-red-200">
                           {product.price || product.variants[0]?.priceEstimate || '₹ Request Quote'}
@@ -381,27 +405,44 @@ function ProductsContent() {
                   </Link>
 
                   {/* Action Footer */}
-                  <div className="p-5 pt-0 flex items-center gap-2 relative z-10">
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        handleOpenRFQ(product.name);
-                      }}
-                      className="flex-1 py-2.5 px-3 bg-red-600 hover:bg-red-700 text-white text-xs font-black uppercase tracking-wider rounded-xl transition shadow-md flex items-center justify-center gap-1.5"
-                    >
-                      <span>Instant RFQ</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
+                  <div className="p-5 pt-0 space-y-2 relative z-10">
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleOpenRFQ(product.name);
+                        }}
+                        className="flex-1 py-2.5 px-3 bg-red-600 hover:bg-red-700 text-white text-xs font-black uppercase tracking-wider rounded-xl transition shadow-md flex items-center justify-center gap-1.5"
+                      >
+                        <span>Instant RFQ</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
 
-                    <Link
-                      href={`/products/${product.slug}`}
-                      className="py-2.5 px-3.5 bg-neutral-100 hover:bg-neutral-200 text-slate-900 text-xs font-black rounded-xl border border-neutral-300 transition flex items-center justify-center gap-1.5 hover:text-red-600"
-                    >
-                      <span>Deep Specs</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-neutral-500" />
-                    </Link>
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className="py-2.5 px-3.5 bg-neutral-100 hover:bg-neutral-200 text-slate-900 text-xs font-black rounded-xl border border-neutral-300 transition flex items-center justify-center gap-1.5 hover:text-red-600"
+                      >
+                        <span>Deep Specs</span>
+                        <ExternalLink className="w-3.5 h-3.5 text-neutral-500" />
+                      </Link>
+                    </div>
+
+                    {product.videoEmbedUrl && (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleOpenVideo(product);
+                        }}
+                        className="w-full py-2 px-3 bg-neutral-900 hover:bg-black text-amber-300 hover:text-amber-200 text-xs font-bold rounded-xl transition flex items-center justify-center gap-2 border border-neutral-800 shadow-sm group/vid"
+                      >
+                        <Play className="w-3.5 h-3.5 fill-amber-300 text-amber-300 group-hover/vid:scale-110 transition-transform" />
+                        <span>Watch Video (Tap to Play)</span>
+                      </button>
+                    )}
                   </div>
                 </div>
               );
@@ -421,6 +462,17 @@ function ProductsContent() {
         isOpen={isRfqOpen}
         onClose={() => setIsRfqOpen(false)}
         defaultProduct={activeRfqProduct}
+      />
+
+      {/* Product Video Modal */}
+      <ProductVideoModal
+        isOpen={!!activeVideoProduct}
+        onClose={() => setActiveVideoProduct(null)}
+        productName={activeVideoProduct?.name || ''}
+        videoEmbedUrl={activeVideoProduct?.videoEmbedUrl}
+        videoUrl={activeVideoProduct?.videoUrl}
+        videoTitle={activeVideoProduct?.videoTitle}
+        onOpenRFQ={(name) => handleOpenRFQ(name)}
       />
     </div>
   );

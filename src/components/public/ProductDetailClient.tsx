@@ -21,10 +21,13 @@ import {
   Eye,
   FileSpreadsheet,
   IndianRupee,
-  Share2
+  Share2,
+  Play,
+  FolderOpen
 } from 'lucide-react';
 import { SeedProduct, SEED_PRODUCTS } from '@/lib/seedData';
 import RFQModal from '@/components/public/RFQModal';
+import ProductVideoModal from './ProductVideoModal';
 
 interface ProductDetailClientProps {
   product: SeedProduct;
@@ -33,6 +36,7 @@ interface ProductDetailClientProps {
 export default function ProductDetailClient({ product }: ProductDetailClientProps) {
   const [selectedImage, setSelectedImage] = useState<string>(product.featuredImage || product.imageUrls[0] || '');
   const [isRfqOpen, setIsRfqOpen] = useState(false);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [downloadingPdf, setDownloadingPdf] = useState(false);
   const [downloadSuccess, setDownloadSuccess] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
@@ -203,6 +207,20 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   </button>
                 ))}
               </div>
+            )}
+
+            {/* Watch Product Video CTA */}
+            {product.videoEmbedUrl && (
+              <button
+                type="button"
+                onClick={() => setIsVideoOpen(true)}
+                className="w-full py-3.5 px-4 bg-neutral-900 hover:bg-black text-amber-300 hover:text-amber-200 rounded-2xl text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2.5 border-2 border-neutral-700 shadow-md transition group hover:scale-[1.01]"
+              >
+                <div className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center shadow group-hover:scale-110 transition">
+                  <Play className="w-3.5 h-3.5 fill-white ml-0.5" />
+                </div>
+                <span>Watch Product Video (Tap to Play)</span>
+              </button>
             )}
 
             {/* Verified Trust & Compliance Badges Box */}
@@ -419,6 +437,52 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               </div>
             </div>
 
+            {/* Section 4: Verified Plant Demonstration Video */}
+            {product.videoEmbedUrl && (
+              <div className="space-y-3 pt-2">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div>
+                    <span className="text-xs font-black text-red-600 uppercase tracking-wider">Section 4</span>
+                    <h2 className="text-xl font-black text-slate-900">Verified Plant Demonstration Video</h2>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {product.videoUrl && (
+                      <a
+                        href={product.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-bold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 px-3 py-1.5 rounded-xl flex items-center gap-1.5 transition"
+                      >
+                        <span>Open Video Link</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => setIsVideoOpen(true)}
+                      className="text-xs font-bold text-white bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded-xl flex items-center gap-1.5 transition shadow"
+                    >
+                      <Play className="w-3 h-3 fill-white" />
+                      <span>Full Player</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div className="relative aspect-video rounded-3xl overflow-hidden border-2 border-neutral-300 shadow-xl bg-black">
+                  <iframe
+                    src={product.videoEmbedUrl}
+                    title={`${product.name} Video`}
+                    className="w-full h-full border-0"
+                    allow="autoplay; encrypted-media; fullscreen"
+                    allowFullScreen
+                  />
+                </div>
+                <p className="text-xs text-neutral-500 font-medium">
+                  Official factory testing and fabrication recording for <strong>{product.name}</strong> from Patna Central Works.
+                </p>
+              </div>
+            )}
+
             {/* Screen 2 Mandate - Action Buttons (Large Emerald Green Button + Secondary Outlined Button) */}
             <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               {/* Large Emerald Green Button: [Request Bulk Pricing / RA Bill] */}
@@ -497,6 +561,17 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
         isOpen={isRfqOpen}
         onClose={() => setIsRfqOpen(false)}
         defaultProduct={product.name}
+      />
+
+      {/* Product Video Modal */}
+      <ProductVideoModal
+        isOpen={isVideoOpen}
+        onClose={() => setIsVideoOpen(false)}
+        productName={product.name}
+        videoEmbedUrl={product.videoEmbedUrl}
+        videoUrl={product.videoUrl}
+        videoTitle={product.videoTitle}
+        onOpenRFQ={() => setIsRfqOpen(true)}
       />
     </div>
   );

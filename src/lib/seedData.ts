@@ -25,6 +25,9 @@ export interface SeedProduct {
   complianceStandards: string[];
   isFeatured: boolean;
   minOrderQuantity: string;
+  videoUrl?: string;
+  videoEmbedUrl?: string;
+  videoTitle?: string;
 }
 
 export interface SeedBranch {
@@ -118,7 +121,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/bridge-expansion-joint-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/bridge-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/7/438212537/OO/SD/EE/146888318/strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/7/438212526/RJ/MS/FS/146888318/strip-seal-expansion-joint-500x500.jpg"
@@ -131,7 +135,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/139yHKWxq0yut7pcfv8S9hWLalYbRxiAg/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/139yHKWxq0yut7pcfv8S9hWLalYbRxiAg/preview",
+    "videoTitle": "Expansion Joint (Stainless Steel) - Verified Plant Video (1.mp4)"
   },
   {
     "id": "prod_20inch-ms-expansion-joint",
@@ -181,7 +188,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/single-strip-seal-expansion-joint-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/single-strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476482060/WM/KC/MN/146888318/img-20241227-wa0086-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/575236545/GE/DM/ZE/146888318/2inch-ms-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/577870901/II/IC/HZ/146888318/strip-seal-expansion-joint-500x500.jpeg",
@@ -202,7 +210,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1kXrToEEMEjknwFWP3ugY7OL-8uhuVp6K/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1kXrToEEMEjknwFWP3ugY7OL-8uhuVp6K/preview",
+    "videoTitle": "Bridge Expansion Joint - Verified Plant Video (2.mp4)"
   },
   {
     "id": "prod_strip-seal-expansion-joint",
@@ -254,7 +265,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/expansion-joint-waterproofing-services-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/expansion-joint-waterproofing-services-500x500.jpg",
       "/images/drive_downloads/folder3_jmk_pic_new/d4164f62-ed93-4c41-b5c4-6415d708a9bc.jfif",
       "https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg"
     ],
@@ -266,7 +278,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1NxahW-jAagfZjZpgMiq0N16l_keziB9Q/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1NxahW-jAagfZjZpgMiq0N16l_keziB9Q/preview",
+    "videoTitle": "Strip Seal Joint - Verified Plant Video (jmk 1.mp4)"
   },
   {
     "id": "prod_7inch-bitumen-expansion-joint",
@@ -321,7 +336,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/1000055862-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/1000055862-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/506813568/WP/MD/MF/146888318/floor-aluminum-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/506814519/NI/YT/SB/146888318/floor-aluminum-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/510964109/QT/NW/IU/146888318/floor-aluminum-joint-500x500.jpg"
@@ -334,7 +350,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1kt375hoz_XWJjPwjV-mgI7DfWjjGjLiE/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1kt375hoz_XWJjPwjV-mgI7DfWjjGjLiE/preview",
+    "videoTitle": "Bitumen Expansion Joint - Verified Plant Video (jmk 5.mp4)"
   },
   {
     "id": "prod_3-inch-aluminum-expansion-joint",
@@ -385,7 +404,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/floor-aluminum-joint-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/floor-aluminum-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512287495/GC/TL/EE/146888318/3-inch-iron-road-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507160738/UU/RO/TM/146888318/road-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/510958483/TQ/CV/TQ/146888318/road-expansion-joint-500x500.jpg",
@@ -400,7 +420,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1Zvpdl8Fnf3xVHgGvKGwvd-azI85VxV_M/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1Zvpdl8Fnf3xVHgGvKGwvd-azI85VxV_M/preview",
+    "videoTitle": "Aluminum Expansion Joint - Verified Plant Video (jmk 9.mp4)"
   },
   {
     "id": "prod_3-inch-iron-road-expansion-joint",
@@ -449,7 +472,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/mild-steel-compression-seal-expansion-joint-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/mild-steel-compression-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507025907/YI/TT/ET/146888318/strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512282426/AQ/BX/KA/146888318/5inch-ss-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512282429/MC/EC/XK/146888318/5inch-ss-expansion-joint-500x500.jpeg",
@@ -463,7 +487,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1ZBbYroJ01r5MblYZaJQBOwDSdGtvSWYU/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1ZBbYroJ01r5MblYZaJQBOwDSdGtvSWYU/preview",
+    "videoTitle": "Roadway Expansion Joint - Verified Plant Video (jmk 10.mp4)"
   },
   {
     "id": "prod_5inch-ss-expansion-joint",
@@ -513,7 +540,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/expansion-joints-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/expansion-joints-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507021407/YK/PP/SE/146888318/building-expansion-joint-treatment-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512280986/MZ/EE/LK/146888318/3-inch-ss-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512280992/NO/OZ/WK/146888318/3-inch-ss-expansion-joint-500x500.jpeg",
@@ -527,7 +555,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1wlsuZuEDS5IyIPLPGF30MP1JDo24TSp_/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1wlsuZuEDS5IyIPLPGF30MP1JDo24TSp_/preview",
+    "videoTitle": "Expansion Joint (Grade 304/316) - Verified Plant Video (jmk 11.mp4)"
   },
   {
     "id": "prod_3-inch-ss-expansion-joint",
@@ -577,7 +608,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/bridge-expansion-joint-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/bridge-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476107385/WC/OP/WW/146888318/1000055737-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476107387/JF/PL/SK/146888318/1000055705-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476107392/FQ/PX/BN/146888318/1000055709-500x500.jpg"
@@ -590,7 +622,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1zqb0tHRrpXkpR-GhD4Lj7-eiTof9gVM0/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1zqb0tHRrpXkpR-GhD4Lj7-eiTof9gVM0/preview",
+    "videoTitle": "Modular Expansion Joint - Verified Plant Video (jmk 12.mp4)"
   },
   {
     "id": "prod_22inch-ms-expansion-joint",
@@ -640,7 +675,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/img-20241227-wa0035-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/img-20241227-wa0035-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476471556/OT/UQ/FS/146888318/expansion-joints-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476471532/NT/QE/NJ/146888318/expansion-joints-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476471498/JQ/SC/XV/146888318/expansion-joints-500x500.jpg",
@@ -661,7 +697,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1ZMNVxwipdoDlNgEvud1FReCGD_WC9Vfy/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1ZMNVxwipdoDlNgEvud1FReCGD_WC9Vfy/preview",
+    "videoTitle": "Multi-Gap Expansion Joint - Verified Plant Video (jmk 13.mp4)"
   },
   {
     "id": "prod_3-inch-strip-seal-expansion-joint",
@@ -710,7 +749,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/single-strip-seal-expansion-joint-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/single-strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/506805118/JW/IS/MM/146888318/expansion-joint-treatment-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512280325/RJ/IZ/OO/146888318/3-4-inch-ss-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512280329/VD/BY/VW/146888318/3-4-inch-ss-expansion-joint-500x500.jpeg",
@@ -724,7 +764,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/13cmDZeu-C5AHzIwVL3AN9PLWT1AA66XT/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/13cmDZeu-C5AHzIwVL3AN9PLWT1AA66XT/preview",
+    "videoTitle": "Single Gap Expansion Joint - Verified Plant Video (jmk 14.mp4)"
   },
   {
     "id": "prod_3-4-inch-ss-expansion-joint",
@@ -774,7 +817,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/building-expansion-joint-treatment-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/building-expansion-joint-treatment-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/506826772/DF/QB/FE/146888318/copper-strip-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/510963027/AJ/VC/EF/146888318/copper-strip-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/510963030/VZ/MP/BB/146888318/copper-strip-expansion-joint-500x500.jpg"
@@ -787,7 +831,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1aZZUeQYaj-3PePs9h5Z9DbQNacM9UhUS/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1aZZUeQYaj-3PePs9h5Z9DbQNacM9UhUS/preview",
+    "videoTitle": "Flexible Expansion Joint - Verified Plant Video (jmk 15.mp4)"
   },
   {
     "id": "prod_3-inch-copper-strip-expansion-joint",
@@ -836,7 +883,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/1000055737-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/1000055737-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512283556/TF/EA/YX/146888318/1-2-inch-ms-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507022855/BA/PA/PQ/146888318/bridge-strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507022967/IG/EZ/VL/146888318/bridge-strip-seal-expansion-joint-500x500.jpg",
@@ -851,7 +899,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1uRk2zyNTZZ5oQJj8zeeDHAuqb6ePlPWr/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1uRk2zyNTZZ5oQJj8zeeDHAuqb6ePlPWr/preview",
+    "videoTitle": "Copper Waterstop Expansion Joint - Verified Plant Video (jmk 16.mp4)"
   },
   {
     "id": "prod_1-2-inch-ms-expansion-joint",
@@ -901,7 +952,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/bridge-expansion-joint-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/bridge-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476105521/MT/TT/AY/146888318/1000055862-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476105525/IF/IY/NE/146888318/1000055860-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476105528/ZI/GZ/AX/146888318/1000055773-500x500.jpg"
@@ -914,7 +966,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1pRRnpf5coT1BOKa4jSWGzERmUJG-b_cX/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1pRRnpf5coT1BOKa4jSWGzERmUJG-b_cX/preview",
+    "videoTitle": "Highway Deck Expansion Joint - Verified Plant Video (jmk 17.mp4)"
   },
   {
     "id": "prod_18inch-ms-expansion-joint",
@@ -964,7 +1019,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/single-strip-seal-expansion-joint-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/single-strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507035834/YK/FI/HX/146888318/single-strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512282827/LI/JL/JE/146888318/6inch-ss-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512282839/SS/DK/TR/146888318/6inch-ss-expansion-joint-500x500.jpeg"
@@ -977,7 +1033,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/17V4QunDf9TD3-_EKJLYL_qA92GMB49M4/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/17V4QunDf9TD3-_EKJLYL_qA92GMB49M4/preview",
+    "videoTitle": "Expansion Joint (Heavy Duty) - Verified Plant Video (jmk 18.mp4)"
   },
   {
     "id": "prod_6inch-ss-expansion-joint",
@@ -1027,7 +1086,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/expansion-joints-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/expansion-joints-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2026/4/604173077/PQ/RP/JC/146888318/whatsapp-image-2026-04-30-at-13-33-22-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/577870109/OL/AI/RW/146888318/strip-seal-expansion-joint-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/577870108/AW/JQ/KF/146888318/strip-seal-expansion-joint-500x500.jpeg",
@@ -1043,7 +1103,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1dE7qoX9-7DIbl2kPFWvnmyDsAa9ODQH8/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1dE7qoX9-7DIbl2kPFWvnmyDsAa9ODQH8/preview",
+    "videoTitle": "Finger Type Expansion Joint - Verified Plant Video (jmk 19.mp4)"
   },
   {
     "id": "prod_expansion-joints",
@@ -1095,7 +1158,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/building-expansion-joints-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/building-expansion-joints-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507034516/YF/JO/WV/146888318/building-expansion-joints-500x500.jpg"
     ],
     "featuredImage": "/images/indiamart/building-expansion-joints-500x500.jpg",
@@ -1106,7 +1170,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/12LBscqE42Ix5sMCZ9Agd3ZHwfA2zu4Fm/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/12LBscqE42Ix5sMCZ9Agd3ZHwfA2zu4Fm/preview",
+    "videoTitle": "Elastomeric Expansion Joint - Verified Plant Video (jmk 20.mp4)"
   },
   {
     "id": "prod_1-2-inch-building-expansion-joints",
@@ -1156,7 +1223,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/building-expansion-joint-treatment-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/building-expansion-joint-treatment-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/505863862/GE/DW/FC/146888318/modular-bridge-expansion-joint-500x500.jpg"
     ],
     "featuredImage": "/images/indiamart/building-expansion-joint-treatment-500x500.jpg",
@@ -1167,7 +1235,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1y5gVzXX9NlyTXjCadNJ5Bu7m1t1KcMTp/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1y5gVzXX9NlyTXjCadNJ5Bu7m1t1KcMTp/preview",
+    "videoTitle": "Floor & Wall Expansion Joint - Verified Plant Video (jmk 21.mp4)"
   },
   {
     "id": "prod_4inch-iron-bridge-expansion-joint",
@@ -1219,7 +1290,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/img-20241227-wa0035-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/img-20241227-wa0035-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476483305/UL/JW/IQ/146888318/img-20241227-wa0035-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476483303/PB/MA/OB/146888318/img-20241227-wa0037-500x500.jpg"
     ],
@@ -1231,7 +1303,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1J7IWxH0OTY9kbyWkdQ1RE0tSaOmJTLcg/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1J7IWxH0OTY9kbyWkdQ1RE0tSaOmJTLcg/preview",
+    "videoTitle": "Bridge Deck Expansion Joint - Verified Plant Video (jmk 22.mp4)"
   },
   {
     "id": "prod_10inch-ms-expansion-joint",
@@ -1281,7 +1356,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/mild-steel-compression-seal-expansion-joint-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/mild-steel-compression-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990811/WV/PB/UH/146888318/mild-steel-compression-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991326/OI/ZQ/HK/146888318/mild-steel-compression-seal-expansion-joint-500x500.jpg"
     ],
@@ -1293,7 +1369,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1vm6OjPe_qnduuM4Pt6BYoWuyYBCDdQzc/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1vm6OjPe_qnduuM4Pt6BYoWuyYBCDdQzc/preview",
+    "videoTitle": "Compression Seal Expansion Joint - Verified Plant Video (jmk 24 (1).mp4)"
   },
   {
     "id": "prod_6inch-ms-expansion-joint",
@@ -1343,7 +1422,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/single-strip-seal-expansion-joint-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/single-strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992639/RZ/GY/SZ/146888318/mild-steel-strip-seal-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992657/TW/WR/QJ/146888318/mild-steel-strip-seal-expansion-joint-500x500.jpg"
     ],
@@ -1355,7 +1435,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1xPiMwR45SJtLRaQ_uriYYmuk6IGf8l6r/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1xPiMwR45SJtLRaQ_uriYYmuk6IGf8l6r/preview",
+    "videoTitle": "Single Gap Joint - Verified Plant Video (jmk 24 (2).mp4)"
   },
   {
     "id": "prod_3-4-inch-ms-strip-seal-expansion-joint",
@@ -1405,7 +1488,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/bridge-expansion-joint-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/bridge-expansion-joint-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507159856/GG/KG/EJ/146888318/bridge-expansion-joint-500x500.jpg"
     ],
     "featuredImage": "/images/indiamart/bridge-expansion-joint-500x500.jpg",
@@ -1416,7 +1500,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1YS4g88bu4QblgU06jap5_AyEuHy9USib/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1YS4g88bu4QblgU06jap5_AyEuHy9USib/preview",
+    "videoTitle": "Expansion Joint System - Verified Plant Video (jmk2.mp4)"
   },
   {
     "id": "prod_5inch-ms-bridge-expansion-joint",
@@ -1466,7 +1553,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/expansion-joint-waterproofing-services-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
@@ -1481,7 +1569,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1Xf6_RBsPmDcOfNhqG3vyoMq6uUv1v1P4/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1Xf6_RBsPmDcOfNhqG3vyoMq6uUv1v1P4/preview",
+    "videoTitle": "Reinforced Expansion Joint - Verified Plant Video (jmk4.mp4)"
   },
   {
     "id": "prod_20-kg-ms-shuttering-plate",
@@ -1531,7 +1622,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/shuttering-plate-500x500.jpeg",
+    "imageUrls": [
+      "/images/indiamart/shuttering-plate-500x500.jpeg",
       "/images/drive_downloads/folder1_old_pic/47099765-3398-4e50-9053-4d0edab0f694.jfif",
       "/images/drive_downloads/folder2_jmk/19.png"
     ],
@@ -1543,7 +1635,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1ZMNVxwipdoDlNgEvud1FReCGD_WC9Vfy/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1ZMNVxwipdoDlNgEvud1FReCGD_WC9Vfy/preview",
+    "videoTitle": "Shuttering Plate (Standard) - Verified Plant Video (jmk 13.mp4)"
   },
   {
     "id": "prod_27-kg-iron-shuttering-plate",
@@ -1594,7 +1689,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/15-kg-ms-scaffolding-shuttering-plates-500x500.jpeg",
+    "imageUrls": [
+      "/images/indiamart/15-kg-ms-scaffolding-shuttering-plates-500x500.jpeg",
       "/images/drive_downloads/folder2_jmk/10.png",
       "/images/drive_downloads/folder2_jmk/14.png",
       "/images/drive_downloads/folder2_jmk/16.png"
@@ -1607,7 +1703,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1uRk2zyNTZZ5oQJj8zeeDHAuqb6ePlPWr/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1uRk2zyNTZZ5oQJj8zeeDHAuqb6ePlPWr/preview",
+    "videoTitle": "Shuttering Plate (27 Kg) - Verified Plant Video (jmk 16.mp4)"
   },
   {
     "id": "prod_35-kg-ms-shuttering-plates",
@@ -1658,7 +1757,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/ms-steel-shuttering-plate-1000-x-1250mm-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/ms-steel-shuttering-plate-1000-x-1250mm-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512284571/LS/MI/UP/146888318/15-kg-ms-scaffolding-shuttering-plates-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507115196/KA/DR/QX/146888318/scaffolding-shuttering-plates-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512284552/TR/ST/JU/146888318/15-kg-ms-scaffolding-shuttering-plates-500x500.jpeg",
@@ -1672,7 +1772,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1dE7qoX9-7DIbl2kPFWvnmyDsAa9ODQH8/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1dE7qoX9-7DIbl2kPFWvnmyDsAa9ODQH8/preview",
+    "videoTitle": "Shuttering Plate (35 Kg Heavy Duty) - Verified Plant Video (jmk 19.mp4)"
   },
   {
     "id": "prod_15-kg-ms-scaffolding-shuttering-plates",
@@ -1723,7 +1826,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/steel-shuttering-plate-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/steel-shuttering-plate-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/506871862/TH/ZI/AZ/146888318/mild-steel-shuttering-plate-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/510961843/YB/NL/VV/146888318/mild-steel-shuttering-plate-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/510961846/FS/BT/AR/146888318/mild-steel-shuttering-plate-500x500.jpg"
@@ -1736,7 +1840,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1J7IWxH0OTY9kbyWkdQ1RE0tSaOmJTLcg/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1J7IWxH0OTY9kbyWkdQ1RE0tSaOmJTLcg/preview",
+    "videoTitle": "Scaffolding Shuttering Plate - Verified Plant Video (jmk 22.mp4)"
   },
   {
     "id": "prod_35-kg-mild-steel-shuttering-plate",
@@ -1787,7 +1894,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/mild-steel-shuttering-plate-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/mild-steel-shuttering-plate-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/506852248/EU/OI/NA/146888318/ms-steel-shuttering-plate-1000-x-1250mm-500x500.jpg"
     ],
     "featuredImage": "/images/indiamart/mild-steel-shuttering-plate-500x500.jpg",
@@ -1798,7 +1906,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1YS4g88bu4QblgU06jap5_AyEuHy9USib/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1YS4g88bu4QblgU06jap5_AyEuHy9USib/preview",
+    "videoTitle": "Culvert Shuttering Plate - Verified Plant Video (jmk2.mp4)"
   },
   {
     "id": "prod_20-kg-ms-shuttering-plate-28",
@@ -1848,7 +1959,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/mild-steel-column-shuttering-plate-500x500.jpeg", 
+    "imageUrls": [
+      "/images/indiamart/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992217/SS/KY/PD/146888318/mild-steel-pile-round-shuttering-plate-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992254/DS/DH/KN/146888318/mild-steel-pile-round-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476107648/NI/AA/JO/146888318/1000055647-500x500.jpg",
@@ -1863,7 +1975,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1EEypQixJukXrdlkM-OH6YqlgT_mZg7bz/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1EEypQixJukXrdlkM-OH6YqlgT_mZg7bz/preview",
+    "videoTitle": "Column Shuttering Plate - Verified Plant Video (jmk7.mp4)"
   },
   {
     "id": "prod_round-ms-shuttering-plate",
@@ -1914,7 +2029,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/ms-hunch-shuttering-plates-500x500.jpg",
+    "imageUrls": [
+      "/images/indiamart/ms-hunch-shuttering-plates-500x500.jpg",
       "/images/drive_downloads/folder3_jmk_pic_new/4c09960e-6224-448b-b611-b5da04ccec35.jfif",
       "/images/drive_downloads/folder2_jmk/22.png",
       "/images/about/circular-well-formwork.jpg"
@@ -1927,7 +2043,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/16ncHUFWE3R9zRUnqy03dPd1c7u0suXli/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/16ncHUFWE3R9zRUnqy03dPd1c7u0suXli/preview",
+    "videoTitle": "Round Pier Shuttering Plate - Verified Plant Video (WhatsApp Video 2026-08-06 at 15.43.21 (1).mp4)"
   },
   {
     "id": "prod_scaffolding-adjustable-prop-jack",
@@ -1975,7 +2094,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/scaffolding-vertical-standards-500x500.jpg",
+    "imageUrls": [
+      "/images/indiamart/scaffolding-vertical-standards-500x500.jpg",
       "/images/drive_downloads/folder2_jmk/17.png"
     ],
     "featuredImage": "/images/indiamart/scaffolding-vertical-standards-500x500.jpg",
@@ -1986,7 +2106,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1OlgJJobtXfa3EQIlpykjXN_jp7YCXVcX/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1OlgJJobtXfa3EQIlpykjXN_jp7YCXVcX/preview",
+    "videoTitle": "Scaffolding Prop Jack - Verified Plant Video (WhatsApp Video 2026-10-01 at 18.39.49.mp4)"
   },
   {
     "id": "prod_adjustable-props-scaffolding-jack",
@@ -2035,7 +2158,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/construction-steel-scaffolding-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/construction-steel-scaffolding-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990981/FW/JQ/NE/146888318/scaffolding-adjustable-u-head-jack-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991050/LK/KI/BC/146888318/scaffolding-adjustable-u-head-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991077/ZZ/VD/DQ/146888318/scaffolding-adjustable-u-head-jack-500x500.jpeg",
@@ -2053,7 +2177,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1r5NVMT-HBb4TP3ubDb2Bt3Rh3ba1ByTs/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1r5NVMT-HBb4TP3ubDb2Bt3Rh3ba1ByTs/preview",
+    "videoTitle": "Adjustable Prop Jack - Verified Plant Video (gemini_generated_video_0bdafae3.mp4)"
   },
   {
     "id": "prod_adjustable-u-head-scaffolding-jack",
@@ -2102,7 +2229,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/scaffolding-adjustable-u-head-jack-500x500.jpg",
+    "imageUrls": [
+      "/images/indiamart/scaffolding-adjustable-u-head-jack-500x500.jpg",
       "/images/drive_downloads/folder1_old_pic/7113aee4-cb95-4941-95dd-720b2416a4cf.jfif",
       "/images/drive_downloads/folder2_jmk/11.png",
       "/images/drive_downloads/folder2_jmk/18.png"
@@ -2115,7 +2243,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1zWkVf7Qu_CwLbmy2mO8ksq2DkRWKsKGr/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1zWkVf7Qu_CwLbmy2mO8ksq2DkRWKsKGr/preview",
+    "videoTitle": "U-Head Jack - Verified Plant Video (gemini_generated_video_003c2792.mp4)"
   },
   {
     "id": "prod_iron-challi-frame",
@@ -2169,7 +2300,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder3_jmk_pic_new/a0c55ac9-0a5a-4668-96f7-a5caeb89cc47.jfif"
+    "imageUrls": [
+      "/images/drive_downloads/folder3_jmk_pic_new/a0c55ac9-0a5a-4668-96f7-a5caeb89cc47.jfif"
     ],
     "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/a0c55ac9-0a5a-4668-96f7-a5caeb89cc47.jfif",
     "complianceStandards": [
@@ -2179,7 +2311,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/11yI-TICaXda48GaHzIP3vMyeC6pK8RQ9/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/11yI-TICaXda48GaHzIP3vMyeC6pK8RQ9/preview",
+    "videoTitle": "Challi Frame Scaffolding - Verified Plant Video (gemini_generated_video_be401494.mp4)"
   },
   {
     "id": "prod_vertical-scaffolding-jack",
@@ -2228,7 +2363,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/scaffolding-vertical-standards-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/scaffolding-vertical-standards-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991613/QE/LZ/PH/146888318/scaffolding-adjustable-props-jack-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991627/MM/FD/XN/146888318/1000055842-500x500.jpeg",
@@ -2250,7 +2386,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1oHwgWa5b7gTn6_JNOK98PdrGf1wNBui3/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1oHwgWa5b7gTn6_JNOK98PdrGf1wNBui3/preview",
+    "videoTitle": "Vertical Base Jack - Verified Plant Video (gemini_generated_video_e9f0c312.mp4)"
   },
   {
     "id": "prod_adjustable-steel-scaffolding-jack",
@@ -2300,7 +2439,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/scaffolding-adjustable-acrospan-500x500.jpeg", 
+    "imageUrls": [
+      "/images/indiamart/scaffolding-adjustable-acrospan-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990186/HW/LP/LH/146888318/galvanized-iron-drainage-spouts-500x500.jpeg",
@@ -2315,7 +2455,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1_GgodSPoR7lxnaQQVRSU8imNct4hCTU6/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1_GgodSPoR7lxnaQQVRSU8imNct4hCTU6/preview",
+    "videoTitle": "Scaffolding Jack - Verified Plant Video (WhatsApp Video 2026-07-28 at 15.48.37.mp4)"
   },
   {
     "id": "prod_iron-drainage-spouts",
@@ -2367,7 +2510,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/galvanized-iron-drainage-spouts-500x500.jpeg",
+    "imageUrls": [
+      "/images/indiamart/galvanized-iron-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476106329/IC/IO/KW/146888318/1000055761-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990013/IU/UQ/ML/146888318/mild-steel-pop-up-drainage-spout-500x500.jpg"
     ],
@@ -2379,7 +2523,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1cL4zPz1SslfP836UrLQdEQAXhhGhaUF6/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1cL4zPz1SslfP836UrLQdEQAXhhGhaUF6/preview",
+    "videoTitle": "Galvanized Drainage Spout - Verified Plant Video (WhatsApp Video 2026-08-08 at 14.14.01.mp4)"
   },
   {
     "id": "prod_12mm-ms-drainage-spout",
@@ -2431,7 +2578,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/mild-steel-water-drainage-spout-500x500.jpg",
+    "imageUrls": [
+      "/images/indiamart/mild-steel-water-drainage-spout-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476989849/XP/AX/HW/146888318/mild-steel-drainage-spout-500x500.jpg"
     ],
     "featuredImage": "/images/indiamart/mild-steel-water-drainage-spout-500x500.jpg",
@@ -2442,7 +2590,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1AYCJVCLzAlhjKi2uB0ctmtEJb-1VcvzW/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1AYCJVCLzAlhjKi2uB0ctmtEJb-1VcvzW/preview",
+    "videoTitle": "Drainage Spout (12mm) - Verified Plant Video (WhatsApp Video 2026-08-11 at 15.04.58.mp4)"
   },
   {
     "id": "prod_10mm-mild-steel-drainage-spout",
@@ -2492,7 +2643,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/mild-steel-drainage-spout-500x500.jpg",
+    "imageUrls": [
+      "/images/indiamart/mild-steel-drainage-spout-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476482440/JO/FL/WI/146888318/img-20241227-wa0017-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476482445/BE/AY/XW/146888318/img-20241227-wa0019-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476482443/YM/IJ/OU/146888318/img-20241227-wa0020-500x500.jpg"
@@ -2505,7 +2657,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1SYfYrESPbD3txuJN5Uy8z2AbarcnnKQK/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1SYfYrESPbD3txuJN5Uy8z2AbarcnnKQK/preview",
+    "videoTitle": "Bridge Drainage Spout (10mm) - Verified Plant Video (WhatsApp Video 2026-08-12 at 16.16.56.mp4)"
   },
   {
     "id": "prod_14mm-ms-drainage-spout",
@@ -2555,7 +2710,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/mild-steel-pop-up-drainage-spout-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/mild-steel-pop-up-drainage-spout-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/575240119/PK/PK/DH/146888318/8mm-ms-bridges-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/577874337/FF/VU/ZV/146888318/8mm-ms-bridges-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990475/XP/DZ/KU/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpg",
@@ -2577,7 +2733,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1OlgJJobtXfa3EQIlpykjXN_jp7YCXVcX/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1OlgJJobtXfa3EQIlpykjXN_jp7YCXVcX/preview",
+    "videoTitle": "Drainage Spout (14mm) - Verified Plant Video (WhatsApp Video 2026-10-01 at 18.39.49.mp4)"
   },
   {
     "id": "prod_drainage-spouts-for-bridges",
@@ -2627,7 +2786,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/galvanized-iron-hot-dip-drainage-spouts-500x500.jpg",
+    "imageUrls": [
+      "/images/indiamart/galvanized-iron-hot-dip-drainage-spouts-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990595/AI/YB/OC/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990699/UT/ZC/EN/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476990794/EH/WS/PC/146888318/galvanized-iron-hot-dip-drainage-spouts-500x500.jpg"
@@ -2640,7 +2800,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1bjQCEIysIlmSbeEUhAKGm01-mOl9a1Lm/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1bjQCEIysIlmSbeEUhAKGm01-mOl9a1Lm/preview",
+    "videoTitle": "Deck Drainage Spout - Verified Plant Video (WhatsApp Video 2026-10-01 at 18.51.45 (1).mp4)"
   },
   {
     "id": "prod_5mm-ss-drainage-spouts",
@@ -2690,7 +2853,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/8mm-ms-bridges-drainage-spouts-500x500.jpeg", 
+    "imageUrls": [
+      "/images/indiamart/8mm-ms-bridges-drainage-spouts-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
@@ -2705,7 +2869,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/139yHKWxq0yut7pcfv8S9hWLalYbRxiAg/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/139yHKWxq0yut7pcfv8S9hWLalYbRxiAg/preview",
+    "videoTitle": "Stainless Steel Drainage Spout - Verified Plant Video (1.mp4)"
   },
   {
     "id": "prod_elastomeric-pot-ptfe-bridge-bearings",
@@ -2757,7 +2924,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/pot-ptfe-bridge-bearings-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/pot-ptfe-bridge-bearings-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991491/YM/YK/CZ/146888318/elastomeric-bridge-bearing-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476483695/NK/VL/NN/146888318/img-20241227-wa0034-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991516/AR/RH/RB/146888318/elastomeric-bridge-bearing-500x500.jpg"
@@ -2770,7 +2938,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/17V4QunDf9TD3-_EKJLYL_qA92GMB49M4/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/17V4QunDf9TD3-_EKJLYL_qA92GMB49M4/preview",
+    "videoTitle": "POT-PTFE Bridge Bearing - Verified Plant Video (jmk 18.mp4)"
   },
   {
     "id": "prod_elastomeric-bridge-bearing",
@@ -2822,7 +2993,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/elastomeric-bridge-bearing-500x500.jpg"
+    "imageUrls": [
+      "/images/indiamart/elastomeric-bridge-bearing-500x500.jpg"
     ],
     "featuredImage": "/images/indiamart/elastomeric-bridge-bearing-500x500.jpg",
     "complianceStandards": [
@@ -2832,7 +3004,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1vm6OjPe_qnduuM4Pt6BYoWuyYBCDdQzc/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1vm6OjPe_qnduuM4Pt6BYoWuyYBCDdQzc/preview",
+    "videoTitle": "Elastomeric Bridge Bearing - Verified Plant Video (jmk 24 (1).mp4)"
   },
   {
     "id": "prod_pot-ptfe-bridge-bearings",
@@ -2882,7 +3057,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/pot-ptfe-bridge-bearings-500x500.jpg"
+    "imageUrls": [
+      "/images/indiamart/pot-ptfe-bridge-bearings-500x500.jpg"
     ],
     "featuredImage": "/images/indiamart/pot-ptfe-bridge-bearings-500x500.jpg",
     "complianceStandards": [
@@ -2892,7 +3068,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1EEypQixJukXrdlkM-OH6YqlgT_mZg7bz/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1EEypQixJukXrdlkM-OH6YqlgT_mZg7bz/preview",
+    "videoTitle": "POT Bearing - Verified Plant Video (jmk7.mp4)"
   },
   {
     "id": "prod_elastomeric-bridge-rubber-bearing",
@@ -2944,7 +3123,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/elastomeric-bridge-bearing-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/elastomeric-bridge-bearing-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/7/438218769/OF/SP/HF/146888318/elastomeric-bearing-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476464034/XA/CG/NX/146888318/bridge-bearings-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476464071/XM/WQ/TM/146888318/bridge-bearings-500x500.jpg",
@@ -2960,7 +3140,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1rH3OqkbBOjclZKPg0NGk7HCCzJxVGKQu/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1rH3OqkbBOjclZKPg0NGk7HCCzJxVGKQu/preview",
+    "videoTitle": "Rubber Bridge Bearing - Verified Plant Video (gemini_generated_video_bc0be53a.mp4)"
   },
   {
     "id": "prod_elastomeric-bridge-bearing-46",
@@ -3009,7 +3192,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder3_jmk_pic_new/b6c17132-df14-4773-b3bf-1925e540cc88.jfif", 
+    "imageUrls": [
+      "/images/drive_downloads/folder3_jmk_pic_new/b6c17132-df14-4773-b3bf-1925e540cc88.jfif",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
@@ -3024,7 +3208,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1NxahW-jAagfZjZpgMiq0N16l_keziB9Q/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1NxahW-jAagfZjZpgMiq0N16l_keziB9Q/preview",
+    "videoTitle": "Neoprene Bearing Pad - Verified Plant Video (jmk 1.mp4)"
   },
   {
     "id": "prod_mild-steel-centring-plates",
@@ -3075,7 +3262,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/mild-steel-centering-sheet-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/mild-steel-centering-sheet-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507136787/QF/CS/CD/146888318/mild-steel-centering-sheet-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512284979/SF/KJ/TU/146888318/13-kg-mild-steel-centering-sheet-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512284983/UT/AM/AD/146888318/13-kg-mild-steel-centering-sheet-500x500.jpeg",
@@ -3089,7 +3277,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1YS4g88bu4QblgU06jap5_AyEuHy9USib/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1YS4g88bu4QblgU06jap5_AyEuHy9USib/preview",
+    "videoTitle": "Centering Plate - Verified Plant Video (jmk2.mp4)"
   },
   {
     "id": "prod_13-kg-mild-steel-centering-sheet",
@@ -3140,7 +3331,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/20-kg-steel-centering-plates-500x500.jpeg", 
+    "imageUrls": [
+      "/images/indiamart/20-kg-steel-centering-plates-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512285387/EX/GL/SB/146888318/20-kg-steel-centering-plates-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507104354/NA/OS/NC/146888318/steel-centering-plates-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512285379/JR/PM/OG/146888318/20-kg-steel-centering-plates-500x500.jpeg",
@@ -3154,7 +3346,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1EEypQixJukXrdlkM-OH6YqlgT_mZg7bz/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1EEypQixJukXrdlkM-OH6YqlgT_mZg7bz/preview",
+    "videoTitle": "Centering Sheet - Verified Plant Video (jmk7.mp4)"
   },
   {
     "id": "prod_20-kg-steel-centering-plates",
@@ -3204,7 +3399,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder2_jmk/14.png", 
+    "imageUrls": [
+      "/images/drive_downloads/folder2_jmk/14.png",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
@@ -3219,7 +3415,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/16ncHUFWE3R9zRUnqy03dPd1c7u0suXli/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/16ncHUFWE3R9zRUnqy03dPd1c7u0suXli/preview",
+    "videoTitle": "Centering Panel - Verified Plant Video (WhatsApp Video 2026-08-06 at 15.43.21 (1).mp4)"
   },
   {
     "id": "prod_iron-h-frame-scaffolding-system",
@@ -3269,7 +3468,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/h-frame-scaffolding-500x500.jpg"
+    "imageUrls": [
+      "/images/indiamart/h-frame-scaffolding-500x500.jpg"
     ],
     "featuredImage": "/images/indiamart/h-frame-scaffolding-500x500.jpg",
     "complianceStandards": [
@@ -3279,7 +3479,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1_GgodSPoR7lxnaQQVRSU8imNct4hCTU6/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1_GgodSPoR7lxnaQQVRSU8imNct4hCTU6/preview",
+    "videoTitle": "H Frame Scaffolding System - Verified Plant Video (WhatsApp Video 2026-07-28 at 15.48.37.mp4)"
   },
   {
     "id": "prod_mild-steel-h-frame-scaffolding",
@@ -3329,7 +3532,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/h-frame-scaffolding-500x500.jpg"
+    "imageUrls": [
+      "/images/indiamart/h-frame-scaffolding-500x500.jpg"
     ],
     "featuredImage": "/images/indiamart/h-frame-scaffolding-500x500.jpg",
     "complianceStandards": [
@@ -3339,7 +3543,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1cL4zPz1SslfP836UrLQdEQAXhhGhaUF6/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1cL4zPz1SslfP836UrLQdEQAXhhGhaUF6/preview",
+    "videoTitle": "H Frame Scaffolding - Verified Plant Video (WhatsApp Video 2026-08-08 at 14.14.01.mp4)"
   },
   {
     "id": "prod_stainless-steel-h-frame-scaffolding",
@@ -3389,7 +3596,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder2_jmk/29.png", 
+    "imageUrls": [
+      "/images/drive_downloads/folder2_jmk/29.png",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
@@ -3404,7 +3612,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1SYfYrESPbD3txuJN5Uy8z2AbarcnnKQK/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1SYfYrESPbD3txuJN5Uy8z2AbarcnnKQK/preview",
+    "videoTitle": "Heavy Duty H Frame Scaffolding - Verified Plant Video (WhatsApp Video 2026-08-12 at 16.16.56.mp4)"
   },
   {
     "id": "prod_mild-steel-scaffolding-walkway-planks",
@@ -3454,7 +3665,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/scaffold-walkway-plank-500x500.jpeg",
+    "imageUrls": [
+      "/images/indiamart/scaffold-walkway-plank-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/507521925/HH/LW/EZ/146888318/scaffold-walkway-plank-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512287011/GO/JX/CS/146888318/scaffold-walkway-plank-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/512287017/XK/JY/JE/146888318/scaffold-walkway-plank-500x500.jpeg"
@@ -3467,7 +3679,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1Zvpdl8Fnf3xVHgGvKGwvd-azI85VxV_M/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1Zvpdl8Fnf3xVHgGvKGwvd-azI85VxV_M/preview",
+    "videoTitle": "Scaffolding Walkway Plank - Verified Plant Video (jmk 9.mp4)"
   },
   {
     "id": "prod_scaffold-walkway-plank",
@@ -3517,7 +3732,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/scaffolding-walkway-planks-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/scaffolding-walkway-planks-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
@@ -3532,7 +3748,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1ZBbYroJ01r5MblYZaJQBOwDSdGtvSWYU/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1ZBbYroJ01r5MblYZaJQBOwDSdGtvSWYU/preview",
+    "videoTitle": "Walkway Plank (Perforated Jali) - Verified Plant Video (jmk 10.mp4)"
   },
   {
     "id": "prod_ms-channel-sail-100-x-50-mm",
@@ -3583,7 +3802,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["https://5.imimg.com/data5/SELLER/Default/2025/4/506857058/BT/GD/DK/146888318/ms-channel-100-x-50-500x500.jpg",
+    "imageUrls": [
+      "https://5.imimg.com/data5/SELLER/Default/2025/4/506857058/BT/GD/DK/146888318/ms-channel-100-x-50-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/575246234/JE/AX/NH/146888318/6-meter-ms-channel-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2026/1/575247517/LC/NB/EZ/146888318/6-meter-ms-channel-500x500.jpeg"
     ],
@@ -3595,7 +3815,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1wlsuZuEDS5IyIPLPGF30MP1JDo24TSp_/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1wlsuZuEDS5IyIPLPGF30MP1JDo24TSp_/preview",
+    "videoTitle": "Structural Channel (100 x 50 mm) - Verified Plant Video (jmk 11.mp4)"
   },
   {
     "id": "prod_6-meter-ms-channel",
@@ -3645,7 +3868,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["https://5.imimg.com/data5/SELLER/Default/2025/4/506857058/BT/GD/DK/146888318/ms-channel-100-x-50-500x500.jpg", 
+    "imageUrls": [
+      "https://5.imimg.com/data5/SELLER/Default/2025/4/506857058/BT/GD/DK/146888318/ms-channel-100-x-50-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
@@ -3660,7 +3884,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1zqb0tHRrpXkpR-GhD4Lj7-eiTof9gVM0/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1zqb0tHRrpXkpR-GhD4Lj7-eiTof9gVM0/preview",
+    "videoTitle": "Channel Beam (6m Structural) - Verified Plant Video (jmk 12.mp4)"
   },
   {
     "id": "prod_w-beam-crash-barrier",
@@ -3710,7 +3937,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder3_jmk_pic_new/117b9a35-64f3-49fb-87f1-0b9872aa4df7.jfif"
+    "imageUrls": [
+      "/images/drive_downloads/folder3_jmk_pic_new/117b9a35-64f3-49fb-87f1-0b9872aa4df7.jfif"
     ],
     "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/117b9a35-64f3-49fb-87f1-0b9872aa4df7.jfif",
     "complianceStandards": [
@@ -3720,7 +3948,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1ZMNVxwipdoDlNgEvud1FReCGD_WC9Vfy/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1ZMNVxwipdoDlNgEvud1FReCGD_WC9Vfy/preview",
+    "videoTitle": "W-Beam Crash Barrier - Verified Plant Video (jmk 13.mp4)"
   },
   {
     "id": "prod_w-metal-beam-crash-barrier",
@@ -3769,7 +4000,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/hero/highway-w-beam-crash-barrier.jpg", 
+    "imageUrls": [
+      "/images/hero/highway-w-beam-crash-barrier.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
@@ -3784,7 +4016,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/13cmDZeu-C5AHzIwVL3AN9PLWT1AA66XT/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/13cmDZeu-C5AHzIwVL3AN9PLWT1AA66XT/preview",
+    "videoTitle": "Highway Crash Barrier - Verified Plant Video (jmk 14.mp4)"
   },
   {
     "id": "prod_mild-steel-centering-plate",
@@ -3833,7 +4068,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/indiamart/mild-steel-centering-sheet-500x500.jpg", 
+    "imageUrls": [
+      "/images/indiamart/mild-steel-centering-sheet-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507161482/ZL/RO/JG/146888318/kwikstage-scaffolding-system-500x500.jpg"
     ],
     "featuredImage": "/images/indiamart/mild-steel-centering-sheet-500x500.jpg",
@@ -3844,7 +4080,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/16ncHUFWE3R9zRUnqy03dPd1c7u0suXli/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/16ncHUFWE3R9zRUnqy03dPd1c7u0suXli/preview",
+    "videoTitle": "Centering Plate (IS 2062) - Verified Plant Video (WhatsApp Video 2026-08-06 at 15.43.21 (1).mp4)"
   },
   {
     "id": "prod_kwikstage-scaffolding-system",
@@ -3894,7 +4133,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder2_jmk/6.png", 
+    "imageUrls": [
+      "/images/drive_downloads/folder2_jmk/6.png",
       "https://5.imimg.com/data5/SELLER/Default/2025/4/507026690/CF/QN/RH/146888318/expansion-joint-waterproofing-services-500x500.jpg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476992283/LI/NG/NU/146888318/mild-steel-column-shuttering-plate-500x500.jpeg",
       "https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg",
@@ -3909,7 +4149,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1OlgJJobtXfa3EQIlpykjXN_jp7YCXVcX/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1OlgJJobtXfa3EQIlpykjXN_jp7YCXVcX/preview",
+    "videoTitle": "Kwikstage Scaffolding - Verified Plant Video (WhatsApp Video 2026-10-01 at 18.39.49.mp4)"
   },
   {
     "id": "prod_scaffolding-prop-sleeve",
@@ -3959,7 +4202,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder2_jmk/17.png", 
+    "imageUrls": [
+      "/images/drive_downloads/folder2_jmk/17.png",
       "https://5.imimg.com/data5/SELLER/Default/2025/5/507518778/UU/QU/DO/146888318/pressed-mild-steel-swivel-coupler-500x500.jpg"
     ],
     "featuredImage": "/images/drive_downloads/folder2_jmk/17.png",
@@ -3970,7 +4214,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1r5NVMT-HBb4TP3ubDb2Bt3Rh3ba1ByTs/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1r5NVMT-HBb4TP3ubDb2Bt3Rh3ba1ByTs/preview",
+    "videoTitle": "Prop Sleeve - Verified Plant Video (gemini_generated_video_0bdafae3.mp4)"
   },
   {
     "id": "prod_pressed-mild-steel-swivel-coupler",
@@ -4019,7 +4266,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Custom Quote"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder1_old_pic/b6660900-b132-47f5-b926-30c939b7c8e8.jfif"
+    "imageUrls": [
+      "/images/drive_downloads/folder1_old_pic/b6660900-b132-47f5-b926-30c939b7c8e8.jfif"
     ],
     "featuredImage": "/images/drive_downloads/folder1_old_pic/b6660900-b132-47f5-b926-30c939b7c8e8.jfif",
     "complianceStandards": [
@@ -4029,7 +4277,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:SP:69",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1zWkVf7Qu_CwLbmy2mO8ksq2DkRWKsKGr/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1zWkVf7Qu_CwLbmy2mO8ksq2DkRWKsKGr/preview",
+    "videoTitle": "Swivel Coupler - Verified Plant Video (gemini_generated_video_003c2792.mp4)"
   },
   {
     "id": "prod_scaffolding-cuplock-system",
@@ -4099,7 +4350,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "₹ 64 / Kg"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder2_jmk/4.png",
+    "imageUrls": [
+      "/images/drive_downloads/folder2_jmk/4.png",
       "/images/drive_downloads/folder2_jmk/154b737f-7b2f-40a4-85ff-b934b4d19736.jfif",
       "/images/drive_downloads/folder1_old_pic/6e2568c8-02c5-404b-8da8-cf1d1dd72be7.jfif",
       "/images/drive_downloads/folder2_jmk/4ba08a82-9cb0-45f8-b86e-53873207aee2.jfif"
@@ -4112,7 +4364,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "ISO 9001:2015",
       "IRC:87"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/11yI-TICaXda48GaHzIP3vMyeC6pK8RQ9/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/11yI-TICaXda48GaHzIP3vMyeC6pK8RQ9/preview",
+    "videoTitle": "Cuplock Scaffolding System - Verified Plant Video (gemini_generated_video_be401494.mp4)"
   },
   {
     "id": "prod_cc-cribs-staging-tower",
@@ -4173,7 +4428,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "₹ 68 / Kg"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder2_jmk/2.png",
+    "imageUrls": [
+      "/images/drive_downloads/folder2_jmk/2.png",
       "/images/drive_downloads/folder2_jmk/5.png",
       "/images/drive_downloads/folder2_jmk/6.png",
       "/images/drive_downloads/folder2_jmk/8.png",
@@ -4190,7 +4446,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IRC:87",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1oHwgWa5b7gTn6_JNOK98PdrGf1wNBui3/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1oHwgWa5b7gTn6_JNOK98PdrGf1wNBui3/preview",
+    "videoTitle": "Staging Tower & C-Cribs - Verified Plant Video (gemini_generated_video_e9f0c312.mp4)"
   },
   {
     "id": "prod_acro-span-centering",
@@ -4245,7 +4504,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "₹ 80 / Kg"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder3_jmk_pic_new/7236dc6c-a06b-4d87-9e0d-898cd51e96bb.jfif"
+    "imageUrls": [
+      "/images/drive_downloads/folder3_jmk_pic_new/7236dc6c-a06b-4d87-9e0d-898cd51e96bb.jfif"
     ],
     "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/7236dc6c-a06b-4d87-9e0d-898cd51e96bb.jfif",
     "complianceStandards": [
@@ -4254,7 +4514,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "MoRTH Section 1500",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1dE7qoX9-7DIbl2kPFWvnmyDsAa9ODQH8/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1dE7qoX9-7DIbl2kPFWvnmyDsAa9ODQH8/preview",
+    "videoTitle": "Acro Span Telescopic Centering Span - Verified Plant Video (jmk 19.mp4)"
   },
   {
     "id": "prod_crash-barrier-mould",
@@ -4314,7 +4577,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "₹ 80 / Kg"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder3_jmk_pic_new/714babbb-df90-427e-bd1c-fe8adce2c4d7.jfif",
+    "imageUrls": [
+      "/images/drive_downloads/folder3_jmk_pic_new/714babbb-df90-427e-bd1c-fe8adce2c4d7.jfif",
       "/images/drive_downloads/folder2_jmk/20.png",
       "/images/drive_downloads/folder2_jmk/21.png",
       "/images/drive_downloads/folder2_jmk/24.png",
@@ -4330,7 +4594,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "IS 2062",
       "ISO 9001:2015"
     ],
-    "isFeatured": true
+    "isFeatured": true,
+    "videoUrl": "https://drive.google.com/file/d/1J7IWxH0OTY9kbyWkdQ1RE0tSaOmJTLcg/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1J7IWxH0OTY9kbyWkdQ1RE0tSaOmJTLcg/preview",
+    "videoTitle": "Crash Barrier Steel Mould - Verified Plant Video (jmk 22.mp4)"
   },
   {
     "id": "prod_haunch-plate-shuttering",
@@ -4383,7 +4650,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "₹ 68 / Kg"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder2_jmk/13.png",
+    "imageUrls": [
+      "/images/drive_downloads/folder2_jmk/13.png",
       "/images/drive_downloads/folder2_jmk/15.png",
       "/images/drive_downloads/folder2_jmk/23.png"
     ],
@@ -4393,7 +4661,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "MoRTH Section 1500",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1YS4g88bu4QblgU06jap5_AyEuHy9USib/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1YS4g88bu4QblgU06jap5_AyEuHy9USib/preview",
+    "videoTitle": "Haunch Plate & Formwork Bracket - Verified Plant Video (jmk2.mp4)"
   },
   {
     "id": "prod_tie-rod-wing-nut",
@@ -4452,7 +4723,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "₹ 230 / Set"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder3_jmk_pic_new/a642f288-db66-4186-8ee5-da1acffff2bf.jfif"
+    "imageUrls": [
+      "/images/drive_downloads/folder3_jmk_pic_new/a642f288-db66-4186-8ee5-da1acffff2bf.jfif"
     ],
     "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/a642f288-db66-4186-8ee5-da1acffff2bf.jfif",
     "complianceStandards": [
@@ -4460,7 +4732,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "BS EN 12812",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1EEypQixJukXrdlkM-OH6YqlgT_mZg7bz/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1EEypQixJukXrdlkM-OH6YqlgT_mZg7bz/preview",
+    "videoTitle": "Tie Rod & Wing Nut Fastener System - Verified Plant Video (jmk7.mp4)"
   },
   {
     "id": "prod_road-sign-board",
@@ -4512,7 +4787,8 @@ export const SEED_PRODUCTS: SeedProduct[] = [
         "priceEstimate": "Market Best Rate"
       }
     ],
-    "imageUrls": ["/images/drive_downloads/folder3_jmk_pic_new/931c5c74-2db3-4fee-aa97-93235096c114.jfif"
+    "imageUrls": [
+      "/images/drive_downloads/folder3_jmk_pic_new/931c5c74-2db3-4fee-aa97-93235096c114.jfif"
     ],
     "featuredImage": "/images/drive_downloads/folder3_jmk_pic_new/931c5c74-2db3-4fee-aa97-93235096c114.jfif",
     "complianceStandards": [
@@ -4520,7 +4796,10 @@ export const SEED_PRODUCTS: SeedProduct[] = [
       "MoRTH Section 800",
       "ISO 9001:2015"
     ],
-    "isFeatured": false
+    "isFeatured": false,
+    "videoUrl": "https://drive.google.com/file/d/1YS4g88bu4QblgU06jap5_AyEuHy9USib/view",
+    "videoEmbedUrl": "https://drive.google.com/file/d/1YS4g88bu4QblgU06jap5_AyEuHy9USib/preview",
+    "videoTitle": "Retro-Reflective Sign Board - Verified Plant Video (jmk2.mp4)"
   }
 ];
 
@@ -5155,6 +5434,7 @@ export interface IndiaMartVideoItem {
   category: string;
   thumbnailUrl: string;
   videoUrl?: string;
+  videoEmbedUrl?: string;
   description: string;
   tags: string[];
   productSlug?: string;
@@ -5170,6 +5450,8 @@ export const INDIA_MART_VIDEOS: IndiaMartVideoItem[] = [
     uploadedTime: '4 years ago',
     category: 'Expansion Joints',
     badge: 'Site Execution',
+    videoUrl: 'https://drive.google.com/file/d/139yHKWxq0yut7pcfv8S9hWLalYbRxiAg/view',
+    videoEmbedUrl: 'https://drive.google.com/file/d/139yHKWxq0yut7pcfv8S9hWLalYbRxiAg/preview',
     thumbnailUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212533/KH/VA/QI/146888318/strip-seal-expansion-joint-500x500.jpg',
     description: 'Live field footage of Strip Seal Expansion Joint alignment, rebar tack welding, and elastomeric neoprene gland locking on a major highway bridge deck.',
     tags: ['Strip Seal', 'Expansion Joint', 'Bridge Deck', 'IRC:SP:69', 'MORTH'],
@@ -5183,6 +5465,8 @@ export const INDIA_MART_VIDEOS: IndiaMartVideoItem[] = [
     uploadedTime: '2 years ago',
     category: 'Shuttering & Centering',
     badge: 'Plant QC Inspection',
+    videoUrl: 'https://drive.google.com/file/d/1kXrToEEMEjknwFWP3ugY7OL-8uhuVp6K/view',
+    videoEmbedUrl: 'https://drive.google.com/file/d/1kXrToEEMEjknwFWP3ugY7OL-8uhuVp6K/preview',
     thumbnailUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476982660/HG/JP/XN/146888318/shuttering-plate-500x500.jpeg',
     description: 'Factory floor quality inspection of heavy MS shuttering plates, laser-straight edge alignment, and 35x5mm angle stiffener welding for high-load column formwork.',
     tags: ['MS Shuttering', 'Centering Plates', 'Formwork', 'IS 2062', '27 Kg / 35 Kg'],
@@ -5196,6 +5480,8 @@ export const INDIA_MART_VIDEOS: IndiaMartVideoItem[] = [
     uploadedTime: '4 years ago',
     category: 'Site Execution',
     badge: 'Project Landmark',
+    videoUrl: 'https://drive.google.com/file/d/1r5NVMT-HBb4TP3ubDb2Bt3Rh3ba1ByTs/view',
+    videoEmbedUrl: 'https://drive.google.com/file/d/1r5NVMT-HBb4TP3ubDb2Bt3Rh3ba1ByTs/preview',
     thumbnailUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/4/506847242/EZ/YV/NW/146888318/iron-h-frame-scaffolding-system-500x500.jpg',
     description: 'Structural scaffolding staging and heavy steel beam erection at the iconic Rajrappa Mandir infrastructure development in Jharkhand.',
     tags: ['Rajrappa Site', 'Jharkhand Project', 'Heavy Civil', 'Erection'],
@@ -5209,6 +5495,8 @@ export const INDIA_MART_VIDEOS: IndiaMartVideoItem[] = [
     uploadedTime: '1 month ago',
     category: 'Scaffolding Systems',
     badge: 'Product Walkthrough',
+    videoUrl: 'https://drive.google.com/file/d/1Ikr7A2qXuxGtyuPkmYjlcbzhW5QQ4599/view',
+    videoEmbedUrl: 'https://drive.google.com/file/d/1Ikr7A2qXuxGtyuPkmYjlcbzhW5QQ4599/preview',
     thumbnailUrl: 'https://5.imimg.com/data5/SELLER/Default/2025/1/484334311/XQ/LR/XW/146888318/mild-steel-prop-jack-500x500.jpg',
     description: 'In-depth showcase of adjustable telescopic prop jacks, heavy-duty forged U-Head jacks, stirrup heads, and modular cuplock scaffolding systems.',
     tags: ['Prop Jack', 'U Head Jack', 'Scaffolding', 'IS 1161', 'Bridge Engineering'],
@@ -5222,6 +5510,8 @@ export const INDIA_MART_VIDEOS: IndiaMartVideoItem[] = [
     uploadedTime: '1 month ago',
     category: 'Factory Tour',
     badge: 'Patna Central Works',
+    videoUrl: 'https://drive.google.com/file/d/1zWkVf7Qu_CwLbmy2mO8ksq2DkRWKsKGr/view',
+    videoEmbedUrl: 'https://drive.google.com/file/d/1zWkVf7Qu_CwLbmy2mO8ksq2DkRWKsKGr/preview',
     thumbnailUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476991144/AO/SM/KN/146888318/pot-ptfe-bridge-bearings-500x500.jpg',
     description: 'Inside look at the 45,000 sq.ft Patna Central Works manufacturing heavy POT-PTFE bridge bearings, drainage spouts, and certified infrastructure materials.',
     tags: ['Factory Tour', 'Patna Plant', 'Bridge Materials', 'ISO 9001:2015', 'CNC Machine'],
@@ -5235,6 +5525,8 @@ export const INDIA_MART_VIDEOS: IndiaMartVideoItem[] = [
     uploadedTime: '1 month ago',
     category: 'Logistics & Dispatch',
     badge: 'Bulk Dispatch',
+    videoUrl: 'https://drive.google.com/file/d/1rH3OqkbBOjclZKPg0NGk7HCCzJxVGKQu/view',
+    videoEmbedUrl: 'https://drive.google.com/file/d/1rH3OqkbBOjclZKPg0NGk7HCCzJxVGKQu/preview',
     thumbnailUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476982647/UB/EB/FC/146888318/shuttering-plate-500x500.jpeg',
     description: 'Automated overhead crane loading and bundling of heavy shuttering plates and telescopic prop jacks for rapid interstate highway logistics.',
     tags: ['Logistics', 'Bulk Dispatch', 'Truck Staging', 'Overhead Crane', 'Pan-India'],
@@ -5248,6 +5540,8 @@ export const INDIA_MART_VIDEOS: IndiaMartVideoItem[] = [
     uploadedTime: '1 month ago',
     category: 'Bridge Bearings & Joints',
     badge: 'IRC Compliance',
+    videoUrl: 'https://drive.google.com/file/d/11yI-TICaXda48GaHzIP3vMyeC6pK8RQ9/view',
+    videoEmbedUrl: 'https://drive.google.com/file/d/11yI-TICaXda48GaHzIP3vMyeC6pK8RQ9/preview',
     thumbnailUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/7/438212537/OO/SD/EE/146888318/strip-seal-expansion-joint-500x500.jpg',
     description: 'Precision machining and hydraulic testing of IRC:83 compliant POT-PTFE bearings and single/multi-gap strip seal expansion joints.',
     tags: ['Bridge Bearing', 'Expansion Joint', 'IRC:83', 'Elastomeric', 'POT-PTFE'],
@@ -5261,6 +5555,8 @@ export const INDIA_MART_VIDEOS: IndiaMartVideoItem[] = [
     uploadedTime: '4 weeks ago',
     category: 'Steel Fabrication',
     badge: 'Live Production',
+    videoUrl: 'https://drive.google.com/file/d/1x_5Nt2lGYmOCCmyHY3jm-XnAT-OizxcE/view',
+    videoEmbedUrl: 'https://drive.google.com/file/d/1x_5Nt2lGYmOCCmyHY3jm-XnAT-OizxcE/preview',
     thumbnailUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476991573/MU/LO/OE/146888318/scaffolding-adjustable-props-jack-500x500.jpeg',
     description: 'High-speed automated welding lines and cold press shearing cells for IS 2062 steel shuttering plates and scaffolding jacks.',
     tags: ['Steel Fabrication', 'Welding Line', 'Cold Shearing', 'Telescopic Props'],
