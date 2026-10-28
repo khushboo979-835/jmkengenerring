@@ -213,26 +213,6 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
 
           {/* Main Headline & Action Buttons with Classy JMK Engineering & Developers Sentence */}
           <div className="relative z-20 max-w-4xl mx-auto text-center space-y-4 my-auto py-4">
-            
-            {/* Navratri & Durga Puja Festive Glowing Advantage Pill (Enlarged Divine Portrait & Glowing Animation) */}
-            <div className="inline-flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-2 rounded-full bg-gradient-to-r from-amber-600/95 via-red-600/95 to-amber-700/95 border-2 border-yellow-300 shadow-[0_0_20px_rgba(251,191,36,0.45)] backdrop-blur-md transform hover:scale-105 transition-transform duration-300">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-yellow-200 overflow-hidden shrink-0 shadow-lg ring-2 ring-amber-400/80 bg-amber-950">
-                <img
-                  src="/images/navratri-durga-puja.jpg"
-                  alt="Maa Durga"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="text-left leading-tight">
-                <span className="text-[11px] sm:text-xs font-black text-yellow-200 tracking-wide block">
-                  ✨ Shubh Navratri & Durga Puja Special Advantage
-                </span>
-                <span className="text-[10px] sm:text-[11px] font-bold text-white block">
-                  Flat <strong className="text-yellow-300 font-black">10% Off</strong> on Commercial RFQs & Fabrication
-                </span>
-              </div>
-            </div>
-
             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] drop-shadow-2xl">
               JMK <span className="text-red-500">Engineering & Developers</span>
               <span className="block text-base sm:text-2xl lg:text-3xl font-extrabold text-neutral-100 mt-2 tracking-normal">
@@ -258,11 +238,6 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
                 <span>Request Instant Quote / RFQ</span>
               </button>
             </div>
-
-            {/* Micro-tag directly below the hero buttons */}
-            <p className="text-[11px] sm:text-xs font-bold text-amber-300 drop-shadow flex items-center justify-center gap-1.5 pt-0.5">
-              <span>⚡ 10% Billing Rebate applied automatically to all quotes submitted this week.</span>
-            </p>
           </div>
 
           {/* Minimalist Manual Navigation Arrows (Left & Right) */}
@@ -314,13 +289,6 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
                 key={card.id}
                 className="bg-white border-2 border-neutral-200 hover:border-red-600 rounded-3xl p-4 sm:p-4.5 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group relative cursor-pointer hover:-translate-y-2"
               >
-                {/* 10% OFF Festive Ribbon Badge */}
-                <div className="absolute top-2.5 right-2.5 z-20">
-                  <span className="inline-flex items-center gap-0.5 bg-gradient-to-r from-amber-500 to-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full shadow-md border border-amber-300">
-                    🎉 10% OFF
-                  </span>
-                </div>
-
                 {/* Full Clickable Card Link */}
                 <Link
                   href={`/products/${card.slug}`}

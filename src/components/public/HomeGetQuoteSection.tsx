@@ -66,7 +66,6 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
 
   const totalEstimatedWeightMt = ((selectedProduct.weightPerUnitKg * quantity) / 1000).toFixed(2);
   const estimatedCostInr = selectedProduct.basePrice * quantity;
-  const discountedCostInr = Math.round(estimatedCostInr * 0.9);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,9 +79,9 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
           customerName: contractorName || 'Valued Contractor',
           phone: phoneNumber,
           city: destinationCity || 'Not Specified',
-          projectDetails: `BOQ Estimate Request: ${quantity} ${selectedProduct.unit} of ${selectedProduct.name} (~${totalEstimatedWeightMt} MT, Est: ₹${discountedCostInr.toLocaleString('en-IN')} with 10% Navratri Festive discount)`,
+          projectDetails: `BOQ Estimate Request: ${quantity} ${selectedProduct.unit} of ${selectedProduct.name} (~${totalEstimatedWeightMt} MT, Est: ₹${estimatedCostInr.toLocaleString('en-IN')})`,
           selectedProducts: [selectedProduct.name],
-          source: 'Home Calculator (Festive 10% Offer)'
+          source: 'Home Calculator'
         })
       });
     } catch (err) {
@@ -203,16 +202,12 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
                 <div className="text-base font-black text-black mt-0.5">{totalEstimatedWeightMt} MT</div>
               </div>
 
-              <div className="p-3 bg-amber-50/80 rounded-2xl border-2 border-amber-300 text-center relative overflow-hidden">
-                <div className="text-[10px] text-amber-800 font-black uppercase flex items-center justify-center gap-1">
-                  <span>🎉 10% Festive Total</span>
-                </div>
+              <div className="p-3 bg-neutral-50 rounded-2xl border border-neutral-200 text-center">
+                <div className="text-[10px] text-neutral-500 font-black uppercase">Estimated Cost</div>
                 <div className="text-base font-black text-red-600 mt-0.5">
-                  ₹{discountedCostInr.toLocaleString('en-IN')}
-                </div>
-                <div className="text-[10px] text-neutral-400 line-through font-mono font-bold">
                   ₹{estimatedCostInr.toLocaleString('en-IN')}
                 </div>
+                <div className="text-[10px] text-neutral-500 font-medium">Ex-Factory Baseline</div>
               </div>
 
               <div className="p-3 bg-neutral-50 rounded-2xl border border-neutral-200 text-center col-span-2 sm:col-span-1">
@@ -231,7 +226,7 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
                 </div>
                 <h3 className="text-xl font-black text-black">Quotation Request Received!</h3>
                 <p className="text-xs sm:text-sm text-neutral-700 max-w-sm mx-auto leading-relaxed font-medium">
-                  Thank you, <strong className="text-black">{contractorName || 'Valued Contractor'}</strong>. Our Patna technical estimation desk will call you at <strong className="text-red-600">{phoneNumber}</strong> within 2 hours with the formal stamped BOQ including your <strong>10% Navratri Festive Rebate</strong>.
+                  Thank you, <strong className="text-black">{contractorName || 'Valued Contractor'}</strong>. Our Patna technical estimation desk will call you at <strong className="text-red-600">{phoneNumber}</strong> within 2 hours with the formal stamped BOQ and competitive factory pricing.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
@@ -247,21 +242,6 @@ export default function HomeGetQuoteSection({ onOpenRFQ }: { onOpenRFQ: (product
                   <h3 className="text-lg sm:text-xl font-black text-black">
                     Send Instant RFQ to Patna Works
                   </h3>
-                </div>
-
-                {/* Festive Offer Notice */}
-                <div className="p-2.5 rounded-xl bg-gradient-to-r from-amber-500/15 via-red-500/10 to-amber-500/15 border border-amber-400/50 flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full border border-amber-300 overflow-hidden shrink-0 shadow-sm">
-                    <img
-                      src="/images/navratri-durga-puja.jpg"
-                      alt="Maa Durga"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="text-[11px] leading-tight">
-                    <strong className="text-amber-800 font-bold block">✨ Navratri & Durga Puja 10% Discount:</strong>
-                    <span className="text-neutral-700">Celebrating Shubh Navratri: Flat 10% savings on your initial fabrication order. (Promo: <strong className="text-red-700 font-mono">JMKNAVRATRI10</strong>)</span>
-                  </div>
                 </div>
 
                 <div className="space-y-3.5 text-left">

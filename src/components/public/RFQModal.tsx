@@ -101,25 +101,6 @@ export default function RFQModal({ isOpen, onClose, defaultProduct }: RFQModalPr
 
         {/* Modal Body */}
         <div className="p-6 overflow-y-auto space-y-5">
-          {/* Festive Offer Banner */}
-          <div className="p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-red-500/10 to-amber-500/15 border-2 border-amber-400/50 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full border border-amber-300 overflow-hidden shrink-0 shadow-sm">
-              <img
-                src="/images/navratri-durga-puja.jpg"
-                alt="Maa Durga"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <div className="text-xs font-black text-amber-800 uppercase tracking-wider flex items-center gap-1">
-                <span>🎉 Shubh Navratri & Durga Puja Offer Applied!</span>
-              </div>
-              <p className="text-xs text-neutral-800 font-semibold mt-0.5">
-                Celebrating Shubh Navratri: <strong className="text-red-700">Flat 10% savings</strong> on your initial fabrication order. (Promo Code: <span className="font-mono bg-amber-100 px-1.5 py-0.5 rounded text-red-700 font-black">JMKNAVRATRI10</span>)
-              </p>
-            </div>
-          </div>
-
           {submittedRfqNo ? (
             <div className="text-center py-8 space-y-4">
               <div className="w-16 h-16 rounded-full bg-red-100 border-2 border-red-600 flex items-center justify-center text-red-600 mx-auto">
