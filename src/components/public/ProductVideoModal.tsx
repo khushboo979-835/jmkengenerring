@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { X, ExternalLink, Play, Sparkles, FolderOpen, ArrowRight } from 'lucide-react';
+import { X, Play, ArrowRight } from 'lucide-react';
 
 interface ProductVideoModalProps {
   isOpen: boolean;
@@ -38,7 +38,6 @@ export default function ProductVideoModal({
 
   if (!isOpen) return null;
 
-  const driveFolderUrl = 'https://drive.google.com/drive/folders/1t88xQSEw8F91F1x8kQSx67H6DvbmewV2?usp=sharing';
   const embedUrl = videoEmbedUrl || (videoUrl ? videoUrl.replace(/\/view$/, '/preview') : '');
 
   return (
@@ -113,30 +112,6 @@ export default function ProductVideoModal({
           </div>
 
           <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 shrink-0">
-            {videoUrl && (
-              <a
-                href={videoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-2.5 px-3.5 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-bold rounded-xl border border-neutral-700 transition flex items-center gap-1.5"
-                title="Open this video directly in Google Drive"
-              >
-                <span>Google Drive</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            )}
-
-            <a
-              href={driveFolderUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="py-2.5 px-3.5 bg-neutral-800 hover:bg-neutral-700 text-amber-300 text-xs font-bold rounded-xl border border-neutral-700 transition flex items-center gap-1.5"
-              title="Open full JMK product videos folder on Google Drive"
-            >
-              <FolderOpen className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Drive Folder</span>
-            </a>
-
             {onOpenRFQ && (
               <button
                 onClick={() => {

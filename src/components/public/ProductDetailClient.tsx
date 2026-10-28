@@ -446,17 +446,6 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     <h2 className="text-xl font-black text-slate-900">Verified Plant Demonstration Video</h2>
                   </div>
                   <div className="flex items-center gap-2">
-                    {product.videoUrl && (
-                      <a
-                        href={product.videoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs font-bold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 px-3 py-1.5 rounded-xl flex items-center gap-1.5 transition"
-                      >
-                        <span>Open Video Link</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    )}
                     <button
                       type="button"
                       onClick={() => setIsVideoOpen(true)}

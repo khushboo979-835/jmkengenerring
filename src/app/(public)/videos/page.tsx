@@ -403,19 +403,6 @@ export default function VideosPage() {
                     <ExternalLink className="w-3.5 h-3.5 text-red-400" />
                     <span>IndiaMART</span>
                   </a>
-
-                  {activeVideo.videoUrl && (
-                    <a
-                      href={activeVideo.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2.5 bg-neutral-800 hover:bg-neutral-700 text-amber-300 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-neutral-700"
-                      title="Open full video in Google Drive"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
-                      <span>Drive Video</span>
-                    </a>
-                  )}
                 </div>
               </div>
 
