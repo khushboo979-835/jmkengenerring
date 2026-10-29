@@ -176,14 +176,18 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-          {/* Base Layer: Previous image remains 100% visible underneath to completely prevent any black flash */}
-          <div className="absolute inset-0 z-0">
-            <img
-              src={HERO_SLIDER_IMAGES[prevSlide].url}
-              alt="Underlying Background"
-              className="w-full h-full object-cover object-center filter brightness-100 contrast-105"
-            />
-          </div>
+          {/* Base Layer: Previous image remains visible during transition */}
+          {currentSlide !== prevSlide && (
+            <div className="absolute inset-0 z-0">
+              <img
+                src={HERO_SLIDER_IMAGES[prevSlide].url}
+                alt="Underlying Background"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover object-center filter brightness-100 contrast-105"
+              />
+            </div>
+          )}
 
           {/* Active Layer: Smooth cross-fade transition without black screen flicker */}
           {HERO_SLIDER_IMAGES.map((slide, idx) => (
@@ -196,6 +200,9 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
               <img
                 src={slide.url}
                 alt={slide.title}
+                loading={idx === 0 ? 'eager' : 'lazy'}
+                fetchPriority={idx === 0 ? 'high' : 'low'}
+                decoding={idx === 0 ? 'sync' : 'async'}
                 className="w-full h-full object-cover object-center filter brightness-100 contrast-105"
               />
             </div>
@@ -302,6 +309,8 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
                       <img
                         src={card.imageUrl}
                         alt={card.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover object-center rounded-t-[32px] rounded-b-xl"
                       />
                     </div>

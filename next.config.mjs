@@ -2,6 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 31536000,
+    remotePatterns: [
+      { protocol: 'https', hostname: '**.imimg.com' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+    ],
     domains: [
       '5.imimg.com',
       '4.imimg.com',
@@ -98,6 +104,15 @@ const nextConfig = {
   },
   async headers() {
     return [
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
       {
         source: '/(.*)',
         headers: [

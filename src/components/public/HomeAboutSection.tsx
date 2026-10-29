@@ -68,8 +68,10 @@ export default function HomeAboutSection() {
               {/* Official Poster Image */}
               <div className="pt-12 pb-3 px-3 bg-neutral-950 flex items-center justify-center min-h-[380px] sm:min-h-[440px]">
                 <img
-                  src="/images/about/jmk-official-division-poster.png"
+                  src="/images/about/jmk-official-division-poster.jpg"
                   alt="JMK Engineering & Developer Official Expansion Joint Bridge Bearing Division Poster"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto max-h-[440px] object-contain group-hover:scale-[1.02] transition-transform duration-500 rounded-xl"
                 />
               </div>
@@ -219,8 +221,10 @@ export default function HomeAboutSection() {
 
             <div className="max-h-[80vh] overflow-auto rounded-2xl flex items-center justify-center bg-black/60 p-2">
               <img
-                src="/images/about/jmk-official-division-poster.png"
+                src="/images/about/jmk-official-division-poster.jpg"
                 alt="JMK Engineering & Developer Official Division Poster"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto max-h-[75vh] object-contain rounded-xl shadow-2xl"
               />
             </div>

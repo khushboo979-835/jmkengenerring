@@ -87,16 +87,19 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-white text-black">
       <head>
-        {/* Google Tag Manager */}
+        {/* Google tag (gtag.js) */}
         <Script
-          id="google-tag-manager"
+          src="https://www.googletagmanager.com/gtag/js?id=G-QRB4WRH96N"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-tag-analytics"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TTF2C2PT');`,
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QRB4WRH96N');`,
           }}
         />
         {/* Meta Pixel Code */}
@@ -116,17 +119,68 @@ fbq('init', '1106223738693480');
 fbq('track', 'PageView');`,
           }}
         />
+        {/* Local Business & Google Business Profile Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': ['LocalBusiness', 'ManufacturingBusiness'],
+              '@id': 'https://www.jmkengineering.in/#localbusiness',
+              name: 'JMK Engineering & Developers',
+              alternateName: 'Jmk Engineering and Developer',
+              url: 'https://www.jmkengineering.in/',
+              logo: 'https://www.jmkengineering.in/icon.png',
+              image: 'https://www.jmkengineering.in/og-image.jpg',
+              description:
+                'Premier manufacturer and fabricator of bridge bearings (POT-PTFE), strip seal expansion joints, MS shuttering plates, and scaffolding systems in Patna, Bihar.',
+              telephone: '+917493916194',
+              email: 'contact@jmkengineering.in',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress:
+                  'Near Trinity Global School, Road No. 3, Krishna Niketan Road, Jakariyapur, Pahari',
+                addressLocality: 'Patna',
+                addressRegion: 'Bihar',
+                postalCode: '800007',
+                addressCountry: 'IN',
+              },
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: 25.5823642,
+                longitude: 85.1846785,
+              },
+              hasMap:
+                'https://www.google.com/maps/place/Jmk+Engineering+and+Developer/@25.5823642,85.1846785,17z/data=!3m1!4b1!4m6!3m5!1s0x39f2a776d95f3f73:0xac02601f18137c84!8m2!3d25.5823642!4d85.1846785',
+              sameAs: [
+                'https://maps.google.com/?cid=12394541796120886404',
+                'https://www.google.com/maps/place/Jmk+Engineering+and+Developer/@25.5823642,85.1846785,17z/data=!3m1!4b1!4m6!3m5!1s0x39f2a776d95f3f73:0xac02601f18137c84!8m2!3d25.5823642!4d85.1846785',
+              ],
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: [
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thursday',
+                    'Friday',
+                    'Saturday',
+                  ],
+                  opens: '08:00',
+                  closes: '20:00',
+                },
+              ],
+              priceRange: '₹₹₹',
+              areaServed: {
+                '@type': 'Country',
+                name: 'India',
+              },
+            }),
+          }}
+        />
       </head>
       <body className="bg-white text-black antialiased min-h-screen selection:bg-red-600 selection:text-white">
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-TTF2C2PT"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
         {/* Meta Pixel (noscript) */}
         <noscript>
           <img

@@ -171,7 +171,7 @@ export default function ContactPage() {
               </p>
             </div>
             <a
-              href="https://maps.google.com/?q=Trinity+Global+School+Jakariyapur+Patna+800007"
+              href="https://www.google.com/maps/place/Jmk+Engineering+and+Developer/@25.5823642,85.1846785,17z/data=!3m1!4b1!4m6!3m5!1s0x39f2a776d95f3f73:0xac02601f18137c84!8m2!3d25.5823642!4d85.1846785"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs font-black text-red-600 hover:text-red-700 pt-2 border-t border-neutral-100"
@@ -572,7 +572,7 @@ export default function ContactPage() {
                   <h3 className="text-base font-black text-slate-950">Patna Central Works Map</h3>
                 </div>
                 <a
-                  href="https://maps.google.com/?q=Trinity+Global+School+Jakariyapur+Patna+800007"
+                  href="https://www.google.com/maps/place/Jmk+Engineering+and+Developer/@25.5823642,85.1846785,17z/data=!3m1!4b1!4m6!3m5!1s0x39f2a776d95f3f73:0xac02601f18137c84!8m2!3d25.5823642!4d85.1846785"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1.5 bg-red-50 text-red-700 border border-red-200 rounded-xl text-xs font-black hover:bg-red-600 hover:text-white transition flex items-center gap-1"
@@ -584,19 +584,30 @@ export default function ContactPage() {
 
               <div className="w-full h-48 rounded-2xl overflow-hidden border-2 border-neutral-200 bg-neutral-100 relative">
                 <iframe
-                  title="JMK Engineering Location"
+                  title="Jmk Engineering and Developer - Google Business Profile"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   loading="lazy"
                   allowFullScreen
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src="https://maps.google.com/maps?q=Jakariyapur+Trinity+Global+School+Patna+800007&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3598.6784005902236!2d85.18467847517682!3d25.58236417746497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f2a776d95f3f73%3A0xac02601f18137c84!2sJmk%20Engineering%20and%20Developer!5e0!3m2!1sen!2sin!4v1793254887549!5m2!1sen!2sin"
                 ></iframe>
               </div>
-              <p className="text-[11px] text-neutral-500 font-medium">
-                Near Trinity Global School, Road No. 3, Krishna Niketan Road, Jakariyapur, Patna - 800007
-              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-[11px]">
+                <p className="text-neutral-500 font-medium">
+                  Near Trinity Global School, Road No. 3, Krishna Niketan Road, Jakariyapur, Patna - 800007
+                </p>
+                <a
+                  href="https://www.google.com/maps/place/Jmk+Engineering+and+Developer/@25.5823642,85.1846785,17z/data=!3m1!4b1!4m6!3m5!1s0x39f2a776d95f3f73:0xac02601f18137c84!8m2!3d25.5823642!4d85.1846785"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-red-600 hover:underline flex items-center gap-1 shrink-0"
+                >
+                  <span>Google Business Profile</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
             </div>
 
             {/* Social Media Channels Box */}
