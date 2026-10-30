@@ -13,6 +13,7 @@ import {
   X
 } from 'lucide-react';
 import RFQModal from './RFQModal';
+import FestiveOfferBar from './FestiveOfferBar';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -34,6 +35,9 @@ export default function Navbar() {
 
   return (
     <>
+      {/* 1. Shubh Deepawali & Chhath Mahaparv Sticky Announcement Banner */}
+      <FestiveOfferBar onOpenRFQ={() => setIsRfqOpen(true)} />
+
       {/* Top Status Bar with Modern Smooth Moving Marquee Ticker */}
       <div className="bg-[#0b1320] text-neutral-300 text-[11px] py-1.5 px-0 border-b border-neutral-800 overflow-hidden relative z-50">
         <div className="flex items-center whitespace-nowrap overflow-hidden">
@@ -41,6 +45,10 @@ export default function Navbar() {
           <div className="inline-flex items-center gap-8 animate-marquee hover:[animation-play-state:paused] cursor-pointer">
             {/* Ticker Items Block 1 */}
             <div className="inline-flex items-center gap-6">
+              <span className="inline-flex items-center gap-1.5 font-black bg-gradient-to-r from-amber-500 to-rose-500 text-white px-2.5 py-0.5 rounded-full text-[10px] shadow-sm animate-pulse">
+                <span>🪔 Shubh Diwali & Chhath Puja Offer: Flat 10% OFF</span>
+              </span>
+              <span className="text-neutral-600">•</span>
               <span className="inline-flex items-center gap-1.5 text-emerald-400 font-bold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>Patna HQ Live</span>
@@ -87,6 +95,10 @@ export default function Navbar() {
 
             {/* Ticker Items Block 2 (Duplicate for Seamless Infinite Loop) */}
             <div className="inline-flex items-center gap-6">
+              <span className="inline-flex items-center gap-1.5 font-black bg-gradient-to-r from-amber-500 to-rose-500 text-white px-2.5 py-0.5 rounded-full text-[10px] shadow-sm animate-pulse">
+                <span>🪔 Shubh Diwali & Chhath Puja Offer: Flat 10% OFF</span>
+              </span>
+              <span className="text-neutral-600">•</span>
               <span className="inline-flex items-center gap-1.5 text-emerald-400 font-bold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>Patna HQ Live</span>
