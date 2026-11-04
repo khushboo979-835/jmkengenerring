@@ -36,10 +36,13 @@ import {
   Quote,
   ListOrdered,
   FileCheck,
-  RotateCcw
+  RotateCcw,
+  Link2,
+  Check
 } from 'lucide-react';
 import { BlogPost, SEED_BLOGS } from '@/lib/blogData';
 import { SeedProduct, SEED_PRODUCTS, INDIA_MART_GALLERY_PHOTOS, PhotoGalleryItem } from '@/lib/seedData';
+import { renderMarkdownBlocks } from '@/components/public/BlogDetailClient';
 
 export default function MasterCMSPage() {
   const [activeTab, setActiveTab] = useState<'blogs' | 'products' | 'photos' | 'videos' | 'settings'>('blogs');
@@ -52,6 +55,13 @@ export default function MasterCMSPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const photoFileInputRef = useRef<HTMLInputElement>(null);
   const productFileInputRef = useRef<HTMLInputElement>(null);
+  const contentAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Link Insertion Modal State
+  const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
+  const [linkText, setLinkText] = useState('');
+  const [linkUrl, setLinkUrl] = useState('');
+  const [savedSelectionRange, setSavedSelectionRange] = useState<{ start: number; end: number } | null>(null);
 
   const [blogForm, setBlogForm] = useState({
     title: '',
@@ -325,11 +335,164 @@ export default function MasterCMSPage() {
     setIsBlogModalOpen(true);
   };
 
-  const insertHelper = (snippet: string) => {
-    setBlogForm((prev) => ({
-      ...prev,
-      content: prev.content + '\n\n' + snippet,
-    }));
+  // Cursor-aware insertion helper for textarea
+  const insertAtCursor = (prefix: string, placeholder: string = '', suffix: string = '') => {
+    const textarea = contentAreaRef.current;
+    if (!textarea) {
+      setBlogForm((prev) => ({
+        ...prev,
+        content: (prev.content ? prev.content + '\n\n' : '') + prefix + placeholder + suffix,
+      }));
+      return;
+    }
+
+    const start = textarea.selectionStart ?? textarea.value.length;
+    const end = textarea.selectionEnd ?? textarea.value.length;
+    const currentText = textarea.value;
+    const selected = currentText.substring(start, end);
+
+    let replacement = '';
+    let newCursorStart = start;
+    let newCursorEnd = end;
+
+    if (selected.length > 0) {
+      replacement = `${prefix}${selected}${suffix}`;
+      newCursorStart = start + prefix.length;
+      newCursorEnd = newCursorStart + selected.length;
+    } else {
+      replacement = `${prefix}${placeholder}${suffix}`;
+      newCursorStart = start + prefix.length;
+      newCursorEnd = newCursorStart + placeholder.length;
+    }
+
+    const newContent = currentText.substring(0, start) + replacement + currentText.substring(end);
+    setBlogForm((prev) => ({ ...prev, content: newContent }));
+
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(newCursorStart, newCursorEnd);
+    }, 20);
+  };
+
+  // Heading insertion (H2, H3) at cursor
+  const insertHeading = (level: 2 | 3) => {
+    const prefix = level === 2 ? '## ' : '### ';
+    const placeholder = level === 2 ? 'Section Heading Title' : 'Subheading Title';
+    const textarea = contentAreaRef.current;
+    if (!textarea) {
+      setBlogForm((prev) => ({
+        ...prev,
+        content: (prev.content ? prev.content + '\n\n' : '') + prefix + placeholder + '\n\n',
+      }));
+      return;
+    }
+
+    const start = textarea.selectionStart ?? textarea.value.length;
+    const end = textarea.selectionEnd ?? textarea.value.length;
+    const currentText = textarea.value;
+    const selected = currentText.substring(start, end);
+
+    const needsLeadingNewlines = start > 0 ? (currentText[start - 1] === '\n' ? (start > 1 && currentText[start - 2] === '\n' ? '' : '\n') : '\n\n') : '';
+    const textToUse = selected.length > 0 ? selected.replace(/^[#\s]+/, '') : placeholder;
+    const replacement = `${needsLeadingNewlines}${prefix}${textToUse}\n\n`;
+
+    const newContent = currentText.substring(0, start) + replacement + currentText.substring(end);
+    setBlogForm((prev) => ({ ...prev, content: newContent }));
+
+    const highlightStart = start + needsLeadingNewlines.length + prefix.length;
+    const highlightEnd = highlightStart + textToUse.length;
+
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(highlightStart, highlightEnd);
+    }, 20);
+  };
+
+  // Bullet list insertion at cursor
+  const insertBulletList = () => {
+    const textarea = contentAreaRef.current;
+    if (!textarea) {
+      setBlogForm((prev) => ({
+        ...prev,
+        content: (prev.content ? prev.content + '\n\n' : '') + '- Key specification point 1\n- Key specification point 2\n- Key specification point 3\n',
+      }));
+      return;
+    }
+
+    const start = textarea.selectionStart ?? textarea.value.length;
+    const end = textarea.selectionEnd ?? textarea.value.length;
+    const currentText = textarea.value;
+    const selected = currentText.substring(start, end);
+
+    let replacement = '';
+    let newCursorStart = start;
+    let newCursorEnd = end;
+
+    if (selected.trim().length > 0) {
+      const lines = selected.split('\n');
+      const bulleted = lines
+        .map((line) => {
+          const trimmed = line.trim();
+          if (!trimmed) return line;
+          if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) return line;
+          return `- ${trimmed}`;
+        })
+        .join('\n');
+      replacement = bulleted;
+      newCursorStart = start;
+      newCursorEnd = start + replacement.length;
+    } else {
+      const needsLeadingNewlines = start > 0 ? (currentText[start - 1] === '\n' ? '' : '\n') : '';
+      replacement = `${needsLeadingNewlines}- Key specification point 1\n- Key specification point 2\n- Key specification point 3\n`;
+      newCursorStart = start + needsLeadingNewlines.length + 2;
+      newCursorEnd = newCursorStart + 'Key specification point 1'.length;
+    }
+
+    const newContent = currentText.substring(0, start) + replacement + currentText.substring(end);
+    setBlogForm((prev) => ({ ...prev, content: newContent }));
+
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(newCursorStart, newCursorEnd);
+    }, 20);
+  };
+
+  // Open Link Insertion Dialog
+  const handleOpenLinkModal = () => {
+    const textarea = contentAreaRef.current;
+    const start = textarea?.selectionStart ?? blogForm.content.length;
+    const end = textarea?.selectionEnd ?? blogForm.content.length;
+    const currentText = blogForm.content;
+    const selected = currentText.substring(start, end).trim();
+
+    setSavedSelectionRange({ start, end });
+    setLinkText(selected || 'Product / Catalog Link');
+    setLinkUrl('https://www.jmkengineering.in/products');
+    setIsLinkModalOpen(true);
+  };
+
+  // Confirm Link Insertion
+  const handleConfirmInsertLink = (customText?: string, customUrl?: string) => {
+    const textToInsert = (customText ?? linkText).trim() || 'Link Text';
+    const urlToInsert = (customUrl ?? linkUrl).trim() || 'https://www.jmkengineering.in/products';
+
+    const textarea = contentAreaRef.current;
+    const currentText = blogForm.content;
+    const start = savedSelectionRange?.start ?? textarea?.selectionStart ?? currentText.length;
+    const end = savedSelectionRange?.end ?? textarea?.selectionEnd ?? currentText.length;
+
+    const replacement = `[${textToInsert}](${urlToInsert})`;
+    const newContent = currentText.substring(0, start) + replacement + currentText.substring(end);
+
+    setBlogForm((prev) => ({ ...prev, content: newContent }));
+    setIsLinkModalOpen(false);
+
+    setTimeout(() => {
+      if (textarea) {
+        textarea.focus();
+        textarea.setSelectionRange(start + replacement.length, start + replacement.length);
+      }
+    }, 20);
   };
 
   const handleSaveBlogWithStatus = async (targetStatus: 'published' | 'draft') => {
@@ -1112,41 +1275,9 @@ export default function MasterCMSPage() {
                     </div>
                   )}
 
+                  {/* Rendered Live Website Markdown Content */}
                   <div className="prose prose-slate max-w-none text-xs sm:text-sm space-y-4">
-                    {blogForm.content.split('\n\n').map((paragraph, idx) => {
-                      if (paragraph.startsWith('## ')) {
-                        return <h2 key={idx} className="text-lg font-bold text-slate-900 border-t pt-3">{paragraph.replace('## ', '')}</h2>;
-                      }
-                      if (paragraph.startsWith('### ')) {
-                        return <h3 key={idx} className="text-base font-bold text-slate-800">{paragraph.replace('### ', '')}</h3>;
-                      }
-                      if (paragraph.startsWith('|')) {
-                        const rows = paragraph.trim().split('\n').filter((r) => !r.includes('---'));
-                        return (
-                          <div key={idx} className="overflow-x-auto border rounded-xl bg-white">
-                            <table className="w-full text-left text-xs">
-                              <thead className="bg-slate-100 font-bold border-b">
-                                <tr>
-                                  {rows[0].split('|').filter(Boolean).map((h, i) => (
-                                    <th key={i} className="p-2.5">{h.trim()}</th>
-                                  ))}
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {rows.slice(1).map((r, ri) => (
-                                  <tr key={ri} className="border-b">
-                                    {r.split('|').filter(Boolean).map((c, ci) => (
-                                      <td key={ci} className="p-2.5">{c.trim()}</td>
-                                    ))}
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          </div>
-                        );
-                      }
-                      return <p key={idx}>{paragraph}</p>;
-                    })}
+                    {renderMarkdownBlocks(blogForm.content)}
                   </div>
                 </div>
               ) : (
@@ -1266,47 +1397,129 @@ export default function MasterCMSPage() {
                   {/* Rich Formatting Toolbar */}
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between flex-wrap gap-2">
-                      <label className="text-xs font-black text-slate-900">Article Content *</label>
-                      <div className="flex items-center gap-1 flex-wrap">
-                        <span className="text-[10px] text-slate-400 font-bold mr-1">Insert:</span>
+                      <div className="flex items-center gap-1.5">
+                        <label className="text-xs font-black text-slate-900">Article Content *</label>
+                        <span className="text-[10px] text-slate-400 font-medium hidden sm:inline">
+                          (Click any tool to insert at your cursor or format selection)
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="text-[10px] text-slate-400 font-bold mr-0.5">Insert:</span>
+
+                        {/* H2 Heading */}
                         <button
                           type="button"
-                          onClick={() => insertHelper('## Section Title\n\nWrite content here...')}
-                          className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[10px] font-bold rounded border shadow-xs"
+                          onClick={() => insertHeading(2)}
+                          className="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[11px] font-bold rounded-lg border border-slate-300 shadow-xs flex items-center gap-1 transition active:scale-95"
+                          title="Insert Section Heading at cursor"
                         >
-                          + H2 Heading
+                          <span className="font-mono text-red-600 font-black">H2</span>
+                          <span>Heading</span>
                         </button>
+
+                        {/* H3 Subheading */}
                         <button
                           type="button"
-                          onClick={() => insertHelper('### Subheading\n\nDetails...')}
-                          className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[10px] font-bold rounded border shadow-xs"
+                          onClick={() => insertHeading(3)}
+                          className="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[11px] font-bold rounded-lg border border-slate-300 shadow-xs flex items-center gap-1 transition active:scale-95"
+                          title="Insert Subheading at cursor"
                         >
-                          + H3 Sub
+                          <span className="font-mono text-red-600 font-black">H3</span>
+                          <span>Sub</span>
                         </button>
+
+                        {/* Bold */}
                         <button
                           type="button"
-                          onClick={() => insertHelper('- Key specification point 1\n- Key specification point 2\n- Key specification point 3')}
-                          className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[10px] font-bold rounded border shadow-xs"
+                          onClick={() => insertAtCursor('**', 'Bold Text', '**')}
+                          className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[11px] font-black rounded-lg border border-slate-300 shadow-xs flex items-center gap-0.5 transition active:scale-95"
+                          title="Bold selected text or insert bold placeholder"
                         >
-                          + Bullet List
+                          <Bold className="w-3 h-3 text-slate-700" />
+                          <span>Bold</span>
                         </button>
+
+                        {/* Bullet List */}
                         <button
                           type="button"
-                          onClick={() => insertHelper('| Parameter | Value / Code | Verification |\n| :--- | :--- | :--- |\n| **Steel Grade** | IS 2062 Grade E250 | In-house Tested |\n| **Yield Strength** | ≥ 250 MPa | Verified |\n| **Corrosion Primer** | Red Oxide 2-Coat | MoRTH 2700 |')}
-                          className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[10px] font-bold rounded border shadow-xs"
+                          onClick={insertBulletList}
+                          className="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[11px] font-bold rounded-lg border border-slate-300 shadow-xs flex items-center gap-1 transition active:scale-95"
+                          title="Insert bullet list at cursor or convert selected lines into bullets"
                         >
-                          + Spec Table
+                          <List className="w-3 h-3 text-slate-700" />
+                          <span>Bullet List</span>
+                        </button>
+
+                        {/* HIGH VISIBILITY LINK INSERTION BUTTON */}
+                        <button
+                          type="button"
+                          onClick={handleOpenLinkModal}
+                          className="px-3 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 border-2 border-blue-400 text-[11px] font-black rounded-lg shadow-xs flex items-center gap-1.5 transition transform active:scale-95 ring-2 ring-blue-100"
+                          title="Insert Hyperlink [Text](URL) at cursor"
+                        >
+                          <Link2 className="w-3.5 h-3.5 text-blue-600" />
+                          <span>+ Insert Link</span>
+                        </button>
+
+                        {/* Spec Table */}
+                        <button
+                          type="button"
+                          onClick={() =>
+                            insertAtCursor(
+                              '\n\n| Parameter | Value / Code | Verification |\n| :--- | :--- | :--- |\n| **Steel Grade** | IS 2062 Grade E250 | In-house Tested |\n| **Yield Strength** | ≥ 250 MPa | Verified |\n| **Corrosion Primer** | Red Oxide 2-Coat | MoRTH 2700 |\n\n'
+                            )
+                          }
+                          className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[11px] font-bold rounded-lg border border-slate-300 shadow-xs flex items-center gap-1 transition active:scale-95"
+                          title="Insert Technical Spec Table at cursor"
+                        >
+                          <Table className="w-3 h-3 text-slate-700" />
+                          <span>Spec Table</span>
+                        </button>
+
+                        {/* Image */}
+                        <button
+                          type="button"
+                          onClick={() =>
+                            insertAtCursor(
+                              '\n\n![Technical Diagram / Photo](',
+                              'https://www.jmkengineering.in/og-image.jpg',
+                              ')\n\n'
+                            )
+                          }
+                          className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[11px] font-bold rounded-lg border border-slate-300 shadow-xs flex items-center gap-1 transition active:scale-95"
+                          title="Insert Markdown Image at cursor"
+                        >
+                          <ImageIcon className="w-3 h-3 text-slate-700" />
+                          <span>Image</span>
+                        </button>
+
+                        {/* Quote */}
+                        <button
+                          type="button"
+                          onClick={() =>
+                            insertAtCursor(
+                              '\n\n> **Engineering Standard Note:** ',
+                              'IRC:83 guidelines mandate rigorous testing for all bridge expansion joints.',
+                              '\n\n'
+                            )
+                          }
+                          className="px-2 py-1 bg-white hover:bg-slate-100 text-slate-800 text-[11px] font-bold rounded-lg border border-slate-300 shadow-xs flex items-center gap-0.5 transition active:scale-95"
+                          title="Insert Blockquote / Note at cursor"
+                        >
+                          <Quote className="w-3 h-3 text-slate-700" />
+                          <span>Quote</span>
                         </button>
                       </div>
                     </div>
 
                     <textarea
-                      rows={9}
+                      ref={contentAreaRef}
+                      rows={10}
                       required
-                      placeholder="Write your article content using markdown..."
+                      placeholder="Write your article content using markdown... Click any tool button above to insert headings, bullet lists, or links at your exact cursor position."
                       value={blogForm.content}
                       onChange={(e) => setBlogForm({ ...blogForm, content: e.target.value })}
-                      className="w-full p-3 bg-white border border-neutral-300 rounded-xl text-xs font-mono text-slate-900 leading-relaxed focus:ring-2 focus:ring-red-600 shadow-sm"
+                      className="w-full p-3.5 bg-white border border-neutral-300 rounded-xl text-xs sm:text-sm font-mono text-slate-900 leading-relaxed focus:ring-2 focus:ring-red-600 shadow-sm"
                     />
                   </div>
 
@@ -1368,6 +1581,131 @@ export default function MasterCMSPage() {
                   <span>{editingBlog ? 'Update & Publish Live' : 'Publish to Live Website'}</span>
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Hyperlink Insertion Modal */}
+      {isLinkModalOpen && (
+        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white border-2 border-blue-500 rounded-2xl p-5 max-w-md w-full shadow-2xl space-y-4 animate-in fade-in zoom-in-95">
+            <div className="flex items-center justify-between border-b pb-3">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+                  <Link2 className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-black text-slate-900">Insert Hyperlink</h3>
+                  <p className="text-[11px] text-slate-500">Add clickable product, catalog, or inquiry link</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsLinkModalOpen(false)}
+                className="text-slate-400 hover:text-slate-700 p-1"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="space-y-3">
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-slate-800">Link Display Text *</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Master Product Catalog"
+                  value={linkText}
+                  onChange={(e) => setLinkText(e.target.value)}
+                  className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-slate-800">Target Web Address (URL) *</label>
+                <input
+                  type="text"
+                  placeholder="https://www.jmkengineering.in/products/..."
+                  value={linkUrl}
+                  onChange={(e) => setLinkUrl(e.target.value)}
+                  className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-mono text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
+              {/* Quick Suggestion Chips */}
+              <div className="space-y-1.5 pt-1">
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Quick Presets:</span>
+                <div className="flex flex-wrap gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setLinkText(linkText || 'Master Product Catalog');
+                      setLinkUrl('https://www.jmkengineering.in/products');
+                    }}
+                    className="px-2 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 text-slate-700 text-[10px] font-semibold rounded-md border border-slate-200 transition"
+                  >
+                    📦 Master Catalog (/products)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setLinkText(linkText || 'Strip Seal Expansion Joints');
+                      setLinkUrl('https://www.jmkengineering.in/products/strip-seal-expansion-joint');
+                    }}
+                    className="px-2 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 text-slate-700 text-[10px] font-semibold rounded-md border border-slate-200 transition"
+                  >
+                    Strip Seal Joint
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setLinkText(linkText || 'MS Shuttering Plates');
+                      setLinkUrl('https://www.jmkengineering.in/products/20-kg-ms-shuttering-plate');
+                    }}
+                    className="px-2 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 text-slate-700 text-[10px] font-semibold rounded-md border border-slate-200 transition"
+                  >
+                    Shuttering Plates
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setLinkText(linkText || 'Contact Patna Works');
+                      setLinkUrl('https://www.jmkengineering.in/contact');
+                    }}
+                    className="px-2 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 text-slate-700 text-[10px] font-semibold rounded-md border border-slate-200 transition"
+                  >
+                    📍 Contact & Depots (/contact)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setLinkText(linkText || 'WhatsApp Inquiry');
+                      setLinkUrl('https://wa.me/917493916194');
+                    }}
+                    className="px-2 py-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-300 text-slate-700 text-[10px] font-semibold rounded-md border border-slate-200 transition"
+                  >
+                    💬 WhatsApp (+91 7493916194)
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t flex items-center justify-end gap-2">
+              <button
+                type="button"
+                onClick={() => setIsLinkModalOpen(false)}
+                className="px-3 py-1.5 text-xs font-bold text-slate-600 hover:bg-slate-100 rounded-xl transition"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => handleConfirmInsertLink()}
+                className="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-black shadow-md transition flex items-center gap-1.5"
+              >
+                <Check className="w-3.5 h-3.5" />
+                <span>Insert Link into Article</span>
+              </button>
             </div>
           </div>
         </div>

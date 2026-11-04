@@ -26,6 +26,222 @@ interface BlogDetailClientProps {
   post: BlogPost;
 }
 
+// Helper to render inline markdown: [links](url), **bold**, *italic*, `code`
+export function renderInlineMarkdown(text: string): React.ReactNode {
+  if (!text) return null;
+  const tokenRegex = /(\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|\*([^*]+)\*|`([^`]+)`)/g;
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = tokenRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(text.substring(lastIndex, match.index));
+    }
+    const [, , linkText, linkUrl, boldText, italicText, codeText] = match;
+    if (linkText && linkUrl) {
+      const isInternal = linkUrl.startsWith('/') || linkUrl.includes('jmkengineering.in');
+      nodes.push(
+        <a
+          key={match.index}
+          href={linkUrl}
+          target={isInternal ? '_self' : '_blank'}
+          rel={isInternal ? undefined : 'noopener noreferrer'}
+          className="text-red-600 hover:text-red-700 underline font-bold transition-colors inline-flex items-center gap-0.5"
+        >
+          {linkText}
+        </a>
+      );
+    } else if (boldText) {
+      nodes.push(
+        <strong key={match.index} className="font-extrabold text-slate-950">
+          {boldText}
+        </strong>
+      );
+    } else if (italicText) {
+      nodes.push(
+        <em key={match.index} className="italic text-slate-800">
+          {italicText}
+        </em>
+      );
+    } else if (codeText) {
+      nodes.push(
+        <code key={match.index} className="px-1.5 py-0.5 bg-slate-100 rounded text-xs font-mono text-red-600">
+          {codeText}
+        </code>
+      );
+    }
+    lastIndex = tokenRegex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(text.substring(lastIndex));
+  }
+
+  return nodes.length > 0 ? nodes : text;
+}
+
+export function renderMarkdownBlocks(content: string): React.ReactNode[] {
+  if (!content) return [];
+  const blocks = content.split(/\n\s*\n/);
+
+  return blocks
+    .map((block, bIdx) => {
+      const trimmed = block.trim();
+      if (!trimmed) return null;
+
+      // H2
+      if (trimmed.startsWith('## ')) {
+        return (
+          <h2 key={bIdx} className="text-xl sm:text-2xl font-bold text-slate-900 pt-6 border-t border-slate-100">
+            {renderInlineMarkdown(trimmed.replace(/^##\s+/, ''))}
+          </h2>
+        );
+      }
+
+      // H3
+      if (trimmed.startsWith('### ')) {
+        return (
+          <h3 key={bIdx} className="text-lg sm:text-xl font-bold text-slate-800 pt-2">
+            {renderInlineMarkdown(trimmed.replace(/^###\s+/, ''))}
+          </h3>
+        );
+      }
+
+      // H4
+      if (trimmed.startsWith('#### ')) {
+        return (
+          <h4 key={bIdx} className="text-base sm:text-lg font-bold text-slate-800 pt-1">
+            {renderInlineMarkdown(trimmed.replace(/^####\s+/, ''))}
+          </h4>
+        );
+      }
+
+      // Image ![alt](url)
+      const imgMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+      if (imgMatch) {
+        return (
+          <div key={bIdx} className="my-6 rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50">
+            <img
+              src={imgMatch[2]}
+              alt={imgMatch[1] || 'Technical Article Illustration'}
+              className="w-full max-h-[480px] object-cover"
+            />
+            {imgMatch[1] && (
+              <p className="text-xs text-center text-slate-500 py-2 bg-slate-50 border-t border-slate-100 font-medium">
+                {imgMatch[1]}
+              </p>
+            )}
+          </div>
+        );
+      }
+
+      // Blockquote
+      if (trimmed.startsWith('>')) {
+        const quoteText = trimmed
+          .split('\n')
+          .map((l) => l.replace(/^>\s*/, ''))
+          .join(' ');
+        return (
+          <blockquote key={bIdx} className="border-l-4 border-red-600 pl-4 py-2 my-4 italic bg-red-50/40 rounded-r-xl text-slate-700">
+            {renderInlineMarkdown(quoteText)}
+          </blockquote>
+        );
+      }
+
+      // Markdown Table
+      if (trimmed.startsWith('|')) {
+        const rows = trimmed
+          .split('\n')
+          .filter((r) => !r.includes('---') && r.trim().startsWith('|'));
+        if (rows.length > 0) {
+          return (
+            <div key={bIdx} className="overflow-x-auto my-6 rounded-xl border border-slate-200">
+              <table className="w-full text-left text-xs sm:text-sm">
+                <thead className="bg-slate-100 text-slate-900 border-b border-slate-200 font-bold">
+                  <tr>
+                    {rows[0]
+                      .split('|')
+                      .filter((c) => c.trim())
+                      .map((header, hIdx) => (
+                        <th key={hIdx} className="p-3 whitespace-nowrap">
+                          {renderInlineMarkdown(header.trim())}
+                        </th>
+                      ))}
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200">
+                  {rows.slice(1).map((row, rIdx) => (
+                    <tr key={rIdx} className="hover:bg-slate-50 transition">
+                      {row
+                        .split('|')
+                        .filter((c) => c.trim())
+                        .map((cell, cIdx) => (
+                          <td key={cIdx} className="p-3 text-slate-700">
+                            {renderInlineMarkdown(cell.trim())}
+                          </td>
+                        ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          );
+        }
+      }
+
+      // Check if block contains list items
+      const lines = trimmed.split('\n');
+      const hasListItems = lines.some((l) => l.trim().startsWith('- ') || l.trim().startsWith('* '));
+      if (hasListItems) {
+        const elements: React.ReactNode[] = [];
+        let currentList: string[] = [];
+
+        const flushList = (key: string) => {
+          if (currentList.length > 0) {
+            elements.push(
+              <ul key={key} className="space-y-1.5 list-disc list-inside text-slate-700 my-2">
+                {currentList.map((li, lIdx) => (
+                  <li key={lIdx}>{renderInlineMarkdown(li)}</li>
+                ))}
+              </ul>
+            );
+            currentList = [];
+          }
+        };
+
+        lines.forEach((line, lIdx) => {
+          const lineTrim = line.trim();
+          if (lineTrim.startsWith('- ') || lineTrim.startsWith('* ')) {
+            currentList.push(lineTrim.replace(/^[-*]\s+/, ''));
+          } else if (lineTrim.length > 0) {
+            flushList(`list-before-${lIdx}`);
+            elements.push(
+              <p key={`p-${lIdx}`} className="leading-relaxed text-slate-800">
+                {renderInlineMarkdown(lineTrim)}
+              </p>
+            );
+          }
+        });
+        flushList(`list-end-${bIdx}`);
+
+        return (
+          <div key={bIdx} className="space-y-2">
+            {elements}
+          </div>
+        );
+      }
+
+      // Standard Paragraph
+      return (
+        <p key={bIdx} className="leading-relaxed text-slate-800">
+          {renderInlineMarkdown(trimmed)}
+        </p>
+      );
+    })
+    .filter(Boolean);
+}
+
 export default function BlogDetailClient({ post }: BlogDetailClientProps) {
   const [activePost, setActivePost] = useState<BlogPost>(post);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -170,63 +386,7 @@ export default function BlogDetailClient({ post }: BlogDetailClientProps) {
 
         {/* Article Body Content */}
         <article className="prose prose-slate max-w-none space-y-6 text-sm sm:text-base text-slate-800 leading-relaxed font-normal">
-          {activePost.content.split('\n\n').map((paragraph, idx) => {
-            if (paragraph.startsWith('## ')) {
-              return (
-                <h2 key={idx} className="text-xl sm:text-2xl font-bold text-slate-900 pt-6 border-t border-slate-100">
-                  {paragraph.replace('## ', '')}
-                </h2>
-              );
-            }
-            if (paragraph.startsWith('### ')) {
-              return (
-                <h3 key={idx} className="text-lg sm:text-xl font-bold text-slate-800 pt-2">
-                  {paragraph.replace('### ', '')}
-                </h3>
-              );
-            }
-            if (paragraph.startsWith('|')) {
-              // Markdown table rendering
-              const rows = paragraph.trim().split('\n').filter(r => !r.includes('---'));
-              return (
-                <div key={idx} className="overflow-x-auto my-6 rounded-xl border border-slate-200">
-                  <table className="w-full text-left text-xs sm:text-sm">
-                    <thead className="bg-slate-100 text-slate-900 border-b border-slate-200 font-bold">
-                      <tr>
-                        {rows[0].split('|').filter(c => c.trim()).map((header, hIdx) => (
-                          <th key={hIdx} className="p-3 whitespace-nowrap">{header.trim()}</th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-200">
-                      {rows.slice(1).map((row, rIdx) => (
-                        <tr key={rIdx} className="hover:bg-slate-50 transition">
-                          {row.split('|').filter(c => c.trim()).map((cell, cIdx) => (
-                            <td key={cIdx} className="p-3 text-slate-700">{cell.trim()}</td>
-                          ))}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              );
-            }
-            if (paragraph.startsWith('- ')) {
-              const listItems = paragraph.split('\n').map(item => item.replace('- ', ''));
-              return (
-                <ul key={idx} className="space-y-1.5 list-disc list-inside text-slate-700">
-                  {listItems.map((li, lIdx) => (
-                    <li key={lIdx}>{li}</li>
-                  ))}
-                </ul>
-              );
-            }
-            return (
-              <p key={idx} className="leading-relaxed">
-                {paragraph}
-              </p>
-            );
-          })}
+          {renderMarkdownBlocks(activePost.content)}
         </article>
 
         {/* Social Share & Tags Toolbar */}
