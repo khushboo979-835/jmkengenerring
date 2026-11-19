@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HeroSection from '@/components/public/HeroSection';
 import HomeAboutSection from '@/components/public/HomeAboutSection';
 import HomeWhatWeOffer from '@/components/public/HomeWhatWeOffer';
@@ -12,6 +12,15 @@ export default function HomePage() {
   const [isRfqOpen, setIsRfqOpen] = useState(false);
   const [rfqDefaultProduct, setRfqDefaultProduct] = useState<string | undefined>(undefined);
 
+  // Automatically trigger the RFQ quote popup modal after 15 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsRfqOpen(true);
+    }, 15000); // 15 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleOpenRFQ = (productName?: string) => {
     setRfqDefaultProduct(productName);
     setIsRfqOpen(true);
@@ -19,7 +28,7 @@ export default function HomePage() {
 
   return (
     <div className="space-y-0 bg-white text-black">
-      {/* 1. Hero Section with 5-Image Cross-Fade Slider & 5 Geometric Shape Cards */}
+      {/* 1. Hero Section with Clean Full-Frame Video & Docked Cards Below */}
       <HeroSection onOpenRFQ={() => handleOpenRFQ()} />
 
       {/* 2. Home About Us Section (Left Image Layout, Keyword-Rich, 6 IndiaMART Corporate Badges) */}
@@ -34,7 +43,7 @@ export default function HomePage() {
       {/* 5. Get a Free Quote / Instant Interactive BOQ Estimator & RFQ Form (GSAP-Powered) */}
       <HomeGetQuoteSection onOpenRFQ={handleOpenRFQ} />
 
-      {/* Global RFQ Modal */}
+      {/* Global RFQ Modal (opens via button click or automatically after 15 seconds) */}
       <RFQModal
         isOpen={isRfqOpen}
         onClose={() => setIsRfqOpen(false)}

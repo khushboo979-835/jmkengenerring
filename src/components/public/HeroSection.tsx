@@ -16,7 +16,7 @@ interface HeroSectionProps {
   onOpenRFQ: (productName?: string) => void;
 }
 
-// 5 Master Industrial Product Categories (Docked seamlessly along the border below video hero)
+// 5 Master Industrial Product Categories (Docked below video hero)
 const SHAPED_PRODUCT_CARDS = [
   {
     id: 'card-1',
@@ -112,15 +112,15 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
           setIsMuted(false);
         })
         .catch(() => {
-          // If browser policy blocks autoplay with sound before user gesture,
-          // immediately start muted so video autoplays visually without delay
+          // If browser policy blocks unmuted autoplay without interaction,
+          // fallback to muted so video starts immediately
           video.muted = true;
           video.play().catch(() => {});
           setIsMuted(true);
         });
     }
 
-    // 2. On first user interaction anywhere on the website (click / touch), automatically unmute
+    // 2. On first user interaction anywhere on the website, automatically unmute
     const enableAudioOnGesture = () => {
       const vid = videoRef.current;
       if (vid && vid.muted) {
@@ -146,15 +146,14 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
     window.addEventListener('pointerdown', enableAudioOnGesture, { passive: true });
     window.addEventListener('keydown', enableAudioOnGesture, { passive: true });
 
-    // 3. Scroll Detection: As soon as user scrolls down away from hero, pause the video immediately
+    // 3. Scroll Detection: As soon as user scrolls down away from the hero, pause the video immediately
     const handleScroll = () => {
       const vid = videoRef.current;
       const heroEl = heroContainerRef.current;
       if (!vid || !heroEl) return;
 
       const rect = heroEl.getBoundingClientRect();
-      // When hero top is scrolled past by more than 80px or bottom moves out of view
-      const isScrolledAway = rect.top < -80 || rect.bottom < 150;
+      const isScrolledAway = rect.top < -100 || rect.bottom < 160;
 
       if (isScrolledAway) {
         if (!vid.paused) {
@@ -176,11 +175,10 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
       if (document.hidden) {
         vid.pause();
       } else {
-        // Only resume if still in top viewport
         const heroEl = heroContainerRef.current;
         if (heroEl) {
           const rect = heroEl.getBoundingClientRect();
-          if (rect.top >= -80 && rect.bottom >= 150) {
+          if (rect.top >= -100 && rect.bottom >= 160) {
             vid.play().catch(() => {});
           }
         }
@@ -204,30 +202,45 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
         JMK Engineering & Developers - Heavy Steel Fabrication & Infrastructure Products Manufacturer Bihar
       </h1>
 
-      {/* 100% Full-Bleed Clean Edge-to-Edge Video Showcase (Zero Text Overlays) */}
+      {/* 100% Full-Frame Edge-to-Edge Video Showcase (Zero Text Overlays, Native Aspect Ratio, Razor Sharp Quality) */}
       <div 
         ref={heroContainerRef}
-        className="relative w-full overflow-hidden bg-black shadow-xl h-[48vh] sm:h-[58vh] lg:h-[68vh] min-h-[340px] sm:min-h-[440px] max-h-[640px]"
+        className="relative w-full overflow-hidden bg-slate-950 shadow-2xl h-[62vh] sm:h-[72vh] lg:h-[80vh] min-h-[460px] sm:min-h-[560px] lg:min-h-[660px] max-h-[820px] flex items-center justify-center"
       >
-        {/* Full Clean Bright Video with No Darkening Filters */}
-        <video
-          ref={videoRef}
-          src="/videos/jmk-fabrication.mp4"
-          poster="/images/hero/peb-industrial-warehouse.jpg"
-          autoPlay
-          loop
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover object-center"
-          aria-label="JMK Engineering Factory Fabrication Video"
-        />
+        {/* Ambient Video Atmosphere (Softly fills wide desktop screens so it feels cinematic without cropping) */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-25 blur-3xl scale-125">
+          <video
+            src="/videos/jmk-fabrication.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover object-center"
+            aria-hidden="true"
+          />
+        </div>
+
+        {/* Foreground Main Video: 100% Full-Frame, Zero Cropping of Workers or Machinery, Crisp Native Resolution */}
+        <div className="relative z-10 h-full w-full max-w-5xl flex items-center justify-center p-2 sm:p-4 md:p-6">
+          <video
+            ref={videoRef}
+            src="/videos/jmk-fabrication.mp4"
+            poster="/images/hero/peb-industrial-warehouse.jpg"
+            autoPlay
+            loop
+            playsInline
+            preload="auto"
+            className="h-full w-auto max-w-full object-contain rounded-2xl shadow-2xl ring-1 ring-white/10"
+            aria-label="JMK Engineering Factory Fabrication Video"
+          />
+        </div>
 
         {/* Small Discreet Floating Sound Toggle Button (Bottom-Right) */}
         <button
           type="button"
           onClick={toggleSound}
           aria-label={isMuted ? "Unmute Video Audio" : "Mute Video Audio"}
-          className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 hover:bg-black/90 text-white text-xs font-bold border border-white/30 backdrop-blur-md shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer ring-1 ring-white/20"
+          className="absolute bottom-5 right-5 sm:bottom-6 sm:right-8 z-30 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/75 hover:bg-black text-white text-xs font-bold border border-white/30 backdrop-blur-md shadow-2xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer ring-1 ring-white/20"
         >
           {isMuted ? (
             <>
@@ -243,8 +256,8 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
         </button>
       </div>
 
-      {/* 5 Distinct Product Cards Docked Seamlessly Along the Border of the Hero Video */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 -mt-10 sm:-mt-14 lg:-mt-16 pb-4">
+      {/* 5 Master Product Cards Docked Completely Below the Video (No negative margin overlap) */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-12 pb-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
           {SHAPED_PRODUCT_CARDS.map((card) => {
             const Icon = card.icon;
