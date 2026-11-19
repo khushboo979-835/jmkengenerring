@@ -8,7 +8,6 @@ import {
   LayoutGrid,
   ShieldCheck,
   ArrowRight,
-  Edit3,
   Volume2,
   VolumeX
 } from 'lucide-react';
@@ -154,8 +153,8 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
       if (!vid || !heroEl) return;
 
       const rect = heroEl.getBoundingClientRect();
-      // When hero top is scrolled past by more than 100px or bottom moves out of view
-      const isScrolledAway = rect.top < -100 || rect.bottom < 160;
+      // When hero top is scrolled past by more than 80px or bottom moves out of view
+      const isScrolledAway = rect.top < -80 || rect.bottom < 150;
 
       if (isScrolledAway) {
         if (!vid.paused) {
@@ -181,7 +180,7 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
         const heroEl = heroContainerRef.current;
         if (heroEl) {
           const rect = heroEl.getBoundingClientRect();
-          if (rect.top >= -100 && rect.bottom >= 160) {
+          if (rect.top >= -80 && rect.bottom >= 150) {
             vid.play().catch(() => {});
           }
         }
@@ -200,113 +199,52 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
 
   return (
     <section className="relative bg-white pt-0 pb-16 w-full overflow-hidden">
-      
-      {/* 100% Full-Bleed Edge-to-Edge Hero with Bright Natural Background Video */}
+      {/* Hidden SEO H1 for indexing without cluttering the clean video view */}
+      <h1 className="sr-only">
+        JMK Engineering & Developers - Heavy Steel Fabrication & Infrastructure Products Manufacturer Bihar
+      </h1>
+
+      {/* 100% Full-Bleed Clean Edge-to-Edge Video Showcase (Zero Text Overlays) */}
       <div 
         ref={heroContainerRef}
-        className="relative w-full overflow-hidden bg-slate-900 border-b-2 border-neutral-300 shadow-xl min-h-[520px] sm:min-h-[580px] lg:min-h-[640px] flex flex-col justify-between p-6 sm:p-10 lg:p-12"
+        className="relative w-full overflow-hidden bg-black shadow-xl h-[48vh] sm:h-[58vh] lg:h-[68vh] min-h-[340px] sm:min-h-[440px] max-h-[640px]"
       >
-        {/* Real Factory Video Running in Full Bright Colors (Zero Darkening Black Overlays) */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <video
-            ref={videoRef}
-            src="/videos/jmk-fabrication.mp4"
-            poster="/images/hero/peb-industrial-warehouse.jpg"
-            autoPlay
-            loop
-            playsInline
-            preload="auto"
-            className="w-full h-full object-cover object-center"
-            aria-hidden="true"
-          />
-          {/* Very soft edge gradient only at the top and bottom edge for seamless navbar & card blend */}
-          <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
-          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-        </div>
+        {/* Full Clean Bright Video with No Darkening Filters */}
+        <video
+          ref={videoRef}
+          src="/videos/jmk-fabrication.mp4"
+          poster="/images/hero/peb-industrial-warehouse.jpg"
+          autoPlay
+          loop
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover object-center"
+          aria-label="JMK Engineering Factory Fabrication Video"
+        />
 
-        {/* Top Header Row: Status Pill & Floating Sound Toggle Button */}
-        <div className="relative z-10 flex items-center justify-between gap-3 pt-2 sm:pt-4">
-          {/* Eyebrow Status Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-black/60 text-neutral-100 border border-white/30 backdrop-blur-md text-[10px] sm:text-xs font-bold tracking-widest uppercase shadow-lg">
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-            <span>EST. 2021 &nbsp;|&nbsp; PROPRIETORSHIP FIRM &nbsp;|&nbsp; ISO COMPLIANT</span>
-          </div>
-
-          {/* Interactive Sound ON / OFF Button */}
-          <button
-            type="button"
-            onClick={toggleSound}
-            aria-label={isMuted ? "Unmute Video Audio" : "Mute Video Audio"}
-            className="pointer-events-auto inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/70 hover:bg-black text-white text-xs font-bold border border-white/30 backdrop-blur-md shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer ring-1 ring-white/20"
-          >
-            {isMuted ? (
-              <>
-                <VolumeX className="w-4 h-4 text-amber-400" />
-                <span className="text-amber-300 hidden sm:inline">Tap for Sound</span>
-                <span className="text-amber-300 sm:hidden">Sound OFF</span>
-              </>
-            ) : (
-              <>
-                <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse" />
-                <span className="text-emerald-300">Sound ON</span>
-              </>
-            )}
-          </button>
-        </div>
-
-        {/* Main Central Headline & Modern Action Buttons (Framed with crisp typography shadows for 100% readability over bright video) */}
-        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-5 my-auto py-6 sm:py-8 px-4 sm:px-6">
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-            JMK <span className="text-red-500 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">Engineering & Developers</span>
-            <span className="block text-lg sm:text-2xl lg:text-3xl font-extrabold text-white mt-3 tracking-normal leading-snug drop-shadow-[0_3px_12px_rgba(0,0,0,0.95)]">
-              Pioneering Heavy Steel Fabrication & Infrastructure Excellence
-            </span>
-          </h1>
-
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-white font-medium leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
-            Direct ex-factory manufacturing of POT-PTFE bridge bearings, strip seal expansion joints, MS shuttering plates, and scaffolding systems for highways, bridges, and commercial infrastructure.
-          </p>
-
-          {/* Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2">
-            <Link
-              href="/products"
-              className="px-6 sm:px-8 py-3.5 bg-black/80 hover:bg-black text-white rounded-full text-xs sm:text-sm font-bold border border-white/40 transition-all duration-200 flex items-center gap-2 shadow-xl backdrop-blur-sm hover:scale-105 active:scale-95"
-            >
-              <LayoutGrid className="w-4 h-4 text-red-500" />
-              <span>Explore Product Catalog</span>
-            </Link>
-
-            <button
-              onClick={() => onOpenRFQ('Heavy Civil Structural Fabrication')}
-              className="px-6 sm:px-8 py-3.5 bg-red-600 hover:bg-red-700 text-white rounded-full text-xs sm:text-sm font-black transition-all duration-200 shadow-xl shadow-red-600/40 ring-2 ring-amber-400 hover:ring-amber-300 animate-pulse flex items-center gap-2 hover:scale-105 active:scale-95"
-            >
-              <Edit3 className="w-4 h-4 text-amber-200" />
-              <span>Request Instant Quote / RFQ</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Bottom Hero Info Bar (Telemetry / Live Badge) */}
-        <div className="relative z-10 flex flex-wrap items-center justify-between text-xs text-neutral-200 pt-4 border-t border-white/20 w-full gap-2">
-          <div className="flex items-center gap-2 text-[11px] font-mono text-neutral-200 bg-black/60 px-3.5 py-1.5 rounded-full border border-white/20 backdrop-blur-sm">
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
-            <span className="text-white font-bold">LIVE PRODUCTION: Heavy Steel Plant & Shuttering Works</span>
-          </div>
-
-          <div className="hidden sm:flex items-center gap-4 text-[11px] font-semibold text-neutral-200">
-            <span className="flex items-center gap-1 text-emerald-400">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>MoRTH & IRC:83 Compliant</span>
-            </span>
-            <span className="text-white/60">•</span>
-            <span className="text-white">Patna Central Works, Bihar</span>
-          </div>
-        </div>
+        {/* Small Discreet Floating Sound Toggle Button (Bottom-Right) */}
+        <button
+          type="button"
+          onClick={toggleSound}
+          aria-label={isMuted ? "Unmute Video Audio" : "Mute Video Audio"}
+          className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 hover:bg-black/90 text-white text-xs font-bold border border-white/30 backdrop-blur-md shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer ring-1 ring-white/20"
+        >
+          {isMuted ? (
+            <>
+              <VolumeX className="w-4 h-4 text-amber-400" />
+              <span className="text-amber-300">Tap for Sound</span>
+            </>
+          ) : (
+            <>
+              <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse" />
+              <span className="text-emerald-300">Sound ON</span>
+            </>
+          )}
+        </button>
       </div>
 
       {/* 5 Distinct Product Cards Docked Seamlessly Along the Border of the Hero Video */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 -mt-16 sm:-mt-20 lg:-mt-24 pb-4">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 -mt-10 sm:-mt-14 lg:-mt-16 pb-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
           {SHAPED_PRODUCT_CARDS.map((card) => {
             const Icon = card.icon;
