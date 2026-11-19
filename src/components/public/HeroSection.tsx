@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   Layers,
@@ -129,6 +129,7 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
   const [prevSlide, setPrevSlide] = useState<number>(0);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [downloadSuccessItem, setDownloadSuccessItem] = useState<string | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Preload all slider images on mount for instant zero-delay switching
   useEffect(() => {
@@ -159,6 +160,30 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
     }, 4500);
     return () => clearInterval(timer);
   }, [currentSlide, isHovered]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch((error: unknown) => {
+            console.error('Unable to play the homepage video.', error);
+          });
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(video);
+    return () => {
+      observer.disconnect();
+      video.pause();
+    };
+  }, []);
 
   const handleDownloadPdf = (productName: string) => {
     setDownloadSuccessItem(productName);
@@ -286,8 +311,32 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
           </div>
         </div>
 
-      {/* 5 Distinct Geometric Shaped Product Cards (Exact media_1788858973378.png) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 -mt-20 sm:-mt-24 relative z-30">
+      <section aria-labelledby="homepage-video-heading" className="max-w-6xl mx-auto px-4 sm:px-6 mt-10 sm:mt-14">
+        <div className="text-center mb-5 sm:mb-7">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-600">Our work in motion</p>
+          <h2 id="homepage-video-heading" className="mt-2 text-2xl sm:text-3xl font-black tracking-tight text-neutral-900">
+            See JMK Engineering in action
+          </h2>
+        </div>
+        <div className="overflow-hidden rounded-2xl sm:rounded-3xl border border-neutral-200 bg-neutral-950 shadow-2xl shadow-neutral-900/15 ring-1 ring-black/5">
+          <video
+            ref={videoRef}
+            className="aspect-video w-full object-cover"
+            src="/videos/jmk-fabrication.mp4"
+            poster="/images/hero/peb-industrial-warehouse.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            preload="metadata"
+            aria-label="JMK Engineering video"
+          />
+        </div>
+      </section>
+
+      {/* 5 Distinct Geometric Shaped Product Cards */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-4.5">
           {SHAPED_PRODUCT_CARDS.map((card) => {
             const Icon = card.icon;
