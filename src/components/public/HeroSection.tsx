@@ -16,7 +16,7 @@ interface HeroSectionProps {
   onOpenRFQ: (productName?: string) => void;
 }
 
-// 5 Master Industrial Product Categories (Docked below video hero)
+// 4 Master Industrial Product Categories (Docked seamlessly on the border below video hero)
 const SHAPED_PRODUCT_CARDS = [
   {
     id: 'card-1',
@@ -40,16 +40,6 @@ const SHAPED_PRODUCT_CARDS = [
   },
   {
     id: 'card-3',
-    category: 'Centering Sheets',
-    title: 'MS Centering Plates',
-    specLine1: 'Heavy Slab Formwork 13-27 Kg',
-    specLine2: 'Certified High Load Bearing',
-    slug: 'mild-steel-centring-plates',
-    icon: LayoutGrid,
-    imageUrl: 'https://5.imimg.com/data5/SELLER/Default/2024/12/476982681/BJ/ZU/VV/146888318/mild-steel-centering-plate-500x500.jpg',
-  },
-  {
-    id: 'card-4',
     category: 'Bridge Bearings',
     title: 'POT-PTFE Bearings',
     specLine1: 'High Load Multi-Span Bearings',
@@ -59,7 +49,7 @@ const SHAPED_PRODUCT_CARDS = [
     imageUrl: '/images/hero/pot-ptfe-bridge-bearing-plates.jpg',
   },
   {
-    id: 'card-5',
+    id: 'card-4',
     category: 'Scaffolding Systems',
     title: 'Cuplock & H-Frame',
     specLine1: 'Modular Multi-Tier Staging',
@@ -113,7 +103,7 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
         })
         .catch(() => {
           // If browser policy blocks unmuted autoplay without interaction,
-          // fallback to muted so video starts immediately
+          // fallback to muted so video starts visually immediately
           video.muted = true;
           video.play().catch(() => {});
           setIsMuted(true);
@@ -153,7 +143,7 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
       if (!vid || !heroEl) return;
 
       const rect = heroEl.getBoundingClientRect();
-      const isScrolledAway = rect.top < -100 || rect.bottom < 160;
+      const isScrolledAway = rect.top < -80 || rect.bottom < 120;
 
       if (isScrolledAway) {
         if (!vid.paused) {
@@ -178,7 +168,7 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
         const heroEl = heroContainerRef.current;
         if (heroEl) {
           const rect = heroEl.getBoundingClientRect();
-          if (rect.top >= -100 && rect.bottom >= 160) {
+          if (rect.top >= -80 && rect.bottom >= 120) {
             vid.play().catch(() => {});
           }
         }
@@ -202,45 +192,33 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
         JMK Engineering & Developers - Heavy Steel Fabrication & Infrastructure Products Manufacturer Bihar
       </h1>
 
-      {/* 100% Full-Frame Edge-to-Edge Video Showcase (Zero Text Overlays, Native Aspect Ratio, Razor Sharp Quality) */}
+      {/* 100% Full-Bleed Edge-to-Edge Hero Video (Zero Blank Spaces on Left/Right, Compact Height) */}
       <div 
         ref={heroContainerRef}
-        className="relative w-full overflow-hidden bg-slate-950 shadow-2xl h-[62vh] sm:h-[72vh] lg:h-[80vh] min-h-[460px] sm:min-h-[560px] lg:min-h-[660px] max-h-[820px] flex items-center justify-center"
+        className="relative w-full overflow-hidden bg-slate-950 shadow-xl h-[380px] sm:h-[440px] lg:h-[480px] max-h-[520px] flex items-center justify-center"
       >
-        {/* Ambient Video Atmosphere (Softly fills wide desktop screens so it feels cinematic without cropping) */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-25 blur-3xl scale-125">
-          <video
-            src="/videos/jmk-fabrication.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover object-center"
-            aria-hidden="true"
-          />
-        </div>
+        {/* Full Edge-to-Edge Background Video (100% Width & Height, Top-Centered Focus to Keep Face in Frame) */}
+        <video
+          ref={videoRef}
+          src="/videos/jmk-fabrication.mp4"
+          poster="/images/hero/peb-industrial-warehouse.jpg"
+          autoPlay
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover object-[center_20%]"
+          aria-label="JMK Engineering Factory Fabrication Video"
+        />
 
-        {/* Foreground Main Video: 100% Full-Frame, Zero Cropping of Workers or Machinery, Crisp Native Resolution */}
-        <div className="relative z-10 h-full w-full max-w-5xl flex items-center justify-center p-2 sm:p-4 md:p-6">
-          <video
-            ref={videoRef}
-            src="/videos/jmk-fabrication.mp4"
-            poster="/images/hero/peb-industrial-warehouse.jpg"
-            autoPlay
-            loop
-            playsInline
-            preload="auto"
-            className="h-full w-auto max-w-full object-contain rounded-2xl shadow-2xl ring-1 ring-white/10"
-            aria-label="JMK Engineering Factory Fabrication Video"
-          />
-        </div>
+        {/* Soft bottom edge gradient for smooth border docking with the 4 cards */}
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
 
-        {/* Small Discreet Floating Sound Toggle Button (Bottom-Right) */}
+        {/* Floating Sound Toggle Button (Top-Right) */}
         <button
           type="button"
           onClick={toggleSound}
           aria-label={isMuted ? "Unmute Video Audio" : "Mute Video Audio"}
-          className="absolute bottom-5 right-5 sm:bottom-6 sm:right-8 z-30 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/75 hover:bg-black text-white text-xs font-bold border border-white/30 backdrop-blur-md shadow-2xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer ring-1 ring-white/20"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 z-30 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/70 hover:bg-black text-white text-xs font-bold border border-white/30 backdrop-blur-md shadow-2xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer ring-1 ring-white/20"
         >
           {isMuted ? (
             <>
@@ -256,15 +234,15 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
         </button>
       </div>
 
-      {/* 5 Master Product Cards Docked Completely Below the Video (No negative margin overlap) */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-12 pb-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
+      {/* Exactly 4 Master Product Cards Docked Seamlessly on the Bottom Border of the Hero Video */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 sm:-mt-20 lg:-mt-24 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {SHAPED_PRODUCT_CARDS.map((card) => {
             const Icon = card.icon;
             return (
               <div
                 key={card.id}
-                className="bg-white/95 backdrop-blur-md border-2 border-neutral-200 hover:border-red-600 rounded-2xl p-3.5 sm:p-4 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group relative cursor-pointer hover:-translate-y-2 ring-1 ring-black/5"
+                className="bg-white/95 backdrop-blur-md border-2 border-neutral-200 hover:border-red-600 rounded-2xl p-4 sm:p-4.5 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group relative cursor-pointer hover:-translate-y-2 ring-1 ring-black/5"
               >
                 {/* Full Clickable Card Link */}
                 <Link
@@ -281,35 +259,38 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-2 left-2">
-                      <span className="px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-sm text-white font-bold text-[9px] tracking-wide uppercase shadow-sm">
+                      <span className="px-2.5 py-0.5 rounded-full bg-slate-950/85 backdrop-blur-sm text-white font-bold text-[10px] tracking-wide uppercase shadow-sm">
                         {card.category}
                       </span>
                     </div>
                   </div>
 
                   {/* Card Content */}
-                  <div className="space-y-1 text-left">
+                  <div className="space-y-1.5 text-left">
                     {/* Primary Product Name in Bold Black */}
-                    <h3 className="text-sm font-black text-slate-900 group-hover:text-red-600 transition leading-snug line-clamp-1">
-                      {card.title}
-                    </h3>
+                    <div className="flex items-center gap-1.5">
+                      <Icon className="w-4 h-4 text-red-600 shrink-0" />
+                      <h3 className="text-sm sm:text-base font-black text-slate-900 group-hover:text-red-600 transition leading-snug line-clamp-1">
+                        {card.title}
+                      </h3>
+                    </div>
 
                     {/* Specifications Lines */}
                     <div className="space-y-0.5 text-xs text-neutral-600 font-medium pt-0.5">
-                      <p className="text-neutral-500 truncate text-[11px]">{card.specLine1}</p>
-                      <p className="font-bold text-neutral-900 text-[11px] truncate">{card.specLine2}</p>
+                      <p className="text-neutral-500 truncate text-[11px] sm:text-xs">{card.specLine1}</p>
+                      <p className="font-bold text-neutral-900 text-[11px] sm:text-xs truncate">{card.specLine2}</p>
                     </div>
                   </div>
                 </Link>
 
                 {/* Bottom Card Actions: Modern View Specs & Request Quote */}
-                <div className="pt-2.5 mt-2.5 border-t border-neutral-200 flex items-center justify-between gap-2 relative z-10">
+                <div className="pt-3 mt-3 border-t border-neutral-200 flex items-center justify-between gap-2 relative z-10">
                   <Link
                     href={`/products/${card.slug}`}
-                    className="flex-1 py-1.5 px-2 bg-neutral-100 hover:bg-neutral-200 text-slate-900 rounded-lg text-[11px] font-bold transition flex items-center justify-center gap-1 border border-neutral-300"
+                    className="flex-1 py-1.5 px-2 bg-neutral-100 hover:bg-neutral-200 text-slate-900 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1 border border-neutral-300"
                   >
                     <span>View Specs</span>
-                    <ArrowRight className="w-3 h-3 text-red-600" />
+                    <ArrowRight className="w-3.5 h-3.5 text-red-600" />
                   </Link>
 
                   <button
@@ -319,7 +300,7 @@ export default function HeroSection({ onOpenRFQ }: HeroSectionProps) {
                       e.stopPropagation();
                       onOpenRFQ(card.title);
                     }}
-                    className="py-1.5 px-3 bg-red-600 hover:bg-red-700 text-white rounded-lg text-[11px] font-black uppercase tracking-wider transition shadow-sm hover:scale-105 active:scale-95"
+                    className="py-1.5 px-3.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-black uppercase tracking-wider transition shadow-sm hover:scale-105 active:scale-95"
                     title={`Request instant quote for ${card.title}`}
                   >
                     Quote
